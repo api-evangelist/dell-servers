@@ -1,0 +1,89 @@
+name: Dell Servers API
+description: APIs for managing and monitoring Dell PowerEdge servers and infrastructure
+image: https://www.dell.com/favicon.ico
+url: https://www.dell.com/support/kbdoc/en-us/000177308/support-for-integrated-dell-remote-access-controller-idrac
+tags:
+- servers
+- hardware
+- infrastructure
+- monitoring
+- management
+created: '2024'
+modified: '2024'
+apis:
+- name: iDRAC REST API
+  description: Integrated Dell Remote Access Controller REST API for server management, monitoring, and configuration
+  image: https://www.dell.com/favicon.ico
+  baseURL: https://{idrac-ip}/redfish/v1
+  humanURL: https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v3.x-series/idrac_3.30.30.30_redfishapiguide/
+  tags:
+  - redfish
+  - server management
+  - hardware monitoring
+  - BMC
+  properties:
+  - type: Documentation
+    url: https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v3.x-series/idrac_3.30.30.30_redfishapiguide/
+  - type: OpenAPI
+    url: https://downloads.dell.com/manuals/common/dellemc-idrac-redfish-openapi.yaml
+  - type: Authentication
+    url: https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v3.x-series/idrac_3.30.30.30_redfishapiguide/authentication
+- name: Dell OpenManage Enterprise API
+  description: REST API for centralized management of Dell EMC servers, chassis, and storage
+  image: https://www.dell.com/favicon.ico
+  baseURL: https://{ome-server}/api
+  humanURL: https://www.dell.com/support/manuals/en-us/openmanage-enterprise/
+  tags:
+  - enterprise management
+  - monitoring
+  - automation
+  - orchestration
+  properties:
+  - type: Documentation
+    url: https://www.dell.com/support/manuals/en-us/openmanage-enterprise/ome_api_guide/
+  - type: API Reference
+    url: https://{ome-server}/api/docs
+  - type: Swagger UI
+    url: https://{ome-server}/api/swagger-ui
+- name: Dell RACADM CLI
+  description: Command-line interface for Dell Remote Access Controller Administration
+  image: https://www.dell.com/favicon.ico
+  humanURL: https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v3.x-series/idrac9_racadm_pub/
+  tags:
+  - CLI
+  - remote management
+  - scripting
+  - automation
+  properties:
+  - type: Documentation
+    url: https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v3.x-series/idrac9_racadm_pub/
+  - type: Downloads
+    url: https://www.dell.com/support/home/en-us/drivers/driversdetails?driverid=racadm
+- name: Dell WSMan API
+  description: Web Services Management API for Dell server hardware management
+  image: https://www.dell.com/favicon.ico
+  baseURL: https://{idrac-ip}/wsman
+  humanURL: https://www.dell.com/support/kbdoc/en-us/000178046/how-to-use-the-wsman-interface-on-idrac
+  tags:
+  - wsman
+  - web services
+  - hardware management
+  - legacy
+  properties:
+  - type: Documentation
+    url: https://www.dell.com/support/kbdoc/en-us/000178046/how-to-use-the-wsman-interface-on-idrac
+  - type: Profile Catalog
+    url: https://downloads.dell.com/solutions/dell-management-solution-resources/
+maintainers:
+- name: Dell Technologies
+  email: support@dell.com
+  url: https://www.dell.com/support
+common:
+- type: Support Portal
+  url: https://www.dell.com/support
+- type: Community Forums
+  url: https://www.dell.com/community/
+- type: Developer Portal
+  url: https://developer.dell.com/
+- type: Status Page
+  url: https://www.dell.com/support/contents/en-us/category/product-support/self-support-knowledgebase/
