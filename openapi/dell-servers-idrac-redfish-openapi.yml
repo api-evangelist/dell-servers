@@ -1,0 +1,1210 @@
+openapi: 3.1.0
+info:
+  title: Dell iDRAC Redfish REST API
+  description: >-
+    Integrated Dell Remote Access Controller (iDRAC) RESTful API built upon the
+    DMTF Redfish standard for out-of-band server lifecycle management of Dell
+    PowerEdge servers. Provides programmatic access to server inventory, health
+    monitoring, configuration, firmware updates, power control, virtual media,
+    and BIOS management through a standards-based REST interface.
+  version: '5.0'
+  contact:
+    name: Dell Technologies Support
+    url: https://www.dell.com/support
+  termsOfService: https://i.dell.com/sites/csdocuments/Legal_Docs/en/us/api-terms-of-use_en.pdf
+externalDocs:
+  description: iDRAC Redfish API Documentation
+  url: https://developer.dell.com/apis/2978/versions/5.xx/docs/1.0Intro.md
+servers:
+  - url: https://{idrac-ip}/redfish/v1
+    description: iDRAC Redfish Service Root
+    variables:
+      idrac-ip:
+        description: IP address or hostname of the iDRAC interface
+        default: 192.168.1.100
+tags:
+  - name: Service Root
+    description: Redfish service root and metadata
+  - name: Systems
+    description: >-
+      Computer system resources including hardware inventory, health status,
+      power state, and BIOS configuration
+  - name: Chassis
+    description: >-
+      Physical enclosure resources including power supplies, thermal sensors,
+      and physical component inventory
+  - name: Managers
+    description: >-
+      Management controller resources for iDRAC configuration, networking,
+      and remote services
+  - name: Accounts
+    description: User account management and role-based access control
+  - name: Sessions
+    description: Authentication session creation and management
+  - name: Update Service
+    description: Firmware update operations and firmware inventory
+  - name: Task Service
+    description: Asynchronous task tracking and lifecycle job management
+  - name: Event Service
+    description: Event subscriptions and server-sent events configuration
+  - name: Telemetry Service
+    description: Telemetry metric definitions and metric report management
+security:
+  - basicAuth: []
+paths:
+  /:
+    get:
+      operationId: getServiceRoot
+      summary: Get Redfish service root
+      description: >-
+        Retrieves the Redfish service root resource which provides links to all
+        top-level resource collections and service metadata including the Redfish
+        protocol version and available services.
+      tags:
+        - Service Root
+      responses:
+        '200':
+          description: Service root resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceRoot'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /Systems:
+    get:
+      operationId: listSystems
+      summary: List computer systems
+      description: >-
+        Retrieves the collection of computer system resources managed by this
+        iDRAC instance. Each system resource represents a Dell PowerEdge server
+        with its hardware inventory, health status, and configuration.
+      tags:
+        - Systems
+      responses:
+        '200':
+          description: Collection of computer system resources
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComputerSystemCollection'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /Systems/{SystemId}:
+    get:
+      operationId: getSystem
+      summary: Get a computer system
+      description: >-
+        Retrieves a specific computer system resource including detailed hardware
+        inventory, health status, power state, boot configuration, processor and
+        memory summary, and links to subordinate resources like storage, network
+        interfaces, and BIOS settings.
+      tags:
+        - Systems
+      parameters:
+        - $ref: '#/components/parameters/SystemId'
+      responses:
+        '200':
+          description: Computer system resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComputerSystem'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: System resource not found
+  /Systems/{SystemId}/Actions/ComputerSystem.Reset:
+    post:
+      operationId: resetSystem
+      summary: Reset a computer system
+      description: >-
+        Performs a power action on the computer system such as power on, power
+        off, graceful shutdown, force restart, or power cycle. The available
+        reset types depend on the current power state of the system.
+      tags:
+        - Systems
+      parameters:
+        - $ref: '#/components/parameters/SystemId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetAction'
+      responses:
+        '204':
+          description: Reset action initiated successfully
+        '400':
+          description: Invalid reset type for current system state
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: System resource not found
+  /Systems/{SystemId}/Bios:
+    get:
+      operationId: getSystemBios
+      summary: Get BIOS attributes
+      description: >-
+        Retrieves the current BIOS attribute values for the specified computer
+        system. BIOS attributes control hardware-level settings including boot
+        order, processor configuration, memory settings, and security features.
+      tags:
+        - Systems
+      parameters:
+        - $ref: '#/components/parameters/SystemId'
+      responses:
+        '200':
+          description: BIOS attributes resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bios'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: System resource not found
+  /Systems/{SystemId}/Bios/Settings:
+    patch:
+      operationId: updateBiosSettings
+      summary: Update pending BIOS attributes
+      description: >-
+        Sets pending BIOS attribute values that will be applied on the next
+        system reboot. Only attributes that differ from current values need to
+        be specified. Changes require a system reboot to take effect.
+      tags:
+        - Systems
+      parameters:
+        - $ref: '#/components/parameters/SystemId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Attributes:
+                  type: object
+                  description: BIOS attribute name-value pairs to set as pending
+                  additionalProperties: true
+      responses:
+        '200':
+          description: Pending BIOS attributes updated
+        '400':
+          description: Invalid attribute name or value
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /Systems/{SystemId}/Storage:
+    get:
+      operationId: listStorageControllers
+      summary: List storage controllers
+      description: >-
+        Retrieves the collection of storage controller resources for the
+        specified system, including RAID controllers, BOSS controllers, and
+        direct-attached storage interfaces.
+      tags:
+        - Systems
+      parameters:
+        - $ref: '#/components/parameters/SystemId'
+      responses:
+        '200':
+          description: Collection of storage controllers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollection'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /Systems/{SystemId}/EthernetInterfaces:
+    get:
+      operationId: listEthernetInterfaces
+      summary: List Ethernet interfaces
+      description: >-
+        Retrieves the collection of Ethernet interface resources for the
+        specified system, including network adapters, their MAC addresses,
+        link status, and IP configuration.
+      tags:
+        - Systems
+      parameters:
+        - $ref: '#/components/parameters/SystemId'
+      responses:
+        '200':
+          description: Collection of Ethernet interfaces
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollection'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /Chassis:
+    get:
+      operationId: listChassis
+      summary: List chassis resources
+      description: >-
+        Retrieves the collection of chassis resources representing the physical
+        enclosure of the server including power supplies, fans, thermal sensors,
+        and physical component inventory.
+      tags:
+        - Chassis
+      responses:
+        '200':
+          description: Collection of chassis resources
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollection'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /Chassis/{ChassisId}:
+    get:
+      operationId: getChassis
+      summary: Get a chassis resource
+      description: >-
+        Retrieves a specific chassis resource with detailed information about the
+        physical enclosure, including model, serial number, part number, asset
+        tag, indicator LED state, and links to power and thermal resources.
+      tags:
+        - Chassis
+      parameters:
+        - $ref: '#/components/parameters/ChassisId'
+      responses:
+        '200':
+          description: Chassis resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Chassis'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Chassis resource not found
+  /Chassis/{ChassisId}/Power:
+    get:
+      operationId: getChassisPower
+      summary: Get chassis power information
+      description: >-
+        Retrieves power supply information, power consumption metrics, and power
+        control settings for the specified chassis including current wattage,
+        power capacity, and power supply redundancy status.
+      tags:
+        - Chassis
+      parameters:
+        - $ref: '#/components/parameters/ChassisId'
+      responses:
+        '200':
+          description: Chassis power resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Power'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /Chassis/{ChassisId}/Thermal:
+    get:
+      operationId: getChassisThermal
+      summary: Get chassis thermal information
+      description: >-
+        Retrieves thermal sensor readings, fan speeds, and temperature thresholds
+        for the specified chassis. Includes inlet and exhaust temperatures, CPU
+        temperatures, and fan status with redundancy information.
+      tags:
+        - Chassis
+      parameters:
+        - $ref: '#/components/parameters/ChassisId'
+      responses:
+        '200':
+          description: Chassis thermal resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Thermal'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /Managers:
+    get:
+      operationId: listManagers
+      summary: List manager resources
+      description: >-
+        Retrieves the collection of manager resources representing the iDRAC
+        management controller including its firmware version, network
+        configuration, and available management services.
+      tags:
+        - Managers
+      responses:
+        '200':
+          description: Collection of manager resources
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollection'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /Managers/{ManagerId}:
+    get:
+      operationId: getManager
+      summary: Get a manager resource
+      description: >-
+        Retrieves a specific manager resource representing the iDRAC controller
+        with its firmware version, model, network interfaces, virtual media
+        capabilities, and links to log services.
+      tags:
+        - Managers
+      parameters:
+        - $ref: '#/components/parameters/ManagerId'
+      responses:
+        '200':
+          description: Manager resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Manager'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Manager resource not found
+  /Managers/{ManagerId}/LogServices:
+    get:
+      operationId: listLogServices
+      summary: List log services
+      description: >-
+        Retrieves the collection of log services available on the iDRAC manager
+        including the Lifecycle Controller log and the System Event Log (SEL).
+      tags:
+        - Managers
+      parameters:
+        - $ref: '#/components/parameters/ManagerId'
+      responses:
+        '200':
+          description: Collection of log services
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollection'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /Managers/{ManagerId}/VirtualMedia:
+    get:
+      operationId: listVirtualMedia
+      summary: List virtual media devices
+      description: >-
+        Retrieves the collection of virtual media devices that can be used to
+        mount remote ISO images or floppy images for operating system deployment
+        and server configuration.
+      tags:
+        - Managers
+      parameters:
+        - $ref: '#/components/parameters/ManagerId'
+      responses:
+        '200':
+          description: Collection of virtual media resources
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollection'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /AccountService:
+    get:
+      operationId: getAccountService
+      summary: Get account service
+      description: >-
+        Retrieves the account service resource which provides the configuration
+        for user account management including password policies, lockout
+        settings, and links to the accounts collection.
+      tags:
+        - Accounts
+      responses:
+        '200':
+          description: Account service resource
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Account service configuration
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /AccountService/Accounts:
+    get:
+      operationId: listAccounts
+      summary: List user accounts
+      description: >-
+        Retrieves the collection of user accounts configured on the iDRAC
+        including local users with their roles and privileges.
+      tags:
+        - Accounts
+      responses:
+        '200':
+          description: Collection of user accounts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollection'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /SessionService/Sessions:
+    get:
+      operationId: listSessions
+      summary: List active sessions
+      description: >-
+        Retrieves the collection of active sessions on the iDRAC including
+        web UI sessions, Redfish API sessions, and SSH sessions.
+      tags:
+        - Sessions
+      responses:
+        '200':
+          description: Collection of active sessions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollection'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+    post:
+      operationId: createSession
+      summary: Create a new session
+      description: >-
+        Creates a new Redfish session by authenticating with username and
+        password. Returns a session token in the X-Auth-Token response header
+        that can be used for subsequent requests instead of basic authentication.
+      tags:
+        - Sessions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - UserName
+                - Password
+              properties:
+                UserName:
+                  type: string
+                  description: iDRAC username
+                Password:
+                  type: string
+                  description: iDRAC password
+      responses:
+        '201':
+          description: Session created successfully
+          headers:
+            X-Auth-Token:
+              description: Session authentication token
+              schema:
+                type: string
+            Location:
+              description: URI of the created session resource
+              schema:
+                type: string
+        '401':
+          description: Authentication failed - invalid credentials
+  /UpdateService:
+    get:
+      operationId: getUpdateService
+      summary: Get update service
+      description: >-
+        Retrieves the update service resource which provides firmware update
+        capabilities and links to the firmware inventory collection.
+      tags:
+        - Update Service
+      responses:
+        '200':
+          description: Update service resource
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Update service configuration and capabilities
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /UpdateService/FirmwareInventory:
+    get:
+      operationId: listFirmwareInventory
+      summary: List firmware inventory
+      description: >-
+        Retrieves the collection of firmware inventory items for all components
+        in the server including iDRAC, BIOS, storage controllers, network
+        adapters, power supplies, and CPLD firmware versions.
+      tags:
+        - Update Service
+      responses:
+        '200':
+          description: Collection of firmware inventory items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollection'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /TaskService/Tasks:
+    get:
+      operationId: listTasks
+      summary: List tasks
+      description: >-
+        Retrieves the collection of tasks representing asynchronous operations
+        and lifecycle controller jobs including firmware updates, configuration
+        changes, and RAID creation operations.
+      tags:
+        - Task Service
+      responses:
+        '200':
+          description: Collection of task resources
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollection'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /EventService:
+    get:
+      operationId: getEventService
+      summary: Get event service
+      description: >-
+        Retrieves the event service resource which provides configuration for
+        event subscriptions and server-sent events. The event service enables
+        clients to subscribe to alerts and lifecycle events from the iDRAC.
+      tags:
+        - Event Service
+      responses:
+        '200':
+          description: Event service resource
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Event service configuration
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /EventService/Subscriptions:
+    get:
+      operationId: listEventSubscriptions
+      summary: List event subscriptions
+      description: >-
+        Retrieves the collection of event subscriptions configured on the iDRAC.
+        Each subscription defines a destination URL and event types to which the
+        client has subscribed for receiving push notifications.
+      tags:
+        - Event Service
+      responses:
+        '200':
+          description: Collection of event subscriptions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollection'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+    post:
+      operationId: createEventSubscription
+      summary: Create an event subscription
+      description: >-
+        Creates a new event subscription that configures the iDRAC to push event
+        notifications to a specified destination URL when events matching the
+        subscription criteria occur. iDRAC supports up to eight concurrent
+        subscriptions.
+      tags:
+        - Event Service
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventSubscription'
+      responses:
+        '201':
+          description: Event subscription created
+        '400':
+          description: Invalid subscription parameters
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /TelemetryService:
+    get:
+      operationId: getTelemetryService
+      summary: Get telemetry service
+      description: >-
+        Retrieves the telemetry service resource which provides access to metric
+        definitions and metric report definitions for server telemetry data
+        including power, thermal, CPU, memory, and NIC statistics.
+      tags:
+        - Telemetry Service
+      responses:
+        '200':
+          description: Telemetry service resource
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Telemetry service configuration and links
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /TelemetryService/MetricReports:
+    get:
+      operationId: listMetricReports
+      summary: List metric reports
+      description: >-
+        Retrieves the collection of metric reports available from the telemetry
+        service. Each report contains a set of related metrics that can be
+        streamed via SSE or polled directly.
+      tags:
+        - Telemetry Service
+      responses:
+        '200':
+          description: Collection of metric report resources
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollection'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: >-
+        HTTP Basic Authentication using iDRAC username and password credentials.
+        All API requests require authentication except for the Redfish service
+        root at /redfish/v1.
+    sessionAuth:
+      type: apiKey
+      in: header
+      name: X-Auth-Token
+      description: >-
+        Session-based authentication using a token obtained from the Sessions
+        resource POST operation. The token is passed in the X-Auth-Token header.
+  parameters:
+    SystemId:
+      name: SystemId
+      in: path
+      required: true
+      description: >-
+        Identifier for the computer system resource, typically System.Embedded.1
+        for Dell PowerEdge servers
+      schema:
+        type: string
+        default: System.Embedded.1
+    ChassisId:
+      name: ChassisId
+      in: path
+      required: true
+      description: >-
+        Identifier for the chassis resource, typically System.Embedded.1 for
+        Dell PowerEdge servers
+      schema:
+        type: string
+        default: System.Embedded.1
+    ManagerId:
+      name: ManagerId
+      in: path
+      required: true
+      description: >-
+        Identifier for the manager resource, typically iDRAC.Embedded.1 for
+        Dell PowerEdge servers
+      schema:
+        type: string
+        default: iDRAC.Embedded.1
+  schemas:
+    ServiceRoot:
+      type: object
+      description: Redfish service root resource providing links to top-level collections
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource identifier
+        '@odata.type':
+          type: string
+          description: OData resource type
+        Id:
+          type: string
+          description: Resource identifier
+        Name:
+          type: string
+          description: Resource name
+        RedfishVersion:
+          type: string
+          description: Redfish protocol version supported
+        Systems:
+          $ref: '#/components/schemas/ResourceLink'
+        Chassis:
+          $ref: '#/components/schemas/ResourceLink'
+        Managers:
+          $ref: '#/components/schemas/ResourceLink'
+        AccountService:
+          $ref: '#/components/schemas/ResourceLink'
+        SessionService:
+          $ref: '#/components/schemas/ResourceLink'
+        UpdateService:
+          $ref: '#/components/schemas/ResourceLink'
+        EventService:
+          $ref: '#/components/schemas/ResourceLink'
+        TaskService:
+          $ref: '#/components/schemas/ResourceLink'
+        TelemetryService:
+          $ref: '#/components/schemas/ResourceLink'
+    ResourceLink:
+      type: object
+      description: Link to a Redfish resource
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource URI
+    ResourceCollection:
+      type: object
+      description: Redfish resource collection
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource identifier
+        '@odata.type':
+          type: string
+          description: OData resource type
+        Name:
+          type: string
+          description: Collection name
+        Members@odata.count:
+          type: integer
+          description: Number of members in the collection
+        Members:
+          type: array
+          description: Array of resource links
+          items:
+            $ref: '#/components/schemas/ResourceLink'
+    ComputerSystemCollection:
+      type: object
+      description: Collection of computer system resources
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource identifier
+        '@odata.type':
+          type: string
+          description: OData resource type
+        Name:
+          type: string
+          description: Collection name
+        Members@odata.count:
+          type: integer
+          description: Number of systems in the collection
+        Members:
+          type: array
+          description: Array of computer system resource links
+          items:
+            $ref: '#/components/schemas/ResourceLink'
+    ComputerSystem:
+      type: object
+      description: >-
+        Computer system resource representing a Dell PowerEdge server with
+        hardware inventory, health status, and configuration
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource identifier
+        '@odata.type':
+          type: string
+          description: OData resource type
+        Id:
+          type: string
+          description: System resource identifier
+        Name:
+          type: string
+          description: System name
+        Manufacturer:
+          type: string
+          description: Server manufacturer
+        Model:
+          type: string
+          description: Server model name
+        SerialNumber:
+          type: string
+          description: Server serial number
+        SKU:
+          type: string
+          description: Server SKU or service tag
+        PartNumber:
+          type: string
+          description: Server part number
+        SystemType:
+          type: string
+          description: Type of computer system
+          enum:
+            - Physical
+            - Virtual
+            - OS
+            - PhysicallyPartitioned
+            - VirtuallyPartitioned
+        AssetTag:
+          type: string
+          description: User-assigned asset tag
+        BiosVersion:
+          type: string
+          description: Current BIOS firmware version
+        PowerState:
+          type: string
+          description: Current power state of the system
+          enum:
+            - 'On'
+            - 'Off'
+            - PoweringOn
+            - PoweringOff
+        Status:
+          $ref: '#/components/schemas/Status'
+        HostName:
+          type: string
+          description: Hostname of the operating system
+        IndicatorLED:
+          type: string
+          description: State of the system indicator LED
+          enum:
+            - Lit
+            - Blinking
+            - 'Off'
+        ProcessorSummary:
+          type: object
+          description: Summary of processor inventory
+          properties:
+            Count:
+              type: integer
+              description: Number of processors installed
+            Model:
+              type: string
+              description: Processor model name
+            Status:
+              $ref: '#/components/schemas/Status'
+        MemorySummary:
+          type: object
+          description: Summary of memory inventory
+          properties:
+            TotalSystemMemoryGiB:
+              type: number
+              description: Total system memory in GiB
+            Status:
+              $ref: '#/components/schemas/Status'
+        Boot:
+          type: object
+          description: Boot configuration
+          properties:
+            BootSourceOverrideEnabled:
+              type: string
+              description: Boot source override state
+              enum:
+                - Disabled
+                - Once
+                - Continuous
+            BootSourceOverrideTarget:
+              type: string
+              description: Boot source override target device
+            BootSourceOverrideMode:
+              type: string
+              description: BIOS boot mode
+              enum:
+                - Legacy
+                - UEFI
+    Chassis:
+      type: object
+      description: >-
+        Chassis resource representing the physical enclosure of a Dell PowerEdge
+        server including power, thermal, and physical component information
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource identifier
+        Id:
+          type: string
+          description: Chassis resource identifier
+        Name:
+          type: string
+          description: Chassis name
+        ChassisType:
+          type: string
+          description: Type of physical form factor
+          enum:
+            - Rack
+            - Blade
+            - Enclosure
+            - StandAlone
+            - RackMount
+            - Card
+            - Cartridge
+            - Row
+            - Pod
+            - Expansion
+            - Sidecar
+        Manufacturer:
+          type: string
+          description: Chassis manufacturer
+        Model:
+          type: string
+          description: Chassis model
+        SerialNumber:
+          type: string
+          description: Chassis serial number
+        PartNumber:
+          type: string
+          description: Chassis part number
+        SKU:
+          type: string
+          description: Chassis SKU or service tag
+        AssetTag:
+          type: string
+          description: User-assigned asset tag
+        IndicatorLED:
+          type: string
+          description: State of the chassis indicator LED
+          enum:
+            - Lit
+            - Blinking
+            - 'Off'
+        Status:
+          $ref: '#/components/schemas/Status'
+        PowerState:
+          type: string
+          description: Current power state
+          enum:
+            - 'On'
+            - 'Off'
+            - PoweringOn
+            - PoweringOff
+    Power:
+      type: object
+      description: Power supply and power consumption information for a chassis
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource identifier
+        PowerControl:
+          type: array
+          description: Power control and consumption readings
+          items:
+            type: object
+            properties:
+              Name:
+                type: string
+                description: Power control name
+              PowerConsumedWatts:
+                type: number
+                description: Current power consumption in watts
+              PowerCapacityWatts:
+                type: number
+                description: Total power capacity in watts
+              PowerMetrics:
+                type: object
+                description: Power consumption metrics over time
+                properties:
+                  IntervalInMin:
+                    type: integer
+                    description: Metric sampling interval in minutes
+                  MinConsumedWatts:
+                    type: number
+                    description: Minimum power consumed during interval
+                  MaxConsumedWatts:
+                    type: number
+                    description: Maximum power consumed during interval
+                  AverageConsumedWatts:
+                    type: number
+                    description: Average power consumed during interval
+        PowerSupplies:
+          type: array
+          description: Power supply inventory and status
+          items:
+            type: object
+            properties:
+              Name:
+                type: string
+                description: Power supply name
+              PowerCapacityWatts:
+                type: number
+                description: Power supply rated capacity in watts
+              LineInputVoltage:
+                type: number
+                description: Input voltage in volts
+              Model:
+                type: string
+                description: Power supply model
+              SerialNumber:
+                type: string
+                description: Power supply serial number
+              Status:
+                $ref: '#/components/schemas/Status'
+    Thermal:
+      type: object
+      description: Thermal sensor readings and fan status for a chassis
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource identifier
+        Temperatures:
+          type: array
+          description: Temperature sensor readings
+          items:
+            type: object
+            properties:
+              Name:
+                type: string
+                description: Sensor name
+              ReadingCelsius:
+                type: number
+                description: Current temperature reading in Celsius
+              UpperThresholdCritical:
+                type: number
+                description: Critical upper temperature threshold
+              UpperThresholdFatal:
+                type: number
+                description: Fatal upper temperature threshold
+              LowerThresholdCritical:
+                type: number
+                description: Critical lower temperature threshold
+              Status:
+                $ref: '#/components/schemas/Status'
+        Fans:
+          type: array
+          description: Fan inventory and status
+          items:
+            type: object
+            properties:
+              Name:
+                type: string
+                description: Fan name
+              Reading:
+                type: integer
+                description: Current fan speed reading in RPM
+              ReadingUnits:
+                type: string
+                description: Units for the fan reading
+                enum:
+                  - RPM
+                  - Percent
+              Status:
+                $ref: '#/components/schemas/Status'
+    Manager:
+      type: object
+      description: >-
+        Manager resource representing the iDRAC management controller
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource identifier
+        Id:
+          type: string
+          description: Manager resource identifier
+        Name:
+          type: string
+          description: Manager name
+        ManagerType:
+          type: string
+          description: Type of management controller
+          enum:
+            - ManagementController
+            - EnclosureManager
+            - BMC
+            - RackManager
+        FirmwareVersion:
+          type: string
+          description: iDRAC firmware version
+        Model:
+          type: string
+          description: iDRAC model designation
+        Status:
+          $ref: '#/components/schemas/Status'
+    Bios:
+      type: object
+      description: BIOS configuration attributes for a computer system
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource identifier
+        Id:
+          type: string
+          description: BIOS resource identifier
+        AttributeRegistry:
+          type: string
+          description: Name of the BIOS attribute registry
+        Attributes:
+          type: object
+          description: >-
+            Current BIOS attribute values as name-value pairs. Attributes vary
+            by server model and BIOS version.
+          additionalProperties: true
+    ResetAction:
+      type: object
+      description: Reset action request body for power control operations
+      required:
+        - ResetType
+      properties:
+        ResetType:
+          type: string
+          description: Type of reset action to perform
+          enum:
+            - 'On'
+            - ForceOff
+            - GracefulShutdown
+            - GracefulRestart
+            - ForceRestart
+            - Nmi
+            - ForceOn
+            - PushPowerButton
+            - PowerCycle
+    EventSubscription:
+      type: object
+      description: Event subscription request for push notifications
+      required:
+        - Destination
+        - EventTypes
+        - Protocol
+      properties:
+        Destination:
+          type: string
+          format: uri
+          description: URL to which events will be posted
+        EventTypes:
+          type: array
+          description: Types of events to subscribe to
+          items:
+            type: string
+            enum:
+              - StatusChange
+              - ResourceUpdated
+              - ResourceAdded
+              - ResourceRemoved
+              - Alert
+              - MetricReport
+        Protocol:
+          type: string
+          description: Protocol for event delivery
+          enum:
+            - Redfish
+        Context:
+          type: string
+          description: Client-supplied context string returned with events
+    Status:
+      type: object
+      description: Redfish status object indicating resource health
+      properties:
+        Health:
+          type: string
+          description: Overall health state
+          enum:
+            - OK
+            - Warning
+            - Critical
+        HealthRollup:
+          type: string
+          description: Rolled-up health state from subordinate resources
+          enum:
+            - OK
+            - Warning
+            - Critical
+        State:
+          type: string
+          description: Operational state
+          enum:
+            - Enabled
+            - Disabled
+            - StandbyOffline
+            - StandbySpare
+            - InTest
+            - Starting
+            - Absent
+            - UnavailableOffline
+            - Deferring
+            - Quiesced
+            - Updating

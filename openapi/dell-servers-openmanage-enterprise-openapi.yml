@@ -1,0 +1,1031 @@
+openapi: 3.1.0
+info:
+  title: Dell OpenManage Enterprise API
+  description: >-
+    RESTful API for centralized management of Dell EMC servers, chassis, and
+    storage through the OpenManage Enterprise console. Provides discovery,
+    inventory, monitoring, alerting, firmware updates, configuration compliance,
+    and lifecycle management of Dell PowerEdge infrastructure at scale. The API
+    delivers JSON responses over HTTPS and follows OData v4 conventions.
+  version: '4.0'
+  contact:
+    name: Dell Technologies Support
+    url: https://www.dell.com/support
+  termsOfService: https://i.dell.com/sites/csdocuments/Legal_Docs/en/us/api-terms-of-use_en.pdf
+externalDocs:
+  description: OpenManage Enterprise RESTful API Guide
+  url: https://www.dell.com/support/manuals/en-us/dell-openmanage-enterprise/ome_p_api_guide/overview?guid=guid-fc1c0585-795c-41fe-9957-977678be554f&lang=en-us
+servers:
+  - url: https://{ome-server}/api
+    description: OpenManage Enterprise API Server
+    variables:
+      ome-server:
+        description: Hostname or IP address of the OpenManage Enterprise appliance
+        default: ome-server.example.com
+tags:
+  - name: Sessions
+    description: Authentication and session management
+  - name: Devices
+    description: Device inventory, status, and hardware details for managed servers
+  - name: Groups
+    description: Device group management for organizing servers and infrastructure
+  - name: Discovery
+    description: Network discovery configuration and job management
+  - name: Alerts
+    description: Alert monitoring, acknowledgment, and management
+  - name: Jobs
+    description: Job creation, scheduling, and status tracking
+  - name: Firmware
+    description: Firmware catalog management, compliance, and update operations
+  - name: Configuration
+    description: Server configuration templates and compliance baselines
+  - name: Reports
+    description: Report definitions and execution
+  - name: Application Settings
+    description: Console configuration including network, time, and proxy settings
+security:
+  - sessionAuth: []
+paths:
+  /SessionService/Sessions:
+    post:
+      operationId: createSession
+      summary: Create an authentication session
+      description: >-
+        Authenticates with the OpenManage Enterprise console using username and
+        password credentials. Returns a session token in the X-Auth-Token
+        response header that must be included in all subsequent API requests.
+      tags:
+        - Sessions
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - UserName
+                - Password
+                - SessionType
+              properties:
+                UserName:
+                  type: string
+                  description: OME console username
+                Password:
+                  type: string
+                  description: OME console password
+                SessionType:
+                  type: string
+                  description: Type of session to create
+                  enum:
+                    - API
+      responses:
+        '201':
+          description: Session created successfully
+          headers:
+            X-Auth-Token:
+              description: Session authentication token for subsequent requests
+              schema:
+                type: string
+        '401':
+          description: Authentication failed - invalid credentials
+  /DeviceService/Devices:
+    get:
+      operationId: listDevices
+      summary: List managed devices
+      description: >-
+        Retrieves the collection of devices managed by OpenManage Enterprise
+        including servers, chassis, storage, and network devices. Supports
+        OData query parameters for filtering, sorting, and pagination.
+      tags:
+        - Devices
+      parameters:
+        - name: $top
+          in: query
+          description: Maximum number of devices to return
+          schema:
+            type: integer
+            default: 25
+        - name: $skip
+          in: query
+          description: Number of devices to skip for pagination
+          schema:
+            type: integer
+            default: 0
+        - name: $filter
+          in: query
+          description: >-
+            OData filter expression to narrow results. Common filters include
+            Type eq 1000 for servers, Type eq 2000 for chassis.
+          schema:
+            type: string
+        - name: $orderby
+          in: query
+          description: Property name to sort results by
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Collection of managed devices
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '@odata.count':
+                    type: integer
+                    description: Total number of matching devices
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Device'
+        '401':
+          description: Unauthorized - invalid or expired session token
+  /DeviceService/Devices({DeviceId}):
+    get:
+      operationId: getDevice
+      summary: Get a managed device
+      description: >-
+        Retrieves detailed information about a specific managed device including
+        hardware inventory, connection status, health, firmware versions, and
+        assigned groups.
+      tags:
+        - Devices
+      parameters:
+        - $ref: '#/components/parameters/DeviceId'
+      responses:
+        '200':
+          description: Device details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        '401':
+          description: Unauthorized - invalid or expired session token
+        '404':
+          description: Device not found
+  /DeviceService/Devices({DeviceId})/InventoryDetails:
+    get:
+      operationId: getDeviceInventory
+      summary: Get device inventory details
+      description: >-
+        Retrieves the detailed hardware inventory for a specific device including
+        processor, memory, storage, network adapter, firmware, and software
+        inventory components.
+      tags:
+        - Devices
+      parameters:
+        - $ref: '#/components/parameters/DeviceId'
+      responses:
+        '200':
+          description: Device inventory details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/InventoryDetail'
+        '401':
+          description: Unauthorized - invalid or expired session token
+        '404':
+          description: Device not found
+  /GroupService/Groups:
+    get:
+      operationId: listGroups
+      summary: List device groups
+      description: >-
+        Retrieves the collection of device groups configured in OpenManage
+        Enterprise, including built-in system groups and user-created custom
+        groups. Groups are used to organize devices for monitoring, reporting,
+        and applying policies.
+      tags:
+        - Groups
+      parameters:
+        - name: $filter
+          in: query
+          description: OData filter expression to narrow results
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Collection of device groups
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '@odata.count':
+                    type: integer
+                    description: Total number of groups
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Group'
+        '401':
+          description: Unauthorized - invalid or expired session token
+  /GroupService/Groups({GroupId})/Devices:
+    get:
+      operationId: listGroupDevices
+      summary: List devices in a group
+      description: >-
+        Retrieves the collection of devices that are members of the specified
+        group. Supports OData query parameters for filtering and pagination.
+      tags:
+        - Groups
+      parameters:
+        - $ref: '#/components/parameters/GroupId'
+      responses:
+        '200':
+          description: Collection of devices in the group
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '@odata.count':
+                    type: integer
+                    description: Total devices in group
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Device'
+        '401':
+          description: Unauthorized - invalid or expired session token
+        '404':
+          description: Group not found
+  /DiscoveryConfigService/DiscoveryConfigGroups:
+    get:
+      operationId: listDiscoveryConfigs
+      summary: List discovery configurations
+      description: >-
+        Retrieves the collection of discovery configuration groups that define
+        target ranges, protocols, and credentials used for device discovery.
+      tags:
+        - Discovery
+      responses:
+        '200':
+          description: Collection of discovery configurations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DiscoveryConfigGroup'
+        '401':
+          description: Unauthorized - invalid or expired session token
+    post:
+      operationId: createDiscoveryConfig
+      summary: Create a discovery configuration
+      description: >-
+        Creates a new discovery configuration group that defines network ranges,
+        protocols, and credentials for discovering devices. When executed, the
+        discovery job scans the specified ranges and adds discovered devices to
+        the managed inventory.
+      tags:
+        - Discovery
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiscoveryConfigGroup'
+      responses:
+        '201':
+          description: Discovery configuration created
+        '400':
+          description: Invalid discovery configuration parameters
+        '401':
+          description: Unauthorized - invalid or expired session token
+  /DiscoveryConfigService/Jobs:
+    get:
+      operationId: listDiscoveryJobs
+      summary: List discovery jobs
+      description: >-
+        Retrieves the collection of discovery job instances showing status,
+        progress, and results for discovery operations.
+      tags:
+        - Discovery
+      responses:
+        '200':
+          description: Collection of discovery jobs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Job'
+        '401':
+          description: Unauthorized - invalid or expired session token
+  /AlertService/Alerts:
+    get:
+      operationId: listAlerts
+      summary: List alerts
+      description: >-
+        Retrieves the collection of alerts generated by managed devices. Alerts
+        include hardware faults, threshold violations, configuration changes,
+        and audit events. Supports OData filtering and pagination.
+      tags:
+        - Alerts
+      parameters:
+        - name: $top
+          in: query
+          description: Maximum number of alerts to return
+          schema:
+            type: integer
+            default: 25
+        - name: $skip
+          in: query
+          description: Number of alerts to skip for pagination
+          schema:
+            type: integer
+            default: 0
+        - name: $filter
+          in: query
+          description: OData filter expression for alert criteria
+          schema:
+            type: string
+        - name: $orderby
+          in: query
+          description: Property name to sort results by
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Collection of alerts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '@odata.count':
+                    type: integer
+                    description: Total number of matching alerts
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Alert'
+        '401':
+          description: Unauthorized - invalid or expired session token
+  /AlertService/Alerts({AlertId}):
+    get:
+      operationId: getAlert
+      summary: Get an alert
+      description: >-
+        Retrieves detailed information about a specific alert including the
+        source device, severity, category, message, and recommended actions.
+      tags:
+        - Alerts
+      parameters:
+        - $ref: '#/components/parameters/AlertId'
+      responses:
+        '200':
+          description: Alert details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Alert'
+        '401':
+          description: Unauthorized - invalid or expired session token
+        '404':
+          description: Alert not found
+  /JobService/Jobs:
+    get:
+      operationId: listJobs
+      summary: List jobs
+      description: >-
+        Retrieves the collection of jobs in OpenManage Enterprise including
+        discovery, firmware update, configuration, and report jobs. Supports
+        OData filtering by job type and status.
+      tags:
+        - Jobs
+      parameters:
+        - name: $filter
+          in: query
+          description: OData filter expression for job criteria
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Collection of jobs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '@odata.count':
+                    type: integer
+                    description: Total number of matching jobs
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Job'
+        '401':
+          description: Unauthorized - invalid or expired session token
+    post:
+      operationId: createJob
+      summary: Create a job
+      description: >-
+        Creates a new job for executing operations such as firmware updates,
+        configuration deployment, or inventory refresh on targeted devices.
+      tags:
+        - Jobs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobRequest'
+      responses:
+        '201':
+          description: Job created successfully
+        '400':
+          description: Invalid job parameters
+        '401':
+          description: Unauthorized - invalid or expired session token
+  /JobService/Jobs({JobId}):
+    get:
+      operationId: getJob
+      summary: Get a job
+      description: >-
+        Retrieves the status and details of a specific job including progress
+        percentage, execution history, and any error messages.
+      tags:
+        - Jobs
+      parameters:
+        - $ref: '#/components/parameters/JobId'
+      responses:
+        '200':
+          description: Job details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '401':
+          description: Unauthorized - invalid or expired session token
+        '404':
+          description: Job not found
+  /UpdateService/Catalogs:
+    get:
+      operationId: listFirmwareCatalogs
+      summary: List firmware catalogs
+      description: >-
+        Retrieves the collection of firmware catalogs registered in OpenManage
+        Enterprise. Catalogs contain firmware packages from Dell support sites
+        or custom repositories used for compliance checking and updates.
+      tags:
+        - Firmware
+      responses:
+        '200':
+          description: Collection of firmware catalogs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/FirmwareCatalog'
+        '401':
+          description: Unauthorized - invalid or expired session token
+  /UpdateService/Actions/UpdateService.GetBaselines:
+    post:
+      operationId: getFirmwareBaselines
+      summary: Get firmware compliance baselines
+      description: >-
+        Retrieves firmware compliance baselines that define the expected firmware
+        versions for devices. Baselines are used to check device compliance and
+        identify devices needing firmware updates.
+      tags:
+        - Firmware
+      responses:
+        '200':
+          description: Firmware compliance baselines
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/FirmwareBaseline'
+        '401':
+          description: Unauthorized - invalid or expired session token
+  /TemplateService/Templates:
+    get:
+      operationId: listConfigurationTemplates
+      summary: List configuration templates
+      description: >-
+        Retrieves the collection of server configuration templates that define
+        desired BIOS, RAID, network, and iDRAC settings. Templates can be
+        deployed to one or more servers for consistent configuration.
+      tags:
+        - Configuration
+      responses:
+        '200':
+          description: Collection of configuration templates
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ConfigTemplate'
+        '401':
+          description: Unauthorized - invalid or expired session token
+  /ReportService/ReportDefs:
+    get:
+      operationId: listReportDefinitions
+      summary: List report definitions
+      description: >-
+        Retrieves the collection of report definitions available in OpenManage
+        Enterprise. Report definitions specify the query criteria, columns, and
+        filters for generating reports on managed devices.
+      tags:
+        - Reports
+      responses:
+        '200':
+          description: Collection of report definitions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ReportDefinition'
+        '401':
+          description: Unauthorized - invalid or expired session token
+  /ApplicationService/Network:
+    get:
+      operationId: getNetworkConfiguration
+      summary: Get appliance network configuration
+      description: >-
+        Retrieves the network configuration of the OpenManage Enterprise
+        appliance including IP address, subnet mask, gateway, DNS, and NTP
+        settings.
+      tags:
+        - Application Settings
+      responses:
+        '200':
+          description: Network configuration details
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Appliance network configuration
+        '401':
+          description: Unauthorized - invalid or expired session token
+components:
+  securitySchemes:
+    sessionAuth:
+      type: apiKey
+      in: header
+      name: X-Auth-Token
+      description: >-
+        Session token obtained from the POST /SessionService/Sessions endpoint.
+        Must be included in the X-Auth-Token header of all authenticated
+        requests.
+  parameters:
+    DeviceId:
+      name: DeviceId
+      in: path
+      required: true
+      description: Unique identifier for a managed device
+      schema:
+        type: integer
+    GroupId:
+      name: GroupId
+      in: path
+      required: true
+      description: Unique identifier for a device group
+      schema:
+        type: integer
+    AlertId:
+      name: AlertId
+      in: path
+      required: true
+      description: Unique identifier for an alert
+      schema:
+        type: integer
+    JobId:
+      name: JobId
+      in: path
+      required: true
+      description: Unique identifier for a job
+      schema:
+        type: integer
+  schemas:
+    Device:
+      type: object
+      description: A managed device in OpenManage Enterprise
+      properties:
+        Id:
+          type: integer
+          description: Unique device identifier
+        Type:
+          type: integer
+          description: >-
+            Device type code. Common values are 1000 for servers, 2000 for
+            chassis, 3000 for storage, and 4000 for network devices.
+        Identifier:
+          type: string
+          description: Device service tag or serial number
+        DeviceServiceTag:
+          type: string
+          description: Dell service tag for the device
+        ChassisServiceTag:
+          type: string
+          description: Service tag of the chassis containing this device
+        Model:
+          type: string
+          description: Device model name
+        DeviceName:
+          type: string
+          description: User-assigned or auto-discovered device name
+        IpAddress:
+          type: string
+          description: Management IP address of the device
+        ManagedState:
+          type: integer
+          description: >-
+            Device management state. 3000 indicates managed, 5000 indicates
+            monitored.
+        Status:
+          type: integer
+          description: >-
+            Device health status code. 1000 is normal, 2000 is unknown,
+            3000 is warning, 4000 is critical, 5000 is informational.
+        ConnectionState:
+          type: boolean
+          description: Whether the device is currently reachable
+        PowerState:
+          type: integer
+          description: >-
+            Power state code. 17 is powered on, 18 is powered off,
+            20 is power cycling.
+        FirmwareVersion:
+          type: string
+          description: Primary firmware version
+        LastInventoryTime:
+          type: string
+          format: date-time
+          description: Timestamp of the last inventory collection
+        LastStatusTime:
+          type: string
+          format: date-time
+          description: Timestamp of the last status check
+    InventoryDetail:
+      type: object
+      description: Hardware inventory component details
+      properties:
+        InventoryType:
+          type: string
+          description: >-
+            Type of inventory component such as cpuInformation, memoryInformation,
+            storageInformation, nicInformation, or firmwareInformation
+        InventoryInfo:
+          type: array
+          description: Array of inventory items for this component type
+          items:
+            type: object
+            additionalProperties: true
+    Group:
+      type: object
+      description: A device group for organizing managed infrastructure
+      properties:
+        Id:
+          type: integer
+          description: Unique group identifier
+        Name:
+          type: string
+          description: Group name
+        Description:
+          type: string
+          description: Group description
+        MembershipTypeId:
+          type: integer
+          description: >-
+            Group membership type. 12 is static, 24 is dynamic query-based.
+        ParentId:
+          type: integer
+          description: Parent group identifier for nested groups
+        CreatedBy:
+          type: string
+          description: User who created the group
+        CreationTime:
+          type: string
+          format: date-time
+          description: Timestamp when the group was created
+        DefinitionId:
+          type: integer
+          description: Group definition identifier
+        Visible:
+          type: boolean
+          description: Whether the group is visible in the UI
+    DiscoveryConfigGroup:
+      type: object
+      description: Discovery configuration group defining targets and credentials
+      properties:
+        DiscoveryConfigGroupId:
+          type: integer
+          description: Unique discovery configuration identifier
+        DiscoveryConfigGroupName:
+          type: string
+          description: Name of the discovery configuration
+        DiscoveryConfigModels:
+          type: array
+          description: Array of discovery targets with protocol settings
+          items:
+            type: object
+            properties:
+              DiscoveryConfigTargets:
+                type: array
+                description: Target IP ranges or hostnames
+                items:
+                  type: object
+                  properties:
+                    NetworkAddressDetail:
+                      type: string
+                      description: IP address, range, or CIDR notation
+              ConnectionProfileId:
+                type: integer
+                description: Connection profile with credentials
+              DeviceType:
+                type: array
+                description: Device types to discover
+                items:
+                  type: integer
+        Schedule:
+          type: object
+          description: Discovery schedule configuration
+          properties:
+            RunNow:
+              type: boolean
+              description: Execute discovery immediately
+            Cron:
+              type: string
+              description: Cron expression for recurring discovery
+    Alert:
+      type: object
+      description: An alert generated by a managed device
+      properties:
+        Id:
+          type: integer
+          description: Unique alert identifier
+        AlertDeviceId:
+          type: integer
+          description: Device that generated the alert
+        AlertDeviceName:
+          type: string
+          description: Name of the device that generated the alert
+        AlertDeviceIpAddress:
+          type: string
+          description: IP address of the device
+        SeverityType:
+          type: integer
+          description: >-
+            Alert severity code. 1 is informational, 2 is normal,
+            4 is warning, 8 is critical, 16 is unknown.
+        StatusType:
+          type: integer
+          description: >-
+            Alert acknowledgment status. 1000 is new, 2000 is acknowledged.
+        CategoryName:
+          type: string
+          description: Alert category name
+        SubCategoryName:
+          type: string
+          description: Alert subcategory name
+        Message:
+          type: string
+          description: Alert message text
+        TimeStamp:
+          type: string
+          format: date-time
+          description: Timestamp when the alert was generated
+        RecommendedAction:
+          type: string
+          description: Recommended action to resolve the alert
+    Job:
+      type: object
+      description: An asynchronous job in OpenManage Enterprise
+      properties:
+        Id:
+          type: integer
+          description: Unique job identifier
+        JobName:
+          type: string
+          description: Job name
+        JobDescription:
+          type: string
+          description: Job description
+        JobType:
+          type: object
+          description: Job type information
+          properties:
+            Id:
+              type: integer
+              description: Job type identifier
+            Name:
+              type: string
+              description: Job type name
+        LastRunStatus:
+          type: object
+          description: Status of the last job execution
+          properties:
+            Id:
+              type: integer
+              description: Status code
+            Name:
+              type: string
+              description: Status description
+        JobStatus:
+          type: object
+          description: Current job status
+          properties:
+            Id:
+              type: integer
+              description: Status code
+            Name:
+              type: string
+              description: Status description
+        PercentComplete:
+          type: integer
+          description: Job completion percentage
+          minimum: 0
+          maximum: 100
+        StartTime:
+          type: string
+          format: date-time
+          description: Job start timestamp
+        EndTime:
+          type: string
+          format: date-time
+          description: Job completion timestamp
+    JobRequest:
+      type: object
+      description: Request body for creating a new job
+      required:
+        - JobName
+        - JobDescription
+        - Targets
+      properties:
+        JobName:
+          type: string
+          description: Name for the new job
+        JobDescription:
+          type: string
+          description: Description of the job
+        Schedule:
+          type: string
+          description: Cron expression for scheduling or RunNow
+        Targets:
+          type: array
+          description: Target devices or groups for the job
+          items:
+            type: object
+            properties:
+              Id:
+                type: integer
+                description: Target device or group identifier
+              Data:
+                type: string
+                description: Additional target data
+              TargetType:
+                type: object
+                properties:
+                  Id:
+                    type: integer
+                    description: Target type identifier
+                  Name:
+                    type: string
+                    description: Target type name
+    FirmwareCatalog:
+      type: object
+      description: A firmware catalog for compliance and updates
+      properties:
+        Id:
+          type: integer
+          description: Unique catalog identifier
+        Filename:
+          type: string
+          description: Catalog filename
+        SourcePath:
+          type: string
+          description: Source location of the catalog
+        Repository:
+          type: object
+          description: Repository details
+          properties:
+            Name:
+              type: string
+              description: Repository name
+            RepositoryType:
+              type: string
+              description: Repository type
+        Status:
+          type: string
+          description: Catalog status
+        TaskId:
+          type: integer
+          description: Associated task identifier
+    FirmwareBaseline:
+      type: object
+      description: A firmware compliance baseline
+      properties:
+        Id:
+          type: integer
+          description: Unique baseline identifier
+        Name:
+          type: string
+          description: Baseline name
+        Description:
+          type: string
+          description: Baseline description
+        CatalogId:
+          type: integer
+          description: Associated firmware catalog identifier
+        ComplianceSummary:
+          type: object
+          description: Summary of compliance status
+          properties:
+            ComplianceStatus:
+              type: string
+              description: Overall compliance status
+            NumberOfCritical:
+              type: integer
+              description: Number of critical non-compliant components
+            NumberOfWarning:
+              type: integer
+              description: Number of warning non-compliant components
+            NumberOfNormal:
+              type: integer
+              description: Number of compliant components
+    ConfigTemplate:
+      type: object
+      description: A server configuration template
+      properties:
+        Id:
+          type: integer
+          description: Unique template identifier
+        Name:
+          type: string
+          description: Template name
+        Description:
+          type: string
+          description: Template description
+        ViewTypeId:
+          type: integer
+          description: Template view type
+        TypeId:
+          type: integer
+          description: Template type identifier
+        CreatedBy:
+          type: string
+          description: User who created the template
+        CreatedDate:
+          type: string
+          format: date-time
+          description: Timestamp when the template was created
+        LastUpdatedBy:
+          type: string
+          description: User who last updated the template
+        LastUpdatedDate:
+          type: string
+          format: date-time
+          description: Timestamp of the last update
+    ReportDefinition:
+      type: object
+      description: A report definition for generating infrastructure reports
+      properties:
+        Id:
+          type: integer
+          description: Unique report definition identifier
+        Name:
+          type: string
+          description: Report name
+        Description:
+          type: string
+          description: Report description
+        ColumnNames:
+          type: array
+          description: Column names included in the report
+          items:
+            type: string
+        FilterGroupId:
+          type: integer
+          description: Filter group applied to the report
