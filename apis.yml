@@ -1,15 +1,17 @@
+aid: dell-servers
 name: Dell Servers API
 description: APIs for managing and monitoring Dell PowerEdge servers and infrastructure
-image: https://www.dell.com/favicon.ico
-url: https://developer.dell.com/apis/
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/dell-servers/refs/heads/main/apis.yml
 tags:
 - Servers
 - Hardware
 - Infrastructure
 - Monitoring
 - Management
-created: '2024'
-modified: '2026-03-04'
+created: '2024-01-01'
+modified: '2026-03-16'
 apis:
 - name: iDRAC REST API
   description: >-
