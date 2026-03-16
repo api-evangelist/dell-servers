@@ -1,5 +1,5 @@
 aid: dell-servers
-name: Dell Servers API
+name: Dell Servers
 description: APIs for managing and monitoring Dell PowerEdge servers and infrastructure
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
