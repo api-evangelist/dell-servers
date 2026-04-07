@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Dell iDRAC Redfish REST API
+  title: Dell Servers Dell iDRAC Redfish REST API
   description: >-
     Integrated Dell Remote Access Controller (iDRAC) RESTful API built upon the
     DMTF Redfish standard for out-of-band server lifecycle management of Dell
@@ -55,7 +55,7 @@ paths:
   /:
     get:
       operationId: getServiceRoot
-      summary: Get Redfish service root
+      summary: Dell Servers Get Redfish service root
       description: >-
         Retrieves the Redfish service root resource which provides links to all
         top-level resource collections and service metadata including the Redfish
@@ -74,7 +74,7 @@ paths:
   /Systems:
     get:
       operationId: listSystems
-      summary: List computer systems
+      summary: Dell Servers List computer systems
       description: >-
         Retrieves the collection of computer system resources managed by this
         iDRAC instance. Each system resource represents a Dell PowerEdge server
@@ -93,7 +93,7 @@ paths:
   /Systems/{SystemId}:
     get:
       operationId: getSystem
-      summary: Get a computer system
+      summary: Dell Servers Get a computer system
       description: >-
         Retrieves a specific computer system resource including detailed hardware
         inventory, health status, power state, boot configuration, processor and
@@ -117,7 +117,7 @@ paths:
   /Systems/{SystemId}/Actions/ComputerSystem.Reset:
     post:
       operationId: resetSystem
-      summary: Reset a computer system
+      summary: Dell Servers Reset a computer system
       description: >-
         Performs a power action on the computer system such as power on, power
         off, graceful shutdown, force restart, or power cycle. The available
@@ -144,7 +144,7 @@ paths:
   /Systems/{SystemId}/Bios:
     get:
       operationId: getSystemBios
-      summary: Get BIOS attributes
+      summary: Dell Servers Get BIOS attributes
       description: >-
         Retrieves the current BIOS attribute values for the specified computer
         system. BIOS attributes control hardware-level settings including boot
@@ -167,7 +167,7 @@ paths:
   /Systems/{SystemId}/Bios/Settings:
     patch:
       operationId: updateBiosSettings
-      summary: Update pending BIOS attributes
+      summary: Dell Servers Update pending BIOS attributes
       description: >-
         Sets pending BIOS attribute values that will be applied on the next
         system reboot. Only attributes that differ from current values need to
@@ -197,7 +197,7 @@ paths:
   /Systems/{SystemId}/Storage:
     get:
       operationId: listStorageControllers
-      summary: List storage controllers
+      summary: Dell Servers List storage controllers
       description: >-
         Retrieves the collection of storage controller resources for the
         specified system, including RAID controllers, BOSS controllers, and
@@ -218,7 +218,7 @@ paths:
   /Systems/{SystemId}/EthernetInterfaces:
     get:
       operationId: listEthernetInterfaces
-      summary: List Ethernet interfaces
+      summary: Dell Servers List Ethernet interfaces
       description: >-
         Retrieves the collection of Ethernet interface resources for the
         specified system, including network adapters, their MAC addresses,
@@ -239,7 +239,7 @@ paths:
   /Chassis:
     get:
       operationId: listChassis
-      summary: List chassis resources
+      summary: Dell Servers List chassis resources
       description: >-
         Retrieves the collection of chassis resources representing the physical
         enclosure of the server including power supplies, fans, thermal sensors,
@@ -258,7 +258,7 @@ paths:
   /Chassis/{ChassisId}:
     get:
       operationId: getChassis
-      summary: Get a chassis resource
+      summary: Dell Servers Get a chassis resource
       description: >-
         Retrieves a specific chassis resource with detailed information about the
         physical enclosure, including model, serial number, part number, asset
@@ -281,7 +281,7 @@ paths:
   /Chassis/{ChassisId}/Power:
     get:
       operationId: getChassisPower
-      summary: Get chassis power information
+      summary: Dell Servers Get chassis power information
       description: >-
         Retrieves power supply information, power consumption metrics, and power
         control settings for the specified chassis including current wattage,
@@ -302,7 +302,7 @@ paths:
   /Chassis/{ChassisId}/Thermal:
     get:
       operationId: getChassisThermal
-      summary: Get chassis thermal information
+      summary: Dell Servers Get chassis thermal information
       description: >-
         Retrieves thermal sensor readings, fan speeds, and temperature thresholds
         for the specified chassis. Includes inlet and exhaust temperatures, CPU
@@ -323,7 +323,7 @@ paths:
   /Managers:
     get:
       operationId: listManagers
-      summary: List manager resources
+      summary: Dell Servers List manager resources
       description: >-
         Retrieves the collection of manager resources representing the iDRAC
         management controller including its firmware version, network
@@ -342,7 +342,7 @@ paths:
   /Managers/{ManagerId}:
     get:
       operationId: getManager
-      summary: Get a manager resource
+      summary: Dell Servers Get a manager resource
       description: >-
         Retrieves a specific manager resource representing the iDRAC controller
         with its firmware version, model, network interfaces, virtual media
@@ -365,7 +365,7 @@ paths:
   /Managers/{ManagerId}/LogServices:
     get:
       operationId: listLogServices
-      summary: List log services
+      summary: Dell Servers List log services
       description: >-
         Retrieves the collection of log services available on the iDRAC manager
         including the Lifecycle Controller log and the System Event Log (SEL).
@@ -385,7 +385,7 @@ paths:
   /Managers/{ManagerId}/VirtualMedia:
     get:
       operationId: listVirtualMedia
-      summary: List virtual media devices
+      summary: Dell Servers List virtual media devices
       description: >-
         Retrieves the collection of virtual media devices that can be used to
         mount remote ISO images or floppy images for operating system deployment
@@ -406,7 +406,7 @@ paths:
   /AccountService:
     get:
       operationId: getAccountService
-      summary: Get account service
+      summary: Dell Servers Get account service
       description: >-
         Retrieves the account service resource which provides the configuration
         for user account management including password policies, lockout
@@ -426,7 +426,7 @@ paths:
   /AccountService/Accounts:
     get:
       operationId: listAccounts
-      summary: List user accounts
+      summary: Dell Servers List user accounts
       description: >-
         Retrieves the collection of user accounts configured on the iDRAC
         including local users with their roles and privileges.
@@ -444,7 +444,7 @@ paths:
   /SessionService/Sessions:
     get:
       operationId: listSessions
-      summary: List active sessions
+      summary: Dell Servers List active sessions
       description: >-
         Retrieves the collection of active sessions on the iDRAC including
         web UI sessions, Redfish API sessions, and SSH sessions.
@@ -461,7 +461,7 @@ paths:
           description: Unauthorized - invalid or missing credentials
     post:
       operationId: createSession
-      summary: Create a new session
+      summary: Dell Servers Create a new session
       description: >-
         Creates a new Redfish session by authenticating with username and
         password. Returns a session token in the X-Auth-Token response header
@@ -501,7 +501,7 @@ paths:
   /UpdateService:
     get:
       operationId: getUpdateService
-      summary: Get update service
+      summary: Dell Servers Get update service
       description: >-
         Retrieves the update service resource which provides firmware update
         capabilities and links to the firmware inventory collection.
@@ -520,7 +520,7 @@ paths:
   /UpdateService/FirmwareInventory:
     get:
       operationId: listFirmwareInventory
-      summary: List firmware inventory
+      summary: Dell Servers List firmware inventory
       description: >-
         Retrieves the collection of firmware inventory items for all components
         in the server including iDRAC, BIOS, storage controllers, network
@@ -539,7 +539,7 @@ paths:
   /TaskService/Tasks:
     get:
       operationId: listTasks
-      summary: List tasks
+      summary: Dell Servers List tasks
       description: >-
         Retrieves the collection of tasks representing asynchronous operations
         and lifecycle controller jobs including firmware updates, configuration
@@ -558,7 +558,7 @@ paths:
   /EventService:
     get:
       operationId: getEventService
-      summary: Get event service
+      summary: Dell Servers Get event service
       description: >-
         Retrieves the event service resource which provides configuration for
         event subscriptions and server-sent events. The event service enables
@@ -578,7 +578,7 @@ paths:
   /EventService/Subscriptions:
     get:
       operationId: listEventSubscriptions
-      summary: List event subscriptions
+      summary: Dell Servers List event subscriptions
       description: >-
         Retrieves the collection of event subscriptions configured on the iDRAC.
         Each subscription defines a destination URL and event types to which the
@@ -596,7 +596,7 @@ paths:
           description: Unauthorized - invalid or missing credentials
     post:
       operationId: createEventSubscription
-      summary: Create an event subscription
+      summary: Dell Servers Create an event subscription
       description: >-
         Creates a new event subscription that configures the iDRAC to push event
         notifications to a specified destination URL when events matching the
@@ -620,7 +620,7 @@ paths:
   /TelemetryService:
     get:
       operationId: getTelemetryService
-      summary: Get telemetry service
+      summary: Dell Servers Get telemetry service
       description: >-
         Retrieves the telemetry service resource which provides access to metric
         definitions and metric report definitions for server telemetry data
@@ -640,7 +640,7 @@ paths:
   /TelemetryService/MetricReports:
     get:
       operationId: listMetricReports
-      summary: List metric reports
+      summary: Dell Servers List metric reports
       description: >-
         Retrieves the collection of metric reports available from the telemetry
         service. Each report contains a set of related metrics that can be
