@@ -23,32 +23,32 @@ servers:
         description: IP address or hostname of the iDRAC interface
         default: 192.168.1.100
 tags:
-  - name: Service Root
-    description: Redfish service root and metadata
-  - name: Systems
-    description: >-
-      Computer system resources including hardware inventory, health status,
-      power state, and BIOS configuration
+  - name: Accounts
+    description: User account management and role-based access control
   - name: Chassis
     description: >-
       Physical enclosure resources including power supplies, thermal sensors,
       and physical component inventory
+  - name: Event Service
+    description: Event subscriptions and server-sent events configuration
   - name: Managers
     description: >-
       Management controller resources for iDRAC configuration, networking,
       and remote services
-  - name: Accounts
-    description: User account management and role-based access control
+  - name: Service Root
+    description: Redfish service root and metadata
   - name: Sessions
     description: Authentication session creation and management
-  - name: Update Service
-    description: Firmware update operations and firmware inventory
+  - name: Systems
+    description: >-
+      Computer system resources including hardware inventory, health status,
+      power state, and BIOS configuration
   - name: Task Service
     description: Asynchronous task tracking and lifecycle job management
-  - name: Event Service
-    description: Event subscriptions and server-sent events configuration
   - name: Telemetry Service
     description: Telemetry metric definitions and metric report management
+  - name: Update Service
+    description: Firmware update operations and firmware inventory
 security:
   - basicAuth: []
 paths:

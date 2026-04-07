@@ -4,14 +4,13 @@ description: >-
   APIs for managing and monitoring Dell PowerEdge servers and infrastructure.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-url: 
-  https://raw.githubusercontent.com/api-evangelist/dell-servers/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/dell-servers/refs/heads/main/apis.yml
 tags:
-  - Servers
   - Hardware
   - Infrastructure
-  - Monitoring
   - Management
+  - Monitoring
+  - Servers
 created: '2024-01-01'
 modified: '2026-03-16'
 apis:
@@ -23,23 +22,19 @@ apis:
       server lifecycle management of Dell PowerEdge servers.
     image: https://www.dell.com/favicon.ico
     baseURL: https://{idrac-ip}/redfish/v1
-    humanURL: 
-      https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
+    humanURL: https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
     tags:
+      - BMC
+      - Hardware Monitoring
       - Redfish
       - Server Management
-      - Hardware Monitoring
-      - BMC
     properties:
       - type: Documentation
-        url: 
-          https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
+        url: https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
       - type: OpenAPI
-        url: 
-          https://downloads.dell.com/manuals/common/dellemc-idrac-redfish-openapi.yaml
+        url: https://downloads.dell.com/manuals/common/dellemc-idrac-redfish-openapi.yaml
       - type: Authentication
-        url: 
-          https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/redfish-authentication-and-authorization?guid=guid-d572792f-afd2-499a-bf12-38a6778b9bbc&lang=en-us
+        url: https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/redfish-authentication-and-authorization?guid=guid-d572792f-afd2-499a-bf12-38a6778b9bbc&lang=en-us
       - type: Getting Started
         url: https://developer.dell.com/apis/2978/versions/5.xx/docs/1.0Intro.md
       - type: GitHub Repository
@@ -52,17 +47,15 @@ apis:
       PowerEdge infrastructure at scale.
     image: https://www.dell.com/favicon.ico
     baseURL: https://{ome-server}/api
-    humanURL: 
-      https://www.dell.com/support/kbdoc/en-us/000175879/support-for-openmanage-enterprise
+    humanURL: https://www.dell.com/support/kbdoc/en-us/000175879/support-for-openmanage-enterprise
     tags:
+      - Automation
       - Enterprise Management
       - Monitoring
-      - Automation
       - Orchestration
     properties:
       - type: Documentation
-        url: 
-          https://www.dell.com/support/manuals/en-us/dell-openmanage-enterprise/ome_p_api_guide/preface?guid=guid-82bcb773-392d-43a4-bdfa-431dd06a06f4&lang=en-us
+        url: https://www.dell.com/support/manuals/en-us/dell-openmanage-enterprise/ome_p_api_guide/preface?guid=guid-82bcb773-392d-43a4-bdfa-431dd06a06f4&lang=en-us
       - type: API Reference
         url: https://{ome-server}/api/docs
       - type: Swagger UI
@@ -77,17 +70,15 @@ apis:
       supports multi-chassis management with up to 20 chassis per group.
     image: https://www.dell.com/favicon.ico
     baseURL: https://{omem-server}/api
-    humanURL: 
-      https://www.dell.com/support/manuals/en-us/openmanage-enterprise-modular/omem_2.00.00_api/openmanage-enterprise-modular-edition?guid=guid-fe459ff7-030b-4375-a6d5-9f0ab2278946&lang=en-us
+    humanURL: https://www.dell.com/support/manuals/en-us/openmanage-enterprise-modular/omem_2.00.00_api/openmanage-enterprise-modular-edition?guid=guid-fe459ff7-030b-4375-a6d5-9f0ab2278946&lang=en-us
     tags:
       - Chassis Management
       - Modular Infrastructure
-      - PowerEdge MX
       - Multi-Chassis
+      - PowerEdge MX
     properties:
       - type: Documentation
-        url: 
-          https://www.dell.com/support/manuals/en-us/openmanage-enterprise-modular/omem_2.00.00_api/openmanage-enterprise-modular-edition?guid=guid-fe459ff7-030b-4375-a6d5-9f0ab2278946&lang=en-us
+        url: https://www.dell.com/support/manuals/en-us/openmanage-enterprise-modular/omem_2.00.00_api/openmanage-enterprise-modular-edition?guid=guid-fe459ff7-030b-4375-a6d5-9f0ab2278946&lang=en-us
       - type: GitHub Repository
         url: https://github.com/dell/OpenManage-Enterprise
   - name: Dell OpenManage Enterprise Power Manager API
@@ -98,17 +89,15 @@ apis:
       provides power policies, capping, and reporting capabilities.
     image: https://www.dell.com/favicon.ico
     baseURL: https://{ome-server}/api
-    humanURL: 
-      https://developer.dell.com/apis/5708/versions/3.0/docs/0.1%20Introduction-to-PMP-API.md
+    humanURL: https://developer.dell.com/apis/5708/versions/3.0/docs/0.1%20Introduction-to-PMP-API.md
     tags:
+      - Data Center
+      - Energy Efficiency
       - Power Management
       - Thermal Monitoring
-      - Energy Efficiency
-      - Data Center
     properties:
       - type: Documentation
-        url: 
-          https://www.dell.com/support/manuals/en-us/openmanage-enterprise-power-manager/pmp_3.1_apiguide/about-this-document
+        url: https://www.dell.com/support/manuals/en-us/openmanage-enterprise-power-manager/pmp_3.1_apiguide/about-this-document
   - name: Dell OpenManage Enterprise SupportAssist API
     description: >-
       RESTful API for the OpenManage Enterprise SupportAssist plug-in that
@@ -119,10 +108,10 @@ apis:
     baseURL: https://{ome-server}/api
     humanURL: https://developer.dell.com/apis/2848/versions/1.2
     tags:
-      - Support
-      - Proactive Monitoring
-      - Predictive Analytics
       - Alerting
+      - Predictive Analytics
+      - Proactive Monitoring
+      - Support
     properties:
       - type: Documentation
         url: https://developer.dell.com/apis/2848/versions/1.2
@@ -134,17 +123,15 @@ apis:
       supports firmware updates, inventory, and monitoring tasks.
     image: https://www.dell.com/favicon.ico
     baseURL: https://{omivv-server}/api
-    humanURL: 
-      https://www.dell.com/support/manuals/en-us/openmanage-integration-vmware-vcenter/omivv_5.4_api/overview
+    humanURL: https://www.dell.com/support/manuals/en-us/openmanage-integration-vmware-vcenter/omivv_5.4_api/overview
     tags:
-      - VMware
-      - vCenter Integration
       - Server Management
+      - vCenter Integration
       - Virtualization
+      - VMware
     properties:
       - type: Documentation
-        url: 
-          https://www.dell.com/support/manuals/en-us/openmanage-integration-vmware-vcenter/omivv_5.4_api/overview
+        url: https://www.dell.com/support/manuals/en-us/openmanage-integration-vmware-vcenter/omivv_5.4_api/overview
       - type: GitHub Repository
         url: https://github.com/dell/omivv
   - name: Dell iDRAC Telemetry Streaming API
@@ -155,17 +142,15 @@ apis:
       NIC statistics, and PSU metrics using the Redfish TelemetryService.
     image: https://www.dell.com/favicon.ico
     baseURL: https://{idrac-ip}/redfish/v1/SSE
-    humanURL: 
-      https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/server-sent-events?guid=guid-fc87fd01-2cff-4ae0-9714-1bd712bb5ce3&lang=en-us
+    humanURL: https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/server-sent-events?guid=guid-fc87fd01-2cff-4ae0-9714-1bd712bb5ce3&lang=en-us
     tags:
-      - Telemetry
-      - Streaming
-      - Server-Sent Events
       - Monitoring
+      - Server-Sent Events
+      - Streaming
+      - Telemetry
     properties:
       - type: Documentation
-        url: 
-          https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/server-sent-events?guid=guid-fc87fd01-2cff-4ae0-9714-1bd712bb5ce3&lang=en-us
+        url: https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/server-sent-events?guid=guid-fc87fd01-2cff-4ae0-9714-1bd712bb5ce3&lang=en-us
       - type: GitHub Repository
         url: https://github.com/dell/iDRAC-Telemetry-Reference-Tools
   - name: Dell Lifecycle Controller Remote Services API
@@ -176,17 +161,15 @@ apis:
       provisioning and one-to-many operating system deployments.
     image: https://www.dell.com/favicon.ico
     baseURL: https://{idrac-ip}/wsman
-    humanURL: 
-      https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v3.4-series/idrac_3.40.40.40_lc_re_qsg/about-lifecycle-controller-api?guid=guid-f7bcc1d3-46c1-4ec3-9a45-0f33d734585c&lang=en-us
+    humanURL: https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v3.4-series/idrac_3.40.40.40_lc_re_qsg/about-lifecycle-controller-api?guid=guid-f7bcc1d3-46c1-4ec3-9a45-0f33d734585c&lang=en-us
     tags:
-      - Lifecycle Management
-      - Remote Services
-      - Provisioning
       - Deployment
+      - Lifecycle Management
+      - Provisioning
+      - Remote Services
     properties:
       - type: Documentation
-        url: 
-          https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v3.4-series/idrac_3.40.40.40_lc_re_qsg/about-lifecycle-controller-api?guid=guid-f7bcc1d3-46c1-4ec3-9a45-0f33d734585c&lang=en-us
+        url: https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v3.4-series/idrac_3.40.40.40_lc_re_qsg/about-lifecycle-controller-api?guid=guid-f7bcc1d3-46c1-4ec3-9a45-0f33d734585c&lang=en-us
   - name: Dell RACADM CLI
     description: >-
       Command-line interface for Dell Remote Access Controller Administration.
@@ -194,17 +177,15 @@ apis:
       scripting and automating server configuration, monitoring, and
       management tasks.
     image: https://www.dell.com/favicon.ico
-    humanURL: 
-      https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v3.x-series/idrac9_racadm_pub/
+    humanURL: https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v3.x-series/idrac9_racadm_pub/
     tags:
+      - Automation
       - CLI
       - Remote Management
       - Scripting
-      - Automation
     properties:
       - type: Documentation
-        url: 
-          https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v3.x-series/idrac9_racadm_pub/
+        url: https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v3.x-series/idrac9_racadm_pub/
   - name: Dell WSMan API
     description: >-
       Web Services Management API for Dell server hardware management. WSMan
@@ -212,20 +193,17 @@ apis:
       RAID, NIC, and HBA settings on Dell PowerEdge servers through iDRAC.
     image: https://www.dell.com/favicon.ico
     baseURL: https://{idrac-ip}/wsman
-    humanURL: 
-      https://www.dell.com/support/kbdoc/en-us/000178046/how-to-use-the-wsman-interface-on-idrac
+    humanURL: https://www.dell.com/support/kbdoc/en-us/000178046/how-to-use-the-wsman-interface-on-idrac
     tags:
-      - WSMan
-      - Web Services
       - Hardware Management
       - Legacy
+      - Web Services
+      - WSMan
     properties:
       - type: Documentation
-        url: 
-          https://www.dell.com/support/kbdoc/en-us/000178046/how-to-use-the-wsman-interface-on-idrac
+        url: https://www.dell.com/support/kbdoc/en-us/000178046/how-to-use-the-wsman-interface-on-idrac
       - type: Profile Catalog
-        url: 
-          https://downloads.dell.com/solutions/dell-management-solution-resources/
+        url: https://downloads.dell.com/solutions/dell-management-solution-resources/
       - type: GitHub Repository
         url: https://github.com/dell/DellPEWSMANTools
 maintainers:
@@ -235,11 +213,9 @@ common:
   - type: Portal
     url: https://developer.dell.com/
   - type: Getting Started
-    url: 
-      https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v6.x-series/smog_26.0/idrac-restful-apis-redfish-standards-based?guid=guid-476c6603-818e-4e2e-82f0-699bde0c3a3c&lang=en-us
+    url: https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v6.x-series/smog_26.0/idrac-restful-apis-redfish-standards-based?guid=guid-476c6603-818e-4e2e-82f0-699bde0c3a3c&lang=en-us
   - type: Documentation
-    url: 
-      https://www.dell.com/support/product-details/en-us/product/dell-openmanage-enterprise/resources/manuals
+    url: https://www.dell.com/support/product-details/en-us/product/dell-openmanage-enterprise/resources/manuals
   - type: Support
     url: https://www.dell.com/support
   - type: Community
@@ -247,8 +223,7 @@ common:
   - type: Blog
     url: https://www.dell.com/community/en/topics/developer-blogs
   - type: Terms of Service
-    url: 
-      https://i.dell.com/sites/csdocuments/Legal_Docs/en/us/api-terms-of-use_en.pdf
+    url: https://i.dell.com/sites/csdocuments/Legal_Docs/en/us/api-terms-of-use_en.pdf
   - type: Privacy Policy
     url: https://www.dell.com/en-us/lp/legal/policies-privacy
   - type: Website

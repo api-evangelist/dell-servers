@@ -23,26 +23,26 @@ servers:
         description: Hostname or IP address of the OpenManage Enterprise appliance
         default: ome-server.example.com
 tags:
-  - name: Sessions
-    description: Authentication and session management
-  - name: Devices
-    description: Device inventory, status, and hardware details for managed servers
-  - name: Groups
-    description: Device group management for organizing servers and infrastructure
-  - name: Discovery
-    description: Network discovery configuration and job management
   - name: Alerts
     description: Alert monitoring, acknowledgment, and management
-  - name: Jobs
-    description: Job creation, scheduling, and status tracking
-  - name: Firmware
-    description: Firmware catalog management, compliance, and update operations
-  - name: Configuration
-    description: Server configuration templates and compliance baselines
-  - name: Reports
-    description: Report definitions and execution
   - name: Application Settings
     description: Console configuration including network, time, and proxy settings
+  - name: Configuration
+    description: Server configuration templates and compliance baselines
+  - name: Devices
+    description: Device inventory, status, and hardware details for managed servers
+  - name: Discovery
+    description: Network discovery configuration and job management
+  - name: Firmware
+    description: Firmware catalog management, compliance, and update operations
+  - name: Groups
+    description: Device group management for organizing servers and infrastructure
+  - name: Jobs
+    description: Job creation, scheduling, and status tracking
+  - name: Reports
+    description: Report definitions and execution
+  - name: Sessions
+    description: Authentication and session management
 security:
   - sessionAuth: []
 paths:
