@@ -1,0 +1,30 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://schema.dell.com/servers/",
+    "schema": "https://schema.org/",
+    "dell": "https://schema.dell.com/servers/",
+    "ComputerSystem": "dell:ComputerSystem",
+    "Chassis": "dell:Chassis",
+    "Manager": "dell:Manager",
+    "Device": "dell:Device",
+    "Group": "dell:Group",
+    "Job": "dell:Job",
+    "Alert": "dell:Alert",
+    "FirmwareInventory": "dell:FirmwareInventory",
+    "MetricReport": "dell:MetricReport",
+    "EventSubscription": "dell:EventSubscription",
+    "id": {"@id": "schema:identifier", "@type": "schema:Text"},
+    "name": {"@id": "schema:name", "@type": "schema:Text"},
+    "Model": {"@id": "dell:model", "@type": "schema:Text"},
+    "Manufacturer": {"@id": "schema:manufacturer", "@type": "schema:Text"},
+    "SerialNumber": {"@id": "schema:serialNumber", "@type": "schema:Text"},
+    "PartNumber": {"@id": "dell:partNumber", "@type": "schema:Text"},
+    "Status": {"@id": "dell:status", "@type": "schema:Text"},
+    "PowerState": {"@id": "dell:powerState", "@type": "schema:Text"},
+    "BiosVersion": {"@id": "dell:biosVersion", "@type": "schema:Text"},
+    "FirmwareVersion": {"@id": "dell:firmwareVersion", "@type": "schema:Text"},
+    "MACAddress": {"@id": "dell:macAddress", "@type": "schema:Text"},
+    "IPv4Addresses": {"@id": "dell:ipv4Addresses", "@type": "schema:Text"}
+  }
+}

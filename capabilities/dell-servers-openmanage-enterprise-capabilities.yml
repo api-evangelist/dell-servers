@@ -1,0 +1,109 @@
+name: Dell Servers OpenManage Enterprise API Capabilities
+description: >-
+  Capabilities exposed by the Dell OpenManage Enterprise REST API for
+  centralized discovery, inventory, monitoring, and lifecycle management of
+  Dell PowerEdge infrastructure at scale.
+capabilities:
+  - name: Create Session
+    description: Authenticate and create an OpenManage Enterprise session.
+    operationId: createSession
+    method: POST
+    path: /SessionService/Sessions
+  - name: List Devices
+    description: List managed devices in the OME inventory.
+    operationId: listDevices
+    method: GET
+    path: /DeviceService/Devices
+  - name: Get Device
+    description: Retrieve a single managed device by identifier.
+    operationId: getDevice
+    method: GET
+    path: /DeviceService/Devices({Id})
+  - name: Get Device Inventory
+    description: Retrieve detailed hardware inventory for a managed device.
+    operationId: getDeviceInventory
+    method: GET
+    path: /DeviceService/Devices({Id})/InventoryDetails
+  - name: List Groups
+    description: List device groups used to organize and target operations.
+    operationId: listGroups
+    method: GET
+    path: /GroupService/Groups
+  - name: List Group Devices
+    description: List devices belonging to a group.
+    operationId: listGroupDevices
+    method: GET
+    path: /GroupService/Groups({Id})/Devices
+  - name: List Discovery Configurations
+    description: List discovery configurations used to onboard new devices.
+    operationId: listDiscoveryConfigs
+    method: GET
+    path: /DiscoveryConfigService/DiscoveryConfigGroups
+  - name: Create Discovery Configuration
+    description: Create a discovery job to onboard new devices.
+    operationId: createDiscoveryConfig
+    method: POST
+    path: /DiscoveryConfigService/DiscoveryConfigGroups
+  - name: List Alerts
+    description: List active and historical alerts across managed devices.
+    operationId: listAlerts
+    method: GET
+    path: /AlertService/Alerts
+  - name: Get Alert
+    description: Retrieve a single alert by identifier.
+    operationId: getAlert
+    method: GET
+    path: /AlertService/Alerts({Id})
+  - name: List Jobs
+    description: List jobs used to execute tasks across managed devices.
+    operationId: listJobs
+    method: GET
+    path: /JobService/Jobs
+  - name: Create Job
+    description: Create a job to execute on managed devices.
+    operationId: createJob
+    method: POST
+    path: /JobService/Jobs
+  - name: Get Job
+    description: Retrieve a job's status and execution detail.
+    operationId: getJob
+    method: GET
+    path: /JobService/Jobs({Id})
+  - name: List Firmware Catalogs
+    description: List firmware catalogs available to OME for compliance baselines.
+    operationId: listFirmwareCatalogs
+    method: GET
+    path: /UpdateService/Catalogs
+  - name: Get Firmware Baselines
+    description: Retrieve firmware compliance baselines for managed devices.
+    operationId: getFirmwareBaselines
+    method: GET
+    path: /UpdateService/Baselines
+  - name: List Configuration Templates
+    description: List configuration templates used to apply standard settings.
+    operationId: listConfigurationTemplates
+    method: GET
+    path: /TemplateService/Templates
+  - name: List Report Definitions
+    description: List built-in and custom report definitions.
+    operationId: listReportDefinitions
+    method: GET
+    path: /ReportService/ReportDefs
+  - name: Get Network Configuration
+    description: Retrieve appliance network configuration.
+    operationId: getNetworkConfiguration
+    method: GET
+    path: /ApplicationService/Network/AdapterConfigurations
+use_cases:
+  - name: Centralized fleet management
+    description: Discover, inventory, and monitor Dell PowerEdge servers across a data center from a single console.
+  - name: Firmware compliance enforcement
+    description: Detect drift from firmware baselines and remediate via scheduled update jobs.
+  - name: Configuration standardization
+    description: Apply configuration templates so new servers meet operational standards.
+  - name: Alert triage and incident response
+    description: Forward alerts to ITSM and observability platforms for triage and remediation.
+  - name: Group-based automation
+    description: Target operations to logical groups to support multi-tenant or workload-aligned management.
+  - name: Reporting and analytics
+    description: Generate inventory, health, and warranty reports for capacity planning and audits.

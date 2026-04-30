@@ -1,0 +1,46 @@
+name: Dell Servers Vocabulary
+description: >-
+  Shared vocabulary of terms used across Dell PowerEdge server management APIs
+  including iDRAC Redfish, OpenManage Enterprise, OME-Modular, Power Manager,
+  SupportAssist, and Lifecycle Controller.
+terms:
+  - term: iDRAC
+    definition: Integrated Dell Remote Access Controller, the baseboard management controller embedded in Dell PowerEdge servers for out-of-band management.
+  - term: Redfish
+    definition: An industry-standard DMTF specification that defines a RESTful interface for managing servers, storage, and networking.
+  - term: PowerEdge
+    definition: Dell Technologies brand of x86 rack, tower, and modular server hardware managed via these APIs.
+  - term: OpenManage Enterprise
+    definition: A centralized systems management console that discovers, inventories, monitors, and updates Dell server, storage, and networking devices.
+  - term: OME-Modular
+    definition: An OpenManage Enterprise variant tailored to PowerEdge MX modular chassis and its compute, network, and storage sleds.
+  - term: Power Manager
+    definition: An OpenManage Enterprise plug-in that monitors power consumption, applies capping policies, and reports thermal data.
+  - term: SupportAssist
+    definition: An OpenManage Enterprise plug-in that automates support case creation and parts dispatch using telemetry from PowerEdge servers.
+  - term: Lifecycle Controller
+    definition: An embedded system management agent that performs deployment, configuration, and update tasks on PowerEdge servers.
+  - term: RACADM
+    definition: A command-line utility for local and remote administration of iDRAC and Lifecycle Controller features.
+  - term: WSMan
+    definition: Web Services for Management, a SOAP-based protocol used as a legacy management interface for PowerEdge servers.
+  - term: Chassis
+    definition: A physical enclosure resource representing the server, including power supplies, fans, and thermal sensors.
+  - term: Computer System
+    definition: A Redfish resource representing a logical computer system with hardware inventory, health, and BIOS settings.
+  - term: Manager
+    definition: A Redfish resource representing the management controller (iDRAC) itself and its services.
+  - term: Telemetry Service
+    definition: A Redfish service that exposes metric reports for power, thermal, CPU, memory, NIC, and PSU data.
+  - term: Event Subscription
+    definition: A Redfish subscription that delivers asynchronous event notifications to an external listener.
+  - term: Firmware Inventory
+    definition: A Redfish collection that lists installed firmware components and their versions.
+  - term: Discovery Configuration
+    definition: An OpenManage Enterprise definition that locates and onboards new devices into the inventory.
+  - term: Device Group
+    definition: A logical OpenManage Enterprise grouping of managed devices used to target operations and policies.
+  - term: Configuration Template
+    definition: A reusable OpenManage Enterprise definition of standard server settings applied to one or many devices.
+  - term: Firmware Baseline
+    definition: A reference firmware compliance state used by OpenManage Enterprise to detect and remediate drift.

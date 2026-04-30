@@ -1,0 +1,41 @@
+extends:
+  - spectral:oas
+rules:
+  dell-idrac-redfish-server:
+    description: Servers should reference the Redfish service root path.
+    given: $.servers[*].url
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "/redfish/v1"
+  dell-idrac-redfish-systems-path:
+    description: API should expose the /Systems collection.
+    given: $.paths
+    severity: error
+    then:
+      function: pattern
+      functionOptions:
+        match: "/Systems"
+  dell-idrac-redfish-chassis-path:
+    description: API should expose the /Chassis collection.
+    given: $.paths
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "/Chassis"
+  dell-idrac-redfish-operation-id:
+    description: Operations should declare an operationId.
+    given: $.paths[*][*]
+    severity: warn
+    then:
+      field: operationId
+      function: truthy
+  dell-idrac-redfish-tags:
+    description: Operations should include at least one tag.
+    given: $.paths[*][*]
+    severity: warn
+    then:
+      field: tags
+      function: truthy
