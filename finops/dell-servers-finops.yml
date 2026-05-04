@@ -1,0 +1,214 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+provider: Dell Servers
+providerId: dell-servers
+publisherName: Dell Servers
+serviceCategory: API
+created: '2026-05-04'
+modified: '2026-05-04'
+tags:
+  - Hardware
+  - Infrastructure
+  - Management
+  - Monitoring
+  - Servers
+  - FinOps
+  - Cost Management
+  - FOCUS
+description: FinOps framework definition for the Dell Servers API surface. Provides a FOCUS-aligned mapping
+  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
+principles:
+  - name: Visibility
+    description: Make API consumption costs visible to engineering, product, and finance teams in near
+      real-time.
+  - name: Allocation
+    description: Tag every chargeable API call with the consuming team, environment, application, and
+      feature so cost can be allocated.
+  - name: Optimization
+    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
+      cost per useful unit of work.
+  - name: Accountability
+    description: Establish budget owners and chargeback or showback flows for each consuming team.
+domains:
+  - name: Understand Usage and Cost
+    capabilities:
+      - Data Ingestion
+      - Allocation
+      - Reporting and Analytics
+      - Anomaly Management
+  - name: Quantify Business Value
+    capabilities:
+      - Planning and Estimating
+      - Forecasting
+      - Budgeting
+      - Benchmarking
+      - Unit Economics
+  - name: Optimize Usage and Cost
+    capabilities:
+      - Architecting for Cloud
+      - Rate Optimization
+      - Workload Optimization
+      - Cloud Sustainability
+      - Licensing and SaaS
+  - name: Manage the FinOps Practice
+    capabilities:
+      - FinOps Practice Operations
+      - FinOps Education and Enablement
+      - Invoicing and Chargeback
+      - Onboarding Workloads
+      - Intersecting Disciplines
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Credit
+    - Adjustment
+  chargeFrequency: Recurring
+focusColumns:
+  ServiceName: Dell Servers
+  ServiceCategory: Developer Tools / API
+  ProviderName: Dell Servers
+  PublisherName: Dell Servers
+  InvoiceIssuerName: Dell Servers
+  PricingCategory: Usage-Based
+  PricingUnit: request
+  BillingCurrency: USD
+  ChargeCategory: Usage
+meters:
+  - name: api_requests
+    description: Count of billable API requests
+    unit: request
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - tier
+      - region
+      - consumer
+  - name: data_egress
+    description: Bytes returned over the network in API responses
+    unit: GB
+    aggregation: sum
+    dimensions:
+      - api
+      - region
+      - consumer
+  - name: compute_seconds
+    description: Server-side compute consumed by the request, where applicable
+    unit: second
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - tier
+apis:
+  - name: Dell iDRAC Redfish REST API
+    baseURL: https://{idrac-ip}/redfish/v1
+    tags:
+      - BMC
+      - Hardware Monitoring
+      - Redfish
+      - Server Management
+    serviceName: Dell iDRAC Redfish REST API
+    serviceCategory: API
+  - name: Dell OpenManage Enterprise API
+    baseURL: https://{ome-server}/api
+    tags:
+      - Automation
+      - Enterprise Management
+      - Monitoring
+      - Orchestration
+    serviceName: Dell OpenManage Enterprise API
+    serviceCategory: API
+  - name: Dell OpenManage Enterprise Modular API
+    baseURL: https://{omem-server}/api
+    tags:
+      - Chassis Management
+      - Modular Infrastructure
+      - Multi-Chassis
+      - PowerEdge MX
+    serviceName: Dell OpenManage Enterprise Modular API
+    serviceCategory: API
+  - name: Dell OpenManage Enterprise Power Manager API
+    baseURL: https://{ome-server}/api
+    tags:
+      - Data Center
+      - Energy Efficiency
+      - Power Management
+      - Thermal Monitoring
+    serviceName: Dell OpenManage Enterprise Power Manager API
+    serviceCategory: API
+  - name: Dell OpenManage Enterprise SupportAssist API
+    baseURL: https://{ome-server}/api
+    tags:
+      - Alerting
+      - Predictive Analytics
+      - Proactive Monitoring
+      - Support
+    serviceName: Dell OpenManage Enterprise SupportAssist API
+    serviceCategory: API
+  - name: Dell OpenManage Integration for VMware vCenter API
+    baseURL: https://{omivv-server}/api
+    tags:
+      - Server Management
+      - vCenter Integration
+      - Virtualization
+      - VMware
+    serviceName: Dell OpenManage Integration for VMware vCenter API
+    serviceCategory: API
+  - name: Dell iDRAC Telemetry Streaming API
+    baseURL: https://{idrac-ip}/redfish/v1/SSE
+    tags:
+      - Monitoring
+      - Server-Sent Events
+      - Streaming
+      - Telemetry
+    serviceName: Dell iDRAC Telemetry Streaming API
+    serviceCategory: API
+  - name: Dell Lifecycle Controller Remote Services API
+    baseURL: https://{idrac-ip}/wsman
+    tags:
+      - Deployment
+      - Lifecycle Management
+      - Provisioning
+      - Remote Services
+    serviceName: Dell Lifecycle Controller Remote Services API
+    serviceCategory: API
+  - name: Dell RACADM CLI
+    baseURL: ''
+    tags:
+      - Automation
+      - CLI
+      - Remote Management
+      - Scripting
+    serviceName: Dell RACADM CLI
+    serviceCategory: API
+  - name: Dell WSMan API
+    baseURL: https://{idrac-ip}/wsman
+    tags:
+      - Hardware Management
+      - Legacy
+      - Web Services
+      - WSMan
+    serviceName: Dell WSMan API
+    serviceCategory: API
+unitEconomics:
+  - name: Cost per 1K Requests
+    metric: billed_cost / (api_requests / 1000)
+    target: TBD
+  - name: Cost per Active Consumer
+    metric: billed_cost / active_consumers
+    target: TBD
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
