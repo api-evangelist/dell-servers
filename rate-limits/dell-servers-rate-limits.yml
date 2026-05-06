@@ -4,131 +4,63 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Dell Servers
 providerId: dell-servers
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
   - Hardware
   - Infrastructure
-  - Management
-  - Monitoring
-  - Servers
+  - Server Management
+  - Redfish
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Dell Servers API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+description: The Dell server-management APIs are firmware-resident on iDRAC, OME, and related
+  appliances inside the customer's own network. There are no vendor-imposed cloud rate limits.
+  Throughput is bounded by the iDRAC's embedded controller (modest CPU and memory), the OME
+  appliance sizing, and the network path from clients to the BMC. Excessive concurrent sessions
+  against a single iDRAC or aggressive Redfish polling can degrade BMC responsiveness — Dell
+  guidance is to space telemetry / inventory polls and prefer streaming (SSE) over polling for
+  high-frequency data.
+sources:
+  - https://developer.dell.com/apis/2978
+  - https://www.dell.com/support/manuals/en-us/poweredge-r760/idrac9_lc_user_guide_4-x_pub
+notes: No public numeric rate limits. Limits are device-side (iDRAC firmware concurrency,
+  session ceilings) and operator-tunable. Reconciled false — concrete numbers vary by iDRAC
+  generation and firmware version.
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
+  serverError: 500
   serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Dell iDRAC Redfish REST API
-      - Dell OpenManage Enterprise API
-      - Dell OpenManage Enterprise Modular API
-      - Dell OpenManage Enterprise Power Manager API
-      - Dell OpenManage Enterprise SupportAssist API
-      - Dell OpenManage Integration for VMware vCenter API
-      - Dell iDRAC Telemetry Streaming API
-      - Dell Lifecycle Controller Remote Services API
-      - Dell RACADM CLI
-      - Dell WSMan API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Dell iDRAC Redfish REST API
-      - Dell OpenManage Enterprise API
-      - Dell OpenManage Enterprise Modular API
-      - Dell OpenManage Enterprise Power Manager API
-      - Dell OpenManage Enterprise SupportAssist API
-      - Dell OpenManage Integration for VMware vCenter API
-      - Dell iDRAC Telemetry Streaming API
-      - Dell Lifecycle Controller Remote Services API
-      - Dell RACADM CLI
-      - Dell WSMan API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Dell iDRAC Redfish REST API
-      - Dell OpenManage Enterprise API
-      - Dell OpenManage Enterprise Modular API
-      - Dell OpenManage Enterprise Power Manager API
-      - Dell OpenManage Enterprise SupportAssist API
-      - Dell OpenManage Integration for VMware vCenter API
-      - Dell iDRAC Telemetry Streaming API
-      - Dell Lifecycle Controller Remote Services API
-      - Dell RACADM CLI
-      - Dell WSMan API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Dell iDRAC Redfish REST API
-      - Dell OpenManage Enterprise API
-      - Dell OpenManage Enterprise Modular API
-      - Dell OpenManage Enterprise Power Manager API
-      - Dell OpenManage Enterprise SupportAssist API
-      - Dell OpenManage Integration for VMware vCenter API
-      - Dell iDRAC Telemetry Streaming API
-      - Dell Lifecycle Controller Remote Services API
-      - Dell RACADM CLI
-      - Dell WSMan API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Dell iDRAC Redfish REST API
-      - Dell OpenManage Enterprise API
-      - Dell OpenManage Enterprise Modular API
-      - Dell OpenManage Enterprise Power Manager API
-      - Dell OpenManage Enterprise SupportAssist API
-      - Dell OpenManage Integration for VMware vCenter API
-      - Dell iDRAC Telemetry Streaming API
-      - Dell Lifecycle Controller Remote Services API
-      - Dell RACADM CLI
-      - Dell WSMan API
+  - name: iDRAC concurrent sessions
+    scope: device
+    metric: concurrent_sessions
+    limit: see iDRAC user guide for the active firmware version
+    notes: iDRAC enforces a small concurrent-session ceiling (typically single-digit). Excess
+      sessions are rejected with 503 / 429 depending on firmware.
+  - name: Redfish polling cadence
+    scope: device
+    metric: requests_per_second
+    limit: operator-tunable; Dell recommends spacing inventory polls
+    notes: Frequent polling against a single iDRAC can starve the BMC. Dell recommends Server-Sent
+      Events (telemetry streaming) over polling.
+  - name: OpenManage Enterprise appliance throughput
+    scope: appliance
+    metric: requests_per_second
+    limit: operator-defined — bounded by OME appliance sizing
+    notes: OME is a customer-deployed virtual appliance; throughput is a function of the assigned
+      vCPU / memory / storage and the count of managed nodes.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Streaming Over Polling
+    description: For high-frequency telemetry, use the iDRAC Telemetry Streaming (Server-Sent
+      Events) endpoint rather than periodic Redfish GETs.
+  - name: Session Lifecycle
+    description: Reuse iDRAC sessions where possible and explicitly delete sessions after use to
+      avoid hitting the device's session ceiling.
+  - name: Stagger Fleet Polling
+    description: When inventorying a fleet, randomize start times and parallelism so peaks do not
+      saturate any single iDRAC or the OME appliance.
+  - name: Firmware-Version Awareness
+    description: Specific limits and supported endpoints vary by iDRAC generation (8 vs 9 vs 10)
+      and firmware revision. Always validate against the active iDRAC user guide.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
