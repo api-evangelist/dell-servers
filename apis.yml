@@ -10,7 +10,7 @@ type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/dell-servers/refs/heads/main/apis.yml
 specificationVersion: '0.19'
-xType: company
+kind: company
 access: 3rd-Party
 position: Consuming
 tags:
@@ -50,9 +50,9 @@ apis:
         url: capabilities/dell-servers-idrac-redfish-capabilities.yml
       - type: Authentication
         url: https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/redfish-authentication-and-authorization?guid=guid-d572792f-afd2-499a-bf12-38a6778b9bbc&lang=en-us
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.dell.com/apis/2978/versions/5.xx/docs/1.0Intro.md
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/dell/iDRAC-Redfish-Scripting
   - aid: dell-servers:dell-servers-openmanage-enterprise
     name: Dell OpenManage Enterprise API
@@ -79,7 +79,7 @@ apis:
         url: rules/dell-servers-openmanage-enterprise-rules.yml
       - type: Capabilities
         url: capabilities/dell-servers-openmanage-enterprise-capabilities.yml
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/dell/OpenManage-Enterprise
   - aid: dell-servers:dell-servers-openmanage-enterprise-modular
     name: Dell OpenManage Enterprise Modular API
@@ -99,7 +99,7 @@ apis:
     properties:
       - type: Documentation
         url: https://www.dell.com/support/manuals/en-us/openmanage-enterprise-modular/omem_2.00.00_api/openmanage-enterprise-modular-edition?guid=guid-fe459ff7-030b-4375-a6d5-9f0ab2278946&lang=en-us
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/dell/OpenManage-Enterprise
   - aid: dell-servers:dell-servers-openmanage-enterprise-power-manager
     name: Dell OpenManage Enterprise Power Manager API
@@ -155,7 +155,7 @@ apis:
     properties:
       - type: Documentation
         url: https://www.dell.com/support/manuals/en-us/openmanage-integration-vmware-vcenter/omivv_5.4_api/overview
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/dell/omivv
   - aid: dell-servers:dell-servers-idrac-telemetry-streaming
     name: Dell iDRAC Telemetry Streaming API
@@ -175,7 +175,7 @@ apis:
     properties:
       - type: Documentation
         url: https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/server-sent-events?guid=guid-fc87fd01-2cff-4ae0-9714-1bd712bb5ce3&lang=en-us
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/dell/iDRAC-Telemetry-Reference-Tools
   - aid: dell-servers:dell-servers-lifecycle-controller-remote-services
     name: Dell Lifecycle Controller Remote Services API
@@ -231,12 +231,12 @@ apis:
         url: https://www.dell.com/support/kbdoc/en-us/000178046/how-to-use-the-wsman-interface-on-idrac
       - type: Profile Catalog
         url: https://downloads.dell.com/solutions/dell-management-solution-resources/
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/dell/DellPEWSMANTools
 common:
   - type: Portal
     url: https://developer.dell.com/
-  - type: Getting Started
+  - type: GettingStarted
     url: https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v6.x-series/smog_26.0/idrac-restful-apis-redfish-standards-based?guid=guid-476c6603-818e-4e2e-82f0-699bde0c3a3c&lang=en-us
   - type: Documentation
     url: https://www.dell.com/support/product-details/en-us/product/dell-openmanage-enterprise/resources/manuals
@@ -260,7 +260,7 @@ common:
     url: https://developer.dell.com/
   - type: Login
     url: https://developer.dell.com/
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/dell-servers-context.jsonld
   - type: Vocabulary
     url: vocabulary/dell-servers-vocabulary.yml
