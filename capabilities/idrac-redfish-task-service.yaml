@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Dell Servers Dell iDRAC Redfish REST API — Task Service
+  description: 'Dell Servers Dell iDRAC Redfish REST API — Task Service. 1 operations. Lead operation: Dell Servers List tasks.
+    Self-contained Naftiko capability covering one Dell Servers business surface.'
+  tags:
+  - Dell Servers
+  - Task Service
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DELL_SERVERS_API_KEY: DELL_SERVERS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: idrac-redfish-task-service
+    baseUri: https://{idrac-ip}/redfish/v1
+    description: Dell Servers Dell iDRAC Redfish REST API — Task Service business capability. Self-contained, no shared references.
+    resources:
+    - name: TaskService-Tasks
+      path: /TaskService/Tasks
+      operations:
+      - name: listtasks
+        method: GET
+        description: Dell Servers List tasks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: X-Auth-Token
+      value: '{{env.DELL_SERVERS_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: idrac-redfish-task-service-rest
+    port: 8080
+    description: REST adapter for Dell Servers Dell iDRAC Redfish REST API — Task Service. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/taskservice/tasks
+      name: taskservice-tasks
+      description: REST surface for TaskService-Tasks.
+      operations:
+      - method: GET
+        name: listtasks
+        description: Dell Servers List tasks
+        call: idrac-redfish-task-service.listtasks
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: idrac-redfish-task-service-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Dell Servers Dell iDRAC Redfish REST API — Task Service. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: dell-servers-list-tasks
+      description: Dell Servers List tasks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: idrac-redfish-task-service.listtasks
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,148 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Dell Servers Dell OpenManage Enterprise API — Jobs
+  description: 'Dell Servers Dell OpenManage Enterprise API — Jobs. 3 operations. Lead operation: Dell Servers List jobs.
+    Self-contained Naftiko capability covering one Dell Servers business surface.'
+  tags:
+  - Dell Servers
+  - Jobs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DELL_SERVERS_API_KEY: DELL_SERVERS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openmanage-enterprise-jobs
+    baseUri: https://{ome-server}/api
+    description: Dell Servers Dell OpenManage Enterprise API — Jobs business capability. Self-contained, no shared references.
+    resources:
+    - name: JobService-Jobs
+      path: /JobService/Jobs
+      operations:
+      - name: listjobs
+        method: GET
+        description: Dell Servers List jobs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: $filter
+          in: query
+          type: string
+          description: OData filter expression for job criteria
+      - name: createjob
+        method: POST
+        description: Dell Servers Create a job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: JobService-Jobs({JobId})
+      path: /JobService/Jobs({JobId})
+      operations:
+      - name: getjob
+        method: GET
+        description: Dell Servers Get a job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: X-Auth-Token
+      value: '{{env.DELL_SERVERS_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: openmanage-enterprise-jobs-rest
+    port: 8080
+    description: REST adapter for Dell Servers Dell OpenManage Enterprise API — Jobs. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/jobservice/jobs
+      name: jobservice-jobs
+      description: REST surface for JobService-Jobs.
+      operations:
+      - method: GET
+        name: listjobs
+        description: Dell Servers List jobs
+        call: openmanage-enterprise-jobs.listjobs
+        with:
+          $filter: rest.$filter
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createjob
+        description: Dell Servers Create a job
+        call: openmanage-enterprise-jobs.createjob
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/jobservice/jobs-jobid
+      name: jobservice-jobs-jobid
+      description: REST surface for JobService-Jobs({JobId}).
+      operations:
+      - method: GET
+        name: getjob
+        description: Dell Servers Get a job
+        call: openmanage-enterprise-jobs.getjob
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openmanage-enterprise-jobs-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Dell Servers Dell OpenManage Enterprise API — Jobs. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: dell-servers-list-jobs
+      description: Dell Servers List jobs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openmanage-enterprise-jobs.listjobs
+      with:
+        $filter: tools.$filter
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: dell-servers-create-job
+      description: Dell Servers Create a job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openmanage-enterprise-jobs.createjob
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: dell-servers-get-job
+      description: Dell Servers Get a job
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openmanage-enterprise-jobs.getjob
+      outputParameters:
+      - type: object
+        mapping: $.

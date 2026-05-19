@@ -1,0 +1,139 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Dell Servers Dell OpenManage Enterprise API — Discovery
+  description: 'Dell Servers Dell OpenManage Enterprise API — Discovery. 3 operations. Lead operation: Dell Servers List discovery
+    configurations. Self-contained Naftiko capability covering one Dell Servers business surface.'
+  tags:
+  - Dell Servers
+  - Discovery
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DELL_SERVERS_API_KEY: DELL_SERVERS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openmanage-enterprise-discovery
+    baseUri: https://{ome-server}/api
+    description: Dell Servers Dell OpenManage Enterprise API — Discovery business capability. Self-contained, no shared references.
+    resources:
+    - name: DiscoveryConfigService-DiscoveryConfigGroups
+      path: /DiscoveryConfigService/DiscoveryConfigGroups
+      operations:
+      - name: listdiscoveryconfigs
+        method: GET
+        description: Dell Servers List discovery configurations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: creatediscoveryconfig
+        method: POST
+        description: Dell Servers Create a discovery configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: DiscoveryConfigService-Jobs
+      path: /DiscoveryConfigService/Jobs
+      operations:
+      - name: listdiscoveryjobs
+        method: GET
+        description: Dell Servers List discovery jobs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: X-Auth-Token
+      value: '{{env.DELL_SERVERS_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: openmanage-enterprise-discovery-rest
+    port: 8080
+    description: REST adapter for Dell Servers Dell OpenManage Enterprise API — Discovery. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/discoveryconfigservice/discoveryconfiggroups
+      name: discoveryconfigservice-discoveryconfiggroups
+      description: REST surface for DiscoveryConfigService-DiscoveryConfigGroups.
+      operations:
+      - method: GET
+        name: listdiscoveryconfigs
+        description: Dell Servers List discovery configurations
+        call: openmanage-enterprise-discovery.listdiscoveryconfigs
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: creatediscoveryconfig
+        description: Dell Servers Create a discovery configuration
+        call: openmanage-enterprise-discovery.creatediscoveryconfig
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/discoveryconfigservice/jobs
+      name: discoveryconfigservice-jobs
+      description: REST surface for DiscoveryConfigService-Jobs.
+      operations:
+      - method: GET
+        name: listdiscoveryjobs
+        description: Dell Servers List discovery jobs
+        call: openmanage-enterprise-discovery.listdiscoveryjobs
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openmanage-enterprise-discovery-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Dell Servers Dell OpenManage Enterprise API — Discovery. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: dell-servers-list-discovery-configurations
+      description: Dell Servers List discovery configurations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openmanage-enterprise-discovery.listdiscoveryconfigs
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: dell-servers-create-discovery-configuration
+      description: Dell Servers Create a discovery configuration
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openmanage-enterprise-discovery.creatediscoveryconfig
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: dell-servers-list-discovery-jobs
+      description: Dell Servers List discovery jobs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openmanage-enterprise-discovery.listdiscoveryjobs
+      outputParameters:
+      - type: object
+        mapping: $.

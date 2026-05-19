@@ -1,0 +1,73 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Dell Servers Dell OpenManage Enterprise API — Configuration
+  description: 'Dell Servers Dell OpenManage Enterprise API — Configuration. 1 operations. Lead operation: Dell Servers List
+    configuration templates. Self-contained Naftiko capability covering one Dell Servers business surface.'
+  tags:
+  - Dell Servers
+  - Configuration
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DELL_SERVERS_API_KEY: DELL_SERVERS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openmanage-enterprise-configuration
+    baseUri: https://{ome-server}/api
+    description: Dell Servers Dell OpenManage Enterprise API — Configuration business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: TemplateService-Templates
+      path: /TemplateService/Templates
+      operations:
+      - name: listconfigurationtemplates
+        method: GET
+        description: Dell Servers List configuration templates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: X-Auth-Token
+      value: '{{env.DELL_SERVERS_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: openmanage-enterprise-configuration-rest
+    port: 8080
+    description: REST adapter for Dell Servers Dell OpenManage Enterprise API — Configuration. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/templateservice/templates
+      name: templateservice-templates
+      description: REST surface for TemplateService-Templates.
+      operations:
+      - method: GET
+        name: listconfigurationtemplates
+        description: Dell Servers List configuration templates
+        call: openmanage-enterprise-configuration.listconfigurationtemplates
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openmanage-enterprise-configuration-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Dell Servers Dell OpenManage Enterprise API — Configuration. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: dell-servers-list-configuration-templates
+      description: Dell Servers List configuration templates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openmanage-enterprise-configuration.listconfigurationtemplates
+      outputParameters:
+      - type: object
+        mapping: $.

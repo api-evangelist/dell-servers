@@ -1,0 +1,284 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Dell Servers Dell iDRAC Redfish REST API — Systems
+  description: 'Dell Servers Dell iDRAC Redfish REST API — Systems. 7 operations. Lead operation: Dell Servers List computer
+    systems. Self-contained Naftiko capability covering one Dell Servers business surface.'
+  tags:
+  - Dell Servers
+  - Systems
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DELL_SERVERS_API_KEY: DELL_SERVERS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: idrac-redfish-systems
+    baseUri: https://{idrac-ip}/redfish/v1
+    description: Dell Servers Dell iDRAC Redfish REST API — Systems business capability. Self-contained, no shared references.
+    resources:
+    - name: Systems
+      path: /Systems
+      operations:
+      - name: listsystems
+        method: GET
+        description: Dell Servers List computer systems
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: Systems-SystemId
+      path: /Systems/{SystemId}
+      operations:
+      - name: getsystem
+        method: GET
+        description: Dell Servers Get a computer system
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: Systems-SystemId-Actions-ComputerSystem.Reset
+      path: /Systems/{SystemId}/Actions/ComputerSystem.Reset
+      operations:
+      - name: resetsystem
+        method: POST
+        description: Dell Servers Reset a computer system
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Systems-SystemId-Bios
+      path: /Systems/{SystemId}/Bios
+      operations:
+      - name: getsystembios
+        method: GET
+        description: Dell Servers Get BIOS attributes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: Systems-SystemId-Bios-Settings
+      path: /Systems/{SystemId}/Bios/Settings
+      operations:
+      - name: updatebiossettings
+        method: PATCH
+        description: Dell Servers Update pending BIOS attributes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Systems-SystemId-EthernetInterfaces
+      path: /Systems/{SystemId}/EthernetInterfaces
+      operations:
+      - name: listethernetinterfaces
+        method: GET
+        description: Dell Servers List Ethernet interfaces
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: Systems-SystemId-Storage
+      path: /Systems/{SystemId}/Storage
+      operations:
+      - name: liststoragecontrollers
+        method: GET
+        description: Dell Servers List storage controllers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: X-Auth-Token
+      value: '{{env.DELL_SERVERS_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: idrac-redfish-systems-rest
+    port: 8080
+    description: REST adapter for Dell Servers Dell iDRAC Redfish REST API — Systems. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/systems
+      name: systems
+      description: REST surface for Systems.
+      operations:
+      - method: GET
+        name: listsystems
+        description: Dell Servers List computer systems
+        call: idrac-redfish-systems.listsystems
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/systems/{systemid}
+      name: systems-systemid
+      description: REST surface for Systems-SystemId.
+      operations:
+      - method: GET
+        name: getsystem
+        description: Dell Servers Get a computer system
+        call: idrac-redfish-systems.getsystem
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/systems/{systemid}/actions/computersystem-reset
+      name: systems-systemid-actions-computersystem-reset
+      description: REST surface for Systems-SystemId-Actions-ComputerSystem.Reset.
+      operations:
+      - method: POST
+        name: resetsystem
+        description: Dell Servers Reset a computer system
+        call: idrac-redfish-systems.resetsystem
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/systems/{systemid}/bios
+      name: systems-systemid-bios
+      description: REST surface for Systems-SystemId-Bios.
+      operations:
+      - method: GET
+        name: getsystembios
+        description: Dell Servers Get BIOS attributes
+        call: idrac-redfish-systems.getsystembios
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/systems/{systemid}/bios/settings
+      name: systems-systemid-bios-settings
+      description: REST surface for Systems-SystemId-Bios-Settings.
+      operations:
+      - method: PATCH
+        name: updatebiossettings
+        description: Dell Servers Update pending BIOS attributes
+        call: idrac-redfish-systems.updatebiossettings
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/systems/{systemid}/ethernetinterfaces
+      name: systems-systemid-ethernetinterfaces
+      description: REST surface for Systems-SystemId-EthernetInterfaces.
+      operations:
+      - method: GET
+        name: listethernetinterfaces
+        description: Dell Servers List Ethernet interfaces
+        call: idrac-redfish-systems.listethernetinterfaces
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/systems/{systemid}/storage
+      name: systems-systemid-storage
+      description: REST surface for Systems-SystemId-Storage.
+      operations:
+      - method: GET
+        name: liststoragecontrollers
+        description: Dell Servers List storage controllers
+        call: idrac-redfish-systems.liststoragecontrollers
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: idrac-redfish-systems-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Dell Servers Dell iDRAC Redfish REST API — Systems. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: dell-servers-list-computer-systems
+      description: Dell Servers List computer systems
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: idrac-redfish-systems.listsystems
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: dell-servers-get-computer-system
+      description: Dell Servers Get a computer system
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: idrac-redfish-systems.getsystem
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: dell-servers-reset-computer-system
+      description: Dell Servers Reset a computer system
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: idrac-redfish-systems.resetsystem
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: dell-servers-get-bios-attributes
+      description: Dell Servers Get BIOS attributes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: idrac-redfish-systems.getsystembios
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: dell-servers-update-pending-bios
+      description: Dell Servers Update pending BIOS attributes
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: idrac-redfish-systems.updatebiossettings
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: dell-servers-list-ethernet-interfaces
+      description: Dell Servers List Ethernet interfaces
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: idrac-redfish-systems.listethernetinterfaces
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: dell-servers-list-storage-controllers
+      description: Dell Servers List storage controllers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: idrac-redfish-systems.liststoragecontrollers
+      outputParameters:
+      - type: object
+        mapping: $.

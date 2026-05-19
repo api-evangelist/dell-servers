@@ -1,0 +1,104 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Dell Servers Dell OpenManage Enterprise API — Firmware
+  description: 'Dell Servers Dell OpenManage Enterprise API — Firmware. 2 operations. Lead operation: Dell Servers Get firmware
+    compliance baselines. Self-contained Naftiko capability covering one Dell Servers business surface.'
+  tags:
+  - Dell Servers
+  - Firmware
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DELL_SERVERS_API_KEY: DELL_SERVERS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openmanage-enterprise-firmware
+    baseUri: https://{ome-server}/api
+    description: Dell Servers Dell OpenManage Enterprise API — Firmware business capability. Self-contained, no shared references.
+    resources:
+    - name: UpdateService-Actions-UpdateService.GetBaselines
+      path: /UpdateService/Actions/UpdateService.GetBaselines
+      operations:
+      - name: getfirmwarebaselines
+        method: POST
+        description: Dell Servers Get firmware compliance baselines
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: UpdateService-Catalogs
+      path: /UpdateService/Catalogs
+      operations:
+      - name: listfirmwarecatalogs
+        method: GET
+        description: Dell Servers List firmware catalogs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: X-Auth-Token
+      value: '{{env.DELL_SERVERS_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: openmanage-enterprise-firmware-rest
+    port: 8080
+    description: REST adapter for Dell Servers Dell OpenManage Enterprise API — Firmware. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/updateservice/actions/updateservice-getbaselines
+      name: updateservice-actions-updateservice-getbaselines
+      description: REST surface for UpdateService-Actions-UpdateService.GetBaselines.
+      operations:
+      - method: POST
+        name: getfirmwarebaselines
+        description: Dell Servers Get firmware compliance baselines
+        call: openmanage-enterprise-firmware.getfirmwarebaselines
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/updateservice/catalogs
+      name: updateservice-catalogs
+      description: REST surface for UpdateService-Catalogs.
+      operations:
+      - method: GET
+        name: listfirmwarecatalogs
+        description: Dell Servers List firmware catalogs
+        call: openmanage-enterprise-firmware.listfirmwarecatalogs
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openmanage-enterprise-firmware-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Dell Servers Dell OpenManage Enterprise API — Firmware. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: dell-servers-get-firmware-compliance
+      description: Dell Servers Get firmware compliance baselines
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: openmanage-enterprise-firmware.getfirmwarebaselines
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: dell-servers-list-firmware-catalogs
+      description: Dell Servers List firmware catalogs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openmanage-enterprise-firmware.listfirmwarecatalogs
+      outputParameters:
+      - type: object
+        mapping: $.

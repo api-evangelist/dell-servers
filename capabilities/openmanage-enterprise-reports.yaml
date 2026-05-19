@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Dell Servers Dell OpenManage Enterprise API — Reports
+  description: 'Dell Servers Dell OpenManage Enterprise API — Reports. 1 operations. Lead operation: Dell Servers List report
+    definitions. Self-contained Naftiko capability covering one Dell Servers business surface.'
+  tags:
+  - Dell Servers
+  - Reports
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DELL_SERVERS_API_KEY: DELL_SERVERS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openmanage-enterprise-reports
+    baseUri: https://{ome-server}/api
+    description: Dell Servers Dell OpenManage Enterprise API — Reports business capability. Self-contained, no shared references.
+    resources:
+    - name: ReportService-ReportDefs
+      path: /ReportService/ReportDefs
+      operations:
+      - name: listreportdefinitions
+        method: GET
+        description: Dell Servers List report definitions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: X-Auth-Token
+      value: '{{env.DELL_SERVERS_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: openmanage-enterprise-reports-rest
+    port: 8080
+    description: REST adapter for Dell Servers Dell OpenManage Enterprise API — Reports. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/reportservice/reportdefs
+      name: reportservice-reportdefs
+      description: REST surface for ReportService-ReportDefs.
+      operations:
+      - method: GET
+        name: listreportdefinitions
+        description: Dell Servers List report definitions
+        call: openmanage-enterprise-reports.listreportdefinitions
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openmanage-enterprise-reports-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Dell Servers Dell OpenManage Enterprise API — Reports. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: dell-servers-list-report-definitions
+      description: Dell Servers List report definitions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openmanage-enterprise-reports.listreportdefinitions
+      outputParameters:
+      - type: object
+        mapping: $.
