@@ -1,0 +1,348 @@
+{
+  "provider": "Dell Servers",
+  "providerId": "dell-servers",
+  "kind": "json-structure",
+  "description": "Structural overview of the Dell Servers API surface; extracted from openapi/.",
+  "schemaCount": 13,
+  "operationCount": 28,
+  "schemas": [
+    {
+      "name": "ServiceRoot",
+      "type": "object",
+      "propertyCount": 14,
+      "required": []
+    },
+    {
+      "name": "ResourceLink",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ResourceCollection",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "ComputerSystemCollection",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "ComputerSystem",
+      "type": "object",
+      "propertyCount": 19,
+      "required": []
+    },
+    {
+      "name": "Chassis",
+      "type": "object",
+      "propertyCount": 13,
+      "required": []
+    },
+    {
+      "name": "Power",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Thermal",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Manager",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "Bios",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "ResetAction",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "ResetType"
+      ]
+    },
+    {
+      "name": "EventSubscription",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "Destination",
+        "EventTypes",
+        "Protocol"
+      ]
+    },
+    {
+      "name": "Status",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/",
+      "operationId": "getServiceRoot",
+      "summary": "Dell Servers Get Redfish service root",
+      "tags": [
+        "Service Root"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Systems",
+      "operationId": "listSystems",
+      "summary": "Dell Servers List computer systems",
+      "tags": [
+        "Systems"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Systems/{SystemId}",
+      "operationId": "getSystem",
+      "summary": "Dell Servers Get a computer system",
+      "tags": [
+        "Systems"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/Systems/{SystemId}/Actions/ComputerSystem.Reset",
+      "operationId": "resetSystem",
+      "summary": "Dell Servers Reset a computer system",
+      "tags": [
+        "Systems"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Systems/{SystemId}/Bios",
+      "operationId": "getSystemBios",
+      "summary": "Dell Servers Get BIOS attributes",
+      "tags": [
+        "Systems"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/Systems/{SystemId}/Bios/Settings",
+      "operationId": "updateBiosSettings",
+      "summary": "Dell Servers Update pending BIOS attributes",
+      "tags": [
+        "Systems"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Systems/{SystemId}/Storage",
+      "operationId": "listStorageControllers",
+      "summary": "Dell Servers List storage controllers",
+      "tags": [
+        "Systems"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Systems/{SystemId}/EthernetInterfaces",
+      "operationId": "listEthernetInterfaces",
+      "summary": "Dell Servers List Ethernet interfaces",
+      "tags": [
+        "Systems"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Chassis",
+      "operationId": "listChassis",
+      "summary": "Dell Servers List chassis resources",
+      "tags": [
+        "Chassis"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Chassis/{ChassisId}",
+      "operationId": "getChassis",
+      "summary": "Dell Servers Get a chassis resource",
+      "tags": [
+        "Chassis"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Chassis/{ChassisId}/Power",
+      "operationId": "getChassisPower",
+      "summary": "Dell Servers Get chassis power information",
+      "tags": [
+        "Chassis"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Chassis/{ChassisId}/Thermal",
+      "operationId": "getChassisThermal",
+      "summary": "Dell Servers Get chassis thermal information",
+      "tags": [
+        "Chassis"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Managers",
+      "operationId": "listManagers",
+      "summary": "Dell Servers List manager resources",
+      "tags": [
+        "Managers"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Managers/{ManagerId}",
+      "operationId": "getManager",
+      "summary": "Dell Servers Get a manager resource",
+      "tags": [
+        "Managers"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Managers/{ManagerId}/LogServices",
+      "operationId": "listLogServices",
+      "summary": "Dell Servers List log services",
+      "tags": [
+        "Managers"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Managers/{ManagerId}/VirtualMedia",
+      "operationId": "listVirtualMedia",
+      "summary": "Dell Servers List virtual media devices",
+      "tags": [
+        "Managers"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/AccountService",
+      "operationId": "getAccountService",
+      "summary": "Dell Servers Get account service",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/AccountService/Accounts",
+      "operationId": "listAccounts",
+      "summary": "Dell Servers List user accounts",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/SessionService/Sessions",
+      "operationId": "listSessions",
+      "summary": "Dell Servers List active sessions",
+      "tags": [
+        "Sessions"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/SessionService/Sessions",
+      "operationId": "createSession",
+      "summary": "Dell Servers Create a new session",
+      "tags": [
+        "Sessions"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/UpdateService",
+      "operationId": "getUpdateService",
+      "summary": "Dell Servers Get update service",
+      "tags": [
+        "Update Service"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/UpdateService/FirmwareInventory",
+      "operationId": "listFirmwareInventory",
+      "summary": "Dell Servers List firmware inventory",
+      "tags": [
+        "Update Service"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/TaskService/Tasks",
+      "operationId": "listTasks",
+      "summary": "Dell Servers List tasks",
+      "tags": [
+        "Task Service"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/EventService",
+      "operationId": "getEventService",
+      "summary": "Dell Servers Get event service",
+      "tags": [
+        "Event Service"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/EventService/Subscriptions",
+      "operationId": "listEventSubscriptions",
+      "summary": "Dell Servers List event subscriptions",
+      "tags": [
+        "Event Service"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/EventService/Subscriptions",
+      "operationId": "createEventSubscription",
+      "summary": "Dell Servers Create an event subscription",
+      "tags": [
+        "Event Service"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/TelemetryService",
+      "operationId": "getTelemetryService",
+      "summary": "Dell Servers Get telemetry service",
+      "tags": [
+        "Telemetry Service"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/TelemetryService/MetricReports",
+      "operationId": "listMetricReports",
+      "summary": "Dell Servers List metric reports",
+      "tags": [
+        "Telemetry Service"
+      ]
+    }
+  ]
+}

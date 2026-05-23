@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FirmwareCatalog",
+  "title": "FirmwareCatalog",
+  "type": "object",
+  "description": "A firmware catalog for compliance and updates",
+  "properties": {
+    "Id": {
+      "type": "integer",
+      "description": "Unique catalog identifier"
+    },
+    "Filename": {
+      "type": "string",
+      "description": "Catalog filename"
+    },
+    "SourcePath": {
+      "type": "string",
+      "description": "Source location of the catalog"
+    },
+    "Repository": {
+      "type": "object",
+      "description": "Repository details",
+      "properties": {
+        "Name": {
+          "type": "string",
+          "description": "Repository name"
+        },
+        "RepositoryType": {
+          "type": "string",
+          "description": "Repository type"
+        }
+      }
+    },
+    "Status": {
+      "type": "string",
+      "description": "Catalog status"
+    },
+    "TaskId": {
+      "type": "integer",
+      "description": "Associated task identifier"
+    }
+  }
+}

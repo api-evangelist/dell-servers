@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Bios",
+  "title": "Bios",
+  "type": "object",
+  "description": "BIOS configuration attributes for a computer system",
+  "properties": {
+    "@odata.id": {
+      "type": "string",
+      "description": "OData resource identifier"
+    },
+    "Id": {
+      "type": "string",
+      "description": "BIOS resource identifier"
+    },
+    "AttributeRegistry": {
+      "type": "string",
+      "description": "Name of the BIOS attribute registry"
+    },
+    "Attributes": {
+      "type": "object",
+      "description": "Current BIOS attribute values as name-value pairs. Attributes vary by server model and BIOS version.",
+      "additionalProperties": true
+    }
+  }
+}

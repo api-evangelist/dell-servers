@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Group",
+  "title": "Group",
+  "type": "object",
+  "description": "A device group for organizing managed infrastructure",
+  "properties": {
+    "Id": {
+      "type": "integer",
+      "description": "Unique group identifier"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Group name"
+    },
+    "Description": {
+      "type": "string",
+      "description": "Group description"
+    },
+    "MembershipTypeId": {
+      "type": "integer",
+      "description": "Group membership type. 12 is static, 24 is dynamic query-based."
+    },
+    "ParentId": {
+      "type": "integer",
+      "description": "Parent group identifier for nested groups"
+    },
+    "CreatedBy": {
+      "type": "string",
+      "description": "User who created the group"
+    },
+    "CreationTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the group was created"
+    },
+    "DefinitionId": {
+      "type": "integer",
+      "description": "Group definition identifier"
+    },
+    "Visible": {
+      "type": "boolean",
+      "description": "Whether the group is visible in the UI"
+    }
+  }
+}

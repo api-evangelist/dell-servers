@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ServiceRoot",
+  "title": "ServiceRoot",
+  "type": "object",
+  "description": "Redfish service root resource providing links to top-level collections",
+  "properties": {
+    "@odata.id": {
+      "type": "string",
+      "description": "OData resource identifier"
+    },
+    "@odata.type": {
+      "type": "string",
+      "description": "OData resource type"
+    },
+    "Id": {
+      "type": "string",
+      "description": "Resource identifier"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Resource name"
+    },
+    "RedfishVersion": {
+      "type": "string",
+      "description": "Redfish protocol version supported"
+    },
+    "Systems": {
+      "$ref": "#/components/schemas/ResourceLink"
+    },
+    "Chassis": {
+      "$ref": "#/components/schemas/ResourceLink"
+    },
+    "Managers": {
+      "$ref": "#/components/schemas/ResourceLink"
+    },
+    "AccountService": {
+      "$ref": "#/components/schemas/ResourceLink"
+    },
+    "SessionService": {
+      "$ref": "#/components/schemas/ResourceLink"
+    },
+    "UpdateService": {
+      "$ref": "#/components/schemas/ResourceLink"
+    },
+    "EventService": {
+      "$ref": "#/components/schemas/ResourceLink"
+    },
+    "TaskService": {
+      "$ref": "#/components/schemas/ResourceLink"
+    },
+    "TelemetryService": {
+      "$ref": "#/components/schemas/ResourceLink"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ConfigTemplate",
+  "title": "ConfigTemplate",
+  "type": "object",
+  "description": "A server configuration template",
+  "properties": {
+    "Id": {
+      "type": "integer",
+      "description": "Unique template identifier"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Template name"
+    },
+    "Description": {
+      "type": "string",
+      "description": "Template description"
+    },
+    "ViewTypeId": {
+      "type": "integer",
+      "description": "Template view type"
+    },
+    "TypeId": {
+      "type": "integer",
+      "description": "Template type identifier"
+    },
+    "CreatedBy": {
+      "type": "string",
+      "description": "User who created the template"
+    },
+    "CreatedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the template was created"
+    },
+    "LastUpdatedBy": {
+      "type": "string",
+      "description": "User who last updated the template"
+    },
+    "LastUpdatedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the last update"
+    }
+  }
+}

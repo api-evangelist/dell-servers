@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Chassis",
+  "title": "Chassis",
+  "type": "object",
+  "description": "Chassis resource representing the physical enclosure of a Dell PowerEdge server including power, thermal, and physical component information",
+  "properties": {
+    "@odata.id": {
+      "type": "string",
+      "description": "OData resource identifier"
+    },
+    "Id": {
+      "type": "string",
+      "description": "Chassis resource identifier"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Chassis name"
+    },
+    "ChassisType": {
+      "type": "string",
+      "description": "Type of physical form factor",
+      "enum": [
+        "Rack",
+        "Blade",
+        "Enclosure",
+        "StandAlone",
+        "RackMount",
+        "Card",
+        "Cartridge",
+        "Row",
+        "Pod",
+        "Expansion",
+        "Sidecar"
+      ]
+    },
+    "Manufacturer": {
+      "type": "string",
+      "description": "Chassis manufacturer"
+    },
+    "Model": {
+      "type": "string",
+      "description": "Chassis model"
+    },
+    "SerialNumber": {
+      "type": "string",
+      "description": "Chassis serial number"
+    },
+    "PartNumber": {
+      "type": "string",
+      "description": "Chassis part number"
+    },
+    "SKU": {
+      "type": "string",
+      "description": "Chassis SKU or service tag"
+    },
+    "AssetTag": {
+      "type": "string",
+      "description": "User-assigned asset tag"
+    },
+    "IndicatorLED": {
+      "type": "string",
+      "description": "State of the chassis indicator LED",
+      "enum": [
+        "Lit",
+        "Blinking",
+        "Off"
+      ]
+    },
+    "Status": {
+      "$ref": "#/components/schemas/Status"
+    },
+    "PowerState": {
+      "type": "string",
+      "description": "Current power state",
+      "enum": [
+        "On",
+        "Off",
+        "PoweringOn",
+        "PoweringOff"
+      ]
+    }
+  }
+}

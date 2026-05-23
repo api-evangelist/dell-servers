@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Thermal",
+  "title": "Thermal",
+  "type": "object",
+  "description": "Thermal sensor readings and fan status for a chassis",
+  "properties": {
+    "@odata.id": {
+      "type": "string",
+      "description": "OData resource identifier"
+    },
+    "Temperatures": {
+      "type": "array",
+      "description": "Temperature sensor readings",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "description": "Sensor name"
+          },
+          "ReadingCelsius": {
+            "type": "number",
+            "description": "Current temperature reading in Celsius"
+          },
+          "UpperThresholdCritical": {
+            "type": "number",
+            "description": "Critical upper temperature threshold"
+          },
+          "UpperThresholdFatal": {
+            "type": "number",
+            "description": "Fatal upper temperature threshold"
+          },
+          "LowerThresholdCritical": {
+            "type": "number",
+            "description": "Critical lower temperature threshold"
+          },
+          "Status": {
+            "$ref": "#/components/schemas/Status"
+          }
+        }
+      }
+    },
+    "Fans": {
+      "type": "array",
+      "description": "Fan inventory and status",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "description": "Fan name"
+          },
+          "Reading": {
+            "type": "integer",
+            "description": "Current fan speed reading in RPM"
+          },
+          "ReadingUnits": {
+            "type": "string",
+            "description": "Units for the fan reading",
+            "enum": [
+              "RPM",
+              "Percent"
+            ]
+          },
+          "Status": {
+            "$ref": "#/components/schemas/Status"
+          }
+        }
+      }
+    }
+  }
+}

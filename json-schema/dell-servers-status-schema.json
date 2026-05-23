@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Status",
+  "title": "Status",
+  "type": "object",
+  "description": "Redfish status object indicating resource health",
+  "properties": {
+    "Health": {
+      "type": "string",
+      "description": "Overall health state",
+      "enum": [
+        "OK",
+        "Warning",
+        "Critical"
+      ]
+    },
+    "HealthRollup": {
+      "type": "string",
+      "description": "Rolled-up health state from subordinate resources",
+      "enum": [
+        "OK",
+        "Warning",
+        "Critical"
+      ]
+    },
+    "State": {
+      "type": "string",
+      "description": "Operational state",
+      "enum": [
+        "Enabled",
+        "Disabled",
+        "StandbyOffline",
+        "StandbySpare",
+        "InTest",
+        "Starting",
+        "Absent",
+        "UnavailableOffline",
+        "Deferring",
+        "Quiesced",
+        "Updating"
+      ]
+    }
+  }
+}

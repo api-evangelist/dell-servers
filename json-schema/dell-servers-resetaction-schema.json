@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ResetAction",
+  "title": "ResetAction",
+  "type": "object",
+  "description": "Reset action request body for power control operations",
+  "required": [
+    "ResetType"
+  ],
+  "properties": {
+    "ResetType": {
+      "type": "string",
+      "description": "Type of reset action to perform",
+      "enum": [
+        "On",
+        "ForceOff",
+        "GracefulShutdown",
+        "GracefulRestart",
+        "ForceRestart",
+        "Nmi",
+        "ForceOn",
+        "PushPowerButton",
+        "PowerCycle"
+      ]
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InventoryDetail",
+  "title": "InventoryDetail",
+  "type": "object",
+  "description": "Hardware inventory component details",
+  "properties": {
+    "InventoryType": {
+      "type": "string",
+      "description": "Type of inventory component such as cpuInformation, memoryInformation, storageInformation, nicInformation, or firmwareInformation"
+    },
+    "InventoryInfo": {
+      "type": "array",
+      "description": "Array of inventory items for this component type",
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      }
+    }
+  }
+}

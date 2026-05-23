@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ResourceLink",
+  "title": "ResourceLink",
+  "type": "object",
+  "description": "Link to a Redfish resource",
+  "properties": {
+    "@odata.id": {
+      "type": "string",
+      "description": "OData resource URI"
+    }
+  }
+}

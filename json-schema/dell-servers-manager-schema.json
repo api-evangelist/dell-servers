@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Manager",
+  "title": "Manager",
+  "type": "object",
+  "description": "Manager resource representing the iDRAC management controller",
+  "properties": {
+    "@odata.id": {
+      "type": "string",
+      "description": "OData resource identifier"
+    },
+    "Id": {
+      "type": "string",
+      "description": "Manager resource identifier"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Manager name"
+    },
+    "ManagerType": {
+      "type": "string",
+      "description": "Type of management controller",
+      "enum": [
+        "ManagementController",
+        "EnclosureManager",
+        "BMC",
+        "RackManager"
+      ]
+    },
+    "FirmwareVersion": {
+      "type": "string",
+      "description": "iDRAC firmware version"
+    },
+    "Model": {
+      "type": "string",
+      "description": "iDRAC model designation"
+    },
+    "Status": {
+      "$ref": "#/components/schemas/Status"
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Power",
+  "title": "Power",
+  "type": "object",
+  "description": "Power supply and power consumption information for a chassis",
+  "properties": {
+    "@odata.id": {
+      "type": "string",
+      "description": "OData resource identifier"
+    },
+    "PowerControl": {
+      "type": "array",
+      "description": "Power control and consumption readings",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "description": "Power control name"
+          },
+          "PowerConsumedWatts": {
+            "type": "number",
+            "description": "Current power consumption in watts"
+          },
+          "PowerCapacityWatts": {
+            "type": "number",
+            "description": "Total power capacity in watts"
+          },
+          "PowerMetrics": {
+            "type": "object",
+            "description": "Power consumption metrics over time",
+            "properties": {
+              "IntervalInMin": {
+                "type": "integer",
+                "description": "Metric sampling interval in minutes"
+              },
+              "MinConsumedWatts": {
+                "type": "number",
+                "description": "Minimum power consumed during interval"
+              },
+              "MaxConsumedWatts": {
+                "type": "number",
+                "description": "Maximum power consumed during interval"
+              },
+              "AverageConsumedWatts": {
+                "type": "number",
+                "description": "Average power consumed during interval"
+              }
+            }
+          }
+        }
+      }
+    },
+    "PowerSupplies": {
+      "type": "array",
+      "description": "Power supply inventory and status",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "description": "Power supply name"
+          },
+          "PowerCapacityWatts": {
+            "type": "number",
+            "description": "Power supply rated capacity in watts"
+          },
+          "LineInputVoltage": {
+            "type": "number",
+            "description": "Input voltage in volts"
+          },
+          "Model": {
+            "type": "string",
+            "description": "Power supply model"
+          },
+          "SerialNumber": {
+            "type": "string",
+            "description": "Power supply serial number"
+          },
+          "Status": {
+            "$ref": "#/components/schemas/Status"
+          }
+        }
+      }
+    }
+  }
+}

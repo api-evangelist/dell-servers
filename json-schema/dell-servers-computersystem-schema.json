@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ComputerSystem",
+  "title": "ComputerSystem",
+  "type": "object",
+  "description": "Computer system resource representing a Dell PowerEdge server with hardware inventory, health status, and configuration",
+  "properties": {
+    "@odata.id": {
+      "type": "string",
+      "description": "OData resource identifier"
+    },
+    "@odata.type": {
+      "type": "string",
+      "description": "OData resource type"
+    },
+    "Id": {
+      "type": "string",
+      "description": "System resource identifier"
+    },
+    "Name": {
+      "type": "string",
+      "description": "System name"
+    },
+    "Manufacturer": {
+      "type": "string",
+      "description": "Server manufacturer"
+    },
+    "Model": {
+      "type": "string",
+      "description": "Server model name"
+    },
+    "SerialNumber": {
+      "type": "string",
+      "description": "Server serial number"
+    },
+    "SKU": {
+      "type": "string",
+      "description": "Server SKU or service tag"
+    },
+    "PartNumber": {
+      "type": "string",
+      "description": "Server part number"
+    },
+    "SystemType": {
+      "type": "string",
+      "description": "Type of computer system",
+      "enum": [
+        "Physical",
+        "Virtual",
+        "OS",
+        "PhysicallyPartitioned",
+        "VirtuallyPartitioned"
+      ]
+    },
+    "AssetTag": {
+      "type": "string",
+      "description": "User-assigned asset tag"
+    },
+    "BiosVersion": {
+      "type": "string",
+      "description": "Current BIOS firmware version"
+    },
+    "PowerState": {
+      "type": "string",
+      "description": "Current power state of the system",
+      "enum": [
+        "On",
+        "Off",
+        "PoweringOn",
+        "PoweringOff"
+      ]
+    },
+    "Status": {
+      "$ref": "#/components/schemas/Status"
+    },
+    "HostName": {
+      "type": "string",
+      "description": "Hostname of the operating system"
+    },
+    "IndicatorLED": {
+      "type": "string",
+      "description": "State of the system indicator LED",
+      "enum": [
+        "Lit",
+        "Blinking",
+        "Off"
+      ]
+    },
+    "ProcessorSummary": {
+      "type": "object",
+      "description": "Summary of processor inventory",
+      "properties": {
+        "Count": {
+          "type": "integer",
+          "description": "Number of processors installed"
+        },
+        "Model": {
+          "type": "string",
+          "description": "Processor model name"
+        },
+        "Status": {
+          "$ref": "#/components/schemas/Status"
+        }
+      }
+    },
+    "MemorySummary": {
+      "type": "object",
+      "description": "Summary of memory inventory",
+      "properties": {
+        "TotalSystemMemoryGiB": {
+          "type": "number",
+          "description": "Total system memory in GiB"
+        },
+        "Status": {
+          "$ref": "#/components/schemas/Status"
+        }
+      }
+    },
+    "Boot": {
+      "type": "object",
+      "description": "Boot configuration",
+      "properties": {
+        "BootSourceOverrideEnabled": {
+          "type": "string",
+          "description": "Boot source override state",
+          "enum": [
+            "Disabled",
+            "Once",
+            "Continuous"
+          ]
+        },
+        "BootSourceOverrideTarget": {
+          "type": "string",
+          "description": "Boot source override target device"
+        },
+        "BootSourceOverrideMode": {
+          "type": "string",
+          "description": "BIOS boot mode",
+          "enum": [
+            "Legacy",
+            "UEFI"
+          ]
+        }
+      }
+    }
+  }
+}

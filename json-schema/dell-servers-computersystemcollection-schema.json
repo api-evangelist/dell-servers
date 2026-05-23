@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ComputerSystemCollection",
+  "title": "ComputerSystemCollection",
+  "type": "object",
+  "description": "Collection of computer system resources",
+  "properties": {
+    "@odata.id": {
+      "type": "string",
+      "description": "OData resource identifier"
+    },
+    "@odata.type": {
+      "type": "string",
+      "description": "OData resource type"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Collection name"
+    },
+    "Members@odata.count": {
+      "type": "integer",
+      "description": "Number of systems in the collection"
+    },
+    "Members": {
+      "type": "array",
+      "description": "Array of computer system resource links",
+      "items": {
+        "$ref": "#/components/schemas/ResourceLink"
+      }
+    }
+  }
+}

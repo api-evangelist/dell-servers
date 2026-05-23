@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReportDefinition",
+  "title": "ReportDefinition",
+  "type": "object",
+  "description": "A report definition for generating infrastructure reports",
+  "properties": {
+    "Id": {
+      "type": "integer",
+      "description": "Unique report definition identifier"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Report name"
+    },
+    "Description": {
+      "type": "string",
+      "description": "Report description"
+    },
+    "ColumnNames": {
+      "type": "array",
+      "description": "Column names included in the report",
+      "items": {
+        "type": "string"
+      }
+    },
+    "FilterGroupId": {
+      "type": "integer",
+      "description": "Filter group applied to the report"
+    }
+  }
+}

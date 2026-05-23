@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EventSubscription",
+  "title": "EventSubscription",
+  "type": "object",
+  "description": "Event subscription request for push notifications",
+  "required": [
+    "Destination",
+    "EventTypes",
+    "Protocol"
+  ],
+  "properties": {
+    "Destination": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to which events will be posted"
+    },
+    "EventTypes": {
+      "type": "array",
+      "description": "Types of events to subscribe to",
+      "items": {
+        "type": "string",
+        "enum": [
+          "StatusChange",
+          "ResourceUpdated",
+          "ResourceAdded",
+          "ResourceRemoved",
+          "Alert",
+          "MetricReport"
+        ]
+      }
+    },
+    "Protocol": {
+      "type": "string",
+      "description": "Protocol for event delivery",
+      "enum": [
+        "Redfish"
+      ]
+    },
+    "Context": {
+      "type": "string",
+      "description": "Client-supplied context string returned with events"
+    }
+  }
+}

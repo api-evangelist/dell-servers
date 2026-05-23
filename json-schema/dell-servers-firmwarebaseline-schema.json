@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FirmwareBaseline",
+  "title": "FirmwareBaseline",
+  "type": "object",
+  "description": "A firmware compliance baseline",
+  "properties": {
+    "Id": {
+      "type": "integer",
+      "description": "Unique baseline identifier"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Baseline name"
+    },
+    "Description": {
+      "type": "string",
+      "description": "Baseline description"
+    },
+    "CatalogId": {
+      "type": "integer",
+      "description": "Associated firmware catalog identifier"
+    },
+    "ComplianceSummary": {
+      "type": "object",
+      "description": "Summary of compliance status",
+      "properties": {
+        "ComplianceStatus": {
+          "type": "string",
+          "description": "Overall compliance status"
+        },
+        "NumberOfCritical": {
+          "type": "integer",
+          "description": "Number of critical non-compliant components"
+        },
+        "NumberOfWarning": {
+          "type": "integer",
+          "description": "Number of warning non-compliant components"
+        },
+        "NumberOfNormal": {
+          "type": "integer",
+          "description": "Number of compliant components"
+        }
+      }
+    }
+  }
+}

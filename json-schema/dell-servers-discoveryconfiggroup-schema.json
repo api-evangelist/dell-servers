@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DiscoveryConfigGroup",
+  "title": "DiscoveryConfigGroup",
+  "type": "object",
+  "description": "Discovery configuration group defining targets and credentials",
+  "properties": {
+    "DiscoveryConfigGroupId": {
+      "type": "integer",
+      "description": "Unique discovery configuration identifier"
+    },
+    "DiscoveryConfigGroupName": {
+      "type": "string",
+      "description": "Name of the discovery configuration"
+    },
+    "DiscoveryConfigModels": {
+      "type": "array",
+      "description": "Array of discovery targets with protocol settings",
+      "items": {
+        "type": "object",
+        "properties": {
+          "DiscoveryConfigTargets": {
+            "type": "array",
+            "description": "Target IP ranges or hostnames",
+            "items": {
+              "type": "object",
+              "properties": {
+                "NetworkAddressDetail": {
+                  "type": "string",
+                  "description": "IP address, range, or CIDR notation"
+                }
+              }
+            }
+          },
+          "ConnectionProfileId": {
+            "type": "integer",
+            "description": "Connection profile with credentials"
+          },
+          "DeviceType": {
+            "type": "array",
+            "description": "Device types to discover",
+            "items": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "Schedule": {
+      "type": "object",
+      "description": "Discovery schedule configuration",
+      "properties": {
+        "RunNow": {
+          "type": "boolean",
+          "description": "Execute discovery immediately"
+        },
+        "Cron": {
+          "type": "string",
+          "description": "Cron expression for recurring discovery"
+        }
+      }
+    }
+  }
+}

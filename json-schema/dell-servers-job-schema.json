@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Job",
+  "title": "Job",
+  "type": "object",
+  "description": "An asynchronous job in OpenManage Enterprise",
+  "properties": {
+    "Id": {
+      "type": "integer",
+      "description": "Unique job identifier"
+    },
+    "JobName": {
+      "type": "string",
+      "description": "Job name"
+    },
+    "JobDescription": {
+      "type": "string",
+      "description": "Job description"
+    },
+    "JobType": {
+      "type": "object",
+      "description": "Job type information",
+      "properties": {
+        "Id": {
+          "type": "integer",
+          "description": "Job type identifier"
+        },
+        "Name": {
+          "type": "string",
+          "description": "Job type name"
+        }
+      }
+    },
+    "LastRunStatus": {
+      "type": "object",
+      "description": "Status of the last job execution",
+      "properties": {
+        "Id": {
+          "type": "integer",
+          "description": "Status code"
+        },
+        "Name": {
+          "type": "string",
+          "description": "Status description"
+        }
+      }
+    },
+    "JobStatus": {
+      "type": "object",
+      "description": "Current job status",
+      "properties": {
+        "Id": {
+          "type": "integer",
+          "description": "Status code"
+        },
+        "Name": {
+          "type": "string",
+          "description": "Status description"
+        }
+      }
+    },
+    "PercentComplete": {
+      "type": "integer",
+      "description": "Job completion percentage",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "StartTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Job start timestamp"
+    },
+    "EndTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Job completion timestamp"
+    }
+  }
+}
