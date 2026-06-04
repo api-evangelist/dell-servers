@@ -1,0 +1,106 @@
+arazzo: 1.0.1
+info:
+  title: Dell Servers OpenManage Template Deployment Job
+  summary: Pick a configuration template, run a deploy job, and poll it to completion.
+  description: >-
+    Applies a server configuration template to a device through OpenManage
+    Enterprise and waits for the deployment to finish. The workflow lists the
+    configuration templates to resolve the template identifier, creates a job
+    that targets the device for the configuration deployment, and then polls the
+    job until its completion percentage reaches one hundred. Branching loops
+    back into the poll while the job is still in progress. The selected template
+    identifier is carried into the job description so the deploy is traceable.
+    Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: openManageEnterprise
+  url: ../openapi/dell-servers-openmanage-enterprise-openapi.yml
+  type: openapi
+workflows:
+- workflowId: ome-template-deploy-job
+  summary: Resolve a template, create a deploy job, then poll it to completion.
+  description: >-
+    Lists configuration templates, creates a deployment job targeting a device,
+    and polls the job until it reaches one hundred percent.
+  inputs:
+    type: object
+    required:
+    - deviceId
+    - jobName
+    - targetTypeId
+    properties:
+      deviceId:
+        type: integer
+        description: Device to receive the configuration template.
+      jobName:
+        type: string
+        description: Name for the template deployment job.
+      targetTypeId:
+        type: integer
+        description: Target type identifier describing the supplied target.
+      targetTypeName:
+        type: string
+        description: Target type name, for example DEVICE.
+  steps:
+  - stepId: listTemplates
+    description: List configuration templates to resolve the template to deploy.
+    operationId: listConfigurationTemplates
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      templateId: $response.body#/value/0/Id
+      templateName: $response.body#/value/0/Name
+  - stepId: createDeployJob
+    description: >-
+      Create a job that targets the device for the configuration deployment and
+      run it immediately.
+    operationId: createJob
+    requestBody:
+      contentType: application/json
+      payload:
+        JobName: $inputs.jobName
+        JobDescription: Template deployment job created via Arazzo workflow
+        Schedule: startnow
+        Targets:
+        - Id: $inputs.deviceId
+          Data: ''
+          TargetType:
+            Id: $inputs.targetTypeId
+            Name: $inputs.targetTypeName
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      jobId: $response.body#/Id
+  - stepId: pollJob
+    description: >-
+      Read the job and loop while it is still in progress; end once the
+      completion percentage reaches one hundred.
+    operationId: getJob
+    parameters:
+    - name: JobId
+      in: path
+      value: $steps.createDeployJob.outputs.jobId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      percentComplete: $response.body#/PercentComplete
+      jobStatus: $response.body#/JobStatus/Name
+    onSuccess:
+    - name: stillRunning
+      type: goto
+      stepId: pollJob
+      criteria:
+      - context: $response.body
+        condition: $.PercentComplete < 100
+        type: jsonpath
+    - name: complete
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.PercentComplete == 100
+        type: jsonpath
+  outputs:
+    templateId: $steps.listTemplates.outputs.templateId
+    jobId: $steps.createDeployJob.outputs.jobId
+    finalStatus: $steps.pollJob.outputs.jobStatus

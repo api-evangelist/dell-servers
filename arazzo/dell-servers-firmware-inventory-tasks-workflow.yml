@@ -1,0 +1,79 @@
+arazzo: 1.0.1
+info:
+  title: Dell Servers Firmware Inventory and Task Audit
+  summary: Read the update service, list firmware versions, and poll active tasks.
+  description: >-
+    Audits the firmware state of a Dell PowerEdge server through the iDRAC
+    Redfish API. The workflow reads the update service to confirm update
+    capability, lists the firmware inventory across every server component, and
+    then reads the task service to detect any in-flight lifecycle controller
+    jobs such as firmware updates. The task list is polled until no task
+    remains running, giving a clean stopping point before initiating new
+    update work. Because this iDRAC description does not expose a SimpleUpdate
+    push action, the actual firmware push is adapted out and this flow focuses
+    on inventory and task observation. Every step spells out its request inline
+    so the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: idracRedfish
+  url: ../openapi/dell-servers-idrac-redfish-openapi.yml
+  type: openapi
+workflows:
+- workflowId: firmware-inventory-tasks
+  summary: Read update service, list firmware inventory, then poll tasks to idle.
+  description: >-
+    Confirms update capability, enumerates installed firmware, and polls the
+    task service until no task is still running.
+  inputs:
+    type: object
+    properties:
+      taskRunningName:
+        type: string
+        description: >-
+          Optional placeholder retained for documentation of the polled state;
+          not sent in any request.
+  steps:
+  - stepId: getUpdateService
+    description: Read the update service resource to confirm update capability.
+    operationId: getUpdateService
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      updateService: $response.body
+  - stepId: listFirmware
+    description: List the firmware inventory across all server components.
+    operationId: listFirmwareInventory
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firmwareCount: $response.body#/Members@odata.count
+      firmwareMembers: $response.body#/Members
+  - stepId: pollTasks
+    description: >-
+      Read the task service collection and loop while any lifecycle task is
+      still present; end once the collection is empty.
+    operationId: listTasks
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      taskCount: $response.body#/Members@odata.count
+      tasks: $response.body#/Members
+    onSuccess:
+    - name: tasksRunning
+      type: goto
+      stepId: pollTasks
+      criteria:
+      - context: $response.body
+        condition: $.Members.length > 0
+        type: jsonpath
+    - name: tasksIdle
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.Members.length == 0
+        type: jsonpath
+  outputs:
+    firmwareCount: $steps.listFirmware.outputs.firmwareCount
+    firmwareMembers: $steps.listFirmware.outputs.firmwareMembers
+    remainingTasks: $steps.pollTasks.outputs.taskCount

@@ -1,0 +1,110 @@
+arazzo: 1.0.1
+info:
+  title: Dell Servers OpenManage Firmware Update Job
+  summary: Check firmware baselines, run an update job, and poll it to completion.
+  description: >-
+    Drives a firmware update on a managed device through OpenManage Enterprise
+    and waits for it to finish. The workflow reads the firmware compliance
+    baselines to confirm which components are out of date, creates a job that
+    targets the device for the update, and then polls the job until its
+    completion percentage reaches one hundred. Branching loops back into the
+    poll while the job is still in progress and ends the flow once the job is
+    complete. Because the create-job request requires a target list, the device
+    identifier is supplied as a job target. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: openManageEnterprise
+  url: ../openapi/dell-servers-openmanage-enterprise-openapi.yml
+  type: openapi
+workflows:
+- workflowId: ome-firmware-update-job
+  summary: Read baselines, create an update job, then poll the job to completion.
+  description: >-
+    Confirms firmware compliance baselines, creates a firmware update job
+    targeting a device, and polls the job until it reaches one hundred percent.
+  inputs:
+    type: object
+    required:
+    - deviceId
+    - jobName
+    - targetTypeId
+    properties:
+      deviceId:
+        type: integer
+        description: Device to target with the firmware update job.
+      jobName:
+        type: string
+        description: Name for the firmware update job.
+      targetTypeId:
+        type: integer
+        description: >-
+          Target type identifier describing the supplied target, for example
+          the device target type code.
+      targetTypeName:
+        type: string
+        description: Target type name, for example DEVICE.
+  steps:
+  - stepId: getBaselines
+    description: >-
+      Read firmware compliance baselines to confirm which components are out of
+      compliance before scheduling the update.
+    operationId: getFirmwareBaselines
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      baselines: $response.body#/value
+  - stepId: createUpdateJob
+    description: >-
+      Create a job that targets the device for the firmware update and run it
+      immediately.
+    operationId: createJob
+    requestBody:
+      contentType: application/json
+      payload:
+        JobName: $inputs.jobName
+        JobDescription: Firmware update job created via Arazzo workflow
+        Schedule: startnow
+        Targets:
+        - Id: $inputs.deviceId
+          Data: ''
+          TargetType:
+            Id: $inputs.targetTypeId
+            Name: $inputs.targetTypeName
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      jobId: $response.body#/Id
+  - stepId: pollJob
+    description: >-
+      Read the job and loop while it is still in progress; end once the
+      completion percentage reaches one hundred.
+    operationId: getJob
+    parameters:
+    - name: JobId
+      in: path
+      value: $steps.createUpdateJob.outputs.jobId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      percentComplete: $response.body#/PercentComplete
+      jobStatus: $response.body#/JobStatus/Name
+    onSuccess:
+    - name: stillRunning
+      type: goto
+      stepId: pollJob
+      criteria:
+      - context: $response.body
+        condition: $.PercentComplete < 100
+        type: jsonpath
+    - name: complete
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.PercentComplete == 100
+        type: jsonpath
+  outputs:
+    jobId: $steps.createUpdateJob.outputs.jobId
+    finalStatus: $steps.pollJob.outputs.jobStatus
+    percentComplete: $steps.pollJob.outputs.percentComplete

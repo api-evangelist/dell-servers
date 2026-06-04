@@ -1,0 +1,75 @@
+arazzo: 1.0.1
+info:
+  title: Dell Servers OpenManage Group Device Expansion
+  summary: Find a device group, list its member devices, then read one device.
+  description: >-
+    Expands an OpenManage Enterprise device group into its member devices. The
+    workflow lists the device groups filtered by name to resolve the group
+    identifier, lists the devices that belong to that group, and then reads the
+    first member device in detail. The result is a quick way to inspect the
+    composition and health of a managed group. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: openManageEnterprise
+  url: ../openapi/dell-servers-openmanage-enterprise-openapi.yml
+  type: openapi
+workflows:
+- workflowId: ome-group-devices
+  summary: Resolve a group by name, list its devices, then read the first one.
+  description: >-
+    Lists groups filtered by name to resolve a group id, lists the devices in
+    that group, and reads the first member device.
+  inputs:
+    type: object
+    required:
+    - groupFilter
+    properties:
+      groupFilter:
+        type: string
+        description: >-
+          OData filter expression that resolves the target group, for example
+          Name eq 'Production Servers'.
+  steps:
+  - stepId: findGroup
+    description: List device groups filtered by name to resolve the group id.
+    operationId: listGroups
+    parameters:
+    - name: $filter
+      in: query
+      value: $inputs.groupFilter
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      groupId: $response.body#/value/0/Id
+      groupName: $response.body#/value/0/Name
+  - stepId: listGroupDevices
+    description: List the devices that belong to the resolved group.
+    operationId: listGroupDevices
+    parameters:
+    - name: GroupId
+      in: path
+      value: $steps.findGroup.outputs.groupId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      memberCount: $response.body#/@odata.count
+      firstDeviceId: $response.body#/value/0/Id
+      members: $response.body#/value
+  - stepId: getMemberDevice
+    description: Read the first member device in detail.
+    operationId: getDevice
+    parameters:
+    - name: DeviceId
+      in: path
+      value: $steps.listGroupDevices.outputs.firstDeviceId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      serviceTag: $response.body#/DeviceServiceTag
+      model: $response.body#/Model
+  outputs:
+    groupId: $steps.findGroup.outputs.groupId
+    memberCount: $steps.listGroupDevices.outputs.memberCount
+    members: $steps.listGroupDevices.outputs.members

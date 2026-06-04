@@ -1,0 +1,74 @@
+arazzo: 1.0.1
+info:
+  title: Dell Servers iDRAC Manager Overview
+  summary: Inspect the iDRAC manager, its virtual media, and its log services.
+  description: >-
+    Produces a management-plane overview of the iDRAC controller on a Dell
+    PowerEdge server through the Redfish API. The workflow reads the manager
+    resource for firmware version and health, lists the virtual media devices
+    available for remote ISO mounting, and lists the log services such as the
+    Lifecycle Controller log and System Event Log. The result is a single view
+    of the controller and its attached management services. Every step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: idracRedfish
+  url: ../openapi/dell-servers-idrac-redfish-openapi.yml
+  type: openapi
+workflows:
+- workflowId: manager-overview
+  summary: Read the manager, its virtual media, and its log services.
+  description: >-
+    Reads the iDRAC manager resource then enumerates its virtual media devices
+    and log services for a consolidated controller overview.
+  inputs:
+    type: object
+    required:
+    - managerId
+    properties:
+      managerId:
+        type: string
+        description: Manager identifier, typically iDRAC.Embedded.1.
+  steps:
+  - stepId: getManager
+    description: Read the iDRAC manager resource for firmware version and health.
+    operationId: getManager
+    parameters:
+    - name: ManagerId
+      in: path
+      value: $inputs.managerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firmwareVersion: $response.body#/FirmwareVersion
+      managerType: $response.body#/ManagerType
+      managerHealth: $response.body#/Status/Health
+  - stepId: listVirtualMedia
+    description: List the virtual media devices available for remote mounting.
+    operationId: listVirtualMedia
+    parameters:
+    - name: ManagerId
+      in: path
+      value: $inputs.managerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      virtualMediaCount: $response.body#/Members@odata.count
+      virtualMedia: $response.body#/Members
+  - stepId: listLogServices
+    description: List the log services exposed by the manager.
+    operationId: listLogServices
+    parameters:
+    - name: ManagerId
+      in: path
+      value: $inputs.managerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      logServices: $response.body#/Members
+  outputs:
+    firmwareVersion: $steps.getManager.outputs.firmwareVersion
+    managerHealth: $steps.getManager.outputs.managerHealth
+    virtualMedia: $steps.listVirtualMedia.outputs.virtualMedia
+    logServices: $steps.listLogServices.outputs.logServices

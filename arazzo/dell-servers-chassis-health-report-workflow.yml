@@ -1,0 +1,75 @@
+arazzo: 1.0.1
+info:
+  title: Dell Servers Chassis Health Report
+  summary: Assemble a chassis health report from chassis, power, and thermal reads.
+  description: >-
+    Builds a consolidated physical-health snapshot for a Dell PowerEdge chassis
+    through the iDRAC Redfish API. The workflow reads the chassis resource for
+    model and overall health, then reads the chassis power resource for
+    consumption and supply status, and finally reads the chassis thermal
+    resource for temperature and fan readings. The combined outputs give a
+    single view of enclosure health without traversing the Redfish links by
+    hand. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: idracRedfish
+  url: ../openapi/dell-servers-idrac-redfish-openapi.yml
+  type: openapi
+workflows:
+- workflowId: chassis-health-report
+  summary: Read chassis, power, and thermal resources into one health snapshot.
+  description: >-
+    Reads the chassis resource then its power and thermal subresources to
+    produce a consolidated physical-health report.
+  inputs:
+    type: object
+    required:
+    - chassisId
+    properties:
+      chassisId:
+        type: string
+        description: Chassis identifier, typically System.Embedded.1.
+  steps:
+  - stepId: getChassis
+    description: Read the chassis resource for model, type, and overall health.
+    operationId: getChassis
+    parameters:
+    - name: ChassisId
+      in: path
+      value: $inputs.chassisId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      model: $response.body#/Model
+      chassisHealth: $response.body#/Status/Health
+      powerState: $response.body#/PowerState
+  - stepId: getPower
+    description: Read the chassis power resource for consumption and supply status.
+    operationId: getChassisPower
+    parameters:
+    - name: ChassisId
+      in: path
+      value: $inputs.chassisId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      powerControl: $response.body#/PowerControl
+      powerSupplies: $response.body#/PowerSupplies
+  - stepId: getThermal
+    description: Read the chassis thermal resource for temperatures and fan status.
+    operationId: getChassisThermal
+    parameters:
+    - name: ChassisId
+      in: path
+      value: $inputs.chassisId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      temperatures: $response.body#/Temperatures
+      fans: $response.body#/Fans
+  outputs:
+    chassisHealth: $steps.getChassis.outputs.chassisHealth
+    powerSupplies: $steps.getPower.outputs.powerSupplies
+    temperatures: $steps.getThermal.outputs.temperatures
+    fans: $steps.getThermal.outputs.fans

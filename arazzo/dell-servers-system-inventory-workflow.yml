@@ -1,0 +1,87 @@
+arazzo: 1.0.1
+info:
+  title: Dell Servers System Hardware Inventory
+  summary: Collect system, storage, network, and BIOS detail for one server.
+  description: >-
+    Gathers a full hardware inventory for a single Dell PowerEdge server through
+    the iDRAC Redfish API. The workflow reads the computer system for model,
+    serial, processor, and memory summary, then lists the storage controllers,
+    lists the Ethernet interfaces, and reads the current BIOS attributes. The
+    combined outputs form a complete component-level picture suitable for asset
+    tracking or pre-change verification. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: idracRedfish
+  url: ../openapi/dell-servers-idrac-redfish-openapi.yml
+  type: openapi
+workflows:
+- workflowId: system-inventory
+  summary: Read system, storage, Ethernet, and BIOS into a single inventory.
+  description: >-
+    Reads the computer system then its storage controllers, Ethernet
+    interfaces, and BIOS attributes for a complete hardware inventory.
+  inputs:
+    type: object
+    required:
+    - systemId
+    properties:
+      systemId:
+        type: string
+        description: Computer system identifier, typically System.Embedded.1.
+  steps:
+  - stepId: getSystem
+    description: Read the computer system for model, serial, processor, and memory.
+    operationId: getSystem
+    parameters:
+    - name: SystemId
+      in: path
+      value: $inputs.systemId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      model: $response.body#/Model
+      serviceTag: $response.body#/SKU
+      biosVersion: $response.body#/BiosVersion
+      processorSummary: $response.body#/ProcessorSummary
+      memorySummary: $response.body#/MemorySummary
+  - stepId: listStorage
+    description: List the storage controllers attached to the system.
+    operationId: listStorageControllers
+    parameters:
+    - name: SystemId
+      in: path
+      value: $inputs.systemId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      storageControllers: $response.body#/Members
+  - stepId: listEthernet
+    description: List the Ethernet interfaces on the system.
+    operationId: listEthernetInterfaces
+    parameters:
+    - name: SystemId
+      in: path
+      value: $inputs.systemId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ethernetInterfaces: $response.body#/Members
+  - stepId: getBios
+    description: Read the current BIOS attribute values for the system.
+    operationId: getSystemBios
+    parameters:
+    - name: SystemId
+      in: path
+      value: $inputs.systemId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      biosAttributes: $response.body#/Attributes
+  outputs:
+    model: $steps.getSystem.outputs.model
+    serviceTag: $steps.getSystem.outputs.serviceTag
+    storageControllers: $steps.listStorage.outputs.storageControllers
+    ethernetInterfaces: $steps.listEthernet.outputs.ethernetInterfaces
+    biosAttributes: $steps.getBios.outputs.biosAttributes

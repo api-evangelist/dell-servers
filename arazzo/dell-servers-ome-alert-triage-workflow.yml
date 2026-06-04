@@ -1,0 +1,101 @@
+arazzo: 1.0.1
+info:
+  title: Dell Servers OpenManage Alert Triage
+  summary: Find a critical alert, read its detail, then read the source device.
+  description: >-
+    Triages the most urgent alerts in OpenManage Enterprise and ties each back
+    to its source device. The workflow lists alerts filtered to critical
+    severity and ordered most recent first, reads the top alert in detail for
+    its category and recommended action, and then reads the device that
+    generated the alert for its connection state and health. The result is a
+    single triage view from alert to device. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: openManageEnterprise
+  url: ../openapi/dell-servers-openmanage-enterprise-openapi.yml
+  type: openapi
+workflows:
+- workflowId: ome-alert-triage
+  summary: List critical alerts, read the top alert, then read its source device.
+  description: >-
+    Lists critical alerts newest first, reads the top alert in detail, and
+    reads the device that generated it.
+  inputs:
+    type: object
+    properties:
+      alertFilter:
+        type: string
+        description: >-
+          OData filter expression for alert criteria, for example
+          SeverityType eq 8 for critical alerts.
+      alertOrderBy:
+        type: string
+        description: >-
+          Property to sort the alert list by, for example TimeStamp for newest
+          first ordering.
+  steps:
+  - stepId: listCriticalAlerts
+    description: List alerts filtered to critical severity, most recent first.
+    operationId: listAlerts
+    parameters:
+    - name: $filter
+      in: query
+      value: $inputs.alertFilter
+    - name: $orderby
+      in: query
+      value: $inputs.alertOrderBy
+    - name: $top
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      alertCount: $response.body#/@odata.count
+      topAlertId: $response.body#/value/0/Id
+      sourceDeviceId: $response.body#/value/0/AlertDeviceId
+    onSuccess:
+    - name: alertFound
+      type: goto
+      stepId: getAlert
+      criteria:
+      - context: $response.body
+        condition: $.value.length > 0
+        type: jsonpath
+    - name: noAlerts
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.value.length == 0
+        type: jsonpath
+  - stepId: getAlert
+    description: Read the top alert in detail for category and recommended action.
+    operationId: getAlert
+    parameters:
+    - name: AlertId
+      in: path
+      value: $steps.listCriticalAlerts.outputs.topAlertId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      message: $response.body#/Message
+      category: $response.body#/CategoryName
+      recommendedAction: $response.body#/RecommendedAction
+  - stepId: getSourceDevice
+    description: Read the device that generated the alert for state and health.
+    operationId: getDevice
+    parameters:
+    - name: DeviceId
+      in: path
+      value: $steps.listCriticalAlerts.outputs.sourceDeviceId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      deviceName: $response.body#/DeviceName
+      connectionState: $response.body#/ConnectionState
+      deviceHealth: $response.body#/Status
+  outputs:
+    topAlertId: $steps.listCriticalAlerts.outputs.topAlertId
+    recommendedAction: $steps.getAlert.outputs.recommendedAction
+    deviceName: $steps.getSourceDevice.outputs.deviceName

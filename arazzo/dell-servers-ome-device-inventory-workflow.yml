@@ -1,0 +1,62 @@
+arazzo: 1.0.1
+info:
+  title: Dell Servers OpenManage Device Inventory Deep Dive
+  summary: Read a managed device and pull its detailed hardware inventory.
+  description: >-
+    Produces a detailed hardware picture for a single device managed by
+    OpenManage Enterprise. The workflow reads the device for connection state,
+    health, and firmware version, then pulls the full inventory details
+    covering processor, memory, storage, network adapter, and firmware
+    components. The combined outputs support asset reporting and pre-change
+    validation without traversing the console UI. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: openManageEnterprise
+  url: ../openapi/dell-servers-openmanage-enterprise-openapi.yml
+  type: openapi
+workflows:
+- workflowId: ome-device-inventory
+  summary: Read a device, then pull its detailed component inventory.
+  description: >-
+    Reads a managed device and then retrieves its full hardware inventory
+    details by component type.
+  inputs:
+    type: object
+    required:
+    - deviceId
+    properties:
+      deviceId:
+        type: integer
+        description: Unique identifier of the managed device.
+  steps:
+  - stepId: getDevice
+    description: Read the managed device for state, health, and firmware version.
+    operationId: getDevice
+    parameters:
+    - name: DeviceId
+      in: path
+      value: $inputs.deviceId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      serviceTag: $response.body#/DeviceServiceTag
+      model: $response.body#/Model
+      connectionState: $response.body#/ConnectionState
+      firmwareVersion: $response.body#/FirmwareVersion
+  - stepId: getInventory
+    description: Pull the detailed hardware inventory for the device.
+    operationId: getDeviceInventory
+    parameters:
+    - name: DeviceId
+      in: path
+      value: $inputs.deviceId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      inventory: $response.body#/value
+  outputs:
+    serviceTag: $steps.getDevice.outputs.serviceTag
+    model: $steps.getDevice.outputs.model
+    inventory: $steps.getInventory.outputs.inventory

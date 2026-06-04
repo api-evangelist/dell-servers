@@ -1,0 +1,54 @@
+arazzo: 1.0.1
+info:
+  title: Dell Servers OpenManage Firmware Compliance Check
+  summary: List firmware catalogs and read their compliance baselines.
+  description: >-
+    Reports firmware compliance state across managed devices in OpenManage
+    Enterprise. The workflow lists the firmware catalogs registered against Dell
+    support sites or custom repositories, then reads the firmware compliance
+    baselines that define the expected versions and summarize how many
+    components are critical, warning, or normal. The combined outputs identify
+    where firmware drift exists before any update is scheduled. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: openManageEnterprise
+  url: ../openapi/dell-servers-openmanage-enterprise-openapi.yml
+  type: openapi
+workflows:
+- workflowId: ome-firmware-compliance
+  summary: List firmware catalogs then read their compliance baselines.
+  description: >-
+    Enumerates firmware catalogs and reads the compliance baselines that
+    summarize firmware drift across managed devices.
+  inputs:
+    type: object
+    properties:
+      noteOnly:
+        type: string
+        description: >-
+          Optional documentation placeholder; neither step in this read-only
+          flow requires request inputs.
+  steps:
+  - stepId: listCatalogs
+    description: List the firmware catalogs registered in OpenManage Enterprise.
+    operationId: listFirmwareCatalogs
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      catalogs: $response.body#/value
+      firstCatalogId: $response.body#/value/0/Id
+  - stepId: getBaselines
+    description: >-
+      Read the firmware compliance baselines and their compliance summaries.
+    operationId: getFirmwareBaselines
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      baselines: $response.body#/value
+      firstComplianceSummary: $response.body#/value/0/ComplianceSummary
+  outputs:
+    catalogs: $steps.listCatalogs.outputs.catalogs
+    baselines: $steps.getBaselines.outputs.baselines
+    firstComplianceSummary: $steps.getBaselines.outputs.firstComplianceSummary

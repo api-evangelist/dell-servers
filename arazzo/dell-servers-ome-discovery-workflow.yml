@@ -1,0 +1,102 @@
+arazzo: 1.0.1
+info:
+  title: Dell Servers OpenManage Device Discovery
+  summary: Create a discovery configuration, watch its job, then list discovered devices.
+  description: >-
+    Onboards new infrastructure into OpenManage Enterprise by running a
+    discovery against a network range. The workflow creates a discovery
+    configuration group that targets a network address with a connection
+    profile and runs immediately, polls the discovery jobs collection until a
+    job is no longer in progress, and then lists the managed devices to confirm
+    the newly discovered systems. Branching keeps the flow in the poll loop
+    while discovery work is still pending. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: openManageEnterprise
+  url: ../openapi/dell-servers-openmanage-enterprise-openapi.yml
+  type: openapi
+workflows:
+- workflowId: ome-discovery
+  summary: Create a discovery config, poll discovery jobs, then list devices.
+  description: >-
+    Creates a run-now discovery configuration, polls the discovery jobs until
+    none remain in progress, and lists the resulting managed devices.
+  inputs:
+    type: object
+    required:
+    - configName
+    - networkAddress
+    - connectionProfileId
+    properties:
+      configName:
+        type: string
+        description: Name for the discovery configuration group.
+      networkAddress:
+        type: string
+        description: IP address, range, or CIDR to scan for devices.
+      connectionProfileId:
+        type: integer
+        description: Connection profile identifier holding discovery credentials.
+      deviceType:
+        type: integer
+        description: Device type code to discover, for example a server type code.
+  steps:
+  - stepId: createDiscovery
+    description: >-
+      Create a discovery configuration group that targets the supplied network
+      address and runs immediately.
+    operationId: createDiscoveryConfig
+    requestBody:
+      contentType: application/json
+      payload:
+        DiscoveryConfigGroupName: $inputs.configName
+        DiscoveryConfigModels:
+        - DiscoveryConfigTargets:
+          - NetworkAddressDetail: $inputs.networkAddress
+          ConnectionProfileId: $inputs.connectionProfileId
+          DeviceType:
+          - $inputs.deviceType
+        Schedule:
+          RunNow: true
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      createStatus: $statusCode
+  - stepId: pollDiscoveryJobs
+    description: >-
+      Read the discovery jobs collection and loop while any job is still
+      present; end once no discovery jobs remain.
+    operationId: listDiscoveryJobs
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      discoveryJobs: $response.body#/value
+    onSuccess:
+    - name: jobsPending
+      type: goto
+      stepId: pollDiscoveryJobs
+      criteria:
+      - context: $response.body
+        condition: $.value.length > 0
+        type: jsonpath
+    - name: jobsDone
+      type: goto
+      stepId: listDevices
+      criteria:
+      - context: $response.body
+        condition: $.value.length == 0
+        type: jsonpath
+  - stepId: listDevices
+    description: List the managed devices to confirm newly discovered systems.
+    operationId: listDevices
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      deviceCount: $response.body#/@odata.count
+      devices: $response.body#/value
+  outputs:
+    createStatus: $steps.createDiscovery.outputs.createStatus
+    deviceCount: $steps.listDevices.outputs.deviceCount
+    devices: $steps.listDevices.outputs.devices

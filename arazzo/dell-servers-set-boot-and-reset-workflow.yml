@@ -1,0 +1,103 @@
+arazzo: 1.0.1
+info:
+  title: Dell Servers Set Boot Device and Reset
+  summary: Read a system, set a pending BIOS boot override, then power-cycle it.
+  description: >-
+    A common one-time-boot orchestration for Dell PowerEdge servers over the
+    iDRAC Redfish API. The workflow reads the computer system to confirm it
+    exists and capture its current power state, writes a pending BIOS attribute
+    that selects the desired boot source, and then issues a reset action to
+    apply the change on the next boot. Because this iDRAC description exposes
+    boot configuration through the BIOS pending-settings resource rather than a
+    dedicated boot-override action, the boot target is adapted onto a BIOS
+    attribute name-value pair. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: idracRedfish
+  url: ../openapi/dell-servers-idrac-redfish-openapi.yml
+  type: openapi
+workflows:
+- workflowId: set-boot-and-reset
+  summary: Read a system, set a pending BIOS boot source, then reset it.
+  description: >-
+    Confirms the target system, sets a pending BIOS boot attribute, and issues
+    a reset so the override takes effect on the next boot.
+  inputs:
+    type: object
+    required:
+    - systemId
+    - bootAttributeName
+    - bootAttributeValue
+    - resetType
+    properties:
+      systemId:
+        type: string
+        description: Computer system identifier, typically System.Embedded.1.
+      bootAttributeName:
+        type: string
+        description: >-
+          BIOS attribute name that selects the boot source, for example
+          SetBootOrderEn or BootSeqRetry.
+      bootAttributeValue:
+        type: string
+        description: Desired value for the BIOS boot attribute.
+      resetType:
+        type: string
+        description: >-
+          Reset action to apply the change, for example ForceRestart,
+          GracefulRestart, or PowerCycle.
+  steps:
+  - stepId: getSystem
+    description: >-
+      Read the computer system to confirm it exists and capture its current
+      power state before changing boot configuration.
+    operationId: getSystem
+    parameters:
+    - name: SystemId
+      in: path
+      value: $inputs.systemId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      currentPowerState: $response.body#/PowerState
+      biosVersion: $response.body#/BiosVersion
+  - stepId: setBootAttribute
+    description: >-
+      Set the pending BIOS attribute that selects the boot source. The change
+      is staged and applied on the next system reboot.
+    operationId: updateBiosSettings
+    parameters:
+    - name: SystemId
+      in: path
+      value: $inputs.systemId
+    requestBody:
+      contentType: application/json
+      payload:
+        Attributes:
+          $inputs.bootAttributeName: $inputs.bootAttributeValue
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      pendingApplied: $statusCode
+  - stepId: resetSystem
+    description: >-
+      Issue the reset action so the pending BIOS boot attribute is applied on
+      the next boot.
+    operationId: resetSystem
+    parameters:
+    - name: SystemId
+      in: path
+      value: $inputs.systemId
+    requestBody:
+      contentType: application/json
+      payload:
+        ResetType: $inputs.resetType
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      resetStatus: $statusCode
+  outputs:
+    priorPowerState: $steps.getSystem.outputs.currentPowerState
+    resetStatus: $steps.resetSystem.outputs.resetStatus

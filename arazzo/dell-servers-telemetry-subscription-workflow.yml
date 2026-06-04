@@ -1,0 +1,71 @@
+arazzo: 1.0.1
+info:
+  title: Dell Servers Telemetry Subscription Setup
+  summary: Discover metric reports and subscribe to telemetry events.
+  description: >-
+    Sets up streaming telemetry for a Dell PowerEdge server through the iDRAC
+    Redfish API. The workflow reads the telemetry service, lists the available
+    metric reports such as power, thermal, and CPU statistics, and then creates
+    an event subscription that pushes MetricReport events to a caller-supplied
+    destination URL. The result is a live telemetry feed without polling each
+    metric report by hand. Every step spells out its request inline so the flow
+    can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: idracRedfish
+  url: ../openapi/dell-servers-idrac-redfish-openapi.yml
+  type: openapi
+workflows:
+- workflowId: telemetry-subscription
+  summary: Read telemetry service, list reports, then subscribe to metric events.
+  description: >-
+    Reads the telemetry service and its metric reports, then creates an event
+    subscription that delivers MetricReport events to a destination URL.
+  inputs:
+    type: object
+    required:
+    - destination
+    properties:
+      destination:
+        type: string
+        description: URL to which Redfish events will be posted.
+      context:
+        type: string
+        description: Client-supplied context string returned with each event.
+  steps:
+  - stepId: getTelemetryService
+    description: Read the telemetry service resource and its links.
+    operationId: getTelemetryService
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      telemetryService: $response.body
+  - stepId: listMetricReports
+    description: List the metric reports available from the telemetry service.
+    operationId: listMetricReports
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      reportCount: $response.body#/Members@odata.count
+      metricReports: $response.body#/Members
+  - stepId: createSubscription
+    description: >-
+      Create an event subscription that pushes MetricReport events to the
+      supplied destination URL over the Redfish protocol.
+    operationId: createEventSubscription
+    requestBody:
+      contentType: application/json
+      payload:
+        Destination: $inputs.destination
+        EventTypes:
+        - MetricReport
+        Protocol: Redfish
+        Context: $inputs.context
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      subscriptionStatus: $statusCode
+  outputs:
+    metricReports: $steps.listMetricReports.outputs.metricReports
+    subscriptionStatus: $steps.createSubscription.outputs.subscriptionStatus

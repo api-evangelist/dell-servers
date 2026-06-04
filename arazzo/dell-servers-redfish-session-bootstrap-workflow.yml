@@ -1,0 +1,74 @@
+arazzo: 1.0.1
+info:
+  title: Dell Servers Redfish Session Bootstrap
+  summary: Open a Redfish session and list systems using the session token.
+  description: >-
+    Establishes a token-based session against an iDRAC Redfish service and uses
+    it to enumerate the managed computer systems. The workflow reads the
+    service root to confirm the endpoint and protocol version, creates a session
+    with username and password to obtain an X-Auth-Token, and then lists the
+    computer systems. Because createSession is declared in more than one Dell
+    source description, the session step references it through the
+    source-qualified operationPath form to remove ambiguity. Every step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: idracRedfish
+  url: ../openapi/dell-servers-idrac-redfish-openapi.yml
+  type: openapi
+workflows:
+- workflowId: redfish-session-bootstrap
+  summary: Read service root, create a session token, then list systems.
+  description: >-
+    Confirms the Redfish service root, opens a token session with credentials,
+    and lists the computer systems managed by the iDRAC.
+  inputs:
+    type: object
+    required:
+    - userName
+    - password
+    properties:
+      userName:
+        type: string
+        description: iDRAC username.
+      password:
+        type: string
+        description: iDRAC password.
+  steps:
+  - stepId: getServiceRoot
+    description: Read the Redfish service root to confirm endpoint and version.
+    operationId: getServiceRoot
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      redfishVersion: $response.body#/RedfishVersion
+  - stepId: createSession
+    description: >-
+      Create a Redfish session with credentials and capture the X-Auth-Token
+      returned for use on subsequent requests.
+    operationPath: '{$sourceDescriptions.idracRedfish.url}#/paths/~1SessionService~1Sessions/post'
+    requestBody:
+      contentType: application/json
+      payload:
+        UserName: $inputs.userName
+        Password: $inputs.password
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      authToken: $response.header.X-Auth-Token
+  - stepId: listSystems
+    description: List the computer systems managed by this iDRAC instance.
+    operationId: listSystems
+    parameters:
+    - name: X-Auth-Token
+      in: header
+      value: $steps.createSession.outputs.authToken
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      systemCount: $response.body#/Members@odata.count
+      systems: $response.body#/Members
+  outputs:
+    authToken: $steps.createSession.outputs.authToken
+    systems: $steps.listSystems.outputs.systems
