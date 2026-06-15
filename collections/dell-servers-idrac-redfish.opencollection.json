@@ -1,0 +1,517 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dell Servers Dell iDRAC Redfish REST API",
+    "version": "5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Service Root",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers Get Redfish service root",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/"
+          },
+          "docs": "Retrieves the Redfish service root resource which provides links to all top-level resource collections and service metadata including the Redfish protocol version and available services."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Systems",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers List computer systems",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Systems"
+          },
+          "docs": "Retrieves the collection of computer system resources managed by this iDRAC instance. Each system resource represents a Dell PowerEdge server with its hardware inventory, health status, and configuration."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Get a computer system",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Systems/:SystemId",
+            "params": [
+              {
+                "name": "SystemId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific computer system resource including detailed hardware inventory, health status, power state, boot configuration, processor and memory summary, and links to subordinate resources like storage, network interfaces, and BIOS settings."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Reset a computer system",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{idrac-ip}/redfish/v1/Systems/:SystemId/Actions/ComputerSystem.Reset",
+            "params": [
+              {
+                "name": "SystemId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Performs a power action on the computer system such as power on, power off, graceful shutdown, force restart, or power cycle. The available reset types depend on the current power state of the system."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Get BIOS attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Systems/:SystemId/Bios",
+            "params": [
+              {
+                "name": "SystemId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+              }
+            ]
+          },
+          "docs": "Retrieves the current BIOS attribute values for the specified computer system. BIOS attributes control hardware-level settings including boot order, processor configuration, memory settings, and security features."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Update pending BIOS attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{idrac-ip}/redfish/v1/Systems/:SystemId/Bios/Settings",
+            "params": [
+              {
+                "name": "SystemId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets pending BIOS attribute values that will be applied on the next system reboot. Only attributes that differ from current values need to be specified. Changes require a system reboot to take effect."
+        },
+        {
+          "info": {
+            "name": "Dell Servers List storage controllers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Systems/:SystemId/Storage",
+            "params": [
+              {
+                "name": "SystemId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+              }
+            ]
+          },
+          "docs": "Retrieves the collection of storage controller resources for the specified system, including RAID controllers, BOSS controllers, and direct-attached storage interfaces."
+        },
+        {
+          "info": {
+            "name": "Dell Servers List Ethernet interfaces",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Systems/:SystemId/EthernetInterfaces",
+            "params": [
+              {
+                "name": "SystemId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+              }
+            ]
+          },
+          "docs": "Retrieves the collection of Ethernet interface resources for the specified system, including network adapters, their MAC addresses, link status, and IP configuration."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Chassis",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers List chassis resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Chassis"
+          },
+          "docs": "Retrieves the collection of chassis resources representing the physical enclosure of the server including power supplies, fans, thermal sensors, and physical component inventory."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Get a chassis resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Chassis/:ChassisId",
+            "params": [
+              {
+                "name": "ChassisId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific chassis resource with detailed information about the physical enclosure, including model, serial number, part number, asset tag, indicator LED state, and links to power and thermal resources."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Get chassis power information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Chassis/:ChassisId/Power",
+            "params": [
+              {
+                "name": "ChassisId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+              }
+            ]
+          },
+          "docs": "Retrieves power supply information, power consumption metrics, and power control settings for the specified chassis including current wattage, power capacity, and power supply redundancy status."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Get chassis thermal information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Chassis/:ChassisId/Thermal",
+            "params": [
+              {
+                "name": "ChassisId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+              }
+            ]
+          },
+          "docs": "Retrieves thermal sensor readings, fan speeds, and temperature thresholds for the specified chassis. Includes inlet and exhaust temperatures, CPU temperatures, and fan status with redundancy information."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Managers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers List manager resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Managers"
+          },
+          "docs": "Retrieves the collection of manager resources representing the iDRAC management controller including its firmware version, network configuration, and available management services."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Get a manager resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Managers/:ManagerId",
+            "params": [
+              {
+                "name": "ManagerId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the manager resource, typically iDRAC.Embedded.1 for Dell PowerEdge servers"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific manager resource representing the iDRAC controller with its firmware version, model, network interfaces, virtual media capabilities, and links to log services."
+        },
+        {
+          "info": {
+            "name": "Dell Servers List log services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Managers/:ManagerId/LogServices",
+            "params": [
+              {
+                "name": "ManagerId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the manager resource, typically iDRAC.Embedded.1 for Dell PowerEdge servers"
+              }
+            ]
+          },
+          "docs": "Retrieves the collection of log services available on the iDRAC manager including the Lifecycle Controller log and the System Event Log (SEL)."
+        },
+        {
+          "info": {
+            "name": "Dell Servers List virtual media devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Managers/:ManagerId/VirtualMedia",
+            "params": [
+              {
+                "name": "ManagerId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the manager resource, typically iDRAC.Embedded.1 for Dell PowerEdge servers"
+              }
+            ]
+          },
+          "docs": "Retrieves the collection of virtual media devices that can be used to mount remote ISO images or floppy images for operating system deployment and server configuration."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers Get account service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/AccountService"
+          },
+          "docs": "Retrieves the account service resource which provides the configuration for user account management including password policies, lockout settings, and links to the accounts collection."
+        },
+        {
+          "info": {
+            "name": "Dell Servers List user accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/AccountService/Accounts"
+          },
+          "docs": "Retrieves the collection of user accounts configured on the iDRAC including local users with their roles and privileges."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers List active sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/SessionService/Sessions"
+          },
+          "docs": "Retrieves the collection of active sessions on the iDRAC including web UI sessions, Redfish API sessions, and SSH sessions."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Create a new session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{idrac-ip}/redfish/v1/SessionService/Sessions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Redfish session by authenticating with username and password. Returns a session token in the X-Auth-Token response header that can be used for subsequent requests instead of basic authentication."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Update Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers Get update service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/UpdateService"
+          },
+          "docs": "Retrieves the update service resource which provides firmware update capabilities and links to the firmware inventory collection."
+        },
+        {
+          "info": {
+            "name": "Dell Servers List firmware inventory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/UpdateService/FirmwareInventory"
+          },
+          "docs": "Retrieves the collection of firmware inventory items for all components in the server including iDRAC, BIOS, storage controllers, network adapters, power supplies, and CPLD firmware versions."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Task Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers List tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/TaskService/Tasks"
+          },
+          "docs": "Retrieves the collection of tasks representing asynchronous operations and lifecycle controller jobs including firmware updates, configuration changes, and RAID creation operations."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Event Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers Get event service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/EventService"
+          },
+          "docs": "Retrieves the event service resource which provides configuration for event subscriptions and server-sent events. The event service enables clients to subscribe to alerts and lifecycle events from the iDRAC."
+        },
+        {
+          "info": {
+            "name": "Dell Servers List event subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/EventService/Subscriptions"
+          },
+          "docs": "Retrieves the collection of event subscriptions configured on the iDRAC. Each subscription defines a destination URL and event types to which the client has subscribed for receiving push notifications."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Create an event subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{idrac-ip}/redfish/v1/EventService/Subscriptions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new event subscription that configures the iDRAC to push event notifications to a specified destination URL when events matching the subscription criteria occur. iDRAC supports up to eight concurrent subscriptions."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Telemetry Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers Get telemetry service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/TelemetryService"
+          },
+          "docs": "Retrieves the telemetry service resource which provides access to metric definitions and metric report definitions for server telemetry data including power, thermal, CPU, memory, and NIC statistics."
+        },
+        {
+          "info": {
+            "name": "Dell Servers List metric reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/TelemetryService/MetricReports"
+          },
+          "docs": "Retrieves the collection of metric reports available from the telemetry service. Each report contains a set of related metrics that can be streamed via SSE or polled directly."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

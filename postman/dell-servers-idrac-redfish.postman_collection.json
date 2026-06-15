@@ -1,0 +1,4082 @@
+{
+  "info": {
+    "_postman_id": "a2f85bdc-21a5-4e67-aa5c-7048494de354",
+    "name": "Dell Servers Dell iDRAC Redfish REST API",
+    "description": "Integrated Dell Remote Access Controller (iDRAC) RESTful API built upon the DMTF Redfish standard for out-of-band server lifecycle management of Dell PowerEdge servers. Provides programmatic access to server inventory, health monitoring, configuration, firmware updates, power control, virtual media, and BIOS management through a standards-based REST interface.\n\nContact Support:\n Name: Dell Technologies Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:07:45.000Z",
+    "updatedAt": "2026-06-05T15:07:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a2f85bdc-21a5-4e67-aa5c-7048494de354"
+  },
+  "item": [
+    {
+      "name": "/",
+      "item": [
+        {
+          "name": "Dell Servers Get Redfish service root",
+          "id": "405f25bc-ab7b-4c7f-a142-adb87fb5a03f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ]
+            },
+            "description": "Retrieves the Redfish service root resource which provides links to all top-level resource collections and service metadata including the Redfish protocol version and available services."
+          },
+          "response": [
+            {
+              "id": "a4452f5a-0d4f-4e70-b93f-e84c25a8f0be",
+              "name": "Service root resource",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"@odata.id\": \"<string>\",\n  \"@odata.type\": \"<string>\",\n  \"Id\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"RedfishVersion\": \"<string>\",\n  \"Systems\": {\n    \"@odata.id\": \"<string>\"\n  },\n  \"Chassis\": {\n    \"@odata.id\": \"<string>\"\n  },\n  \"Managers\": {\n    \"@odata.id\": \"<string>\"\n  },\n  \"AccountService\": {\n    \"@odata.id\": \"<string>\"\n  },\n  \"SessionService\": {\n    \"@odata.id\": \"<string>\"\n  },\n  \"UpdateService\": {\n    \"@odata.id\": \"<string>\"\n  },\n  \"EventService\": {\n    \"@odata.id\": \"<string>\"\n  },\n  \"TaskService\": {\n    \"@odata.id\": \"<string>\"\n  },\n  \"TelemetryService\": {\n    \"@odata.id\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-a4452f5a-0d4f-4e70-b93f-e84c25a8f0be"
+            },
+            {
+              "id": "eb2e2480-6098-4387-82e6-98256723e921",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-eb2e2480-6098-4387-82e6-98256723e921"
+            }
+          ],
+          "createdAt": "2026-06-05T15:07:46.000Z",
+          "updatedAt": "2026-06-05T15:07:46.000Z",
+          "uid": "35240-405f25bc-ab7b-4c7f-a142-adb87fb5a03f"
+        }
+      ],
+      "id": "a78b1144-bf2b-4211-ab06-ed296f5daf3b",
+      "createdAt": "2026-06-05T15:07:46.000Z",
+      "updatedAt": "2026-06-05T15:07:46.000Z",
+      "uid": "35240-a78b1144-bf2b-4211-ab06-ed296f5daf3b"
+    },
+    {
+      "name": "Systems",
+      "item": [
+        {
+          "name": "{SystemId}",
+          "item": [
+            {
+              "name": "Actions",
+              "item": [
+                {
+                  "name": "ComputerSystem.Reset",
+                  "item": [
+                    {
+                      "name": "Dell Servers Reset a computer system",
+                      "id": "292b1935-3257-4cc2-9b96-2581e1dc5797",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"ResetType\": \"ForceRestart\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/Systems/:SystemId/Actions/ComputerSystem.Reset",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Systems",
+                            ":SystemId",
+                            "Actions",
+                            "ComputerSystem.Reset"
+                          ],
+                          "variable": [
+                            {
+                              "id": "0a47cc8c-8776-45a4-9783-5d449671e4f2",
+                              "key": "SystemId",
+                              "value": "System.Embedded.1",
+                              "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                            }
+                          ]
+                        },
+                        "description": "Performs a power action on the computer system such as power on, power off, graceful shutdown, force restart, or power cycle. The available reset types depend on the current power state of the system."
+                      },
+                      "response": [
+                        {
+                          "id": "39d6b25e-4424-4804-8934-180bbc81ac1a",
+                          "name": "Reset action initiated successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"ResetType\": \"ForceRestart\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/Systems/:SystemId/Actions/ComputerSystem.Reset",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Systems",
+                                ":SystemId",
+                                "Actions",
+                                "ComputerSystem.Reset"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "SystemId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:07:46.000Z",
+                          "updatedAt": "2026-06-05T15:07:46.000Z",
+                          "uid": "35240-39d6b25e-4424-4804-8934-180bbc81ac1a"
+                        },
+                        {
+                          "id": "14c93b9a-67a2-4775-ae81-af4e142113ce",
+                          "name": "Invalid reset type for current system state",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"ResetType\": \"ForceRestart\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/Systems/:SystemId/Actions/ComputerSystem.Reset",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Systems",
+                                ":SystemId",
+                                "Actions",
+                                "ComputerSystem.Reset"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "SystemId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:07:46.000Z",
+                          "updatedAt": "2026-06-05T15:07:46.000Z",
+                          "uid": "35240-14c93b9a-67a2-4775-ae81-af4e142113ce"
+                        },
+                        {
+                          "id": "b8f3d4b2-3761-4095-86df-278ee1bfe97e",
+                          "name": "Unauthorized - invalid or missing credentials",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"ResetType\": \"ForceRestart\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/Systems/:SystemId/Actions/ComputerSystem.Reset",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Systems",
+                                ":SystemId",
+                                "Actions",
+                                "ComputerSystem.Reset"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "SystemId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:07:46.000Z",
+                          "updatedAt": "2026-06-05T15:07:46.000Z",
+                          "uid": "35240-b8f3d4b2-3761-4095-86df-278ee1bfe97e"
+                        },
+                        {
+                          "id": "707968e7-b45e-47a9-98d4-21b157b34b9b",
+                          "name": "System resource not found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"ResetType\": \"ForceRestart\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/Systems/:SystemId/Actions/ComputerSystem.Reset",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Systems",
+                                ":SystemId",
+                                "Actions",
+                                "ComputerSystem.Reset"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "SystemId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:07:46.000Z",
+                          "updatedAt": "2026-06-05T15:07:46.000Z",
+                          "uid": "35240-707968e7-b45e-47a9-98d4-21b157b34b9b"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:07:46.000Z",
+                      "updatedAt": "2026-06-05T15:07:46.000Z",
+                      "uid": "35240-292b1935-3257-4cc2-9b96-2581e1dc5797"
+                    }
+                  ],
+                  "id": "3daf3125-e9a9-4c33-9bcb-4f395c31bd7b",
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-3daf3125-e9a9-4c33-9bcb-4f395c31bd7b"
+                }
+              ],
+              "id": "499eb6a7-e9e7-4948-8333-4ce1defc2cf4",
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-499eb6a7-e9e7-4948-8333-4ce1defc2cf4"
+            },
+            {
+              "name": "Bios",
+              "item": [
+                {
+                  "name": "Settings",
+                  "item": [
+                    {
+                      "name": "Dell Servers Update pending BIOS attributes",
+                      "id": "59c963b5-fbcc-4590-ba20-ae32cfbe4311",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Attributes\": {\n    \"nostrud3\": 26882697.143162027\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/Systems/:SystemId/Bios/Settings",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Systems",
+                            ":SystemId",
+                            "Bios",
+                            "Settings"
+                          ],
+                          "variable": [
+                            {
+                              "id": "4b46a308-0053-48b9-af7a-9d30bdca430b",
+                              "key": "SystemId",
+                              "value": "System.Embedded.1",
+                              "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                            }
+                          ]
+                        },
+                        "description": "Sets pending BIOS attribute values that will be applied on the next system reboot. Only attributes that differ from current values need to be specified. Changes require a system reboot to take effect."
+                      },
+                      "response": [
+                        {
+                          "id": "83e70026-90bf-4e62-b34e-8a8abfd03650",
+                          "name": "Pending BIOS attributes updated",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Attributes\": {\n    \"nostrud3\": 26882697.143162027\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/Systems/:SystemId/Bios/Settings",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Systems",
+                                ":SystemId",
+                                "Bios",
+                                "Settings"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "SystemId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:07:46.000Z",
+                          "updatedAt": "2026-06-05T15:07:46.000Z",
+                          "uid": "35240-83e70026-90bf-4e62-b34e-8a8abfd03650"
+                        },
+                        {
+                          "id": "58a8b6c1-6110-4045-8b52-13b6227fa793",
+                          "name": "Invalid attribute name or value",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Attributes\": {\n    \"nostrud3\": 26882697.143162027\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/Systems/:SystemId/Bios/Settings",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Systems",
+                                ":SystemId",
+                                "Bios",
+                                "Settings"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "SystemId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:07:46.000Z",
+                          "updatedAt": "2026-06-05T15:07:46.000Z",
+                          "uid": "35240-58a8b6c1-6110-4045-8b52-13b6227fa793"
+                        },
+                        {
+                          "id": "be4352e7-2b72-42b3-bbca-a645310a5b69",
+                          "name": "Unauthorized - invalid or missing credentials",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Attributes\": {\n    \"nostrud3\": 26882697.143162027\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/Systems/:SystemId/Bios/Settings",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Systems",
+                                ":SystemId",
+                                "Bios",
+                                "Settings"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "SystemId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:07:46.000Z",
+                          "updatedAt": "2026-06-05T15:07:46.000Z",
+                          "uid": "35240-be4352e7-2b72-42b3-bbca-a645310a5b69"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:07:46.000Z",
+                      "updatedAt": "2026-06-05T15:07:46.000Z",
+                      "uid": "35240-59c963b5-fbcc-4590-ba20-ae32cfbe4311"
+                    }
+                  ],
+                  "id": "a1bcf7dc-bda7-485c-abe7-82582037c98c",
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-a1bcf7dc-bda7-485c-abe7-82582037c98c"
+                },
+                {
+                  "name": "Dell Servers Get BIOS attributes",
+                  "id": "835d75ad-089b-4c19-93f7-67bfab53010c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Systems/:SystemId/Bios",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Systems",
+                        ":SystemId",
+                        "Bios"
+                      ],
+                      "variable": [
+                        {
+                          "id": "fa05119e-ddbe-4ac1-bbc3-cfd14f7e2374",
+                          "key": "SystemId",
+                          "value": "System.Embedded.1",
+                          "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves the current BIOS attribute values for the specified computer system. BIOS attributes control hardware-level settings including boot order, processor configuration, memory settings, and security features."
+                  },
+                  "response": [
+                    {
+                      "id": "a0b93328-b1f1-4e9c-a096-14d93a869a0e",
+                      "name": "BIOS attributes resource",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Systems/:SystemId/Bios",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Systems",
+                            ":SystemId",
+                            "Bios"
+                          ],
+                          "variable": [
+                            {
+                              "key": "SystemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"@odata.id\": \"<string>\",\n  \"Id\": \"<string>\",\n  \"AttributeRegistry\": \"<string>\",\n  \"Attributes\": {\n    \"tempor7\": \"voluptate\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:07:46.000Z",
+                      "updatedAt": "2026-06-05T15:07:46.000Z",
+                      "uid": "35240-a0b93328-b1f1-4e9c-a096-14d93a869a0e"
+                    },
+                    {
+                      "id": "1dbe3267-4349-4d18-9553-15a1df301274",
+                      "name": "Unauthorized - invalid or missing credentials",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Systems/:SystemId/Bios",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Systems",
+                            ":SystemId",
+                            "Bios"
+                          ],
+                          "variable": [
+                            {
+                              "key": "SystemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:07:46.000Z",
+                      "updatedAt": "2026-06-05T15:07:46.000Z",
+                      "uid": "35240-1dbe3267-4349-4d18-9553-15a1df301274"
+                    },
+                    {
+                      "id": "60f6888f-0887-4923-9460-ed4960add0e8",
+                      "name": "System resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Systems/:SystemId/Bios",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Systems",
+                            ":SystemId",
+                            "Bios"
+                          ],
+                          "variable": [
+                            {
+                              "key": "SystemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:07:46.000Z",
+                      "updatedAt": "2026-06-05T15:07:46.000Z",
+                      "uid": "35240-60f6888f-0887-4923-9460-ed4960add0e8"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-835d75ad-089b-4c19-93f7-67bfab53010c"
+                }
+              ],
+              "id": "a07072cb-a477-4977-9f9c-1695f0d71068",
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-a07072cb-a477-4977-9f9c-1695f0d71068"
+            },
+            {
+              "name": "Storage",
+              "item": [
+                {
+                  "name": "Dell Servers List storage controllers",
+                  "id": "80c3754b-7ba4-4ff8-abd0-9a7ec45a1f6a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Systems/:SystemId/Storage",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Systems",
+                        ":SystemId",
+                        "Storage"
+                      ],
+                      "variable": [
+                        {
+                          "id": "c5514139-9fa1-43b2-9316-92444765e337",
+                          "key": "SystemId",
+                          "value": "System.Embedded.1",
+                          "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves the collection of storage controller resources for the specified system, including RAID controllers, BOSS controllers, and direct-attached storage interfaces."
+                  },
+                  "response": [
+                    {
+                      "id": "da403242-7738-4a2b-8495-790c52f30f08",
+                      "name": "Collection of storage controllers",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Systems/:SystemId/Storage",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Systems",
+                            ":SystemId",
+                            "Storage"
+                          ],
+                          "variable": [
+                            {
+                              "key": "SystemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"@odata.id\": \"<string>\",\n  \"@odata.type\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"Members@odata.count\": \"<integer>\",\n  \"Members\": [\n    {\n      \"@odata.id\": \"<string>\"\n    },\n    {\n      \"@odata.id\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:07:46.000Z",
+                      "updatedAt": "2026-06-05T15:07:46.000Z",
+                      "uid": "35240-da403242-7738-4a2b-8495-790c52f30f08"
+                    },
+                    {
+                      "id": "e02ba4a2-53f8-4f2e-b28a-f2725d3c1ec9",
+                      "name": "Unauthorized - invalid or missing credentials",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Systems/:SystemId/Storage",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Systems",
+                            ":SystemId",
+                            "Storage"
+                          ],
+                          "variable": [
+                            {
+                              "key": "SystemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:07:46.000Z",
+                      "updatedAt": "2026-06-05T15:07:46.000Z",
+                      "uid": "35240-e02ba4a2-53f8-4f2e-b28a-f2725d3c1ec9"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-80c3754b-7ba4-4ff8-abd0-9a7ec45a1f6a"
+                }
+              ],
+              "id": "5c63c6ec-b34f-40f2-9be6-5e0ab2676506",
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-5c63c6ec-b34f-40f2-9be6-5e0ab2676506"
+            },
+            {
+              "name": "EthernetInterfaces",
+              "item": [
+                {
+                  "name": "Dell Servers List Ethernet interfaces",
+                  "id": "e46b6ad5-5151-492f-977e-a4e2d838233f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Systems/:SystemId/EthernetInterfaces",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Systems",
+                        ":SystemId",
+                        "EthernetInterfaces"
+                      ],
+                      "variable": [
+                        {
+                          "id": "8fde13ae-eb22-478a-bc2f-884d2ae02be1",
+                          "key": "SystemId",
+                          "value": "System.Embedded.1",
+                          "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves the collection of Ethernet interface resources for the specified system, including network adapters, their MAC addresses, link status, and IP configuration."
+                  },
+                  "response": [
+                    {
+                      "id": "398d190e-7bf3-4965-a34f-a2ddfac5b135",
+                      "name": "Collection of Ethernet interfaces",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Systems/:SystemId/EthernetInterfaces",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Systems",
+                            ":SystemId",
+                            "EthernetInterfaces"
+                          ],
+                          "variable": [
+                            {
+                              "key": "SystemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"@odata.id\": \"<string>\",\n  \"@odata.type\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"Members@odata.count\": \"<integer>\",\n  \"Members\": [\n    {\n      \"@odata.id\": \"<string>\"\n    },\n    {\n      \"@odata.id\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:07:46.000Z",
+                      "updatedAt": "2026-06-05T15:07:46.000Z",
+                      "uid": "35240-398d190e-7bf3-4965-a34f-a2ddfac5b135"
+                    },
+                    {
+                      "id": "28539bc1-0096-47c6-8b98-4ec652d8f3c1",
+                      "name": "Unauthorized - invalid or missing credentials",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Systems/:SystemId/EthernetInterfaces",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Systems",
+                            ":SystemId",
+                            "EthernetInterfaces"
+                          ],
+                          "variable": [
+                            {
+                              "key": "SystemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:07:46.000Z",
+                      "updatedAt": "2026-06-05T15:07:46.000Z",
+                      "uid": "35240-28539bc1-0096-47c6-8b98-4ec652d8f3c1"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-e46b6ad5-5151-492f-977e-a4e2d838233f"
+                }
+              ],
+              "id": "058ec523-ab73-4c75-99b4-14550d9d9cd4",
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-058ec523-ab73-4c75-99b4-14550d9d9cd4"
+            },
+            {
+              "name": "Dell Servers Get a computer system",
+              "id": "026ee1ff-b535-4439-a053-b6c4919b41a9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Systems/:SystemId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Systems",
+                    ":SystemId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "9f9c855a-8299-4670-9f86-c96c7f0044e8",
+                      "key": "SystemId",
+                      "value": "System.Embedded.1",
+                      "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    }
+                  ]
+                },
+                "description": "Retrieves a specific computer system resource including detailed hardware inventory, health status, power state, boot configuration, processor and memory summary, and links to subordinate resources like storage, network interfaces, and BIOS settings."
+              },
+              "response": [
+                {
+                  "id": "148b35e2-2949-46ec-baef-e647046601ee",
+                  "name": "Computer system resource",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Systems/:SystemId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Systems",
+                        ":SystemId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "SystemId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"@odata.id\": \"<string>\",\n  \"@odata.type\": \"<string>\",\n  \"Id\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"Manufacturer\": \"<string>\",\n  \"Model\": \"<string>\",\n  \"SerialNumber\": \"<string>\",\n  \"SKU\": \"<string>\",\n  \"PartNumber\": \"<string>\",\n  \"SystemType\": \"OS\",\n  \"AssetTag\": \"<string>\",\n  \"BiosVersion\": \"<string>\",\n  \"PowerState\": \"On\",\n  \"Status\": {\n    \"Health\": \"Warning\",\n    \"HealthRollup\": \"Critical\",\n    \"State\": \"Starting\"\n  },\n  \"HostName\": \"<string>\",\n  \"IndicatorLED\": \"Lit\",\n  \"ProcessorSummary\": {\n    \"Count\": \"<integer>\",\n    \"Model\": \"<string>\",\n    \"Status\": {\n      \"Health\": \"OK\",\n      \"HealthRollup\": \"Critical\",\n      \"State\": \"Disabled\"\n    }\n  },\n  \"MemorySummary\": {\n    \"TotalSystemMemoryGiB\": \"<number>\",\n    \"Status\": {\n      \"Health\": \"Warning\",\n      \"HealthRollup\": \"Critical\",\n      \"State\": \"Disabled\"\n    }\n  },\n  \"Boot\": {\n    \"BootSourceOverrideEnabled\": \"Disabled\",\n    \"BootSourceOverrideTarget\": \"<string>\",\n    \"BootSourceOverrideMode\": \"UEFI\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-148b35e2-2949-46ec-baef-e647046601ee"
+                },
+                {
+                  "id": "0bb0b44c-6d78-4e62-ba2a-9cdc8dfc96a1",
+                  "name": "Unauthorized - invalid or missing credentials",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Systems/:SystemId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Systems",
+                        ":SystemId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "SystemId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-0bb0b44c-6d78-4e62-ba2a-9cdc8dfc96a1"
+                },
+                {
+                  "id": "2074efba-5846-4b45-9c43-4f051cad9c67",
+                  "name": "System resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Systems/:SystemId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Systems",
+                        ":SystemId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "SystemId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-2074efba-5846-4b45-9c43-4f051cad9c67"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-026ee1ff-b535-4439-a053-b6c4919b41a9"
+            }
+          ],
+          "id": "29df0e0b-1e83-4915-bd97-4431b73096e1",
+          "createdAt": "2026-06-05T15:07:46.000Z",
+          "updatedAt": "2026-06-05T15:07:46.000Z",
+          "uid": "35240-29df0e0b-1e83-4915-bd97-4431b73096e1"
+        },
+        {
+          "name": "Dell Servers List computer systems",
+          "id": "3d151a10-a7f0-4564-9bfb-87a8f8d07e58",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/Systems",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Systems"
+              ]
+            },
+            "description": "Retrieves the collection of computer system resources managed by this iDRAC instance. Each system resource represents a Dell PowerEdge server with its hardware inventory, health status, and configuration."
+          },
+          "response": [
+            {
+              "id": "9e7eecc4-7b54-4c46-920f-1249c5f7c032",
+              "name": "Collection of computer system resources",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Systems",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Systems"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"@odata.id\": \"<string>\",\n  \"@odata.type\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"Members@odata.count\": \"<integer>\",\n  \"Members\": [\n    {\n      \"@odata.id\": \"<string>\"\n    },\n    {\n      \"@odata.id\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-9e7eecc4-7b54-4c46-920f-1249c5f7c032"
+            },
+            {
+              "id": "8f4e99b5-8a4d-41b1-9104-3df87847819b",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Systems",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Systems"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-8f4e99b5-8a4d-41b1-9104-3df87847819b"
+            }
+          ],
+          "createdAt": "2026-06-05T15:07:46.000Z",
+          "updatedAt": "2026-06-05T15:07:46.000Z",
+          "uid": "35240-3d151a10-a7f0-4564-9bfb-87a8f8d07e58"
+        }
+      ],
+      "id": "7cb95f7e-3e88-4645-92af-384fef869ca4",
+      "createdAt": "2026-06-05T15:07:46.000Z",
+      "updatedAt": "2026-06-05T15:07:46.000Z",
+      "uid": "35240-7cb95f7e-3e88-4645-92af-384fef869ca4"
+    },
+    {
+      "name": "Chassis",
+      "item": [
+        {
+          "name": "{ChassisId}",
+          "item": [
+            {
+              "name": "Power",
+              "item": [
+                {
+                  "name": "Dell Servers Get chassis power information",
+                  "id": "9ada89fd-89d6-46c3-a2af-2c7ab2fbce54",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Chassis/:ChassisId/Power",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Chassis",
+                        ":ChassisId",
+                        "Power"
+                      ],
+                      "variable": [
+                        {
+                          "id": "febc0d32-3181-4f19-a001-fdc24df5b0d9",
+                          "key": "ChassisId",
+                          "value": "System.Embedded.1",
+                          "description": "(Required) Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves power supply information, power consumption metrics, and power control settings for the specified chassis including current wattage, power capacity, and power supply redundancy status."
+                  },
+                  "response": [
+                    {
+                      "id": "33c42cbf-05eb-4bb7-b5db-36cfab040fd6",
+                      "name": "Chassis power resource",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Chassis/:ChassisId/Power",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Chassis",
+                            ":ChassisId",
+                            "Power"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ChassisId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"@odata.id\": \"<string>\",\n  \"PowerControl\": [\n    {\n      \"Name\": \"<string>\",\n      \"PowerConsumedWatts\": \"<number>\",\n      \"PowerCapacityWatts\": \"<number>\",\n      \"PowerMetrics\": {\n        \"IntervalInMin\": \"<integer>\",\n        \"MinConsumedWatts\": \"<number>\",\n        \"MaxConsumedWatts\": \"<number>\",\n        \"AverageConsumedWatts\": \"<number>\"\n      }\n    },\n    {\n      \"Name\": \"<string>\",\n      \"PowerConsumedWatts\": \"<number>\",\n      \"PowerCapacityWatts\": \"<number>\",\n      \"PowerMetrics\": {\n        \"IntervalInMin\": \"<integer>\",\n        \"MinConsumedWatts\": \"<number>\",\n        \"MaxConsumedWatts\": \"<number>\",\n        \"AverageConsumedWatts\": \"<number>\"\n      }\n    }\n  ],\n  \"PowerSupplies\": [\n    {\n      \"Name\": \"<string>\",\n      \"PowerCapacityWatts\": \"<number>\",\n      \"LineInputVoltage\": \"<number>\",\n      \"Model\": \"<string>\",\n      \"SerialNumber\": \"<string>\",\n      \"Status\": {\n        \"Health\": \"Warning\",\n        \"HealthRollup\": \"OK\",\n        \"State\": \"InTest\"\n      }\n    },\n    {\n      \"Name\": \"<string>\",\n      \"PowerCapacityWatts\": \"<number>\",\n      \"LineInputVoltage\": \"<number>\",\n      \"Model\": \"<string>\",\n      \"SerialNumber\": \"<string>\",\n      \"Status\": {\n        \"Health\": \"Warning\",\n        \"HealthRollup\": \"Critical\",\n        \"State\": \"Deferring\"\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:07:46.000Z",
+                      "updatedAt": "2026-06-05T15:07:46.000Z",
+                      "uid": "35240-33c42cbf-05eb-4bb7-b5db-36cfab040fd6"
+                    },
+                    {
+                      "id": "f8b01d0a-8e31-47cc-abd8-2af28a81424b",
+                      "name": "Unauthorized - invalid or missing credentials",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Chassis/:ChassisId/Power",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Chassis",
+                            ":ChassisId",
+                            "Power"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ChassisId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:07:46.000Z",
+                      "updatedAt": "2026-06-05T15:07:46.000Z",
+                      "uid": "35240-f8b01d0a-8e31-47cc-abd8-2af28a81424b"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-9ada89fd-89d6-46c3-a2af-2c7ab2fbce54"
+                }
+              ],
+              "id": "d3abff63-020e-4d94-a65b-4e1bfd7333fe",
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-d3abff63-020e-4d94-a65b-4e1bfd7333fe"
+            },
+            {
+              "name": "Thermal",
+              "item": [
+                {
+                  "name": "Dell Servers Get chassis thermal information",
+                  "id": "4880b416-fa58-4947-9bc9-24282c297092",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Chassis/:ChassisId/Thermal",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Chassis",
+                        ":ChassisId",
+                        "Thermal"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b919fe89-f4be-4ac1-93a1-aa3bf1407962",
+                          "key": "ChassisId",
+                          "value": "System.Embedded.1",
+                          "description": "(Required) Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves thermal sensor readings, fan speeds, and temperature thresholds for the specified chassis. Includes inlet and exhaust temperatures, CPU temperatures, and fan status with redundancy information."
+                  },
+                  "response": [
+                    {
+                      "id": "5b22cadf-4463-458a-b35f-d7f3ddffe35e",
+                      "name": "Chassis thermal resource",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Chassis/:ChassisId/Thermal",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Chassis",
+                            ":ChassisId",
+                            "Thermal"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ChassisId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"@odata.id\": \"<string>\",\n  \"Temperatures\": [\n    {\n      \"Name\": \"<string>\",\n      \"ReadingCelsius\": \"<number>\",\n      \"UpperThresholdCritical\": \"<number>\",\n      \"UpperThresholdFatal\": \"<number>\",\n      \"LowerThresholdCritical\": \"<number>\",\n      \"Status\": {\n        \"Health\": \"Critical\",\n        \"HealthRollup\": \"Critical\",\n        \"State\": \"Enabled\"\n      }\n    },\n    {\n      \"Name\": \"<string>\",\n      \"ReadingCelsius\": \"<number>\",\n      \"UpperThresholdCritical\": \"<number>\",\n      \"UpperThresholdFatal\": \"<number>\",\n      \"LowerThresholdCritical\": \"<number>\",\n      \"Status\": {\n        \"Health\": \"OK\",\n        \"HealthRollup\": \"Critical\",\n        \"State\": \"Enabled\"\n      }\n    }\n  ],\n  \"Fans\": [\n    {\n      \"Name\": \"<string>\",\n      \"Reading\": \"<integer>\",\n      \"ReadingUnits\": \"RPM\",\n      \"Status\": {\n        \"Health\": \"OK\",\n        \"HealthRollup\": \"Critical\",\n        \"State\": \"Updating\"\n      }\n    },\n    {\n      \"Name\": \"<string>\",\n      \"Reading\": \"<integer>\",\n      \"ReadingUnits\": \"RPM\",\n      \"Status\": {\n        \"Health\": \"Critical\",\n        \"HealthRollup\": \"Critical\",\n        \"State\": \"UnavailableOffline\"\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:07:46.000Z",
+                      "updatedAt": "2026-06-05T15:07:46.000Z",
+                      "uid": "35240-5b22cadf-4463-458a-b35f-d7f3ddffe35e"
+                    },
+                    {
+                      "id": "e7c3dab1-ae19-48fc-97b0-71c17920f0c0",
+                      "name": "Unauthorized - invalid or missing credentials",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Chassis/:ChassisId/Thermal",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Chassis",
+                            ":ChassisId",
+                            "Thermal"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ChassisId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:07:46.000Z",
+                      "updatedAt": "2026-06-05T15:07:46.000Z",
+                      "uid": "35240-e7c3dab1-ae19-48fc-97b0-71c17920f0c0"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-4880b416-fa58-4947-9bc9-24282c297092"
+                }
+              ],
+              "id": "ef63c7ee-d6d6-41e5-b7b8-6d157373b0bd",
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-ef63c7ee-d6d6-41e5-b7b8-6d157373b0bd"
+            },
+            {
+              "name": "Dell Servers Get a chassis resource",
+              "id": "17cb31c0-86c9-47b4-a595-07e41c3e697d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Chassis/:ChassisId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Chassis",
+                    ":ChassisId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "51964d3b-2129-4c3f-9e0f-29cebfd8eca4",
+                      "key": "ChassisId",
+                      "value": "System.Embedded.1",
+                      "description": "(Required) Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    }
+                  ]
+                },
+                "description": "Retrieves a specific chassis resource with detailed information about the physical enclosure, including model, serial number, part number, asset tag, indicator LED state, and links to power and thermal resources."
+              },
+              "response": [
+                {
+                  "id": "d7e1398d-5c06-49fb-81b5-87b719ac7f3c",
+                  "name": "Chassis resource",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Chassis/:ChassisId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Chassis",
+                        ":ChassisId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ChassisId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"@odata.id\": \"<string>\",\n  \"Id\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"ChassisType\": \"Blade\",\n  \"Manufacturer\": \"<string>\",\n  \"Model\": \"<string>\",\n  \"SerialNumber\": \"<string>\",\n  \"PartNumber\": \"<string>\",\n  \"SKU\": \"<string>\",\n  \"AssetTag\": \"<string>\",\n  \"IndicatorLED\": \"Lit\",\n  \"Status\": {\n    \"Health\": \"Warning\",\n    \"HealthRollup\": \"Warning\",\n    \"State\": \"Updating\"\n  },\n  \"PowerState\": \"PoweringOn\"\n}",
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-d7e1398d-5c06-49fb-81b5-87b719ac7f3c"
+                },
+                {
+                  "id": "c29ff242-59b0-410c-8fcb-4fb950baa1a8",
+                  "name": "Unauthorized - invalid or missing credentials",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Chassis/:ChassisId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Chassis",
+                        ":ChassisId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ChassisId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-c29ff242-59b0-410c-8fcb-4fb950baa1a8"
+                },
+                {
+                  "id": "259d0e12-a0a5-4058-a0ec-546e10a11403",
+                  "name": "Chassis resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Chassis/:ChassisId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Chassis",
+                        ":ChassisId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ChassisId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-259d0e12-a0a5-4058-a0ec-546e10a11403"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-17cb31c0-86c9-47b4-a595-07e41c3e697d"
+            }
+          ],
+          "id": "907d4810-0610-48ac-8fbf-3f1b14a1f493",
+          "createdAt": "2026-06-05T15:07:46.000Z",
+          "updatedAt": "2026-06-05T15:07:46.000Z",
+          "uid": "35240-907d4810-0610-48ac-8fbf-3f1b14a1f493"
+        },
+        {
+          "name": "Dell Servers List chassis resources",
+          "id": "f07aa91c-0366-4037-850c-24fc800eec01",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/Chassis",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Chassis"
+              ]
+            },
+            "description": "Retrieves the collection of chassis resources representing the physical enclosure of the server including power supplies, fans, thermal sensors, and physical component inventory."
+          },
+          "response": [
+            {
+              "id": "f636a1fc-e802-4daa-93d4-961e049bb127",
+              "name": "Collection of chassis resources",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Chassis",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Chassis"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"@odata.id\": \"<string>\",\n  \"@odata.type\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"Members@odata.count\": \"<integer>\",\n  \"Members\": [\n    {\n      \"@odata.id\": \"<string>\"\n    },\n    {\n      \"@odata.id\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-f636a1fc-e802-4daa-93d4-961e049bb127"
+            },
+            {
+              "id": "b8c444b6-ed0f-4e70-b049-b838126a5a31",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Chassis",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Chassis"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-b8c444b6-ed0f-4e70-b049-b838126a5a31"
+            }
+          ],
+          "createdAt": "2026-06-05T15:07:46.000Z",
+          "updatedAt": "2026-06-05T15:07:46.000Z",
+          "uid": "35240-f07aa91c-0366-4037-850c-24fc800eec01"
+        }
+      ],
+      "id": "1f21ac86-fb31-4dfd-a25e-1137caa038fb",
+      "createdAt": "2026-06-05T15:07:46.000Z",
+      "updatedAt": "2026-06-05T15:07:46.000Z",
+      "uid": "35240-1f21ac86-fb31-4dfd-a25e-1137caa038fb"
+    },
+    {
+      "name": "Managers",
+      "item": [
+        {
+          "name": "{ManagerId}",
+          "item": [
+            {
+              "name": "LogServices",
+              "item": [
+                {
+                  "name": "Dell Servers List log services",
+                  "id": "e6d311bd-0482-4a6a-9288-f93a29ac34f9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Managers/:ManagerId/LogServices",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Managers",
+                        ":ManagerId",
+                        "LogServices"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7c1c7362-900d-48cd-ba06-6bb3a0a35cf1",
+                          "key": "ManagerId",
+                          "value": "iDRAC.Embedded.1",
+                          "description": "(Required) Identifier for the manager resource, typically iDRAC.Embedded.1 for Dell PowerEdge servers"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves the collection of log services available on the iDRAC manager including the Lifecycle Controller log and the System Event Log (SEL)."
+                  },
+                  "response": [
+                    {
+                      "id": "a854d985-d376-4a5f-9441-a4b0cb7f3a8d",
+                      "name": "Collection of log services",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Managers/:ManagerId/LogServices",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Managers",
+                            ":ManagerId",
+                            "LogServices"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ManagerId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"@odata.id\": \"<string>\",\n  \"@odata.type\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"Members@odata.count\": \"<integer>\",\n  \"Members\": [\n    {\n      \"@odata.id\": \"<string>\"\n    },\n    {\n      \"@odata.id\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:07:46.000Z",
+                      "updatedAt": "2026-06-05T15:07:46.000Z",
+                      "uid": "35240-a854d985-d376-4a5f-9441-a4b0cb7f3a8d"
+                    },
+                    {
+                      "id": "3e058bc8-0239-4051-944a-88ea4809dd42",
+                      "name": "Unauthorized - invalid or missing credentials",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Managers/:ManagerId/LogServices",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Managers",
+                            ":ManagerId",
+                            "LogServices"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ManagerId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:07:46.000Z",
+                      "updatedAt": "2026-06-05T15:07:46.000Z",
+                      "uid": "35240-3e058bc8-0239-4051-944a-88ea4809dd42"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-e6d311bd-0482-4a6a-9288-f93a29ac34f9"
+                }
+              ],
+              "id": "82e0c0c8-a971-4703-8b56-108d440df7aa",
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-82e0c0c8-a971-4703-8b56-108d440df7aa"
+            },
+            {
+              "name": "VirtualMedia",
+              "item": [
+                {
+                  "name": "Dell Servers List virtual media devices",
+                  "id": "88f73e3b-439d-4216-be5c-40c9e55daa1b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Managers/:ManagerId/VirtualMedia",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Managers",
+                        ":ManagerId",
+                        "VirtualMedia"
+                      ],
+                      "variable": [
+                        {
+                          "id": "38b1f30b-0964-4482-a617-9104165f0c4b",
+                          "key": "ManagerId",
+                          "value": "iDRAC.Embedded.1",
+                          "description": "(Required) Identifier for the manager resource, typically iDRAC.Embedded.1 for Dell PowerEdge servers"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves the collection of virtual media devices that can be used to mount remote ISO images or floppy images for operating system deployment and server configuration."
+                  },
+                  "response": [
+                    {
+                      "id": "81ca66b2-a7a1-4d13-ae40-57fcd80158b6",
+                      "name": "Collection of virtual media resources",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Managers/:ManagerId/VirtualMedia",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Managers",
+                            ":ManagerId",
+                            "VirtualMedia"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ManagerId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"@odata.id\": \"<string>\",\n  \"@odata.type\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"Members@odata.count\": \"<integer>\",\n  \"Members\": [\n    {\n      \"@odata.id\": \"<string>\"\n    },\n    {\n      \"@odata.id\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:07:46.000Z",
+                      "updatedAt": "2026-06-05T15:07:46.000Z",
+                      "uid": "35240-81ca66b2-a7a1-4d13-ae40-57fcd80158b6"
+                    },
+                    {
+                      "id": "9e0bce3d-fb60-472e-9812-5839ceda5503",
+                      "name": "Unauthorized - invalid or missing credentials",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Managers/:ManagerId/VirtualMedia",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Managers",
+                            ":ManagerId",
+                            "VirtualMedia"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ManagerId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:07:46.000Z",
+                      "updatedAt": "2026-06-05T15:07:46.000Z",
+                      "uid": "35240-9e0bce3d-fb60-472e-9812-5839ceda5503"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-88f73e3b-439d-4216-be5c-40c9e55daa1b"
+                }
+              ],
+              "id": "d940c9f8-9219-44e4-adc4-9f1842b7cac8",
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-d940c9f8-9219-44e4-adc4-9f1842b7cac8"
+            },
+            {
+              "name": "Dell Servers Get a manager resource",
+              "id": "c9fc544f-be7c-4cd3-a7ae-546790489539",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Managers/:ManagerId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Managers",
+                    ":ManagerId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "75949eef-2799-44ff-8605-0fb80cca007f",
+                      "key": "ManagerId",
+                      "value": "iDRAC.Embedded.1",
+                      "description": "(Required) Identifier for the manager resource, typically iDRAC.Embedded.1 for Dell PowerEdge servers"
+                    }
+                  ]
+                },
+                "description": "Retrieves a specific manager resource representing the iDRAC controller with its firmware version, model, network interfaces, virtual media capabilities, and links to log services."
+              },
+              "response": [
+                {
+                  "id": "c60c8fcb-9fba-4d0a-ada1-ace380294a73",
+                  "name": "Manager resource",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Managers/:ManagerId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Managers",
+                        ":ManagerId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ManagerId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"@odata.id\": \"<string>\",\n  \"Id\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"ManagerType\": \"RackManager\",\n  \"FirmwareVersion\": \"<string>\",\n  \"Model\": \"<string>\",\n  \"Status\": {\n    \"Health\": \"OK\",\n    \"HealthRollup\": \"Critical\",\n    \"State\": \"StandbyOffline\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-c60c8fcb-9fba-4d0a-ada1-ace380294a73"
+                },
+                {
+                  "id": "3a8cc1b3-0a01-4316-b6ac-5d2ad7caf633",
+                  "name": "Unauthorized - invalid or missing credentials",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Managers/:ManagerId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Managers",
+                        ":ManagerId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ManagerId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-3a8cc1b3-0a01-4316-b6ac-5d2ad7caf633"
+                },
+                {
+                  "id": "76aa9667-e6ad-4cc5-af89-64ce336ed988",
+                  "name": "Manager resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Managers/:ManagerId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Managers",
+                        ":ManagerId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ManagerId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-76aa9667-e6ad-4cc5-af89-64ce336ed988"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-c9fc544f-be7c-4cd3-a7ae-546790489539"
+            }
+          ],
+          "id": "c268befe-8592-4740-9b95-1fe2ef9c56d9",
+          "createdAt": "2026-06-05T15:07:46.000Z",
+          "updatedAt": "2026-06-05T15:07:46.000Z",
+          "uid": "35240-c268befe-8592-4740-9b95-1fe2ef9c56d9"
+        },
+        {
+          "name": "Dell Servers List manager resources",
+          "id": "13d1eff9-74b0-4377-b7f0-e6a4c7d2ec40",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/Managers",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Managers"
+              ]
+            },
+            "description": "Retrieves the collection of manager resources representing the iDRAC management controller including its firmware version, network configuration, and available management services."
+          },
+          "response": [
+            {
+              "id": "42eb7e1e-0774-4cf3-9655-4ac3ee1e04a3",
+              "name": "Collection of manager resources",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Managers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Managers"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"@odata.id\": \"<string>\",\n  \"@odata.type\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"Members@odata.count\": \"<integer>\",\n  \"Members\": [\n    {\n      \"@odata.id\": \"<string>\"\n    },\n    {\n      \"@odata.id\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-42eb7e1e-0774-4cf3-9655-4ac3ee1e04a3"
+            },
+            {
+              "id": "378be808-0771-4e36-abc6-71670fff2bd6",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Managers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Managers"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-378be808-0771-4e36-abc6-71670fff2bd6"
+            }
+          ],
+          "createdAt": "2026-06-05T15:07:46.000Z",
+          "updatedAt": "2026-06-05T15:07:46.000Z",
+          "uid": "35240-13d1eff9-74b0-4377-b7f0-e6a4c7d2ec40"
+        }
+      ],
+      "id": "ac38b842-c87e-472e-935d-13a47239ed3e",
+      "createdAt": "2026-06-05T15:07:46.000Z",
+      "updatedAt": "2026-06-05T15:07:46.000Z",
+      "uid": "35240-ac38b842-c87e-472e-935d-13a47239ed3e"
+    },
+    {
+      "name": "AccountService",
+      "item": [
+        {
+          "name": "Accounts",
+          "item": [
+            {
+              "name": "Dell Servers List user accounts",
+              "id": "e7d4a8ba-8a88-4eab-ae26-2d889f91ce2e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/AccountService/Accounts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AccountService",
+                    "Accounts"
+                  ]
+                },
+                "description": "Retrieves the collection of user accounts configured on the iDRAC including local users with their roles and privileges."
+              },
+              "response": [
+                {
+                  "id": "99165d92-ba20-4944-87a4-5ef027061e3d",
+                  "name": "Collection of user accounts",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/AccountService/Accounts",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "AccountService",
+                        "Accounts"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"@odata.id\": \"<string>\",\n  \"@odata.type\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"Members@odata.count\": \"<integer>\",\n  \"Members\": [\n    {\n      \"@odata.id\": \"<string>\"\n    },\n    {\n      \"@odata.id\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-99165d92-ba20-4944-87a4-5ef027061e3d"
+                },
+                {
+                  "id": "d65ad6d1-5065-4003-8d31-fb51a1f7364a",
+                  "name": "Unauthorized - invalid or missing credentials",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/AccountService/Accounts",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "AccountService",
+                        "Accounts"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-d65ad6d1-5065-4003-8d31-fb51a1f7364a"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-e7d4a8ba-8a88-4eab-ae26-2d889f91ce2e"
+            }
+          ],
+          "id": "bee9435c-6353-4abd-ab7e-1ec2b2d0f9fc",
+          "createdAt": "2026-06-05T15:07:46.000Z",
+          "updatedAt": "2026-06-05T15:07:46.000Z",
+          "uid": "35240-bee9435c-6353-4abd-ab7e-1ec2b2d0f9fc"
+        },
+        {
+          "name": "Dell Servers Get account service",
+          "id": "7584f0ce-6a5c-45a8-a6ca-6b053d1231f5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/AccountService",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "AccountService"
+              ]
+            },
+            "description": "Retrieves the account service resource which provides the configuration for user account management including password policies, lockout settings, and links to the accounts collection."
+          },
+          "response": [
+            {
+              "id": "3c9cca2c-b4d2-4a2e-84d5-7dfbbc97a2ee",
+              "name": "Account service resource",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/AccountService",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AccountService"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-3c9cca2c-b4d2-4a2e-84d5-7dfbbc97a2ee"
+            },
+            {
+              "id": "e4d6fa0e-ca7c-41d0-be5c-2f70eadcc29f",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/AccountService",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AccountService"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-e4d6fa0e-ca7c-41d0-be5c-2f70eadcc29f"
+            }
+          ],
+          "createdAt": "2026-06-05T15:07:46.000Z",
+          "updatedAt": "2026-06-05T15:07:46.000Z",
+          "uid": "35240-7584f0ce-6a5c-45a8-a6ca-6b053d1231f5"
+        }
+      ],
+      "id": "ccc503f4-58f1-4942-ac4c-7603ce3b0456",
+      "createdAt": "2026-06-05T15:07:46.000Z",
+      "updatedAt": "2026-06-05T15:07:46.000Z",
+      "uid": "35240-ccc503f4-58f1-4942-ac4c-7603ce3b0456"
+    },
+    {
+      "name": "SessionService",
+      "item": [
+        {
+          "name": "Sessions",
+          "item": [
+            {
+              "name": "Dell Servers List active sessions",
+              "id": "20f9c392-df5e-47b6-a98b-53c03f1e5955",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/SessionService/Sessions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "SessionService",
+                    "Sessions"
+                  ]
+                },
+                "description": "Retrieves the collection of active sessions on the iDRAC including web UI sessions, Redfish API sessions, and SSH sessions."
+              },
+              "response": [
+                {
+                  "id": "14bc7567-e122-4dbc-96e6-8036494d18e3",
+                  "name": "Collection of active sessions",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/SessionService/Sessions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "SessionService",
+                        "Sessions"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"@odata.id\": \"<string>\",\n  \"@odata.type\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"Members@odata.count\": \"<integer>\",\n  \"Members\": [\n    {\n      \"@odata.id\": \"<string>\"\n    },\n    {\n      \"@odata.id\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-14bc7567-e122-4dbc-96e6-8036494d18e3"
+                },
+                {
+                  "id": "b4873848-aaeb-4c1a-b352-95f51e884d89",
+                  "name": "Unauthorized - invalid or missing credentials",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/SessionService/Sessions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "SessionService",
+                        "Sessions"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-b4873848-aaeb-4c1a-b352-95f51e884d89"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-20f9c392-df5e-47b6-a98b-53c03f1e5955"
+            },
+            {
+              "name": "Dell Servers Create a new session",
+              "id": "8f74b4b8-d345-456c-b4b8-54659d8ed8bf",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"UserName\": \"<string>\",\n  \"Password\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/SessionService/Sessions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "SessionService",
+                    "Sessions"
+                  ]
+                },
+                "description": "Creates a new Redfish session by authenticating with username and password. Returns a session token in the X-Auth-Token response header that can be used for subsequent requests instead of basic authentication."
+              },
+              "response": [
+                {
+                  "id": "59d69390-6bee-4225-b250-7b50bccc0455",
+                  "name": "Session created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"UserName\": \"<string>\",\n  \"Password\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/SessionService/Sessions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "SessionService",
+                        "Sessions"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Session authentication token",
+                        "type": "text/plain"
+                      },
+                      "key": "X-Auth-Token",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "URI of the created session resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Location",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-59d69390-6bee-4225-b250-7b50bccc0455"
+                },
+                {
+                  "id": "c7fe3256-dcc5-44a2-91a5-5fe7989dc392",
+                  "name": "Authentication failed - invalid credentials",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"UserName\": \"<string>\",\n  \"Password\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/SessionService/Sessions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "SessionService",
+                        "Sessions"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-c7fe3256-dcc5-44a2-91a5-5fe7989dc392"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-8f74b4b8-d345-456c-b4b8-54659d8ed8bf"
+            }
+          ],
+          "id": "ef32048c-46c0-48bb-bd57-523add047dd8",
+          "createdAt": "2026-06-05T15:07:46.000Z",
+          "updatedAt": "2026-06-05T15:07:46.000Z",
+          "uid": "35240-ef32048c-46c0-48bb-bd57-523add047dd8"
+        }
+      ],
+      "id": "fed96103-03b9-403b-b9e8-60356a454938",
+      "createdAt": "2026-06-05T15:07:46.000Z",
+      "updatedAt": "2026-06-05T15:07:46.000Z",
+      "uid": "35240-fed96103-03b9-403b-b9e8-60356a454938"
+    },
+    {
+      "name": "UpdateService",
+      "item": [
+        {
+          "name": "FirmwareInventory",
+          "item": [
+            {
+              "name": "Dell Servers List firmware inventory",
+              "id": "fbbcf55c-4ad4-4513-8441-bbd3347914ce",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/UpdateService/FirmwareInventory",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "UpdateService",
+                    "FirmwareInventory"
+                  ]
+                },
+                "description": "Retrieves the collection of firmware inventory items for all components in the server including iDRAC, BIOS, storage controllers, network adapters, power supplies, and CPLD firmware versions."
+              },
+              "response": [
+                {
+                  "id": "c736ab62-fd84-4936-8031-55c1b67fd05d",
+                  "name": "Collection of firmware inventory items",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/UpdateService/FirmwareInventory",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "UpdateService",
+                        "FirmwareInventory"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"@odata.id\": \"<string>\",\n  \"@odata.type\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"Members@odata.count\": \"<integer>\",\n  \"Members\": [\n    {\n      \"@odata.id\": \"<string>\"\n    },\n    {\n      \"@odata.id\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-c736ab62-fd84-4936-8031-55c1b67fd05d"
+                },
+                {
+                  "id": "b334fec4-0add-47ae-90fc-25b89b2d9056",
+                  "name": "Unauthorized - invalid or missing credentials",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/UpdateService/FirmwareInventory",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "UpdateService",
+                        "FirmwareInventory"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-b334fec4-0add-47ae-90fc-25b89b2d9056"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-fbbcf55c-4ad4-4513-8441-bbd3347914ce"
+            }
+          ],
+          "id": "d67ec3f1-bc2d-4cd4-8097-9701a2d58172",
+          "createdAt": "2026-06-05T15:07:46.000Z",
+          "updatedAt": "2026-06-05T15:07:46.000Z",
+          "uid": "35240-d67ec3f1-bc2d-4cd4-8097-9701a2d58172"
+        },
+        {
+          "name": "Dell Servers Get update service",
+          "id": "53fc8b69-b7c4-4e4a-b33f-bcd4e8caf171",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/UpdateService",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "UpdateService"
+              ]
+            },
+            "description": "Retrieves the update service resource which provides firmware update capabilities and links to the firmware inventory collection."
+          },
+          "response": [
+            {
+              "id": "9a24dcd1-22c8-4b48-ad0c-ce59439a1e01",
+              "name": "Update service resource",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/UpdateService",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "UpdateService"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-9a24dcd1-22c8-4b48-ad0c-ce59439a1e01"
+            },
+            {
+              "id": "5941b0ef-ba83-4326-9964-557866397b67",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/UpdateService",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "UpdateService"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-5941b0ef-ba83-4326-9964-557866397b67"
+            }
+          ],
+          "createdAt": "2026-06-05T15:07:46.000Z",
+          "updatedAt": "2026-06-05T15:07:46.000Z",
+          "uid": "35240-53fc8b69-b7c4-4e4a-b33f-bcd4e8caf171"
+        }
+      ],
+      "id": "83d9be0b-f16b-4847-92bb-7a62b054f1c9",
+      "createdAt": "2026-06-05T15:07:46.000Z",
+      "updatedAt": "2026-06-05T15:07:46.000Z",
+      "uid": "35240-83d9be0b-f16b-4847-92bb-7a62b054f1c9"
+    },
+    {
+      "name": "TaskService",
+      "item": [
+        {
+          "name": "Tasks",
+          "item": [
+            {
+              "name": "Dell Servers List tasks",
+              "id": "52214c0a-ca51-4055-a68d-76161ea66e05",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/TaskService/Tasks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "TaskService",
+                    "Tasks"
+                  ]
+                },
+                "description": "Retrieves the collection of tasks representing asynchronous operations and lifecycle controller jobs including firmware updates, configuration changes, and RAID creation operations."
+              },
+              "response": [
+                {
+                  "id": "91b9e593-a34e-4016-ad13-0e960d0b69fa",
+                  "name": "Collection of task resources",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/TaskService/Tasks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "TaskService",
+                        "Tasks"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"@odata.id\": \"<string>\",\n  \"@odata.type\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"Members@odata.count\": \"<integer>\",\n  \"Members\": [\n    {\n      \"@odata.id\": \"<string>\"\n    },\n    {\n      \"@odata.id\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-91b9e593-a34e-4016-ad13-0e960d0b69fa"
+                },
+                {
+                  "id": "007c42c5-cad0-4d60-8329-9053b48cde4d",
+                  "name": "Unauthorized - invalid or missing credentials",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/TaskService/Tasks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "TaskService",
+                        "Tasks"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-007c42c5-cad0-4d60-8329-9053b48cde4d"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-52214c0a-ca51-4055-a68d-76161ea66e05"
+            }
+          ],
+          "id": "4250c707-1448-44b3-9632-561e27ed32a9",
+          "createdAt": "2026-06-05T15:07:46.000Z",
+          "updatedAt": "2026-06-05T15:07:46.000Z",
+          "uid": "35240-4250c707-1448-44b3-9632-561e27ed32a9"
+        }
+      ],
+      "id": "059b333e-ee98-4338-9c4e-e3220f4d36e4",
+      "createdAt": "2026-06-05T15:07:46.000Z",
+      "updatedAt": "2026-06-05T15:07:46.000Z",
+      "uid": "35240-059b333e-ee98-4338-9c4e-e3220f4d36e4"
+    },
+    {
+      "name": "EventService",
+      "item": [
+        {
+          "name": "Subscriptions",
+          "item": [
+            {
+              "name": "Dell Servers List event subscriptions",
+              "id": "bbf9535f-c758-41c8-8731-8b3161d47465",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/EventService/Subscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "EventService",
+                    "Subscriptions"
+                  ]
+                },
+                "description": "Retrieves the collection of event subscriptions configured on the iDRAC. Each subscription defines a destination URL and event types to which the client has subscribed for receiving push notifications."
+              },
+              "response": [
+                {
+                  "id": "b7a37d15-3b57-4de8-812d-c55a911517ea",
+                  "name": "Collection of event subscriptions",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/EventService/Subscriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "EventService",
+                        "Subscriptions"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"@odata.id\": \"<string>\",\n  \"@odata.type\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"Members@odata.count\": \"<integer>\",\n  \"Members\": [\n    {\n      \"@odata.id\": \"<string>\"\n    },\n    {\n      \"@odata.id\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-b7a37d15-3b57-4de8-812d-c55a911517ea"
+                },
+                {
+                  "id": "ec4ec63c-053d-457f-a970-883a3d0b3080",
+                  "name": "Unauthorized - invalid or missing credentials",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/EventService/Subscriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "EventService",
+                        "Subscriptions"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-ec4ec63c-053d-457f-a970-883a3d0b3080"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-bbf9535f-c758-41c8-8731-8b3161d47465"
+            },
+            {
+              "name": "Dell Servers Create an event subscription",
+              "id": "c24cd669-1d7c-4324-a1d0-c8a8c5db1477",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Destination\": \"<uri>\",\n  \"EventTypes\": [\n    \"MetricReport\",\n    \"Alert\"\n  ],\n  \"Protocol\": \"Redfish\",\n  \"Context\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/EventService/Subscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "EventService",
+                    "Subscriptions"
+                  ]
+                },
+                "description": "Creates a new event subscription that configures the iDRAC to push event notifications to a specified destination URL when events matching the subscription criteria occur. iDRAC supports up to eight concurrent subscriptions."
+              },
+              "response": [
+                {
+                  "id": "864e857b-0973-44ad-b67b-7124cbc7d186",
+                  "name": "Event subscription created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Destination\": \"<uri>\",\n  \"EventTypes\": [\n    \"MetricReport\",\n    \"Alert\"\n  ],\n  \"Protocol\": \"Redfish\",\n  \"Context\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/EventService/Subscriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "EventService",
+                        "Subscriptions"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-864e857b-0973-44ad-b67b-7124cbc7d186"
+                },
+                {
+                  "id": "93773e6f-b0fb-4d43-9d8c-e373934bc799",
+                  "name": "Invalid subscription parameters",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Destination\": \"<uri>\",\n  \"EventTypes\": [\n    \"MetricReport\",\n    \"Alert\"\n  ],\n  \"Protocol\": \"Redfish\",\n  \"Context\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/EventService/Subscriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "EventService",
+                        "Subscriptions"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-93773e6f-b0fb-4d43-9d8c-e373934bc799"
+                },
+                {
+                  "id": "acc32dba-b23c-40ea-99d5-05fe9540f3ee",
+                  "name": "Unauthorized - invalid or missing credentials",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Destination\": \"<uri>\",\n  \"EventTypes\": [\n    \"MetricReport\",\n    \"Alert\"\n  ],\n  \"Protocol\": \"Redfish\",\n  \"Context\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/EventService/Subscriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "EventService",
+                        "Subscriptions"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-acc32dba-b23c-40ea-99d5-05fe9540f3ee"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-c24cd669-1d7c-4324-a1d0-c8a8c5db1477"
+            }
+          ],
+          "id": "d652996f-2e29-438f-9ebb-3c07febfeb10",
+          "createdAt": "2026-06-05T15:07:46.000Z",
+          "updatedAt": "2026-06-05T15:07:46.000Z",
+          "uid": "35240-d652996f-2e29-438f-9ebb-3c07febfeb10"
+        },
+        {
+          "name": "Dell Servers Get event service",
+          "id": "f6448da9-2b4e-49a5-9cd4-d0f92c5aee2a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/EventService",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "EventService"
+              ]
+            },
+            "description": "Retrieves the event service resource which provides configuration for event subscriptions and server-sent events. The event service enables clients to subscribe to alerts and lifecycle events from the iDRAC."
+          },
+          "response": [
+            {
+              "id": "fc2dfdfd-4f7d-428c-8ba7-3b1a53bb01bb",
+              "name": "Event service resource",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/EventService",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "EventService"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-fc2dfdfd-4f7d-428c-8ba7-3b1a53bb01bb"
+            },
+            {
+              "id": "e622305a-096a-4d0f-b9d2-353aa070f0e0",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/EventService",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "EventService"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-e622305a-096a-4d0f-b9d2-353aa070f0e0"
+            }
+          ],
+          "createdAt": "2026-06-05T15:07:46.000Z",
+          "updatedAt": "2026-06-05T15:07:46.000Z",
+          "uid": "35240-f6448da9-2b4e-49a5-9cd4-d0f92c5aee2a"
+        }
+      ],
+      "id": "bc2c09eb-387f-45ac-a656-f9c3865062c7",
+      "createdAt": "2026-06-05T15:07:46.000Z",
+      "updatedAt": "2026-06-05T15:07:46.000Z",
+      "uid": "35240-bc2c09eb-387f-45ac-a656-f9c3865062c7"
+    },
+    {
+      "name": "TelemetryService",
+      "item": [
+        {
+          "name": "MetricReports",
+          "item": [
+            {
+              "name": "Dell Servers List metric reports",
+              "id": "5c2548f2-6508-4288-b660-015e082eaae4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/TelemetryService/MetricReports",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "TelemetryService",
+                    "MetricReports"
+                  ]
+                },
+                "description": "Retrieves the collection of metric reports available from the telemetry service. Each report contains a set of related metrics that can be streamed via SSE or polled directly."
+              },
+              "response": [
+                {
+                  "id": "625aeff3-5fd4-4f1a-adb2-a93b5f0fcc61",
+                  "name": "Collection of metric report resources",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/TelemetryService/MetricReports",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "TelemetryService",
+                        "MetricReports"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"@odata.id\": \"<string>\",\n  \"@odata.type\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"Members@odata.count\": \"<integer>\",\n  \"Members\": [\n    {\n      \"@odata.id\": \"<string>\"\n    },\n    {\n      \"@odata.id\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-625aeff3-5fd4-4f1a-adb2-a93b5f0fcc61"
+                },
+                {
+                  "id": "47419641-94bf-4613-a0a9-b8e1cabfd90f",
+                  "name": "Unauthorized - invalid or missing credentials",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/TelemetryService/MetricReports",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "TelemetryService",
+                        "MetricReports"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:46.000Z",
+                  "updatedAt": "2026-06-05T15:07:46.000Z",
+                  "uid": "35240-47419641-94bf-4613-a0a9-b8e1cabfd90f"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-5c2548f2-6508-4288-b660-015e082eaae4"
+            }
+          ],
+          "id": "0d0a7971-cab6-4908-83d0-0e881f726682",
+          "createdAt": "2026-06-05T15:07:46.000Z",
+          "updatedAt": "2026-06-05T15:07:46.000Z",
+          "uid": "35240-0d0a7971-cab6-4908-83d0-0e881f726682"
+        },
+        {
+          "name": "Dell Servers Get telemetry service",
+          "id": "ed2aba74-5115-4674-a999-7bf9dd8c523d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/TelemetryService",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "TelemetryService"
+              ]
+            },
+            "description": "Retrieves the telemetry service resource which provides access to metric definitions and metric report definitions for server telemetry data including power, thermal, CPU, memory, and NIC statistics."
+          },
+          "response": [
+            {
+              "id": "ea24a398-0cac-444a-aa3c-e398fa63a5ba",
+              "name": "Telemetry service resource",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/TelemetryService",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "TelemetryService"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-ea24a398-0cac-444a-aa3c-e398fa63a5ba"
+            },
+            {
+              "id": "de23a3e9-72d4-4108-bad6-5c459344155b",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/TelemetryService",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "TelemetryService"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:07:46.000Z",
+              "updatedAt": "2026-06-05T15:07:46.000Z",
+              "uid": "35240-de23a3e9-72d4-4108-bad6-5c459344155b"
+            }
+          ],
+          "createdAt": "2026-06-05T15:07:46.000Z",
+          "updatedAt": "2026-06-05T15:07:46.000Z",
+          "uid": "35240-ed2aba74-5115-4674-a999-7bf9dd8c523d"
+        }
+      ],
+      "id": "86aa037e-f983-49b6-9395-a96611920a70",
+      "createdAt": "2026-06-05T15:07:46.000Z",
+      "updatedAt": "2026-06-05T15:07:46.000Z",
+      "uid": "35240-86aa037e-f983-49b6-9395-a96611920a70"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "idrac-ip",
+      "value": "192.168.1.100"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{idrac-ip}}/redfish/v1"
+    }
+  ]
+}

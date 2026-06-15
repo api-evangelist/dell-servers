@@ -1,0 +1,2940 @@
+{
+  "info": {
+    "_postman_id": "5f24b25a-4c57-4a5f-bbe8-b1aa059f7fe4",
+    "name": "Dell Servers Dell OpenManage Enterprise API",
+    "description": "RESTful API for centralized management of Dell EMC servers, chassis, and storage through the OpenManage Enterprise console. Provides discovery, inventory, monitoring, alerting, firmware updates, configuration compliance, and lifecycle management of Dell PowerEdge infrastructure at scale. The API delivers JSON responses over HTTPS and follows OData v4 conventions.\n\nContact Support:\n Name: Dell Technologies Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:07:50.000Z",
+    "updatedAt": "2026-06-05T15:07:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5f24b25a-4c57-4a5f-bbe8-b1aa059f7fe4"
+  },
+  "item": [
+    {
+      "name": "SessionService",
+      "item": [
+        {
+          "name": "Sessions",
+          "item": [
+            {
+              "name": "Dell Servers Create an authentication session",
+              "id": "422206e2-5ea3-4f94-bfc8-d25c1da6fa2e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"UserName\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"SessionType\": \"API\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/SessionService/Sessions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "SessionService",
+                    "Sessions"
+                  ]
+                },
+                "description": "Authenticates with the OpenManage Enterprise console using username and password credentials. Returns a session token in the X-Auth-Token response header that must be included in all subsequent API requests."
+              },
+              "response": [
+                {
+                  "id": "386e4c99-666e-4c84-9e27-e3ebd880cf15",
+                  "name": "Session created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"UserName\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"SessionType\": \"API\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/SessionService/Sessions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "SessionService",
+                        "Sessions"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Session authentication token for subsequent requests",
+                        "type": "text/plain"
+                      },
+                      "key": "X-Auth-Token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-386e4c99-666e-4c84-9e27-e3ebd880cf15"
+                },
+                {
+                  "id": "fb5fb118-1c0c-4c67-a22e-0606374d8810",
+                  "name": "Authentication failed - invalid credentials",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"UserName\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"SessionType\": \"API\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/SessionService/Sessions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "SessionService",
+                        "Sessions"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-fb5fb118-1c0c-4c67-a22e-0606374d8810"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:51.000Z",
+              "updatedAt": "2026-06-05T15:07:51.000Z",
+              "uid": "35240-422206e2-5ea3-4f94-bfc8-d25c1da6fa2e"
+            }
+          ],
+          "id": "afee26fa-6225-437b-b043-6b22b001bdec",
+          "createdAt": "2026-06-05T15:07:51.000Z",
+          "updatedAt": "2026-06-05T15:07:51.000Z",
+          "uid": "35240-afee26fa-6225-437b-b043-6b22b001bdec"
+        }
+      ],
+      "id": "d613ad55-420a-4526-a210-85c4b1fa7287",
+      "createdAt": "2026-06-05T15:07:51.000Z",
+      "updatedAt": "2026-06-05T15:07:51.000Z",
+      "uid": "35240-d613ad55-420a-4526-a210-85c4b1fa7287"
+    },
+    {
+      "name": "DeviceService",
+      "item": [
+        {
+          "name": "Devices",
+          "item": [
+            {
+              "name": "Dell Servers List managed devices",
+              "id": "ba36c883-b44b-4891-ba23-d8e93a452918",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/DeviceService/Devices?$top=25&$skip=0&$filter=<string>&$orderby=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "DeviceService",
+                    "Devices"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of devices to return",
+                      "key": "$top",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Number of devices to skip for pagination",
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "OData filter expression to narrow results. Common filters include Type eq 1000 for servers, Type eq 2000 for chassis.",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Property name to sort results by",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieves the collection of devices managed by OpenManage Enterprise including servers, chassis, storage, and network devices. Supports OData query parameters for filtering, sorting, and pagination."
+              },
+              "response": [
+                {
+                  "id": "9c363917-5c18-4aa0-9728-37c6d99cfcad",
+                  "name": "Collection of managed devices",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/DeviceService/Devices?$top=25&$skip=0&$filter=<string>&$orderby=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "DeviceService",
+                        "Devices"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of devices to return",
+                          "key": "$top",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Number of devices to skip for pagination",
+                          "key": "$skip",
+                          "value": "0"
+                        },
+                        {
+                          "description": "OData filter expression to narrow results. Common filters include Type eq 1000 for servers, Type eq 2000 for chassis.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Property name to sort results by",
+                          "key": "$orderby",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"@odata.count\": \"<integer>\",\n  \"value\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Type\": \"<integer>\",\n      \"Identifier\": \"<string>\",\n      \"DeviceServiceTag\": \"<string>\",\n      \"ChassisServiceTag\": \"<string>\",\n      \"Model\": \"<string>\",\n      \"DeviceName\": \"<string>\",\n      \"IpAddress\": \"<string>\",\n      \"ManagedState\": \"<integer>\",\n      \"Status\": \"<integer>\",\n      \"ConnectionState\": \"<boolean>\",\n      \"PowerState\": \"<integer>\",\n      \"FirmwareVersion\": \"<string>\",\n      \"LastInventoryTime\": \"<dateTime>\",\n      \"LastStatusTime\": \"<dateTime>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Type\": \"<integer>\",\n      \"Identifier\": \"<string>\",\n      \"DeviceServiceTag\": \"<string>\",\n      \"ChassisServiceTag\": \"<string>\",\n      \"Model\": \"<string>\",\n      \"DeviceName\": \"<string>\",\n      \"IpAddress\": \"<string>\",\n      \"ManagedState\": \"<integer>\",\n      \"Status\": \"<integer>\",\n      \"ConnectionState\": \"<boolean>\",\n      \"PowerState\": \"<integer>\",\n      \"FirmwareVersion\": \"<string>\",\n      \"LastInventoryTime\": \"<dateTime>\",\n      \"LastStatusTime\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-9c363917-5c18-4aa0-9728-37c6d99cfcad"
+                },
+                {
+                  "id": "c188cfd4-bbce-448f-954e-f874d164e4cc",
+                  "name": "Unauthorized - invalid or expired session token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/DeviceService/Devices?$top=25&$skip=0&$filter=<string>&$orderby=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "DeviceService",
+                        "Devices"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of devices to return",
+                          "key": "$top",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Number of devices to skip for pagination",
+                          "key": "$skip",
+                          "value": "0"
+                        },
+                        {
+                          "description": "OData filter expression to narrow results. Common filters include Type eq 1000 for servers, Type eq 2000 for chassis.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Property name to sort results by",
+                          "key": "$orderby",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-c188cfd4-bbce-448f-954e-f874d164e4cc"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:51.000Z",
+              "updatedAt": "2026-06-05T15:07:51.000Z",
+              "uid": "35240-ba36c883-b44b-4891-ba23-d8e93a452918"
+            }
+          ],
+          "id": "63cc26e9-ec03-420a-bbf7-c24ce4d6babf",
+          "createdAt": "2026-06-05T15:07:51.000Z",
+          "updatedAt": "2026-06-05T15:07:51.000Z",
+          "uid": "35240-63cc26e9-ec03-420a-bbf7-c24ce4d6babf"
+        },
+        {
+          "name": "Devices({DeviceId})",
+          "item": [
+            {
+              "name": "InventoryDetails",
+              "item": [
+                {
+                  "name": "Dell Servers Get device inventory details",
+                  "id": "739e3f0f-b6dd-4f53-9bad-9c99dc484adb",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/DeviceService/Devices({{DeviceId}})/InventoryDetails",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "DeviceService",
+                        "Devices({{DeviceId}})",
+                        "InventoryDetails"
+                      ]
+                    },
+                    "description": "Retrieves the detailed hardware inventory for a specific device including processor, memory, storage, network adapter, firmware, and software inventory components."
+                  },
+                  "response": [
+                    {
+                      "id": "1f2c338f-2101-4b54-a0c8-7a61f1c2ba0e",
+                      "name": "Device inventory details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Auth-Token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/DeviceService/Devices({{DeviceId}})/InventoryDetails",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "DeviceService",
+                            "Devices({{DeviceId}})",
+                            "InventoryDetails"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"InventoryType\": \"<string>\",\n      \"InventoryInfo\": [\n        {\n          \"consectetur_c\": true,\n          \"laborum__d\": -78646912\n        },\n        {\n          \"sint9_e\": 37117674\n        }\n      ]\n    },\n    {\n      \"InventoryType\": \"<string>\",\n      \"InventoryInfo\": [\n        {\n          \"do9_8\": false\n        },\n        {\n          \"nulla_3c1\": true\n        }\n      ]\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:07:51.000Z",
+                      "updatedAt": "2026-06-05T15:07:51.000Z",
+                      "uid": "35240-1f2c338f-2101-4b54-a0c8-7a61f1c2ba0e"
+                    },
+                    {
+                      "id": "291080a9-6c8a-418d-a90b-2e61a4ecad98",
+                      "name": "Unauthorized - invalid or expired session token",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Auth-Token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/DeviceService/Devices({{DeviceId}})/InventoryDetails",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "DeviceService",
+                            "Devices({{DeviceId}})",
+                            "InventoryDetails"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:07:51.000Z",
+                      "updatedAt": "2026-06-05T15:07:51.000Z",
+                      "uid": "35240-291080a9-6c8a-418d-a90b-2e61a4ecad98"
+                    },
+                    {
+                      "id": "f8eeb52a-15c2-4d31-bcaf-767d5b6f98f3",
+                      "name": "Device not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Auth-Token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/DeviceService/Devices({{DeviceId}})/InventoryDetails",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "DeviceService",
+                            "Devices({{DeviceId}})",
+                            "InventoryDetails"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:07:51.000Z",
+                      "updatedAt": "2026-06-05T15:07:51.000Z",
+                      "uid": "35240-f8eeb52a-15c2-4d31-bcaf-767d5b6f98f3"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-739e3f0f-b6dd-4f53-9bad-9c99dc484adb"
+                }
+              ],
+              "id": "78e7ed00-ec72-46cf-82b5-138b7767dd1b",
+              "createdAt": "2026-06-05T15:07:51.000Z",
+              "updatedAt": "2026-06-05T15:07:51.000Z",
+              "uid": "35240-78e7ed00-ec72-46cf-82b5-138b7767dd1b"
+            },
+            {
+              "name": "Dell Servers Get a managed device",
+              "id": "009cd62d-261b-4764-bf24-c41360abca22",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/DeviceService/Devices({{DeviceId}})",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "DeviceService",
+                    "Devices({{DeviceId}})"
+                  ]
+                },
+                "description": "Retrieves detailed information about a specific managed device including hardware inventory, connection status, health, firmware versions, and assigned groups."
+              },
+              "response": [
+                {
+                  "id": "35025c2f-e1a7-4d73-8981-1989b1e48072",
+                  "name": "Device details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/DeviceService/Devices({{DeviceId}})",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "DeviceService",
+                        "Devices({{DeviceId}})"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Id\": \"<integer>\",\n  \"Type\": \"<integer>\",\n  \"Identifier\": \"<string>\",\n  \"DeviceServiceTag\": \"<string>\",\n  \"ChassisServiceTag\": \"<string>\",\n  \"Model\": \"<string>\",\n  \"DeviceName\": \"<string>\",\n  \"IpAddress\": \"<string>\",\n  \"ManagedState\": \"<integer>\",\n  \"Status\": \"<integer>\",\n  \"ConnectionState\": \"<boolean>\",\n  \"PowerState\": \"<integer>\",\n  \"FirmwareVersion\": \"<string>\",\n  \"LastInventoryTime\": \"<dateTime>\",\n  \"LastStatusTime\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-35025c2f-e1a7-4d73-8981-1989b1e48072"
+                },
+                {
+                  "id": "b3eec128-fbf7-4263-a6f3-89d96eb014d7",
+                  "name": "Unauthorized - invalid or expired session token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/DeviceService/Devices({{DeviceId}})",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "DeviceService",
+                        "Devices({{DeviceId}})"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-b3eec128-fbf7-4263-a6f3-89d96eb014d7"
+                },
+                {
+                  "id": "e2298b3e-6105-46b0-9346-eae72f698564",
+                  "name": "Device not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/DeviceService/Devices({{DeviceId}})",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "DeviceService",
+                        "Devices({{DeviceId}})"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-e2298b3e-6105-46b0-9346-eae72f698564"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:51.000Z",
+              "updatedAt": "2026-06-05T15:07:51.000Z",
+              "uid": "35240-009cd62d-261b-4764-bf24-c41360abca22"
+            }
+          ],
+          "id": "189aeb31-60c8-4356-a489-608dc6d813b8",
+          "createdAt": "2026-06-05T15:07:51.000Z",
+          "updatedAt": "2026-06-05T15:07:51.000Z",
+          "uid": "35240-189aeb31-60c8-4356-a489-608dc6d813b8"
+        }
+      ],
+      "id": "72c91264-cc40-4b2d-8041-619dd4da4654",
+      "createdAt": "2026-06-05T15:07:51.000Z",
+      "updatedAt": "2026-06-05T15:07:51.000Z",
+      "uid": "35240-72c91264-cc40-4b2d-8041-619dd4da4654"
+    },
+    {
+      "name": "GroupService",
+      "item": [
+        {
+          "name": "Groups",
+          "item": [
+            {
+              "name": "Dell Servers List device groups",
+              "id": "ec00c90f-5df3-4af7-a5a2-f489a4d2536c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/GroupService/Groups?$filter=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "GroupService",
+                    "Groups"
+                  ],
+                  "query": [
+                    {
+                      "description": "OData filter expression to narrow results",
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieves the collection of device groups configured in OpenManage Enterprise, including built-in system groups and user-created custom groups. Groups are used to organize devices for monitoring, reporting, and applying policies."
+              },
+              "response": [
+                {
+                  "id": "79a5bb99-fe42-4dd8-9615-34c605ddd46f",
+                  "name": "Collection of device groups",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/GroupService/Groups?$filter=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "GroupService",
+                        "Groups"
+                      ],
+                      "query": [
+                        {
+                          "description": "OData filter expression to narrow results",
+                          "key": "$filter",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"@odata.count\": \"<integer>\",\n  \"value\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Name\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"MembershipTypeId\": \"<integer>\",\n      \"ParentId\": \"<integer>\",\n      \"CreatedBy\": \"<string>\",\n      \"CreationTime\": \"<dateTime>\",\n      \"DefinitionId\": \"<integer>\",\n      \"Visible\": \"<boolean>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Name\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"MembershipTypeId\": \"<integer>\",\n      \"ParentId\": \"<integer>\",\n      \"CreatedBy\": \"<string>\",\n      \"CreationTime\": \"<dateTime>\",\n      \"DefinitionId\": \"<integer>\",\n      \"Visible\": \"<boolean>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-79a5bb99-fe42-4dd8-9615-34c605ddd46f"
+                },
+                {
+                  "id": "cb06f7fb-ae4e-4565-b699-df200a2e8be8",
+                  "name": "Unauthorized - invalid or expired session token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/GroupService/Groups?$filter=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "GroupService",
+                        "Groups"
+                      ],
+                      "query": [
+                        {
+                          "description": "OData filter expression to narrow results",
+                          "key": "$filter",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-cb06f7fb-ae4e-4565-b699-df200a2e8be8"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:51.000Z",
+              "updatedAt": "2026-06-05T15:07:51.000Z",
+              "uid": "35240-ec00c90f-5df3-4af7-a5a2-f489a4d2536c"
+            }
+          ],
+          "id": "0db526b6-936f-4087-b753-b26e63ca779d",
+          "createdAt": "2026-06-05T15:07:51.000Z",
+          "updatedAt": "2026-06-05T15:07:51.000Z",
+          "uid": "35240-0db526b6-936f-4087-b753-b26e63ca779d"
+        },
+        {
+          "name": "Groups({GroupId})",
+          "item": [
+            {
+              "name": "Devices",
+              "item": [
+                {
+                  "name": "Dell Servers List devices in a group",
+                  "id": "c9b05d55-8aa0-4aa6-85b4-83a52af830b2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/GroupService/Groups({{GroupId}})/Devices",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "GroupService",
+                        "Groups({{GroupId}})",
+                        "Devices"
+                      ]
+                    },
+                    "description": "Retrieves the collection of devices that are members of the specified group. Supports OData query parameters for filtering and pagination."
+                  },
+                  "response": [
+                    {
+                      "id": "eadcaf0d-ae5d-40c2-99ad-92d395cc5dfe",
+                      "name": "Collection of devices in the group",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Auth-Token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/GroupService/Groups({{GroupId}})/Devices",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "GroupService",
+                            "Groups({{GroupId}})",
+                            "Devices"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"@odata.count\": \"<integer>\",\n  \"value\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Type\": \"<integer>\",\n      \"Identifier\": \"<string>\",\n      \"DeviceServiceTag\": \"<string>\",\n      \"ChassisServiceTag\": \"<string>\",\n      \"Model\": \"<string>\",\n      \"DeviceName\": \"<string>\",\n      \"IpAddress\": \"<string>\",\n      \"ManagedState\": \"<integer>\",\n      \"Status\": \"<integer>\",\n      \"ConnectionState\": \"<boolean>\",\n      \"PowerState\": \"<integer>\",\n      \"FirmwareVersion\": \"<string>\",\n      \"LastInventoryTime\": \"<dateTime>\",\n      \"LastStatusTime\": \"<dateTime>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Type\": \"<integer>\",\n      \"Identifier\": \"<string>\",\n      \"DeviceServiceTag\": \"<string>\",\n      \"ChassisServiceTag\": \"<string>\",\n      \"Model\": \"<string>\",\n      \"DeviceName\": \"<string>\",\n      \"IpAddress\": \"<string>\",\n      \"ManagedState\": \"<integer>\",\n      \"Status\": \"<integer>\",\n      \"ConnectionState\": \"<boolean>\",\n      \"PowerState\": \"<integer>\",\n      \"FirmwareVersion\": \"<string>\",\n      \"LastInventoryTime\": \"<dateTime>\",\n      \"LastStatusTime\": \"<dateTime>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:07:51.000Z",
+                      "updatedAt": "2026-06-05T15:07:51.000Z",
+                      "uid": "35240-eadcaf0d-ae5d-40c2-99ad-92d395cc5dfe"
+                    },
+                    {
+                      "id": "8b1f7bf7-1f70-4951-a5d9-a7a0e9ffab77",
+                      "name": "Unauthorized - invalid or expired session token",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Auth-Token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/GroupService/Groups({{GroupId}})/Devices",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "GroupService",
+                            "Groups({{GroupId}})",
+                            "Devices"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:07:51.000Z",
+                      "updatedAt": "2026-06-05T15:07:51.000Z",
+                      "uid": "35240-8b1f7bf7-1f70-4951-a5d9-a7a0e9ffab77"
+                    },
+                    {
+                      "id": "e173d8f8-27d2-46d8-9704-a020727b7a08",
+                      "name": "Group not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Auth-Token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/GroupService/Groups({{GroupId}})/Devices",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "GroupService",
+                            "Groups({{GroupId}})",
+                            "Devices"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:07:51.000Z",
+                      "updatedAt": "2026-06-05T15:07:51.000Z",
+                      "uid": "35240-e173d8f8-27d2-46d8-9704-a020727b7a08"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-c9b05d55-8aa0-4aa6-85b4-83a52af830b2"
+                }
+              ],
+              "id": "5315f100-762d-4648-a937-c980a5fcf746",
+              "createdAt": "2026-06-05T15:07:51.000Z",
+              "updatedAt": "2026-06-05T15:07:51.000Z",
+              "uid": "35240-5315f100-762d-4648-a937-c980a5fcf746"
+            }
+          ],
+          "id": "5c8e721f-986d-40b1-a1de-e6d655afe01b",
+          "createdAt": "2026-06-05T15:07:51.000Z",
+          "updatedAt": "2026-06-05T15:07:51.000Z",
+          "uid": "35240-5c8e721f-986d-40b1-a1de-e6d655afe01b"
+        }
+      ],
+      "id": "a82e83a4-e477-44f5-993e-5c86dbf3c40b",
+      "createdAt": "2026-06-05T15:07:51.000Z",
+      "updatedAt": "2026-06-05T15:07:51.000Z",
+      "uid": "35240-a82e83a4-e477-44f5-993e-5c86dbf3c40b"
+    },
+    {
+      "name": "DiscoveryConfigService",
+      "item": [
+        {
+          "name": "DiscoveryConfigGroups",
+          "item": [
+            {
+              "name": "Dell Servers List discovery configurations",
+              "id": "83d5c0f5-5de1-44a2-8c46-283a02fff0bb",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/DiscoveryConfigService/DiscoveryConfigGroups",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "DiscoveryConfigService",
+                    "DiscoveryConfigGroups"
+                  ]
+                },
+                "description": "Retrieves the collection of discovery configuration groups that define target ranges, protocols, and credentials used for device discovery."
+              },
+              "response": [
+                {
+                  "id": "fbc72362-7ad5-4c5b-ac86-c67aa9e2642e",
+                  "name": "Collection of discovery configurations",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/DiscoveryConfigService/DiscoveryConfigGroups",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "DiscoveryConfigService",
+                        "DiscoveryConfigGroups"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": [\n    {\n      \"DiscoveryConfigGroupId\": \"<integer>\",\n      \"DiscoveryConfigGroupName\": \"<string>\",\n      \"DiscoveryConfigModels\": [\n        {\n          \"DiscoveryConfigTargets\": [\n            {\n              \"NetworkAddressDetail\": \"<string>\"\n            },\n            {\n              \"NetworkAddressDetail\": \"<string>\"\n            }\n          ],\n          \"ConnectionProfileId\": \"<integer>\",\n          \"DeviceType\": [\n            \"<integer>\",\n            \"<integer>\"\n          ]\n        },\n        {\n          \"DiscoveryConfigTargets\": [\n            {\n              \"NetworkAddressDetail\": \"<string>\"\n            },\n            {\n              \"NetworkAddressDetail\": \"<string>\"\n            }\n          ],\n          \"ConnectionProfileId\": \"<integer>\",\n          \"DeviceType\": [\n            \"<integer>\",\n            \"<integer>\"\n          ]\n        }\n      ],\n      \"Schedule\": {\n        \"RunNow\": \"<boolean>\",\n        \"Cron\": \"<string>\"\n      }\n    },\n    {\n      \"DiscoveryConfigGroupId\": \"<integer>\",\n      \"DiscoveryConfigGroupName\": \"<string>\",\n      \"DiscoveryConfigModels\": [\n        {\n          \"DiscoveryConfigTargets\": [\n            {\n              \"NetworkAddressDetail\": \"<string>\"\n            },\n            {\n              \"NetworkAddressDetail\": \"<string>\"\n            }\n          ],\n          \"ConnectionProfileId\": \"<integer>\",\n          \"DeviceType\": [\n            \"<integer>\",\n            \"<integer>\"\n          ]\n        },\n        {\n          \"DiscoveryConfigTargets\": [\n            {\n              \"NetworkAddressDetail\": \"<string>\"\n            },\n            {\n              \"NetworkAddressDetail\": \"<string>\"\n            }\n          ],\n          \"ConnectionProfileId\": \"<integer>\",\n          \"DeviceType\": [\n            \"<integer>\",\n            \"<integer>\"\n          ]\n        }\n      ],\n      \"Schedule\": {\n        \"RunNow\": \"<boolean>\",\n        \"Cron\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-fbc72362-7ad5-4c5b-ac86-c67aa9e2642e"
+                },
+                {
+                  "id": "14723066-29b0-451d-a1f5-77934e7c5cab",
+                  "name": "Unauthorized - invalid or expired session token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/DiscoveryConfigService/DiscoveryConfigGroups",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "DiscoveryConfigService",
+                        "DiscoveryConfigGroups"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-14723066-29b0-451d-a1f5-77934e7c5cab"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:51.000Z",
+              "updatedAt": "2026-06-05T15:07:51.000Z",
+              "uid": "35240-83d5c0f5-5de1-44a2-8c46-283a02fff0bb"
+            },
+            {
+              "name": "Dell Servers Create a discovery configuration",
+              "id": "c0a10fcd-270c-4cf4-8d90-b5917d38bdda",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DiscoveryConfigGroupId\": \"<integer>\",\n  \"DiscoveryConfigGroupName\": \"<string>\",\n  \"DiscoveryConfigModels\": [\n    {\n      \"DiscoveryConfigTargets\": [\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        },\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        }\n      ],\n      \"ConnectionProfileId\": \"<integer>\",\n      \"DeviceType\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    },\n    {\n      \"DiscoveryConfigTargets\": [\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        },\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        }\n      ],\n      \"ConnectionProfileId\": \"<integer>\",\n      \"DeviceType\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    }\n  ],\n  \"Schedule\": {\n    \"RunNow\": \"<boolean>\",\n    \"Cron\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/DiscoveryConfigService/DiscoveryConfigGroups",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "DiscoveryConfigService",
+                    "DiscoveryConfigGroups"
+                  ]
+                },
+                "description": "Creates a new discovery configuration group that defines network ranges, protocols, and credentials for discovering devices. When executed, the discovery job scans the specified ranges and adds discovered devices to the managed inventory."
+              },
+              "response": [
+                {
+                  "id": "5e38f38e-3a7e-4d51-989f-a31215f9fff9",
+                  "name": "Discovery configuration created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"DiscoveryConfigGroupId\": \"<integer>\",\n  \"DiscoveryConfigGroupName\": \"<string>\",\n  \"DiscoveryConfigModels\": [\n    {\n      \"DiscoveryConfigTargets\": [\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        },\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        }\n      ],\n      \"ConnectionProfileId\": \"<integer>\",\n      \"DeviceType\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    },\n    {\n      \"DiscoveryConfigTargets\": [\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        },\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        }\n      ],\n      \"ConnectionProfileId\": \"<integer>\",\n      \"DeviceType\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    }\n  ],\n  \"Schedule\": {\n    \"RunNow\": \"<boolean>\",\n    \"Cron\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/DiscoveryConfigService/DiscoveryConfigGroups",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "DiscoveryConfigService",
+                        "DiscoveryConfigGroups"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-5e38f38e-3a7e-4d51-989f-a31215f9fff9"
+                },
+                {
+                  "id": "e44468bd-e278-4b52-93ba-95ac305f2be5",
+                  "name": "Invalid discovery configuration parameters",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"DiscoveryConfigGroupId\": \"<integer>\",\n  \"DiscoveryConfigGroupName\": \"<string>\",\n  \"DiscoveryConfigModels\": [\n    {\n      \"DiscoveryConfigTargets\": [\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        },\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        }\n      ],\n      \"ConnectionProfileId\": \"<integer>\",\n      \"DeviceType\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    },\n    {\n      \"DiscoveryConfigTargets\": [\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        },\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        }\n      ],\n      \"ConnectionProfileId\": \"<integer>\",\n      \"DeviceType\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    }\n  ],\n  \"Schedule\": {\n    \"RunNow\": \"<boolean>\",\n    \"Cron\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/DiscoveryConfigService/DiscoveryConfigGroups",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "DiscoveryConfigService",
+                        "DiscoveryConfigGroups"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-e44468bd-e278-4b52-93ba-95ac305f2be5"
+                },
+                {
+                  "id": "a03549dc-3a8b-4d3e-9147-1caff1e7e3c9",
+                  "name": "Unauthorized - invalid or expired session token",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"DiscoveryConfigGroupId\": \"<integer>\",\n  \"DiscoveryConfigGroupName\": \"<string>\",\n  \"DiscoveryConfigModels\": [\n    {\n      \"DiscoveryConfigTargets\": [\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        },\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        }\n      ],\n      \"ConnectionProfileId\": \"<integer>\",\n      \"DeviceType\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    },\n    {\n      \"DiscoveryConfigTargets\": [\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        },\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        }\n      ],\n      \"ConnectionProfileId\": \"<integer>\",\n      \"DeviceType\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    }\n  ],\n  \"Schedule\": {\n    \"RunNow\": \"<boolean>\",\n    \"Cron\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/DiscoveryConfigService/DiscoveryConfigGroups",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "DiscoveryConfigService",
+                        "DiscoveryConfigGroups"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-a03549dc-3a8b-4d3e-9147-1caff1e7e3c9"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:51.000Z",
+              "updatedAt": "2026-06-05T15:07:51.000Z",
+              "uid": "35240-c0a10fcd-270c-4cf4-8d90-b5917d38bdda"
+            }
+          ],
+          "id": "f221fde3-1a9a-428a-98ce-db41d0a6a945",
+          "createdAt": "2026-06-05T15:07:51.000Z",
+          "updatedAt": "2026-06-05T15:07:51.000Z",
+          "uid": "35240-f221fde3-1a9a-428a-98ce-db41d0a6a945"
+        },
+        {
+          "name": "Jobs",
+          "item": [
+            {
+              "name": "Dell Servers List discovery jobs",
+              "id": "4f1f3a4d-c134-4317-82ce-4833fa7ac263",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/DiscoveryConfigService/Jobs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "DiscoveryConfigService",
+                    "Jobs"
+                  ]
+                },
+                "description": "Retrieves the collection of discovery job instances showing status, progress, and results for discovery operations."
+              },
+              "response": [
+                {
+                  "id": "26a605ed-75cf-48cc-bc68-dcd3085fa45e",
+                  "name": "Collection of discovery jobs",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/DiscoveryConfigService/Jobs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "DiscoveryConfigService",
+                        "Jobs"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": [\n    {\n      \"Id\": \"<integer>\",\n      \"JobName\": \"<string>\",\n      \"JobDescription\": \"<string>\",\n      \"JobType\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      },\n      \"LastRunStatus\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      },\n      \"JobStatus\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      },\n      \"PercentComplete\": \"<integer>\",\n      \"StartTime\": \"<dateTime>\",\n      \"EndTime\": \"<dateTime>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"JobName\": \"<string>\",\n      \"JobDescription\": \"<string>\",\n      \"JobType\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      },\n      \"LastRunStatus\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      },\n      \"JobStatus\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      },\n      \"PercentComplete\": \"<integer>\",\n      \"StartTime\": \"<dateTime>\",\n      \"EndTime\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-26a605ed-75cf-48cc-bc68-dcd3085fa45e"
+                },
+                {
+                  "id": "fba616a9-ee12-421c-bbcf-ebddbdfae09d",
+                  "name": "Unauthorized - invalid or expired session token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/DiscoveryConfigService/Jobs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "DiscoveryConfigService",
+                        "Jobs"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-fba616a9-ee12-421c-bbcf-ebddbdfae09d"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:51.000Z",
+              "updatedAt": "2026-06-05T15:07:51.000Z",
+              "uid": "35240-4f1f3a4d-c134-4317-82ce-4833fa7ac263"
+            }
+          ],
+          "id": "550b3c5c-3dfb-4ca2-90d4-77ccde146a77",
+          "createdAt": "2026-06-05T15:07:51.000Z",
+          "updatedAt": "2026-06-05T15:07:51.000Z",
+          "uid": "35240-550b3c5c-3dfb-4ca2-90d4-77ccde146a77"
+        }
+      ],
+      "id": "4044c702-229e-42a7-86be-46ae720512cc",
+      "createdAt": "2026-06-05T15:07:51.000Z",
+      "updatedAt": "2026-06-05T15:07:51.000Z",
+      "uid": "35240-4044c702-229e-42a7-86be-46ae720512cc"
+    },
+    {
+      "name": "AlertService",
+      "item": [
+        {
+          "name": "Alerts",
+          "item": [
+            {
+              "name": "Dell Servers List alerts",
+              "id": "b5b11f97-418a-4eea-8ffc-dbe9acc0f7ff",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/AlertService/Alerts?$top=25&$skip=0&$filter=<string>&$orderby=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AlertService",
+                    "Alerts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of alerts to return",
+                      "key": "$top",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Number of alerts to skip for pagination",
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "OData filter expression for alert criteria",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Property name to sort results by",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieves the collection of alerts generated by managed devices. Alerts include hardware faults, threshold violations, configuration changes, and audit events. Supports OData filtering and pagination."
+              },
+              "response": [
+                {
+                  "id": "980253ea-2d5f-445b-97ad-de9314f3d8e2",
+                  "name": "Collection of alerts",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/AlertService/Alerts?$top=25&$skip=0&$filter=<string>&$orderby=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "AlertService",
+                        "Alerts"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of alerts to return",
+                          "key": "$top",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Number of alerts to skip for pagination",
+                          "key": "$skip",
+                          "value": "0"
+                        },
+                        {
+                          "description": "OData filter expression for alert criteria",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Property name to sort results by",
+                          "key": "$orderby",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"@odata.count\": \"<integer>\",\n  \"value\": [\n    {\n      \"Id\": \"<integer>\",\n      \"AlertDeviceId\": \"<integer>\",\n      \"AlertDeviceName\": \"<string>\",\n      \"AlertDeviceIpAddress\": \"<string>\",\n      \"SeverityType\": \"<integer>\",\n      \"StatusType\": \"<integer>\",\n      \"CategoryName\": \"<string>\",\n      \"SubCategoryName\": \"<string>\",\n      \"Message\": \"<string>\",\n      \"TimeStamp\": \"<dateTime>\",\n      \"RecommendedAction\": \"<string>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"AlertDeviceId\": \"<integer>\",\n      \"AlertDeviceName\": \"<string>\",\n      \"AlertDeviceIpAddress\": \"<string>\",\n      \"SeverityType\": \"<integer>\",\n      \"StatusType\": \"<integer>\",\n      \"CategoryName\": \"<string>\",\n      \"SubCategoryName\": \"<string>\",\n      \"Message\": \"<string>\",\n      \"TimeStamp\": \"<dateTime>\",\n      \"RecommendedAction\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-980253ea-2d5f-445b-97ad-de9314f3d8e2"
+                },
+                {
+                  "id": "c8e01d6f-2a19-4d29-9ea6-fa759fb957ba",
+                  "name": "Unauthorized - invalid or expired session token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/AlertService/Alerts?$top=25&$skip=0&$filter=<string>&$orderby=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "AlertService",
+                        "Alerts"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of alerts to return",
+                          "key": "$top",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Number of alerts to skip for pagination",
+                          "key": "$skip",
+                          "value": "0"
+                        },
+                        {
+                          "description": "OData filter expression for alert criteria",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Property name to sort results by",
+                          "key": "$orderby",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-c8e01d6f-2a19-4d29-9ea6-fa759fb957ba"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:51.000Z",
+              "updatedAt": "2026-06-05T15:07:51.000Z",
+              "uid": "35240-b5b11f97-418a-4eea-8ffc-dbe9acc0f7ff"
+            }
+          ],
+          "id": "382e061e-f8bd-4726-b924-52366389dd6a",
+          "createdAt": "2026-06-05T15:07:51.000Z",
+          "updatedAt": "2026-06-05T15:07:51.000Z",
+          "uid": "35240-382e061e-f8bd-4726-b924-52366389dd6a"
+        },
+        {
+          "name": "Alerts({AlertId})",
+          "item": [
+            {
+              "name": "Dell Servers Get an alert",
+              "id": "2e667441-d88a-4681-bd09-75c27de97ff4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/AlertService/Alerts({{AlertId}})",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AlertService",
+                    "Alerts({{AlertId}})"
+                  ]
+                },
+                "description": "Retrieves detailed information about a specific alert including the source device, severity, category, message, and recommended actions."
+              },
+              "response": [
+                {
+                  "id": "86bbf28e-e9e7-46c0-a2e6-6b37b55fc39f",
+                  "name": "Alert details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/AlertService/Alerts({{AlertId}})",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "AlertService",
+                        "Alerts({{AlertId}})"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Id\": \"<integer>\",\n  \"AlertDeviceId\": \"<integer>\",\n  \"AlertDeviceName\": \"<string>\",\n  \"AlertDeviceIpAddress\": \"<string>\",\n  \"SeverityType\": \"<integer>\",\n  \"StatusType\": \"<integer>\",\n  \"CategoryName\": \"<string>\",\n  \"SubCategoryName\": \"<string>\",\n  \"Message\": \"<string>\",\n  \"TimeStamp\": \"<dateTime>\",\n  \"RecommendedAction\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-86bbf28e-e9e7-46c0-a2e6-6b37b55fc39f"
+                },
+                {
+                  "id": "650abb77-1c69-4de9-8857-a78cbd368e0b",
+                  "name": "Unauthorized - invalid or expired session token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/AlertService/Alerts({{AlertId}})",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "AlertService",
+                        "Alerts({{AlertId}})"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-650abb77-1c69-4de9-8857-a78cbd368e0b"
+                },
+                {
+                  "id": "a8080534-f387-4c5b-b624-c8fa4b2ae285",
+                  "name": "Alert not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/AlertService/Alerts({{AlertId}})",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "AlertService",
+                        "Alerts({{AlertId}})"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-a8080534-f387-4c5b-b624-c8fa4b2ae285"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:51.000Z",
+              "updatedAt": "2026-06-05T15:07:51.000Z",
+              "uid": "35240-2e667441-d88a-4681-bd09-75c27de97ff4"
+            }
+          ],
+          "id": "b74fb494-ce94-4814-abb0-bf332cf2a7d3",
+          "createdAt": "2026-06-05T15:07:51.000Z",
+          "updatedAt": "2026-06-05T15:07:51.000Z",
+          "uid": "35240-b74fb494-ce94-4814-abb0-bf332cf2a7d3"
+        }
+      ],
+      "id": "0d7d7ed7-d221-4311-a8f9-981a3d417e3e",
+      "createdAt": "2026-06-05T15:07:51.000Z",
+      "updatedAt": "2026-06-05T15:07:51.000Z",
+      "uid": "35240-0d7d7ed7-d221-4311-a8f9-981a3d417e3e"
+    },
+    {
+      "name": "JobService",
+      "item": [
+        {
+          "name": "Jobs",
+          "item": [
+            {
+              "name": "Dell Servers List jobs",
+              "id": "fc0745e4-4a0a-425f-8951-f5b5b02dd811",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/JobService/Jobs?$filter=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "JobService",
+                    "Jobs"
+                  ],
+                  "query": [
+                    {
+                      "description": "OData filter expression for job criteria",
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieves the collection of jobs in OpenManage Enterprise including discovery, firmware update, configuration, and report jobs. Supports OData filtering by job type and status."
+              },
+              "response": [
+                {
+                  "id": "9096d464-3ac1-4317-86e2-9bd6d3890fc5",
+                  "name": "Collection of jobs",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/JobService/Jobs?$filter=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "JobService",
+                        "Jobs"
+                      ],
+                      "query": [
+                        {
+                          "description": "OData filter expression for job criteria",
+                          "key": "$filter",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"@odata.count\": \"<integer>\",\n  \"value\": [\n    {\n      \"Id\": \"<integer>\",\n      \"JobName\": \"<string>\",\n      \"JobDescription\": \"<string>\",\n      \"JobType\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      },\n      \"LastRunStatus\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      },\n      \"JobStatus\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      },\n      \"PercentComplete\": \"<integer>\",\n      \"StartTime\": \"<dateTime>\",\n      \"EndTime\": \"<dateTime>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"JobName\": \"<string>\",\n      \"JobDescription\": \"<string>\",\n      \"JobType\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      },\n      \"LastRunStatus\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      },\n      \"JobStatus\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      },\n      \"PercentComplete\": \"<integer>\",\n      \"StartTime\": \"<dateTime>\",\n      \"EndTime\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-9096d464-3ac1-4317-86e2-9bd6d3890fc5"
+                },
+                {
+                  "id": "727817b3-099f-4657-8722-5c9cfbaa4936",
+                  "name": "Unauthorized - invalid or expired session token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/JobService/Jobs?$filter=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "JobService",
+                        "Jobs"
+                      ],
+                      "query": [
+                        {
+                          "description": "OData filter expression for job criteria",
+                          "key": "$filter",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-727817b3-099f-4657-8722-5c9cfbaa4936"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:51.000Z",
+              "updatedAt": "2026-06-05T15:07:51.000Z",
+              "uid": "35240-fc0745e4-4a0a-425f-8951-f5b5b02dd811"
+            },
+            {
+              "name": "Dell Servers Create a job",
+              "id": "50e8f6dc-d163-4ce6-9f77-28cb693a691d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"JobName\": \"<string>\",\n  \"JobDescription\": \"<string>\",\n  \"Targets\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Data\": \"<string>\",\n      \"TargetType\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      }\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Data\": \"<string>\",\n      \"TargetType\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      }\n    }\n  ],\n  \"Schedule\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/JobService/Jobs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "JobService",
+                    "Jobs"
+                  ]
+                },
+                "description": "Creates a new job for executing operations such as firmware updates, configuration deployment, or inventory refresh on targeted devices."
+              },
+              "response": [
+                {
+                  "id": "bd51dedf-e8c0-4dc4-a682-6835d15b8a49",
+                  "name": "Job created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"JobName\": \"<string>\",\n  \"JobDescription\": \"<string>\",\n  \"Targets\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Data\": \"<string>\",\n      \"TargetType\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      }\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Data\": \"<string>\",\n      \"TargetType\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      }\n    }\n  ],\n  \"Schedule\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/JobService/Jobs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "JobService",
+                        "Jobs"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-bd51dedf-e8c0-4dc4-a682-6835d15b8a49"
+                },
+                {
+                  "id": "55c0bee6-7387-43a6-8fc3-363d376c694f",
+                  "name": "Invalid job parameters",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"JobName\": \"<string>\",\n  \"JobDescription\": \"<string>\",\n  \"Targets\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Data\": \"<string>\",\n      \"TargetType\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      }\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Data\": \"<string>\",\n      \"TargetType\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      }\n    }\n  ],\n  \"Schedule\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/JobService/Jobs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "JobService",
+                        "Jobs"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-55c0bee6-7387-43a6-8fc3-363d376c694f"
+                },
+                {
+                  "id": "b6a56729-a88f-4a64-9096-368169fb2b41",
+                  "name": "Unauthorized - invalid or expired session token",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"JobName\": \"<string>\",\n  \"JobDescription\": \"<string>\",\n  \"Targets\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Data\": \"<string>\",\n      \"TargetType\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      }\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Data\": \"<string>\",\n      \"TargetType\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      }\n    }\n  ],\n  \"Schedule\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/JobService/Jobs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "JobService",
+                        "Jobs"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-b6a56729-a88f-4a64-9096-368169fb2b41"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:51.000Z",
+              "updatedAt": "2026-06-05T15:07:51.000Z",
+              "uid": "35240-50e8f6dc-d163-4ce6-9f77-28cb693a691d"
+            }
+          ],
+          "id": "536cf204-00d6-437b-93d6-a769cfa80f45",
+          "createdAt": "2026-06-05T15:07:51.000Z",
+          "updatedAt": "2026-06-05T15:07:51.000Z",
+          "uid": "35240-536cf204-00d6-437b-93d6-a769cfa80f45"
+        },
+        {
+          "name": "Jobs({JobId})",
+          "item": [
+            {
+              "name": "Dell Servers Get a job",
+              "id": "17c11156-088f-4ac6-b330-37fc831b0742",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/JobService/Jobs({{JobId}})",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "JobService",
+                    "Jobs({{JobId}})"
+                  ]
+                },
+                "description": "Retrieves the status and details of a specific job including progress percentage, execution history, and any error messages."
+              },
+              "response": [
+                {
+                  "id": "d735be41-aa01-437a-8817-029dcc336adf",
+                  "name": "Job details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/JobService/Jobs({{JobId}})",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "JobService",
+                        "Jobs({{JobId}})"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Id\": \"<integer>\",\n  \"JobName\": \"<string>\",\n  \"JobDescription\": \"<string>\",\n  \"JobType\": {\n    \"Id\": \"<integer>\",\n    \"Name\": \"<string>\"\n  },\n  \"LastRunStatus\": {\n    \"Id\": \"<integer>\",\n    \"Name\": \"<string>\"\n  },\n  \"JobStatus\": {\n    \"Id\": \"<integer>\",\n    \"Name\": \"<string>\"\n  },\n  \"PercentComplete\": \"<integer>\",\n  \"StartTime\": \"<dateTime>\",\n  \"EndTime\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-d735be41-aa01-437a-8817-029dcc336adf"
+                },
+                {
+                  "id": "cb068a21-1d0c-4052-bca0-e0dd18ca1535",
+                  "name": "Unauthorized - invalid or expired session token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/JobService/Jobs({{JobId}})",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "JobService",
+                        "Jobs({{JobId}})"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-cb068a21-1d0c-4052-bca0-e0dd18ca1535"
+                },
+                {
+                  "id": "074a5036-df13-4658-986e-a1bddfffe2e5",
+                  "name": "Job not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/JobService/Jobs({{JobId}})",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "JobService",
+                        "Jobs({{JobId}})"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-074a5036-df13-4658-986e-a1bddfffe2e5"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:51.000Z",
+              "updatedAt": "2026-06-05T15:07:51.000Z",
+              "uid": "35240-17c11156-088f-4ac6-b330-37fc831b0742"
+            }
+          ],
+          "id": "18801101-d01e-40e5-ab59-5a307d4cd55f",
+          "createdAt": "2026-06-05T15:07:51.000Z",
+          "updatedAt": "2026-06-05T15:07:51.000Z",
+          "uid": "35240-18801101-d01e-40e5-ab59-5a307d4cd55f"
+        }
+      ],
+      "id": "22d106b0-fb2f-49f4-bc91-ec543a73db34",
+      "createdAt": "2026-06-05T15:07:51.000Z",
+      "updatedAt": "2026-06-05T15:07:51.000Z",
+      "uid": "35240-22d106b0-fb2f-49f4-bc91-ec543a73db34"
+    },
+    {
+      "name": "UpdateService",
+      "item": [
+        {
+          "name": "Catalogs",
+          "item": [
+            {
+              "name": "Dell Servers List firmware catalogs",
+              "id": "c996d31a-355f-4e74-b552-8a932b48dcfc",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/UpdateService/Catalogs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "UpdateService",
+                    "Catalogs"
+                  ]
+                },
+                "description": "Retrieves the collection of firmware catalogs registered in OpenManage Enterprise. Catalogs contain firmware packages from Dell support sites or custom repositories used for compliance checking and updates."
+              },
+              "response": [
+                {
+                  "id": "f66f06d4-7085-4cb1-b7a6-4a0a825d6ad2",
+                  "name": "Collection of firmware catalogs",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/UpdateService/Catalogs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "UpdateService",
+                        "Catalogs"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Filename\": \"<string>\",\n      \"SourcePath\": \"<string>\",\n      \"Repository\": {\n        \"Name\": \"<string>\",\n        \"RepositoryType\": \"<string>\"\n      },\n      \"Status\": \"<string>\",\n      \"TaskId\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Filename\": \"<string>\",\n      \"SourcePath\": \"<string>\",\n      \"Repository\": {\n        \"Name\": \"<string>\",\n        \"RepositoryType\": \"<string>\"\n      },\n      \"Status\": \"<string>\",\n      \"TaskId\": \"<integer>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-f66f06d4-7085-4cb1-b7a6-4a0a825d6ad2"
+                },
+                {
+                  "id": "9bcf51d4-3d53-42b0-81ab-b42c6e489a28",
+                  "name": "Unauthorized - invalid or expired session token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/UpdateService/Catalogs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "UpdateService",
+                        "Catalogs"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-9bcf51d4-3d53-42b0-81ab-b42c6e489a28"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:51.000Z",
+              "updatedAt": "2026-06-05T15:07:51.000Z",
+              "uid": "35240-c996d31a-355f-4e74-b552-8a932b48dcfc"
+            }
+          ],
+          "id": "c6844136-ae36-4e22-a5a6-c49376bae54d",
+          "createdAt": "2026-06-05T15:07:51.000Z",
+          "updatedAt": "2026-06-05T15:07:51.000Z",
+          "uid": "35240-c6844136-ae36-4e22-a5a6-c49376bae54d"
+        },
+        {
+          "name": "Actions",
+          "item": [
+            {
+              "name": "UpdateService.GetBaselines",
+              "item": [
+                {
+                  "name": "Dell Servers Get firmware compliance baselines",
+                  "id": "af859408-b160-4c94-957e-9fd290e1538e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/UpdateService/Actions/UpdateService.GetBaselines",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "UpdateService",
+                        "Actions",
+                        "UpdateService.GetBaselines"
+                      ]
+                    },
+                    "description": "Retrieves firmware compliance baselines that define the expected firmware versions for devices. Baselines are used to check device compliance and identify devices needing firmware updates."
+                  },
+                  "response": [
+                    {
+                      "id": "5483254f-cfed-415a-8f33-437a60a18b17",
+                      "name": "Firmware compliance baselines",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Auth-Token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/UpdateService/Actions/UpdateService.GetBaselines",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "UpdateService",
+                            "Actions",
+                            "UpdateService.GetBaselines"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Name\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"CatalogId\": \"<integer>\",\n      \"ComplianceSummary\": {\n        \"ComplianceStatus\": \"<string>\",\n        \"NumberOfCritical\": \"<integer>\",\n        \"NumberOfWarning\": \"<integer>\",\n        \"NumberOfNormal\": \"<integer>\"\n      }\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Name\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"CatalogId\": \"<integer>\",\n      \"ComplianceSummary\": {\n        \"ComplianceStatus\": \"<string>\",\n        \"NumberOfCritical\": \"<integer>\",\n        \"NumberOfWarning\": \"<integer>\",\n        \"NumberOfNormal\": \"<integer>\"\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:07:51.000Z",
+                      "updatedAt": "2026-06-05T15:07:51.000Z",
+                      "uid": "35240-5483254f-cfed-415a-8f33-437a60a18b17"
+                    },
+                    {
+                      "id": "0a488cd6-c905-48ac-b788-f735da0bcbb1",
+                      "name": "Unauthorized - invalid or expired session token",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Auth-Token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/UpdateService/Actions/UpdateService.GetBaselines",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "UpdateService",
+                            "Actions",
+                            "UpdateService.GetBaselines"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:07:51.000Z",
+                      "updatedAt": "2026-06-05T15:07:51.000Z",
+                      "uid": "35240-0a488cd6-c905-48ac-b788-f735da0bcbb1"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-af859408-b160-4c94-957e-9fd290e1538e"
+                }
+              ],
+              "id": "8a22d004-6faf-4d89-9dc6-ee3dc293bc79",
+              "createdAt": "2026-06-05T15:07:51.000Z",
+              "updatedAt": "2026-06-05T15:07:51.000Z",
+              "uid": "35240-8a22d004-6faf-4d89-9dc6-ee3dc293bc79"
+            }
+          ],
+          "id": "431072e0-a38f-48f1-bf26-4a565e0b29ff",
+          "createdAt": "2026-06-05T15:07:51.000Z",
+          "updatedAt": "2026-06-05T15:07:51.000Z",
+          "uid": "35240-431072e0-a38f-48f1-bf26-4a565e0b29ff"
+        }
+      ],
+      "id": "7fabb10f-0acc-4863-83d5-bc58573e824b",
+      "createdAt": "2026-06-05T15:07:51.000Z",
+      "updatedAt": "2026-06-05T15:07:51.000Z",
+      "uid": "35240-7fabb10f-0acc-4863-83d5-bc58573e824b"
+    },
+    {
+      "name": "TemplateService",
+      "item": [
+        {
+          "name": "Templates",
+          "item": [
+            {
+              "name": "Dell Servers List configuration templates",
+              "id": "38cc8245-aae8-47fc-a3c7-33c149064595",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/TemplateService/Templates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "TemplateService",
+                    "Templates"
+                  ]
+                },
+                "description": "Retrieves the collection of server configuration templates that define desired BIOS, RAID, network, and iDRAC settings. Templates can be deployed to one or more servers for consistent configuration."
+              },
+              "response": [
+                {
+                  "id": "48be2233-460c-454b-869e-f4283885196e",
+                  "name": "Collection of configuration templates",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/TemplateService/Templates",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "TemplateService",
+                        "Templates"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Name\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"ViewTypeId\": \"<integer>\",\n      \"TypeId\": \"<integer>\",\n      \"CreatedBy\": \"<string>\",\n      \"CreatedDate\": \"<dateTime>\",\n      \"LastUpdatedBy\": \"<string>\",\n      \"LastUpdatedDate\": \"<dateTime>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Name\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"ViewTypeId\": \"<integer>\",\n      \"TypeId\": \"<integer>\",\n      \"CreatedBy\": \"<string>\",\n      \"CreatedDate\": \"<dateTime>\",\n      \"LastUpdatedBy\": \"<string>\",\n      \"LastUpdatedDate\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-48be2233-460c-454b-869e-f4283885196e"
+                },
+                {
+                  "id": "6149e13e-f20e-4896-9d00-cc60cf9c352e",
+                  "name": "Unauthorized - invalid or expired session token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/TemplateService/Templates",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "TemplateService",
+                        "Templates"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-6149e13e-f20e-4896-9d00-cc60cf9c352e"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:51.000Z",
+              "updatedAt": "2026-06-05T15:07:51.000Z",
+              "uid": "35240-38cc8245-aae8-47fc-a3c7-33c149064595"
+            }
+          ],
+          "id": "fc20e66d-8cdb-4c51-ab9c-a7a418c8d881",
+          "createdAt": "2026-06-05T15:07:51.000Z",
+          "updatedAt": "2026-06-05T15:07:51.000Z",
+          "uid": "35240-fc20e66d-8cdb-4c51-ab9c-a7a418c8d881"
+        }
+      ],
+      "id": "1ee611e5-0e74-4722-a9c8-39e8d23aaa44",
+      "createdAt": "2026-06-05T15:07:51.000Z",
+      "updatedAt": "2026-06-05T15:07:51.000Z",
+      "uid": "35240-1ee611e5-0e74-4722-a9c8-39e8d23aaa44"
+    },
+    {
+      "name": "ReportService",
+      "item": [
+        {
+          "name": "ReportDefs",
+          "item": [
+            {
+              "name": "Dell Servers List report definitions",
+              "id": "912b14ca-dbd7-427f-a3cd-37b4a287f550",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ReportService/ReportDefs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ReportService",
+                    "ReportDefs"
+                  ]
+                },
+                "description": "Retrieves the collection of report definitions available in OpenManage Enterprise. Report definitions specify the query criteria, columns, and filters for generating reports on managed devices."
+              },
+              "response": [
+                {
+                  "id": "34451f7a-d2a8-4477-ba48-d7ed9bd7740d",
+                  "name": "Collection of report definitions",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ReportService/ReportDefs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ReportService",
+                        "ReportDefs"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Name\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"ColumnNames\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"FilterGroupId\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Name\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"ColumnNames\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"FilterGroupId\": \"<integer>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-34451f7a-d2a8-4477-ba48-d7ed9bd7740d"
+                },
+                {
+                  "id": "c2b36321-f1f0-41e0-8eeb-1de72c98c7a5",
+                  "name": "Unauthorized - invalid or expired session token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ReportService/ReportDefs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ReportService",
+                        "ReportDefs"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-c2b36321-f1f0-41e0-8eeb-1de72c98c7a5"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:51.000Z",
+              "updatedAt": "2026-06-05T15:07:51.000Z",
+              "uid": "35240-912b14ca-dbd7-427f-a3cd-37b4a287f550"
+            }
+          ],
+          "id": "a1a19888-3487-440e-aeae-9df585f6640a",
+          "createdAt": "2026-06-05T15:07:51.000Z",
+          "updatedAt": "2026-06-05T15:07:51.000Z",
+          "uid": "35240-a1a19888-3487-440e-aeae-9df585f6640a"
+        }
+      ],
+      "id": "75c8b057-3b7b-41b1-8b52-7746624f6b77",
+      "createdAt": "2026-06-05T15:07:51.000Z",
+      "updatedAt": "2026-06-05T15:07:51.000Z",
+      "uid": "35240-75c8b057-3b7b-41b1-8b52-7746624f6b77"
+    },
+    {
+      "name": "ApplicationService",
+      "item": [
+        {
+          "name": "Network",
+          "item": [
+            {
+              "name": "Dell Servers Get appliance network configuration",
+              "id": "1c541f43-955f-44bb-9402-f1df7413b7db",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ApplicationService/Network",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ApplicationService",
+                    "Network"
+                  ]
+                },
+                "description": "Retrieves the network configuration of the OpenManage Enterprise appliance including IP address, subnet mask, gateway, DNS, and NTP settings."
+              },
+              "response": [
+                {
+                  "id": "3b7f395d-a954-41e2-bf26-b3329775ee95",
+                  "name": "Network configuration details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ApplicationService/Network",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ApplicationService",
+                        "Network"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-3b7f395d-a954-41e2-bf26-b3329775ee95"
+                },
+                {
+                  "id": "89c2c4c0-c53b-4be5-833e-bc6cb891c4fc",
+                  "name": "Unauthorized - invalid or expired session token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ApplicationService/Network",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ApplicationService",
+                        "Network"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:07:51.000Z",
+                  "updatedAt": "2026-06-05T15:07:51.000Z",
+                  "uid": "35240-89c2c4c0-c53b-4be5-833e-bc6cb891c4fc"
+                }
+              ],
+              "createdAt": "2026-06-05T15:07:51.000Z",
+              "updatedAt": "2026-06-05T15:07:51.000Z",
+              "uid": "35240-1c541f43-955f-44bb-9402-f1df7413b7db"
+            }
+          ],
+          "id": "a4c298c0-d1d5-4252-bd10-31b53f9a27a9",
+          "createdAt": "2026-06-05T15:07:51.000Z",
+          "updatedAt": "2026-06-05T15:07:51.000Z",
+          "uid": "35240-a4c298c0-d1d5-4252-bd10-31b53f9a27a9"
+        }
+      ],
+      "id": "c9db7572-cef8-473e-b50c-c218e1f72770",
+      "createdAt": "2026-06-05T15:07:51.000Z",
+      "updatedAt": "2026-06-05T15:07:51.000Z",
+      "uid": "35240-c9db7572-cef8-473e-b50c-c218e1f72770"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Auth-Token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "ome-server",
+      "value": "ome-server.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{ome-server}}/api"
+    },
+    {
+      "key": "DeviceId",
+      "value": "<integer>"
+    },
+    {
+      "key": "GroupId",
+      "value": "<integer>"
+    },
+    {
+      "key": "AlertId",
+      "value": "<integer>"
+    },
+    {
+      "key": "JobId",
+      "value": "<integer>"
+    }
+  ]
+}

@@ -1,0 +1,427 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dell Servers Dell OpenManage Enterprise API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Auth-Token",
+      "value": "{{X-Auth-Token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers Create an authentication session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{ome-server}/api/SessionService/Sessions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Authenticates with the OpenManage Enterprise console using username and password credentials. Returns a session token in the X-Auth-Token response header that must be included in all subsequent API requests."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers List managed devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ome-server}/api/DeviceService/Devices",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of devices to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of devices to skip for pagination"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression to narrow results. Common filters include Type eq 1000 for servers, Type eq 2000 for chassis."
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Property name to sort results by"
+              }
+            ]
+          },
+          "docs": "Retrieves the collection of devices managed by OpenManage Enterprise including servers, chassis, storage, and network devices. Supports OData query parameters for filtering, sorting, and pagination."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Get a managed device",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ome-server}/api/DeviceService/Devices(:DeviceId)",
+            "params": [
+              {
+                "name": "DeviceId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for a managed device"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a specific managed device including hardware inventory, connection status, health, firmware versions, and assigned groups."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Get device inventory details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ome-server}/api/DeviceService/Devices(:DeviceId)/InventoryDetails",
+            "params": [
+              {
+                "name": "DeviceId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for a managed device"
+              }
+            ]
+          },
+          "docs": "Retrieves the detailed hardware inventory for a specific device including processor, memory, storage, network adapter, firmware, and software inventory components."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers List device groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ome-server}/api/GroupService/Groups",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression to narrow results"
+              }
+            ]
+          },
+          "docs": "Retrieves the collection of device groups configured in OpenManage Enterprise, including built-in system groups and user-created custom groups. Groups are used to organize devices for monitoring, reporting, and applying policies."
+        },
+        {
+          "info": {
+            "name": "Dell Servers List devices in a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ome-server}/api/GroupService/Groups(:GroupId)/Devices",
+            "params": [
+              {
+                "name": "GroupId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for a device group"
+              }
+            ]
+          },
+          "docs": "Retrieves the collection of devices that are members of the specified group. Supports OData query parameters for filtering and pagination."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Discovery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers List discovery configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ome-server}/api/DiscoveryConfigService/DiscoveryConfigGroups"
+          },
+          "docs": "Retrieves the collection of discovery configuration groups that define target ranges, protocols, and credentials used for device discovery."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Create a discovery configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{ome-server}/api/DiscoveryConfigService/DiscoveryConfigGroups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new discovery configuration group that defines network ranges, protocols, and credentials for discovering devices. When executed, the discovery job scans the specified ranges and adds discovered devices to the managed inventory."
+        },
+        {
+          "info": {
+            "name": "Dell Servers List discovery jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ome-server}/api/DiscoveryConfigService/Jobs"
+          },
+          "docs": "Retrieves the collection of discovery job instances showing status, progress, and results for discovery operations."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Alerts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers List alerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ome-server}/api/AlertService/Alerts",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of alerts to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of alerts to skip for pagination"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression for alert criteria"
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Property name to sort results by"
+              }
+            ]
+          },
+          "docs": "Retrieves the collection of alerts generated by managed devices. Alerts include hardware faults, threshold violations, configuration changes, and audit events. Supports OData filtering and pagination."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Get an alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ome-server}/api/AlertService/Alerts(:AlertId)",
+            "params": [
+              {
+                "name": "AlertId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for an alert"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a specific alert including the source device, severity, category, message, and recommended actions."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers List jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ome-server}/api/JobService/Jobs",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression for job criteria"
+              }
+            ]
+          },
+          "docs": "Retrieves the collection of jobs in OpenManage Enterprise including discovery, firmware update, configuration, and report jobs. Supports OData filtering by job type and status."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Create a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{ome-server}/api/JobService/Jobs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new job for executing operations such as firmware updates, configuration deployment, or inventory refresh on targeted devices."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Get a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ome-server}/api/JobService/Jobs(:JobId)",
+            "params": [
+              {
+                "name": "JobId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for a job"
+              }
+            ]
+          },
+          "docs": "Retrieves the status and details of a specific job including progress percentage, execution history, and any error messages."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Firmware",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers List firmware catalogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ome-server}/api/UpdateService/Catalogs"
+          },
+          "docs": "Retrieves the collection of firmware catalogs registered in OpenManage Enterprise. Catalogs contain firmware packages from Dell support sites or custom repositories used for compliance checking and updates."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Get firmware compliance baselines",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{ome-server}/api/UpdateService/Actions/UpdateService.GetBaselines"
+          },
+          "docs": "Retrieves firmware compliance baselines that define the expected firmware versions for devices. Baselines are used to check device compliance and identify devices needing firmware updates."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers List configuration templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ome-server}/api/TemplateService/Templates"
+          },
+          "docs": "Retrieves the collection of server configuration templates that define desired BIOS, RAID, network, and iDRAC settings. Templates can be deployed to one or more servers for consistent configuration."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers List report definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ome-server}/api/ReportService/ReportDefs"
+          },
+          "docs": "Retrieves the collection of report definitions available in OpenManage Enterprise. Report definitions specify the query criteria, columns, and filters for generating reports on managed devices."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Application Settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers Get appliance network configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{ome-server}/api/ApplicationService/Network"
+          },
+          "docs": "Retrieves the network configuration of the OpenManage Enterprise appliance including IP address, subnet mask, gateway, DNS, and NTP settings."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

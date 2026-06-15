@@ -1,0 +1,4922 @@
+{
+  "item": [
+    {
+      "id": "9c0cedeb-91cc-4e31-856a-0814f48eb515",
+      "name": "Accounts",
+      "description": {
+        "content": "User account management and role-based access control",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "281dc085-3770-40a6-bd2b-0e1f9f11955c",
+          "name": "Dell Servers Get account service",
+          "request": {
+            "name": "Dell Servers Get account service",
+            "description": {
+              "content": "Retrieves the account service resource which provides the configuration for user account management including password policies, lockout settings, and links to the accounts collection.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "AccountService"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "71720704-62b3-44c4-aa3c-3438bf1c1c68",
+              "name": "Account service resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "AccountService"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62602ae5-537f-4e58-8702-2a33f2868019",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "AccountService"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4b84d6e8-a52d-4bca-aefd-30420dff5922",
+          "name": "Dell Servers List user accounts",
+          "request": {
+            "name": "Dell Servers List user accounts",
+            "description": {
+              "content": "Retrieves the collection of user accounts configured on the iDRAC including local users with their roles and privileges.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "AccountService",
+                "Accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7ff097c4-e928-45a4-b1a3-ccf0565c6730",
+              "name": "Collection of user accounts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "AccountService",
+                    "Accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.id\": \"string\",\n  \"@odata.type\": \"string\",\n  \"Name\": \"string\",\n  \"Members@odata.count\": 2254,\n  \"Members\": [\n    {\n      \"@odata.id\": \"string\"\n    },\n    {\n      \"@odata.id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e07d3dd3-fbc2-4357-9b6d-2f95685c70aa",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "AccountService",
+                    "Accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "8f533a79-9847-4421-a0bc-7bc5fff96e44",
+      "name": "Chassis",
+      "description": {
+        "content": "Physical enclosure resources including power supplies, thermal sensors, and physical component inventory",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bc221381-b256-4405-a2a0-9fc1f8914874",
+          "name": "Dell Servers List chassis resources",
+          "request": {
+            "name": "Dell Servers List chassis resources",
+            "description": {
+              "content": "Retrieves the collection of chassis resources representing the physical enclosure of the server including power supplies, fans, thermal sensors, and physical component inventory.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Chassis"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a622623-a214-452b-8afb-89a9ba3796f2",
+              "name": "Collection of chassis resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Chassis"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.id\": \"string\",\n  \"@odata.type\": \"string\",\n  \"Name\": \"string\",\n  \"Members@odata.count\": 2254,\n  \"Members\": [\n    {\n      \"@odata.id\": \"string\"\n    },\n    {\n      \"@odata.id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11694fac-0736-4a92-bc4f-4722c51a14c8",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Chassis"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "965a80ff-6559-419b-a9ad-6589a1029d0d",
+          "name": "Dell Servers Get a chassis resource",
+          "request": {
+            "name": "Dell Servers Get a chassis resource",
+            "description": {
+              "content": "Retrieves a specific chassis resource with detailed information about the physical enclosure, including model, serial number, part number, asset tag, indicator LED state, and links to power and thermal resources.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Chassis",
+                ":ChassisId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "System.Embedded.1",
+                  "key": "ChassisId",
+                  "description": "(Required) Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                },
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a43976c6-89e8-4f4a-be4d-45aa8edd009b",
+              "name": "Chassis resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Chassis",
+                    ":ChassisId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "ChassisId",
+                      "description": "(Required) Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.id\": \"string\",\n  \"Id\": \"string\",\n  \"Name\": \"string\",\n  \"ChassisType\": \"StandAlone\",\n  \"Manufacturer\": \"string\",\n  \"Model\": \"string\",\n  \"SerialNumber\": \"string\",\n  \"PartNumber\": \"string\",\n  \"SKU\": \"string\",\n  \"AssetTag\": \"string\",\n  \"IndicatorLED\": \"Lit\",\n  \"Status\": {\n    \"Health\": \"OK\",\n    \"HealthRollup\": \"OK\",\n    \"State\": \"Quiesced\"\n  },\n  \"PowerState\": \"Off\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac2d2924-e3ea-492e-b020-62710e786609",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Chassis",
+                    ":ChassisId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "ChassisId",
+                      "description": "(Required) Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "96e1a821-a2d1-491a-8fba-aefb98eeda80",
+              "name": "Chassis resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Chassis",
+                    ":ChassisId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "ChassisId",
+                      "description": "(Required) Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33d484f1-0127-48db-8c0e-ccc136d8e05c",
+          "name": "Dell Servers Get chassis power information",
+          "request": {
+            "name": "Dell Servers Get chassis power information",
+            "description": {
+              "content": "Retrieves power supply information, power consumption metrics, and power control settings for the specified chassis including current wattage, power capacity, and power supply redundancy status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Chassis",
+                ":ChassisId",
+                "Power"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "System.Embedded.1",
+                  "key": "ChassisId",
+                  "description": "(Required) Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                },
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6b4efe3f-6c5c-41e2-a542-cb91c88d7682",
+              "name": "Chassis power resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Chassis",
+                    ":ChassisId",
+                    "Power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "ChassisId",
+                      "description": "(Required) Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.id\": \"string\",\n  \"PowerControl\": [\n    {\n      \"Name\": \"string\",\n      \"PowerConsumedWatts\": 2558.47175559051,\n      \"PowerCapacityWatts\": 674.0526836756222,\n      \"PowerMetrics\": {\n        \"IntervalInMin\": 2018,\n        \"MinConsumedWatts\": 7598.419789281815,\n        \"MaxConsumedWatts\": 9427.989244835993,\n        \"AverageConsumedWatts\": 7469.753209738761\n      }\n    },\n    {\n      \"Name\": \"string\",\n      \"PowerConsumedWatts\": 5912.756600638559,\n      \"PowerCapacityWatts\": 5343.775252417121,\n      \"PowerMetrics\": {\n        \"IntervalInMin\": 5583,\n        \"MinConsumedWatts\": 8512.426262544403,\n        \"MaxConsumedWatts\": 7400.457210852029,\n        \"AverageConsumedWatts\": 2766.1618198039373\n      }\n    }\n  ],\n  \"PowerSupplies\": [\n    {\n      \"Name\": \"string\",\n      \"PowerCapacityWatts\": 809.7047335260055,\n      \"LineInputVoltage\": 1049.3167905454336,\n      \"Model\": \"string\",\n      \"SerialNumber\": \"string\",\n      \"Status\": {\n        \"Health\": \"Critical\",\n        \"HealthRollup\": \"Warning\",\n        \"State\": \"StandbySpare\"\n      }\n    },\n    {\n      \"Name\": \"string\",\n      \"PowerCapacityWatts\": 7077.408835698566,\n      \"LineInputVoltage\": 1604.216607156478,\n      \"Model\": \"string\",\n      \"SerialNumber\": \"string\",\n      \"Status\": {\n        \"Health\": \"Critical\",\n        \"HealthRollup\": \"Warning\",\n        \"State\": \"StandbyOffline\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ecd30a3c-ed78-4f05-aee7-63fc16ae419d",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Chassis",
+                    ":ChassisId",
+                    "Power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "ChassisId",
+                      "description": "(Required) Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "68ccc22d-b293-4204-9fb0-727fbcfe0b8c",
+          "name": "Dell Servers Get chassis thermal information",
+          "request": {
+            "name": "Dell Servers Get chassis thermal information",
+            "description": {
+              "content": "Retrieves thermal sensor readings, fan speeds, and temperature thresholds for the specified chassis. Includes inlet and exhaust temperatures, CPU temperatures, and fan status with redundancy information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Chassis",
+                ":ChassisId",
+                "Thermal"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "System.Embedded.1",
+                  "key": "ChassisId",
+                  "description": "(Required) Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                },
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e98b2304-601d-4187-80fa-77d36de65dd3",
+              "name": "Chassis thermal resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Chassis",
+                    ":ChassisId",
+                    "Thermal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "ChassisId",
+                      "description": "(Required) Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.id\": \"string\",\n  \"Temperatures\": [\n    {\n      \"Name\": \"string\",\n      \"ReadingCelsius\": 4528.73459930988,\n      \"UpperThresholdCritical\": 8928.121300845638,\n      \"UpperThresholdFatal\": 4882.3517883766135,\n      \"LowerThresholdCritical\": 3464.6599574419724,\n      \"Status\": {\n        \"Health\": \"OK\",\n        \"HealthRollup\": \"OK\",\n        \"State\": \"StandbySpare\"\n      }\n    },\n    {\n      \"Name\": \"string\",\n      \"ReadingCelsius\": 547.5598143263405,\n      \"UpperThresholdCritical\": 2095.6973987643855,\n      \"UpperThresholdFatal\": 1606.6078247019689,\n      \"LowerThresholdCritical\": 8815.453837288733,\n      \"Status\": {\n        \"Health\": \"OK\",\n        \"HealthRollup\": \"Warning\",\n        \"State\": \"Quiesced\"\n      }\n    }\n  ],\n  \"Fans\": [\n    {\n      \"Name\": \"string\",\n      \"Reading\": 2980,\n      \"ReadingUnits\": \"RPM\",\n      \"Status\": {\n        \"Health\": \"OK\",\n        \"HealthRollup\": \"Warning\",\n        \"State\": \"Deferring\"\n      }\n    },\n    {\n      \"Name\": \"string\",\n      \"Reading\": 1835,\n      \"ReadingUnits\": \"RPM\",\n      \"Status\": {\n        \"Health\": \"Warning\",\n        \"HealthRollup\": \"Critical\",\n        \"State\": \"Deferring\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "249c062f-b43e-4ace-80f0-00de1762f708",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Chassis",
+                    ":ChassisId",
+                    "Thermal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "ChassisId",
+                      "description": "(Required) Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9789e0cf-76b0-453b-9668-94056c098b0c",
+      "name": "Event Service",
+      "description": {
+        "content": "Event subscriptions and server-sent events configuration",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c32a36c9-9ae4-494b-ba65-18c93b8a6426",
+          "name": "Dell Servers Get event service",
+          "request": {
+            "name": "Dell Servers Get event service",
+            "description": {
+              "content": "Retrieves the event service resource which provides configuration for event subscriptions and server-sent events. The event service enables clients to subscribe to alerts and lifecycle events from the iDRAC.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "EventService"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "caec47e9-8638-4233-8d67-99ae1b06d9e9",
+              "name": "Event service resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "EventService"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92892092-e7fb-4ffb-8734-8a6f36c7e8d7",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "EventService"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "625a53ba-06bf-43ce-93a8-06fa9433f1f7",
+          "name": "Dell Servers List event subscriptions",
+          "request": {
+            "name": "Dell Servers List event subscriptions",
+            "description": {
+              "content": "Retrieves the collection of event subscriptions configured on the iDRAC. Each subscription defines a destination URL and event types to which the client has subscribed for receiving push notifications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "EventService",
+                "Subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd29671c-4301-4284-872b-cb98fa7a576e",
+              "name": "Collection of event subscriptions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "EventService",
+                    "Subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.id\": \"string\",\n  \"@odata.type\": \"string\",\n  \"Name\": \"string\",\n  \"Members@odata.count\": 2254,\n  \"Members\": [\n    {\n      \"@odata.id\": \"string\"\n    },\n    {\n      \"@odata.id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "871832ff-b448-4aff-9436-df40951e2910",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "EventService",
+                    "Subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73e0638b-1822-4d10-9bb3-7a197c867ba1",
+          "name": "Dell Servers Create an event subscription",
+          "request": {
+            "name": "Dell Servers Create an event subscription",
+            "description": {
+              "content": "Creates a new event subscription that configures the iDRAC to push event notifications to a specified destination URL when events matching the subscription criteria occur. iDRAC supports up to eight concurrent subscriptions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "EventService",
+                "Subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Destination\": \"<uri>\",\n  \"EventTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Protocol\": \"<string>\",\n  \"Context\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2275e4d5-dc9a-4336-962d-0513bcc14e45",
+              "name": "Event subscription created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "EventService",
+                    "Subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Destination\": \"<uri>\",\n  \"EventTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Protocol\": \"<string>\",\n  \"Context\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "19caa9e8-7922-4837-ada5-c42be37ab24d",
+              "name": "Invalid subscription parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "EventService",
+                    "Subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Destination\": \"<uri>\",\n  \"EventTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Protocol\": \"<string>\",\n  \"Context\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a0218d81-cee1-4971-9140-1fe15143d8f0",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "EventService",
+                    "Subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Destination\": \"<uri>\",\n  \"EventTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Protocol\": \"<string>\",\n  \"Context\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0bb1ae4d-b0f9-427f-a004-3cd5a9f82bb5",
+      "name": "Managers",
+      "description": {
+        "content": "Management controller resources for iDRAC configuration, networking, and remote services",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c291920b-41ac-4a61-b8f7-23a35fc3d297",
+          "name": "Dell Servers List manager resources",
+          "request": {
+            "name": "Dell Servers List manager resources",
+            "description": {
+              "content": "Retrieves the collection of manager resources representing the iDRAC management controller including its firmware version, network configuration, and available management services.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Managers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "31b0f6bf-0467-45f0-9e3f-9aa82f054f7f",
+              "name": "Collection of manager resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Managers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.id\": \"string\",\n  \"@odata.type\": \"string\",\n  \"Name\": \"string\",\n  \"Members@odata.count\": 2254,\n  \"Members\": [\n    {\n      \"@odata.id\": \"string\"\n    },\n    {\n      \"@odata.id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "275e9c2f-4888-4174-b7cf-2f0308509942",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Managers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "582cac88-601e-418d-b514-2aac3b74a13f",
+          "name": "Dell Servers Get a manager resource",
+          "request": {
+            "name": "Dell Servers Get a manager resource",
+            "description": {
+              "content": "Retrieves a specific manager resource representing the iDRAC controller with its firmware version, model, network interfaces, virtual media capabilities, and links to log services.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Managers",
+                ":ManagerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "iDRAC.Embedded.1",
+                  "key": "ManagerId",
+                  "description": "(Required) Identifier for the manager resource, typically iDRAC.Embedded.1 for Dell PowerEdge servers"
+                },
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2d7323de-b54b-457a-ae30-6b288a13a2ae",
+              "name": "Manager resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Managers",
+                    ":ManagerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "iDRAC.Embedded.1",
+                      "key": "ManagerId",
+                      "description": "(Required) Identifier for the manager resource, typically iDRAC.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.id\": \"string\",\n  \"Id\": \"string\",\n  \"Name\": \"string\",\n  \"ManagerType\": \"EnclosureManager\",\n  \"FirmwareVersion\": \"string\",\n  \"Model\": \"string\",\n  \"Status\": {\n    \"Health\": \"Warning\",\n    \"HealthRollup\": \"Critical\",\n    \"State\": \"UnavailableOffline\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e32b9faa-b89c-481a-9667-bff959a72c89",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Managers",
+                    ":ManagerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "iDRAC.Embedded.1",
+                      "key": "ManagerId",
+                      "description": "(Required) Identifier for the manager resource, typically iDRAC.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1ff8c796-a983-4513-964a-9d591da11f67",
+              "name": "Manager resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Managers",
+                    ":ManagerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "iDRAC.Embedded.1",
+                      "key": "ManagerId",
+                      "description": "(Required) Identifier for the manager resource, typically iDRAC.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ce89278-0fb5-43ed-aa54-e991ea1a6cb9",
+          "name": "Dell Servers List log services",
+          "request": {
+            "name": "Dell Servers List log services",
+            "description": {
+              "content": "Retrieves the collection of log services available on the iDRAC manager including the Lifecycle Controller log and the System Event Log (SEL).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Managers",
+                ":ManagerId",
+                "LogServices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "iDRAC.Embedded.1",
+                  "key": "ManagerId",
+                  "description": "(Required) Identifier for the manager resource, typically iDRAC.Embedded.1 for Dell PowerEdge servers"
+                },
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1660dfb2-8d67-47e2-9057-42970789a5f4",
+              "name": "Collection of log services",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Managers",
+                    ":ManagerId",
+                    "LogServices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "iDRAC.Embedded.1",
+                      "key": "ManagerId",
+                      "description": "(Required) Identifier for the manager resource, typically iDRAC.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.id\": \"string\",\n  \"@odata.type\": \"string\",\n  \"Name\": \"string\",\n  \"Members@odata.count\": 2254,\n  \"Members\": [\n    {\n      \"@odata.id\": \"string\"\n    },\n    {\n      \"@odata.id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e03c1445-1d11-4927-bdd8-82debcc5da33",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Managers",
+                    ":ManagerId",
+                    "LogServices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "iDRAC.Embedded.1",
+                      "key": "ManagerId",
+                      "description": "(Required) Identifier for the manager resource, typically iDRAC.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ffd90cab-2b23-4adb-9789-55df241406dd",
+          "name": "Dell Servers List virtual media devices",
+          "request": {
+            "name": "Dell Servers List virtual media devices",
+            "description": {
+              "content": "Retrieves the collection of virtual media devices that can be used to mount remote ISO images or floppy images for operating system deployment and server configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Managers",
+                ":ManagerId",
+                "VirtualMedia"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "iDRAC.Embedded.1",
+                  "key": "ManagerId",
+                  "description": "(Required) Identifier for the manager resource, typically iDRAC.Embedded.1 for Dell PowerEdge servers"
+                },
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d5fbb88-46b0-4cc0-8548-705c2820cb84",
+              "name": "Collection of virtual media resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Managers",
+                    ":ManagerId",
+                    "VirtualMedia"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "iDRAC.Embedded.1",
+                      "key": "ManagerId",
+                      "description": "(Required) Identifier for the manager resource, typically iDRAC.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.id\": \"string\",\n  \"@odata.type\": \"string\",\n  \"Name\": \"string\",\n  \"Members@odata.count\": 2254,\n  \"Members\": [\n    {\n      \"@odata.id\": \"string\"\n    },\n    {\n      \"@odata.id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f9f23b3-e0e9-4d56-b5de-e1f4c2c2ed54",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Managers",
+                    ":ManagerId",
+                    "VirtualMedia"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "iDRAC.Embedded.1",
+                      "key": "ManagerId",
+                      "description": "(Required) Identifier for the manager resource, typically iDRAC.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c1b5807d-d07e-41cb-9112-9895cd96cc76",
+      "name": "Service Root",
+      "description": {
+        "content": "Redfish service root and metadata",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d6963fd7-e602-4487-aa9a-ee7009c90228",
+          "name": "Dell Servers Get Redfish service root",
+          "request": {
+            "name": "Dell Servers Get Redfish service root",
+            "description": {
+              "content": "Retrieves the Redfish service root resource which provides links to all top-level resource collections and service metadata including the Redfish protocol version and available services.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8115f43f-a03d-4907-a145-a30a4bfba6ca",
+              "name": "Service root resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.id\": \"string\",\n  \"@odata.type\": \"string\",\n  \"Id\": \"string\",\n  \"Name\": \"string\",\n  \"RedfishVersion\": \"string\",\n  \"Systems\": {\n    \"@odata.id\": \"string\"\n  },\n  \"Chassis\": {\n    \"@odata.id\": \"string\"\n  },\n  \"Managers\": {\n    \"@odata.id\": \"string\"\n  },\n  \"AccountService\": {\n    \"@odata.id\": \"string\"\n  },\n  \"SessionService\": {\n    \"@odata.id\": \"string\"\n  },\n  \"UpdateService\": {\n    \"@odata.id\": \"string\"\n  },\n  \"EventService\": {\n    \"@odata.id\": \"string\"\n  },\n  \"TaskService\": {\n    \"@odata.id\": \"string\"\n  },\n  \"TelemetryService\": {\n    \"@odata.id\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37e65bfa-4651-41e8-8a00-aaa7a356e4f9",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "82b764ec-1383-4a2b-a65e-add9199d3894",
+      "name": "Sessions",
+      "description": {
+        "content": "Authentication session creation and management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "54d933d6-b544-463d-929d-6232c715abfd",
+          "name": "Dell Servers List active sessions",
+          "request": {
+            "name": "Dell Servers List active sessions",
+            "description": {
+              "content": "Retrieves the collection of active sessions on the iDRAC including web UI sessions, Redfish API sessions, and SSH sessions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "SessionService",
+                "Sessions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3fcaa496-5396-42df-b064-d359b7a327b7",
+              "name": "Collection of active sessions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "SessionService",
+                    "Sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.id\": \"string\",\n  \"@odata.type\": \"string\",\n  \"Name\": \"string\",\n  \"Members@odata.count\": 2254,\n  \"Members\": [\n    {\n      \"@odata.id\": \"string\"\n    },\n    {\n      \"@odata.id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d128c8a-8131-426e-a101-6f48f5a6c124",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "SessionService",
+                    "Sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8275b01b-c695-490a-a284-afafbb76506c",
+          "name": "Dell Servers Create a new session",
+          "request": {
+            "name": "Dell Servers Create a new session",
+            "description": {
+              "content": "Creates a new Redfish session by authenticating with username and password. Returns a session token in the X-Auth-Token response header that can be used for subsequent requests instead of basic authentication.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "SessionService",
+                "Sessions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"UserName\": \"<string>\",\n  \"Password\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3ff4a3d7-3f1c-4cf5-93b0-cb4d1c7035ea",
+              "name": "Session created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "SessionService",
+                    "Sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"UserName\": \"<string>\",\n  \"Password\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Session authentication token",
+                  "key": "X-Auth-Token",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "URI of the created session resource",
+                  "key": "Location",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3c0fc9bf-a50f-4f9b-9527-ca3e68a5e00f",
+              "name": "Authentication failed - invalid credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "SessionService",
+                    "Sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"UserName\": \"<string>\",\n  \"Password\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "767166ed-0f48-4593-862b-b560d095cd62",
+      "name": "Systems",
+      "description": {
+        "content": "Computer system resources including hardware inventory, health status, power state, and BIOS configuration",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a8438969-721f-4f38-afba-b020770d3d23",
+          "name": "Dell Servers List computer systems",
+          "request": {
+            "name": "Dell Servers List computer systems",
+            "description": {
+              "content": "Retrieves the collection of computer system resources managed by this iDRAC instance. Each system resource represents a Dell PowerEdge server with its hardware inventory, health status, and configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Systems"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dc746d0c-7cdd-46e1-b99a-55c20c0b2621",
+              "name": "Collection of computer system resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Systems"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.id\": \"string\",\n  \"@odata.type\": \"string\",\n  \"Name\": \"string\",\n  \"Members@odata.count\": 1018,\n  \"Members\": [\n    {\n      \"@odata.id\": \"string\"\n    },\n    {\n      \"@odata.id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2234efae-8eac-40f1-8be8-093e62a68682",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Systems"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4249993f-172c-4e0f-aeb5-830fc6493ad2",
+          "name": "Dell Servers Get a computer system",
+          "request": {
+            "name": "Dell Servers Get a computer system",
+            "description": {
+              "content": "Retrieves a specific computer system resource including detailed hardware inventory, health status, power state, boot configuration, processor and memory summary, and links to subordinate resources like storage, network interfaces, and BIOS settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Systems",
+                ":SystemId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "System.Embedded.1",
+                  "key": "SystemId",
+                  "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                },
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "90c6dbb5-e2cf-45fa-afe3-bbfd341d8fce",
+              "name": "Computer system resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Systems",
+                    ":SystemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "SystemId",
+                      "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.id\": \"string\",\n  \"@odata.type\": \"string\",\n  \"Id\": \"string\",\n  \"Name\": \"string\",\n  \"Manufacturer\": \"string\",\n  \"Model\": \"string\",\n  \"SerialNumber\": \"string\",\n  \"SKU\": \"string\",\n  \"PartNumber\": \"string\",\n  \"SystemType\": \"VirtuallyPartitioned\",\n  \"AssetTag\": \"string\",\n  \"BiosVersion\": \"string\",\n  \"PowerState\": \"On\",\n  \"Status\": {\n    \"Health\": \"Warning\",\n    \"HealthRollup\": \"Warning\",\n    \"State\": \"Deferring\"\n  },\n  \"HostName\": \"string\",\n  \"IndicatorLED\": \"Blinking\",\n  \"ProcessorSummary\": {\n    \"Count\": 6194,\n    \"Model\": \"string\",\n    \"Status\": {\n      \"Health\": \"Warning\",\n      \"HealthRollup\": \"Critical\",\n      \"State\": \"Disabled\"\n    }\n  },\n  \"MemorySummary\": {\n    \"TotalSystemMemoryGiB\": 6313.383523284435,\n    \"Status\": {\n      \"Health\": \"Critical\",\n      \"HealthRollup\": \"Critical\",\n      \"State\": \"Disabled\"\n    }\n  },\n  \"Boot\": {\n    \"BootSourceOverrideEnabled\": \"Disabled\",\n    \"BootSourceOverrideTarget\": \"string\",\n    \"BootSourceOverrideMode\": \"UEFI\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "45dec162-255d-481c-95ca-b4cc365040c9",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Systems",
+                    ":SystemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "SystemId",
+                      "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "65cdaae3-5edb-400c-8872-5d13e2c64d50",
+              "name": "System resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Systems",
+                    ":SystemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "SystemId",
+                      "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c2977dfa-357a-4c0c-864c-2b53f3bd4f9c",
+          "name": "Dell Servers Reset a computer system",
+          "request": {
+            "name": "Dell Servers Reset a computer system",
+            "description": {
+              "content": "Performs a power action on the computer system such as power on, power off, graceful shutdown, force restart, or power cycle. The available reset types depend on the current power state of the system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Systems",
+                ":SystemId",
+                "Actions",
+                "ComputerSystem.Reset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "System.Embedded.1",
+                  "key": "SystemId",
+                  "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                },
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ResetType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1cb365ed-b48d-47fd-a37a-0da9171a9ad6",
+              "name": "Reset action initiated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Systems",
+                    ":SystemId",
+                    "Actions",
+                    "ComputerSystem.Reset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "SystemId",
+                      "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ResetType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2bf9ba4c-46fe-4506-9ca6-40e397d5591a",
+              "name": "Invalid reset type for current system state",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Systems",
+                    ":SystemId",
+                    "Actions",
+                    "ComputerSystem.Reset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "SystemId",
+                      "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ResetType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6b5adfac-4c25-4e27-a30d-5f1ef63d6abe",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Systems",
+                    ":SystemId",
+                    "Actions",
+                    "ComputerSystem.Reset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "SystemId",
+                      "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ResetType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "071d89cf-bbd9-4d15-afbd-2f7025b19a05",
+              "name": "System resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Systems",
+                    ":SystemId",
+                    "Actions",
+                    "ComputerSystem.Reset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "SystemId",
+                      "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ResetType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "632bb945-fb62-433e-96a7-37d000fb03f3",
+          "name": "Dell Servers Get BIOS attributes",
+          "request": {
+            "name": "Dell Servers Get BIOS attributes",
+            "description": {
+              "content": "Retrieves the current BIOS attribute values for the specified computer system. BIOS attributes control hardware-level settings including boot order, processor configuration, memory settings, and security features.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Systems",
+                ":SystemId",
+                "Bios"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "System.Embedded.1",
+                  "key": "SystemId",
+                  "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                },
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "17a31245-af99-476d-a9bc-1065a5f1cc30",
+              "name": "BIOS attributes resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Systems",
+                    ":SystemId",
+                    "Bios"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "SystemId",
+                      "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.id\": \"string\",\n  \"Id\": \"string\",\n  \"AttributeRegistry\": \"string\",\n  \"Attributes\": {\n    \"key_0\": \"string\",\n    \"key_1\": 2639.9213643764097\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa1a3285-7c5e-4a42-b97a-2ba1b8332104",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Systems",
+                    ":SystemId",
+                    "Bios"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "SystemId",
+                      "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f8053148-06e3-43d2-94fb-45be4674b01b",
+              "name": "System resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Systems",
+                    ":SystemId",
+                    "Bios"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "SystemId",
+                      "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d853c656-2eba-4400-b92d-4fd472149bdf",
+          "name": "Dell Servers Update pending BIOS attributes",
+          "request": {
+            "name": "Dell Servers Update pending BIOS attributes",
+            "description": {
+              "content": "Sets pending BIOS attribute values that will be applied on the next system reboot. Only attributes that differ from current values need to be specified. Changes require a system reboot to take effect.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Systems",
+                ":SystemId",
+                "Bios",
+                "Settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "System.Embedded.1",
+                  "key": "SystemId",
+                  "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                },
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Attributes\": {\n    \"key_0\": 1017,\n    \"key_1\": 2664.8446321183415\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7bae8d52-ce72-454e-a167-f1250a32048e",
+              "name": "Pending BIOS attributes updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Systems",
+                    ":SystemId",
+                    "Bios",
+                    "Settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "SystemId",
+                      "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Attributes\": {\n    \"key_0\": 1537\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "675fff32-a2ed-4f66-906b-97a84dacf6ae",
+              "name": "Invalid attribute name or value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Systems",
+                    ":SystemId",
+                    "Bios",
+                    "Settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "SystemId",
+                      "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Attributes\": {\n    \"key_0\": 1537\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4257652a-9f25-4a15-ab65-4feddc4a72bb",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Systems",
+                    ":SystemId",
+                    "Bios",
+                    "Settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "SystemId",
+                      "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Attributes\": {\n    \"key_0\": 1537\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "efb809e3-6e98-4a02-b9d6-0cdba17e6f6f",
+          "name": "Dell Servers List storage controllers",
+          "request": {
+            "name": "Dell Servers List storage controllers",
+            "description": {
+              "content": "Retrieves the collection of storage controller resources for the specified system, including RAID controllers, BOSS controllers, and direct-attached storage interfaces.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Systems",
+                ":SystemId",
+                "Storage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "System.Embedded.1",
+                  "key": "SystemId",
+                  "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                },
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "114cb316-1eac-4848-9222-8020af716c92",
+              "name": "Collection of storage controllers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Systems",
+                    ":SystemId",
+                    "Storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "SystemId",
+                      "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.id\": \"string\",\n  \"@odata.type\": \"string\",\n  \"Name\": \"string\",\n  \"Members@odata.count\": 2254,\n  \"Members\": [\n    {\n      \"@odata.id\": \"string\"\n    },\n    {\n      \"@odata.id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "59b25e13-85ba-4a8c-8456-a5cfa1ccb529",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Systems",
+                    ":SystemId",
+                    "Storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "SystemId",
+                      "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0baffd0e-df22-4dec-829d-122cb5c406dc",
+          "name": "Dell Servers List Ethernet interfaces",
+          "request": {
+            "name": "Dell Servers List Ethernet interfaces",
+            "description": {
+              "content": "Retrieves the collection of Ethernet interface resources for the specified system, including network adapters, their MAC addresses, link status, and IP configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Systems",
+                ":SystemId",
+                "EthernetInterfaces"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "System.Embedded.1",
+                  "key": "SystemId",
+                  "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                },
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8842cd5d-c9b3-4244-8a22-0618afa90d90",
+              "name": "Collection of Ethernet interfaces",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Systems",
+                    ":SystemId",
+                    "EthernetInterfaces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "SystemId",
+                      "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.id\": \"string\",\n  \"@odata.type\": \"string\",\n  \"Name\": \"string\",\n  \"Members@odata.count\": 2254,\n  \"Members\": [\n    {\n      \"@odata.id\": \"string\"\n    },\n    {\n      \"@odata.id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "447e9077-c350-4cc9-9aa2-1e7409e534dd",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Systems",
+                    ":SystemId",
+                    "EthernetInterfaces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "SystemId",
+                      "description": "(Required) Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "21f3cc80-80e6-4e13-8a42-40a80be9b3ba",
+      "name": "Task Service",
+      "description": {
+        "content": "Asynchronous task tracking and lifecycle job management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5533acaa-ca61-4004-8908-d93939d31e39",
+          "name": "Dell Servers List tasks",
+          "request": {
+            "name": "Dell Servers List tasks",
+            "description": {
+              "content": "Retrieves the collection of tasks representing asynchronous operations and lifecycle controller jobs including firmware updates, configuration changes, and RAID creation operations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "TaskService",
+                "Tasks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7f06cc43-01d5-4c18-badc-e4e3f0e332a4",
+              "name": "Collection of task resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "TaskService",
+                    "Tasks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.id\": \"string\",\n  \"@odata.type\": \"string\",\n  \"Name\": \"string\",\n  \"Members@odata.count\": 2254,\n  \"Members\": [\n    {\n      \"@odata.id\": \"string\"\n    },\n    {\n      \"@odata.id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54e51365-4e9a-4174-b7f8-206cc8529eab",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "TaskService",
+                    "Tasks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "1bff9b6a-1c3f-408f-97b9-5ab3864307b2",
+      "name": "Telemetry Service",
+      "description": {
+        "content": "Telemetry metric definitions and metric report management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9545eb5d-16e1-4058-aa9e-915a5633a55a",
+          "name": "Dell Servers Get telemetry service",
+          "request": {
+            "name": "Dell Servers Get telemetry service",
+            "description": {
+              "content": "Retrieves the telemetry service resource which provides access to metric definitions and metric report definitions for server telemetry data including power, thermal, CPU, memory, and NIC statistics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "TelemetryService"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cab05675-7a5b-46ed-981d-5ffa3f58a951",
+              "name": "Telemetry service resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "TelemetryService"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3553cd91-2bf8-4fc1-b446-d35236be8cb9",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "TelemetryService"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02c5dff2-3e3a-4554-a2a9-973ef8e3ad45",
+          "name": "Dell Servers List metric reports",
+          "request": {
+            "name": "Dell Servers List metric reports",
+            "description": {
+              "content": "Retrieves the collection of metric reports available from the telemetry service. Each report contains a set of related metrics that can be streamed via SSE or polled directly.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "TelemetryService",
+                "MetricReports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7a3c804b-640e-43c0-a1b0-0ba19a51b923",
+              "name": "Collection of metric report resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "TelemetryService",
+                    "MetricReports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.id\": \"string\",\n  \"@odata.type\": \"string\",\n  \"Name\": \"string\",\n  \"Members@odata.count\": 2254,\n  \"Members\": [\n    {\n      \"@odata.id\": \"string\"\n    },\n    {\n      \"@odata.id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a711876-37ec-453a-b664-cb15c789bf21",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "TelemetryService",
+                    "MetricReports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "248f91bc-630f-4c33-914b-c20f485b6684",
+      "name": "Update Service",
+      "description": {
+        "content": "Firmware update operations and firmware inventory",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "638d143a-47d0-434b-9294-8b0318dc92c2",
+          "name": "Dell Servers Get update service",
+          "request": {
+            "name": "Dell Servers Get update service",
+            "description": {
+              "content": "Retrieves the update service resource which provides firmware update capabilities and links to the firmware inventory collection.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "UpdateService"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "90027885-2d88-4a4f-b5a0-54823db5b712",
+              "name": "Update service resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "UpdateService"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed943c4c-5dea-4db8-b9b0-bb292d46ee2c",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "UpdateService"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da52312f-5849-449f-8471-2251f7c4b344",
+          "name": "Dell Servers List firmware inventory",
+          "request": {
+            "name": "Dell Servers List firmware inventory",
+            "description": {
+              "content": "Retrieves the collection of firmware inventory items for all components in the server including iDRAC, BIOS, storage controllers, network adapters, power supplies, and CPLD firmware versions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "UpdateService",
+                "FirmwareInventory"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1cf0fe47-2b5f-4b54-a41a-09258c2e3b4a",
+              "name": "Collection of firmware inventory items",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "UpdateService",
+                    "FirmwareInventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.id\": \"string\",\n  \"@odata.type\": \"string\",\n  \"Name\": \"string\",\n  \"Members@odata.count\": 2254,\n  \"Members\": [\n    {\n      \"@odata.id\": \"string\"\n    },\n    {\n      \"@odata.id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b6051c0-8f8c-42e2-aee9-c3bc8150ee6d",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "UpdateService",
+                    "FirmwareInventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "IP address or hostname of the iDRAC interface",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "192.168.1.100",
+      "key": "idrac-ip"
+    },
+    {
+      "type": "string",
+      "value": "https://{{idrac-ip}}/redfish/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3e82e5bc-e125-4f88-9880-a64932eebbf0",
+    "name": "Dell Servers Dell iDRAC Redfish REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Integrated Dell Remote Access Controller (iDRAC) RESTful API built upon the DMTF Redfish standard for out-of-band server lifecycle management of Dell PowerEdge servers. Provides programmatic access to server inventory, health monitoring, configuration, firmware updates, power control, virtual media, and BIOS management through a standards-based REST interface.\n\nContact Support:\n Name: Dell Technologies Support",
+      "type": "text/plain"
+    }
+  }
+}
