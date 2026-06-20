@@ -5,7 +5,7 @@ description: >-
   management interface, OpenManage Enterprise centralized console and its modular, power, support, and VMware
   integrations, telemetry streaming, the Lifecycle Controller, RACADM, and the legacy WSMan interface.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/dell-servers/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 kind: company
