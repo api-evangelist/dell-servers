@@ -230,57 +230,54 @@ apis:
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/dell-servers/overview
-  - type: ArazzoWorkflows
-    url: arazzo/
-    workflows:
-      - url: arazzo/dell-servers-chassis-health-report-workflow.yml
-        name: Dell Servers Chassis Health Report
-        summary: Assemble a chassis health report from chassis, power, and thermal reads.
-      - url: arazzo/dell-servers-firmware-inventory-tasks-workflow.yml
-        name: Dell Servers Firmware Inventory and Task Audit
-        summary: Read the update service, list firmware versions, and poll active tasks.
-      - url: arazzo/dell-servers-manager-overview-workflow.yml
-        name: Dell Servers iDRAC Manager Overview
-        summary: Inspect the iDRAC manager, its virtual media, and its log services.
-      - url: arazzo/dell-servers-ome-alert-triage-workflow.yml
-        name: Dell Servers OpenManage Alert Triage
-        summary: Find a critical alert, read its detail, then read the source device.
-      - url: arazzo/dell-servers-ome-device-inventory-workflow.yml
-        name: Dell Servers OpenManage Device Inventory Deep Dive
-        summary: Read a managed device and pull its detailed hardware inventory.
-      - url: arazzo/dell-servers-ome-discovery-workflow.yml
-        name: Dell Servers OpenManage Device Discovery
-        summary: Create a discovery configuration, watch its job, then list discovered devices.
-      - url: arazzo/dell-servers-ome-firmware-compliance-workflow.yml
-        name: Dell Servers OpenManage Firmware Compliance Check
-        summary: List firmware catalogs and read their compliance baselines.
-      - url: arazzo/dell-servers-ome-firmware-update-job-workflow.yml
-        name: Dell Servers OpenManage Firmware Update Job
-        summary: Check firmware baselines, run an update job, and poll it to completion.
-      - url: arazzo/dell-servers-ome-group-devices-workflow.yml
-        name: Dell Servers OpenManage Group Device Expansion
-        summary: Find a device group, list its member devices, then read one device.
-      - url: arazzo/dell-servers-ome-session-list-devices-workflow.yml
-        name: Dell Servers OpenManage Session and Device Listing
-        summary: Authenticate to OpenManage Enterprise and list managed server devices.
-      - url: arazzo/dell-servers-ome-template-deploy-job-workflow.yml
-        name: Dell Servers OpenManage Template Deployment Job
-        summary: Pick a configuration template, run a deploy job, and poll it to completion.
-      - url: arazzo/dell-servers-power-action-poll-workflow.yml
-        name: Dell Servers Power Action with State Polling
-        summary: Issue a power action on a system and poll until the power state settles.
-      - url: arazzo/dell-servers-redfish-session-bootstrap-workflow.yml
-        name: Dell Servers Redfish Session Bootstrap
-        summary: Open a Redfish session and list systems using the session token.
-      - url: arazzo/dell-servers-set-boot-and-reset-workflow.yml
-        name: Dell Servers Set Boot Device and Reset
-        summary: Read a system, set a pending BIOS boot override, then power-cycle it.
-      - url: arazzo/dell-servers-system-inventory-workflow.yml
-        name: Dell Servers System Hardware Inventory
-        summary: Collect system, storage, network, and BIOS detail for one server.
-      - url: arazzo/dell-servers-telemetry-subscription-workflow.yml
-        name: Dell Servers Telemetry Subscription Setup
-        summary: Discover metric reports and subscribe to telemetry events.
+  - type: Arazzo
+    url: arazzo/dell-servers-chassis-health-report-workflow.yml
+    name: Dell Servers Chassis Health Report
+  - type: Arazzo
+    url: arazzo/dell-servers-firmware-inventory-tasks-workflow.yml
+    name: Dell Servers Firmware Inventory and Task Audit
+  - type: Arazzo
+    url: arazzo/dell-servers-manager-overview-workflow.yml
+    name: Dell Servers iDRAC Manager Overview
+  - type: Arazzo
+    url: arazzo/dell-servers-ome-alert-triage-workflow.yml
+    name: Dell Servers OpenManage Alert Triage
+  - type: Arazzo
+    url: arazzo/dell-servers-ome-device-inventory-workflow.yml
+    name: Dell Servers OpenManage Device Inventory Deep Dive
+  - type: Arazzo
+    url: arazzo/dell-servers-ome-discovery-workflow.yml
+    name: Dell Servers OpenManage Device Discovery
+  - type: Arazzo
+    url: arazzo/dell-servers-ome-firmware-compliance-workflow.yml
+    name: Dell Servers OpenManage Firmware Compliance Check
+  - type: Arazzo
+    url: arazzo/dell-servers-ome-firmware-update-job-workflow.yml
+    name: Dell Servers OpenManage Firmware Update Job
+  - type: Arazzo
+    url: arazzo/dell-servers-ome-group-devices-workflow.yml
+    name: Dell Servers OpenManage Group Device Expansion
+  - type: Arazzo
+    url: arazzo/dell-servers-ome-session-list-devices-workflow.yml
+    name: Dell Servers OpenManage Session and Device Listing
+  - type: Arazzo
+    url: arazzo/dell-servers-ome-template-deploy-job-workflow.yml
+    name: Dell Servers OpenManage Template Deployment Job
+  - type: Arazzo
+    url: arazzo/dell-servers-power-action-poll-workflow.yml
+    name: Dell Servers Power Action with State Polling
+  - type: Arazzo
+    url: arazzo/dell-servers-redfish-session-bootstrap-workflow.yml
+    name: Dell Servers Redfish Session Bootstrap
+  - type: Arazzo
+    url: arazzo/dell-servers-set-boot-and-reset-workflow.yml
+    name: Dell Servers Set Boot Device and Reset
+  - type: Arazzo
+    url: arazzo/dell-servers-system-inventory-workflow.yml
+    name: Dell Servers System Hardware Inventory
+  - type: Arazzo
+    url: arazzo/dell-servers-telemetry-subscription-workflow.yml
+    name: Dell Servers Telemetry Subscription Setup
   - type: Portal
     url: https://developer.dell.com/
   - type: GettingStarted
@@ -304,7 +301,7 @@ common:
     url: https://github.com/dell
   - type: SDKs
     url: https://developer.dell.com/apis/
-  - type: SignUp
+  - type: Signup
     url: https://developer.dell.com/
   - type: Login
     url: https://developer.dell.com/
