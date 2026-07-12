@@ -1,0 +1,26 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/dell-servers-idrac-redfish-openapi.yml, openapi/dell-servers-openmanage-enterprise-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic Authentication using iDRAC username and password credentials. All
+    API requests require authentication except for the Redfish service root at /redfish/v1.
+  sources:
+  - openapi/dell-servers-idrac-redfish-openapi.yml
+- name: sessionAuth
+  type: apiKey
+  in: header
+  parameter: X-Auth-Token
+  description: Session-based authentication using a token obtained from the Sessions resource
+    POST operation. The token is passed in the X-Auth-Token header.
+  sources:
+  - openapi/dell-servers-idrac-redfish-openapi.yml
+  - openapi/dell-servers-openmanage-enterprise-openapi.yml

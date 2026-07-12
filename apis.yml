@@ -228,6 +228,12 @@ apis:
       - type: GitHubRepository
         url: https://github.com/dell/DellPEWSMANTools
 common:
+  - type: VulnerabilityDisclosure
+    url: security/dell-servers-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/dell-servers-domain-security.yml
+  - type: Authentication
+    url: authentication/dell-servers-authentication.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/dell-servers/overview
   - type: Arazzo
