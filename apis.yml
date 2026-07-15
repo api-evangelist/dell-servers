@@ -228,6 +228,8 @@ apis:
       - type: GitHubRepository
         url: https://github.com/dell/DellPEWSMANTools
 common:
+  - type: AgenticAccess
+    url: agentic-access/dell-servers-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/dell-servers-vulnerability-disclosure.yml
   - type: DomainSecurity
