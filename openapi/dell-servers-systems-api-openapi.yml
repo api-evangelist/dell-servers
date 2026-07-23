@@ -1,0 +1,414 @@
+openapi: 3.1.0
+info:
+  title: Dell Servers Dell iDRAC Redfish REST Accounts Systems API
+  description: Integrated Dell Remote Access Controller (iDRAC) RESTful API built upon the DMTF Redfish standard for out-of-band server lifecycle management of Dell PowerEdge servers. Provides programmatic access to server inventory, health monitoring, configuration, firmware updates, power control, virtual media, and BIOS management through a standards-based REST interface.
+  version: '5.0'
+  contact:
+    name: Dell Technologies Support
+    url: https://www.dell.com/support
+  termsOfService: https://i.dell.com/sites/csdocuments/Legal_Docs/en/us/api-terms-of-use_en.pdf
+servers:
+- url: https://{idrac-ip}/redfish/v1
+  description: iDRAC Redfish Service Root
+  variables:
+    idrac-ip:
+      description: IP address or hostname of the iDRAC interface
+      default: 192.168.1.100
+security:
+- basicAuth: []
+tags:
+- name: Systems
+  description: Computer system resources including hardware inventory, health status, power state, and BIOS configuration
+paths:
+  /Systems:
+    get:
+      operationId: listSystems
+      summary: Dell Servers List computer systems
+      description: Retrieves the collection of computer system resources managed by this iDRAC instance. Each system resource represents a Dell PowerEdge server with its hardware inventory, health status, and configuration.
+      tags:
+      - Systems
+      responses:
+        '200':
+          description: Collection of computer system resources
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComputerSystemCollection'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /Systems/{SystemId}:
+    get:
+      operationId: getSystem
+      summary: Dell Servers Get a computer system
+      description: Retrieves a specific computer system resource including detailed hardware inventory, health status, power state, boot configuration, processor and memory summary, and links to subordinate resources like storage, network interfaces, and BIOS settings.
+      tags:
+      - Systems
+      parameters:
+      - $ref: '#/components/parameters/SystemId'
+      responses:
+        '200':
+          description: Computer system resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComputerSystem'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: System resource not found
+  /Systems/{SystemId}/Actions/ComputerSystem.Reset:
+    post:
+      operationId: resetSystem
+      summary: Dell Servers Reset a computer system
+      description: Performs a power action on the computer system such as power on, power off, graceful shutdown, force restart, or power cycle. The available reset types depend on the current power state of the system.
+      tags:
+      - Systems
+      parameters:
+      - $ref: '#/components/parameters/SystemId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetAction'
+      responses:
+        '204':
+          description: Reset action initiated successfully
+        '400':
+          description: Invalid reset type for current system state
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: System resource not found
+  /Systems/{SystemId}/Bios:
+    get:
+      operationId: getSystemBios
+      summary: Dell Servers Get BIOS attributes
+      description: Retrieves the current BIOS attribute values for the specified computer system. BIOS attributes control hardware-level settings including boot order, processor configuration, memory settings, and security features.
+      tags:
+      - Systems
+      parameters:
+      - $ref: '#/components/parameters/SystemId'
+      responses:
+        '200':
+          description: BIOS attributes resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bios'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: System resource not found
+  /Systems/{SystemId}/Bios/Settings:
+    patch:
+      operationId: updateBiosSettings
+      summary: Dell Servers Update pending BIOS attributes
+      description: Sets pending BIOS attribute values that will be applied on the next system reboot. Only attributes that differ from current values need to be specified. Changes require a system reboot to take effect.
+      tags:
+      - Systems
+      parameters:
+      - $ref: '#/components/parameters/SystemId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Attributes:
+                  type: object
+                  description: BIOS attribute name-value pairs to set as pending
+                  additionalProperties: true
+      responses:
+        '200':
+          description: Pending BIOS attributes updated
+        '400':
+          description: Invalid attribute name or value
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /Systems/{SystemId}/Storage:
+    get:
+      operationId: listStorageControllers
+      summary: Dell Servers List storage controllers
+      description: Retrieves the collection of storage controller resources for the specified system, including RAID controllers, BOSS controllers, and direct-attached storage interfaces.
+      tags:
+      - Systems
+      parameters:
+      - $ref: '#/components/parameters/SystemId'
+      responses:
+        '200':
+          description: Collection of storage controllers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollection'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /Systems/{SystemId}/EthernetInterfaces:
+    get:
+      operationId: listEthernetInterfaces
+      summary: Dell Servers List Ethernet interfaces
+      description: Retrieves the collection of Ethernet interface resources for the specified system, including network adapters, their MAC addresses, link status, and IP configuration.
+      tags:
+      - Systems
+      parameters:
+      - $ref: '#/components/parameters/SystemId'
+      responses:
+        '200':
+          description: Collection of Ethernet interfaces
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollection'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+components:
+  schemas:
+    ResourceCollection:
+      type: object
+      description: Redfish resource collection
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource identifier
+        '@odata.type':
+          type: string
+          description: OData resource type
+        Name:
+          type: string
+          description: Collection name
+        Members@odata.count:
+          type: integer
+          description: Number of members in the collection
+        Members:
+          type: array
+          description: Array of resource links
+          items:
+            $ref: '#/components/schemas/ResourceLink'
+    ResourceLink:
+      type: object
+      description: Link to a Redfish resource
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource URI
+    Status:
+      type: object
+      description: Redfish status object indicating resource health
+      properties:
+        Health:
+          type: string
+          description: Overall health state
+          enum:
+          - OK
+          - Warning
+          - Critical
+        HealthRollup:
+          type: string
+          description: Rolled-up health state from subordinate resources
+          enum:
+          - OK
+          - Warning
+          - Critical
+        State:
+          type: string
+          description: Operational state
+          enum:
+          - Enabled
+          - Disabled
+          - StandbyOffline
+          - StandbySpare
+          - InTest
+          - Starting
+          - Absent
+          - UnavailableOffline
+          - Deferring
+          - Quiesced
+          - Updating
+    ComputerSystemCollection:
+      type: object
+      description: Collection of computer system resources
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource identifier
+        '@odata.type':
+          type: string
+          description: OData resource type
+        Name:
+          type: string
+          description: Collection name
+        Members@odata.count:
+          type: integer
+          description: Number of systems in the collection
+        Members:
+          type: array
+          description: Array of computer system resource links
+          items:
+            $ref: '#/components/schemas/ResourceLink'
+    ResetAction:
+      type: object
+      description: Reset action request body for power control operations
+      required:
+      - ResetType
+      properties:
+        ResetType:
+          type: string
+          description: Type of reset action to perform
+          enum:
+          - 'On'
+          - ForceOff
+          - GracefulShutdown
+          - GracefulRestart
+          - ForceRestart
+          - Nmi
+          - ForceOn
+          - PushPowerButton
+          - PowerCycle
+    Bios:
+      type: object
+      description: BIOS configuration attributes for a computer system
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource identifier
+        Id:
+          type: string
+          description: BIOS resource identifier
+        AttributeRegistry:
+          type: string
+          description: Name of the BIOS attribute registry
+        Attributes:
+          type: object
+          description: Current BIOS attribute values as name-value pairs. Attributes vary by server model and BIOS version.
+          additionalProperties: true
+    ComputerSystem:
+      type: object
+      description: Computer system resource representing a Dell PowerEdge server with hardware inventory, health status, and configuration
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource identifier
+        '@odata.type':
+          type: string
+          description: OData resource type
+        Id:
+          type: string
+          description: System resource identifier
+        Name:
+          type: string
+          description: System name
+        Manufacturer:
+          type: string
+          description: Server manufacturer
+        Model:
+          type: string
+          description: Server model name
+        SerialNumber:
+          type: string
+          description: Server serial number
+        SKU:
+          type: string
+          description: Server SKU or service tag
+        PartNumber:
+          type: string
+          description: Server part number
+        SystemType:
+          type: string
+          description: Type of computer system
+          enum:
+          - Physical
+          - Virtual
+          - OS
+          - PhysicallyPartitioned
+          - VirtuallyPartitioned
+        AssetTag:
+          type: string
+          description: User-assigned asset tag
+        BiosVersion:
+          type: string
+          description: Current BIOS firmware version
+        PowerState:
+          type: string
+          description: Current power state of the system
+          enum:
+          - 'On'
+          - 'Off'
+          - PoweringOn
+          - PoweringOff
+        Status:
+          $ref: '#/components/schemas/Status'
+        HostName:
+          type: string
+          description: Hostname of the operating system
+        IndicatorLED:
+          type: string
+          description: State of the system indicator LED
+          enum:
+          - Lit
+          - Blinking
+          - 'Off'
+        ProcessorSummary:
+          type: object
+          description: Summary of processor inventory
+          properties:
+            Count:
+              type: integer
+              description: Number of processors installed
+            Model:
+              type: string
+              description: Processor model name
+            Status:
+              $ref: '#/components/schemas/Status'
+        MemorySummary:
+          type: object
+          description: Summary of memory inventory
+          properties:
+            TotalSystemMemoryGiB:
+              type: number
+              description: Total system memory in GiB
+            Status:
+              $ref: '#/components/schemas/Status'
+        Boot:
+          type: object
+          description: Boot configuration
+          properties:
+            BootSourceOverrideEnabled:
+              type: string
+              description: Boot source override state
+              enum:
+              - Disabled
+              - Once
+              - Continuous
+            BootSourceOverrideTarget:
+              type: string
+              description: Boot source override target device
+            BootSourceOverrideMode:
+              type: string
+              description: BIOS boot mode
+              enum:
+              - Legacy
+              - UEFI
+  parameters:
+    SystemId:
+      name: SystemId
+      in: path
+      required: true
+      description: Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers
+      schema:
+        type: string
+        default: System.Embedded.1
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using iDRAC username and password credentials. All API requests require authentication except for the Redfish service root at /redfish/v1.
+    sessionAuth:
+      type: apiKey
+      in: header
+      name: X-Auth-Token
+      description: Session-based authentication using a token obtained from the Sessions resource POST operation. The token is passed in the X-Auth-Token header.
+externalDocs:
+  description: iDRAC Redfish API Documentation
+  url: https://developer.dell.com/apis/2978/versions/5.xx/docs/1.0Intro.md

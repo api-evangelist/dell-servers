@@ -1,0 +1,98 @@
+openapi: 3.1.0
+info:
+  title: Dell Servers Dell iDRAC Redfish REST Accounts Update Service API
+  description: Integrated Dell Remote Access Controller (iDRAC) RESTful API built upon the DMTF Redfish standard for out-of-band server lifecycle management of Dell PowerEdge servers. Provides programmatic access to server inventory, health monitoring, configuration, firmware updates, power control, virtual media, and BIOS management through a standards-based REST interface.
+  version: '5.0'
+  contact:
+    name: Dell Technologies Support
+    url: https://www.dell.com/support
+  termsOfService: https://i.dell.com/sites/csdocuments/Legal_Docs/en/us/api-terms-of-use_en.pdf
+servers:
+- url: https://{idrac-ip}/redfish/v1
+  description: iDRAC Redfish Service Root
+  variables:
+    idrac-ip:
+      description: IP address or hostname of the iDRAC interface
+      default: 192.168.1.100
+security:
+- basicAuth: []
+tags:
+- name: Update Service
+  description: Firmware update operations and firmware inventory
+paths:
+  /UpdateService:
+    get:
+      operationId: getUpdateService
+      summary: Dell Servers Get update service
+      description: Retrieves the update service resource which provides firmware update capabilities and links to the firmware inventory collection.
+      tags:
+      - Update Service
+      responses:
+        '200':
+          description: Update service resource
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Update service configuration and capabilities
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /UpdateService/FirmwareInventory:
+    get:
+      operationId: listFirmwareInventory
+      summary: Dell Servers List firmware inventory
+      description: Retrieves the collection of firmware inventory items for all components in the server including iDRAC, BIOS, storage controllers, network adapters, power supplies, and CPLD firmware versions.
+      tags:
+      - Update Service
+      responses:
+        '200':
+          description: Collection of firmware inventory items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollection'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+components:
+  schemas:
+    ResourceCollection:
+      type: object
+      description: Redfish resource collection
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource identifier
+        '@odata.type':
+          type: string
+          description: OData resource type
+        Name:
+          type: string
+          description: Collection name
+        Members@odata.count:
+          type: integer
+          description: Number of members in the collection
+        Members:
+          type: array
+          description: Array of resource links
+          items:
+            $ref: '#/components/schemas/ResourceLink'
+    ResourceLink:
+      type: object
+      description: Link to a Redfish resource
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource URI
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using iDRAC username and password credentials. All API requests require authentication except for the Redfish service root at /redfish/v1.
+    sessionAuth:
+      type: apiKey
+      in: header
+      name: X-Auth-Token
+      description: Session-based authentication using a token obtained from the Sessions resource POST operation. The token is passed in the X-Auth-Token header.
+externalDocs:
+  description: iDRAC Redfish API Documentation
+  url: https://developer.dell.com/apis/2978/versions/5.xx/docs/1.0Intro.md

@@ -1,0 +1,208 @@
+openapi: 3.1.0
+info:
+  title: Dell Servers Dell iDRAC Redfish REST Accounts Jobs API
+  description: Integrated Dell Remote Access Controller (iDRAC) RESTful API built upon the DMTF Redfish standard for out-of-band server lifecycle management of Dell PowerEdge servers. Provides programmatic access to server inventory, health monitoring, configuration, firmware updates, power control, virtual media, and BIOS management through a standards-based REST interface.
+  version: '5.0'
+  contact:
+    name: Dell Technologies Support
+    url: https://www.dell.com/support
+  termsOfService: https://i.dell.com/sites/csdocuments/Legal_Docs/en/us/api-terms-of-use_en.pdf
+servers:
+- url: https://{idrac-ip}/redfish/v1
+  description: iDRAC Redfish Service Root
+  variables:
+    idrac-ip:
+      description: IP address or hostname of the iDRAC interface
+      default: 192.168.1.100
+security:
+- basicAuth: []
+tags:
+- name: Jobs
+  description: Job creation, scheduling, and status tracking
+paths:
+  /JobService/Jobs:
+    get:
+      operationId: listJobs
+      summary: Dell Servers List jobs
+      description: Retrieves the collection of jobs in OpenManage Enterprise including discovery, firmware update, configuration, and report jobs. Supports OData filtering by job type and status.
+      tags:
+      - Jobs
+      parameters:
+      - name: $filter
+        in: query
+        description: OData filter expression for job criteria
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Collection of jobs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '@odata.count':
+                    type: integer
+                    description: Total number of matching jobs
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Job'
+        '401':
+          description: Unauthorized - invalid or expired session token
+    post:
+      operationId: createJob
+      summary: Dell Servers Create a job
+      description: Creates a new job for executing operations such as firmware updates, configuration deployment, or inventory refresh on targeted devices.
+      tags:
+      - Jobs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobRequest'
+      responses:
+        '201':
+          description: Job created successfully
+        '400':
+          description: Invalid job parameters
+        '401':
+          description: Unauthorized - invalid or expired session token
+  /JobService/Jobs({JobId}):
+    get:
+      operationId: getJob
+      summary: Dell Servers Get a job
+      description: Retrieves the status and details of a specific job including progress percentage, execution history, and any error messages.
+      tags:
+      - Jobs
+      parameters:
+      - $ref: '#/components/parameters/JobId'
+      responses:
+        '200':
+          description: Job details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '401':
+          description: Unauthorized - invalid or expired session token
+        '404':
+          description: Job not found
+components:
+  schemas:
+    JobRequest:
+      type: object
+      description: Request body for creating a new job
+      required:
+      - JobName
+      - JobDescription
+      - Targets
+      properties:
+        JobName:
+          type: string
+          description: Name for the new job
+        JobDescription:
+          type: string
+          description: Description of the job
+        Schedule:
+          type: string
+          description: Cron expression for scheduling or RunNow
+        Targets:
+          type: array
+          description: Target devices or groups for the job
+          items:
+            type: object
+            properties:
+              Id:
+                type: integer
+                description: Target device or group identifier
+              Data:
+                type: string
+                description: Additional target data
+              TargetType:
+                type: object
+                properties:
+                  Id:
+                    type: integer
+                    description: Target type identifier
+                  Name:
+                    type: string
+                    description: Target type name
+    Job:
+      type: object
+      description: An asynchronous job in OpenManage Enterprise
+      properties:
+        Id:
+          type: integer
+          description: Unique job identifier
+        JobName:
+          type: string
+          description: Job name
+        JobDescription:
+          type: string
+          description: Job description
+        JobType:
+          type: object
+          description: Job type information
+          properties:
+            Id:
+              type: integer
+              description: Job type identifier
+            Name:
+              type: string
+              description: Job type name
+        LastRunStatus:
+          type: object
+          description: Status of the last job execution
+          properties:
+            Id:
+              type: integer
+              description: Status code
+            Name:
+              type: string
+              description: Status description
+        JobStatus:
+          type: object
+          description: Current job status
+          properties:
+            Id:
+              type: integer
+              description: Status code
+            Name:
+              type: string
+              description: Status description
+        PercentComplete:
+          type: integer
+          description: Job completion percentage
+          minimum: 0
+          maximum: 100
+        StartTime:
+          type: string
+          format: date-time
+          description: Job start timestamp
+        EndTime:
+          type: string
+          format: date-time
+          description: Job completion timestamp
+  parameters:
+    JobId:
+      name: JobId
+      in: path
+      required: true
+      description: Unique identifier for a job
+      schema:
+        type: integer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using iDRAC username and password credentials. All API requests require authentication except for the Redfish service root at /redfish/v1.
+    sessionAuth:
+      type: apiKey
+      in: header
+      name: X-Auth-Token
+      description: Session-based authentication using a token obtained from the Sessions resource POST operation. The token is passed in the X-Auth-Token header.
+externalDocs:
+  description: iDRAC Redfish API Documentation
+  url: https://developer.dell.com/apis/2978/versions/5.xx/docs/1.0Intro.md

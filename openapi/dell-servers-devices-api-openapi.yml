@@ -1,0 +1,201 @@
+openapi: 3.1.0
+info:
+  title: Dell Servers Dell iDRAC Redfish REST Accounts Devices API
+  description: Integrated Dell Remote Access Controller (iDRAC) RESTful API built upon the DMTF Redfish standard for out-of-band server lifecycle management of Dell PowerEdge servers. Provides programmatic access to server inventory, health monitoring, configuration, firmware updates, power control, virtual media, and BIOS management through a standards-based REST interface.
+  version: '5.0'
+  contact:
+    name: Dell Technologies Support
+    url: https://www.dell.com/support
+  termsOfService: https://i.dell.com/sites/csdocuments/Legal_Docs/en/us/api-terms-of-use_en.pdf
+servers:
+- url: https://{idrac-ip}/redfish/v1
+  description: iDRAC Redfish Service Root
+  variables:
+    idrac-ip:
+      description: IP address or hostname of the iDRAC interface
+      default: 192.168.1.100
+security:
+- basicAuth: []
+tags:
+- name: Devices
+  description: Device inventory, status, and hardware details for managed servers
+paths:
+  /DeviceService/Devices:
+    get:
+      operationId: listDevices
+      summary: Dell Servers List managed devices
+      description: Retrieves the collection of devices managed by OpenManage Enterprise including servers, chassis, storage, and network devices. Supports OData query parameters for filtering, sorting, and pagination.
+      tags:
+      - Devices
+      parameters:
+      - name: $top
+        in: query
+        description: Maximum number of devices to return
+        schema:
+          type: integer
+          default: 25
+      - name: $skip
+        in: query
+        description: Number of devices to skip for pagination
+        schema:
+          type: integer
+          default: 0
+      - name: $filter
+        in: query
+        description: OData filter expression to narrow results. Common filters include Type eq 1000 for servers, Type eq 2000 for chassis.
+        schema:
+          type: string
+      - name: $orderby
+        in: query
+        description: Property name to sort results by
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Collection of managed devices
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '@odata.count':
+                    type: integer
+                    description: Total number of matching devices
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Device'
+        '401':
+          description: Unauthorized - invalid or expired session token
+  /DeviceService/Devices({DeviceId}):
+    get:
+      operationId: getDevice
+      summary: Dell Servers Get a managed device
+      description: Retrieves detailed information about a specific managed device including hardware inventory, connection status, health, firmware versions, and assigned groups.
+      tags:
+      - Devices
+      parameters:
+      - $ref: '#/components/parameters/DeviceId'
+      responses:
+        '200':
+          description: Device details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        '401':
+          description: Unauthorized - invalid or expired session token
+        '404':
+          description: Device not found
+  /DeviceService/Devices({DeviceId})/InventoryDetails:
+    get:
+      operationId: getDeviceInventory
+      summary: Dell Servers Get device inventory details
+      description: Retrieves the detailed hardware inventory for a specific device including processor, memory, storage, network adapter, firmware, and software inventory components.
+      tags:
+      - Devices
+      parameters:
+      - $ref: '#/components/parameters/DeviceId'
+      responses:
+        '200':
+          description: Device inventory details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/InventoryDetail'
+        '401':
+          description: Unauthorized - invalid or expired session token
+        '404':
+          description: Device not found
+components:
+  schemas:
+    Device:
+      type: object
+      description: A managed device in OpenManage Enterprise
+      properties:
+        Id:
+          type: integer
+          description: Unique device identifier
+        Type:
+          type: integer
+          description: Device type code. Common values are 1000 for servers, 2000 for chassis, 3000 for storage, and 4000 for network devices.
+        Identifier:
+          type: string
+          description: Device service tag or serial number
+        DeviceServiceTag:
+          type: string
+          description: Dell service tag for the device
+        ChassisServiceTag:
+          type: string
+          description: Service tag of the chassis containing this device
+        Model:
+          type: string
+          description: Device model name
+        DeviceName:
+          type: string
+          description: User-assigned or auto-discovered device name
+        IpAddress:
+          type: string
+          description: Management IP address of the device
+        ManagedState:
+          type: integer
+          description: Device management state. 3000 indicates managed, 5000 indicates monitored.
+        Status:
+          type: integer
+          description: Device health status code. 1000 is normal, 2000 is unknown, 3000 is warning, 4000 is critical, 5000 is informational.
+        ConnectionState:
+          type: boolean
+          description: Whether the device is currently reachable
+        PowerState:
+          type: integer
+          description: Power state code. 17 is powered on, 18 is powered off, 20 is power cycling.
+        FirmwareVersion:
+          type: string
+          description: Primary firmware version
+        LastInventoryTime:
+          type: string
+          format: date-time
+          description: Timestamp of the last inventory collection
+        LastStatusTime:
+          type: string
+          format: date-time
+          description: Timestamp of the last status check
+    InventoryDetail:
+      type: object
+      description: Hardware inventory component details
+      properties:
+        InventoryType:
+          type: string
+          description: Type of inventory component such as cpuInformation, memoryInformation, storageInformation, nicInformation, or firmwareInformation
+        InventoryInfo:
+          type: array
+          description: Array of inventory items for this component type
+          items:
+            type: object
+            additionalProperties: true
+  parameters:
+    DeviceId:
+      name: DeviceId
+      in: path
+      required: true
+      description: Unique identifier for a managed device
+      schema:
+        type: integer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using iDRAC username and password credentials. All API requests require authentication except for the Redfish service root at /redfish/v1.
+    sessionAuth:
+      type: apiKey
+      in: header
+      name: X-Auth-Token
+      description: Session-based authentication using a token obtained from the Sessions resource POST operation. The token is passed in the X-Auth-Token header.
+externalDocs:
+  description: iDRAC Redfish API Documentation
+  url: https://developer.dell.com/apis/2978/versions/5.xx/docs/1.0Intro.md

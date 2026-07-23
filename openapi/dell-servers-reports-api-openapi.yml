@@ -1,0 +1,79 @@
+openapi: 3.1.0
+info:
+  title: Dell Servers Dell iDRAC Redfish REST Accounts Reports API
+  description: Integrated Dell Remote Access Controller (iDRAC) RESTful API built upon the DMTF Redfish standard for out-of-band server lifecycle management of Dell PowerEdge servers. Provides programmatic access to server inventory, health monitoring, configuration, firmware updates, power control, virtual media, and BIOS management through a standards-based REST interface.
+  version: '5.0'
+  contact:
+    name: Dell Technologies Support
+    url: https://www.dell.com/support
+  termsOfService: https://i.dell.com/sites/csdocuments/Legal_Docs/en/us/api-terms-of-use_en.pdf
+servers:
+- url: https://{idrac-ip}/redfish/v1
+  description: iDRAC Redfish Service Root
+  variables:
+    idrac-ip:
+      description: IP address or hostname of the iDRAC interface
+      default: 192.168.1.100
+security:
+- basicAuth: []
+tags:
+- name: Reports
+  description: Report definitions and execution
+paths:
+  /ReportService/ReportDefs:
+    get:
+      operationId: listReportDefinitions
+      summary: Dell Servers List report definitions
+      description: Retrieves the collection of report definitions available in OpenManage Enterprise. Report definitions specify the query criteria, columns, and filters for generating reports on managed devices.
+      tags:
+      - Reports
+      responses:
+        '200':
+          description: Collection of report definitions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ReportDefinition'
+        '401':
+          description: Unauthorized - invalid or expired session token
+components:
+  schemas:
+    ReportDefinition:
+      type: object
+      description: A report definition for generating infrastructure reports
+      properties:
+        Id:
+          type: integer
+          description: Unique report definition identifier
+        Name:
+          type: string
+          description: Report name
+        Description:
+          type: string
+          description: Report description
+        ColumnNames:
+          type: array
+          description: Column names included in the report
+          items:
+            type: string
+        FilterGroupId:
+          type: integer
+          description: Filter group applied to the report
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using iDRAC username and password credentials. All API requests require authentication except for the Redfish service root at /redfish/v1.
+    sessionAuth:
+      type: apiKey
+      in: header
+      name: X-Auth-Token
+      description: Session-based authentication using a token obtained from the Sessions resource POST operation. The token is passed in the X-Auth-Token header.
+externalDocs:
+  description: iDRAC Redfish API Documentation
+  url: https://developer.dell.com/apis/2978/versions/5.xx/docs/1.0Intro.md

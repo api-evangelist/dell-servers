@@ -1,0 +1,91 @@
+openapi: 3.1.0
+info:
+  title: Dell Servers Dell iDRAC Redfish REST Accounts Configuration API
+  description: Integrated Dell Remote Access Controller (iDRAC) RESTful API built upon the DMTF Redfish standard for out-of-band server lifecycle management of Dell PowerEdge servers. Provides programmatic access to server inventory, health monitoring, configuration, firmware updates, power control, virtual media, and BIOS management through a standards-based REST interface.
+  version: '5.0'
+  contact:
+    name: Dell Technologies Support
+    url: https://www.dell.com/support
+  termsOfService: https://i.dell.com/sites/csdocuments/Legal_Docs/en/us/api-terms-of-use_en.pdf
+servers:
+- url: https://{idrac-ip}/redfish/v1
+  description: iDRAC Redfish Service Root
+  variables:
+    idrac-ip:
+      description: IP address or hostname of the iDRAC interface
+      default: 192.168.1.100
+security:
+- basicAuth: []
+tags:
+- name: Configuration
+  description: Server configuration templates and compliance baselines
+paths:
+  /TemplateService/Templates:
+    get:
+      operationId: listConfigurationTemplates
+      summary: Dell Servers List configuration templates
+      description: Retrieves the collection of server configuration templates that define desired BIOS, RAID, network, and iDRAC settings. Templates can be deployed to one or more servers for consistent configuration.
+      tags:
+      - Configuration
+      responses:
+        '200':
+          description: Collection of configuration templates
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ConfigTemplate'
+        '401':
+          description: Unauthorized - invalid or expired session token
+components:
+  schemas:
+    ConfigTemplate:
+      type: object
+      description: A server configuration template
+      properties:
+        Id:
+          type: integer
+          description: Unique template identifier
+        Name:
+          type: string
+          description: Template name
+        Description:
+          type: string
+          description: Template description
+        ViewTypeId:
+          type: integer
+          description: Template view type
+        TypeId:
+          type: integer
+          description: Template type identifier
+        CreatedBy:
+          type: string
+          description: User who created the template
+        CreatedDate:
+          type: string
+          format: date-time
+          description: Timestamp when the template was created
+        LastUpdatedBy:
+          type: string
+          description: User who last updated the template
+        LastUpdatedDate:
+          type: string
+          format: date-time
+          description: Timestamp of the last update
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using iDRAC username and password credentials. All API requests require authentication except for the Redfish service root at /redfish/v1.
+    sessionAuth:
+      type: apiKey
+      in: header
+      name: X-Auth-Token
+      description: Session-based authentication using a token obtained from the Sessions resource POST operation. The token is passed in the X-Auth-Token header.
+externalDocs:
+  description: iDRAC Redfish API Documentation
+  url: https://developer.dell.com/apis/2978/versions/5.xx/docs/1.0Intro.md

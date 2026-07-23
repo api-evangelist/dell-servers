@@ -1,0 +1,208 @@
+openapi: 3.1.0
+info:
+  title: Dell Servers Dell iDRAC Redfish REST Accounts Managers API
+  description: Integrated Dell Remote Access Controller (iDRAC) RESTful API built upon the DMTF Redfish standard for out-of-band server lifecycle management of Dell PowerEdge servers. Provides programmatic access to server inventory, health monitoring, configuration, firmware updates, power control, virtual media, and BIOS management through a standards-based REST interface.
+  version: '5.0'
+  contact:
+    name: Dell Technologies Support
+    url: https://www.dell.com/support
+  termsOfService: https://i.dell.com/sites/csdocuments/Legal_Docs/en/us/api-terms-of-use_en.pdf
+servers:
+- url: https://{idrac-ip}/redfish/v1
+  description: iDRAC Redfish Service Root
+  variables:
+    idrac-ip:
+      description: IP address or hostname of the iDRAC interface
+      default: 192.168.1.100
+security:
+- basicAuth: []
+tags:
+- name: Managers
+  description: Management controller resources for iDRAC configuration, networking, and remote services
+paths:
+  /Managers:
+    get:
+      operationId: listManagers
+      summary: Dell Servers List manager resources
+      description: Retrieves the collection of manager resources representing the iDRAC management controller including its firmware version, network configuration, and available management services.
+      tags:
+      - Managers
+      responses:
+        '200':
+          description: Collection of manager resources
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollection'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /Managers/{ManagerId}:
+    get:
+      operationId: getManager
+      summary: Dell Servers Get a manager resource
+      description: Retrieves a specific manager resource representing the iDRAC controller with its firmware version, model, network interfaces, virtual media capabilities, and links to log services.
+      tags:
+      - Managers
+      parameters:
+      - $ref: '#/components/parameters/ManagerId'
+      responses:
+        '200':
+          description: Manager resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Manager'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Manager resource not found
+  /Managers/{ManagerId}/LogServices:
+    get:
+      operationId: listLogServices
+      summary: Dell Servers List log services
+      description: Retrieves the collection of log services available on the iDRAC manager including the Lifecycle Controller log and the System Event Log (SEL).
+      tags:
+      - Managers
+      parameters:
+      - $ref: '#/components/parameters/ManagerId'
+      responses:
+        '200':
+          description: Collection of log services
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollection'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /Managers/{ManagerId}/VirtualMedia:
+    get:
+      operationId: listVirtualMedia
+      summary: Dell Servers List virtual media devices
+      description: Retrieves the collection of virtual media devices that can be used to mount remote ISO images or floppy images for operating system deployment and server configuration.
+      tags:
+      - Managers
+      parameters:
+      - $ref: '#/components/parameters/ManagerId'
+      responses:
+        '200':
+          description: Collection of virtual media resources
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollection'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+components:
+  schemas:
+    Manager:
+      type: object
+      description: Manager resource representing the iDRAC management controller
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource identifier
+        Id:
+          type: string
+          description: Manager resource identifier
+        Name:
+          type: string
+          description: Manager name
+        ManagerType:
+          type: string
+          description: Type of management controller
+          enum:
+          - ManagementController
+          - EnclosureManager
+          - BMC
+          - RackManager
+        FirmwareVersion:
+          type: string
+          description: iDRAC firmware version
+        Model:
+          type: string
+          description: iDRAC model designation
+        Status:
+          $ref: '#/components/schemas/Status'
+    ResourceCollection:
+      type: object
+      description: Redfish resource collection
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource identifier
+        '@odata.type':
+          type: string
+          description: OData resource type
+        Name:
+          type: string
+          description: Collection name
+        Members@odata.count:
+          type: integer
+          description: Number of members in the collection
+        Members:
+          type: array
+          description: Array of resource links
+          items:
+            $ref: '#/components/schemas/ResourceLink'
+    ResourceLink:
+      type: object
+      description: Link to a Redfish resource
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource URI
+    Status:
+      type: object
+      description: Redfish status object indicating resource health
+      properties:
+        Health:
+          type: string
+          description: Overall health state
+          enum:
+          - OK
+          - Warning
+          - Critical
+        HealthRollup:
+          type: string
+          description: Rolled-up health state from subordinate resources
+          enum:
+          - OK
+          - Warning
+          - Critical
+        State:
+          type: string
+          description: Operational state
+          enum:
+          - Enabled
+          - Disabled
+          - StandbyOffline
+          - StandbySpare
+          - InTest
+          - Starting
+          - Absent
+          - UnavailableOffline
+          - Deferring
+          - Quiesced
+          - Updating
+  parameters:
+    ManagerId:
+      name: ManagerId
+      in: path
+      required: true
+      description: Identifier for the manager resource, typically iDRAC.Embedded.1 for Dell PowerEdge servers
+      schema:
+        type: string
+        default: iDRAC.Embedded.1
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using iDRAC username and password credentials. All API requests require authentication except for the Redfish service root at /redfish/v1.
+    sessionAuth:
+      type: apiKey
+      in: header
+      name: X-Auth-Token
+      description: Session-based authentication using a token obtained from the Sessions resource POST operation. The token is passed in the X-Auth-Token header.
+externalDocs:
+  description: iDRAC Redfish API Documentation
+  url: https://developer.dell.com/apis/2978/versions/5.xx/docs/1.0Intro.md
