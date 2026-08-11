@@ -207,8 +207,6 @@ apis:
       https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
   - type: Rules
     url: rules/dell-servers-idrac-redfish-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-idrac-redfish-capabilities.yml
   - type: Authentication
     url: >-
       https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/redfish-authentication-and-authorization?guid=guid-d572792f-afd2-499a-bf12-38a6778b9bbc&lang=en-us
@@ -221,8 +219,6 @@ apis:
       https://www.dell.com/support/manuals/en-us/dell-openmanage-enterprise/ome_p_api_guide/preface?guid=guid-82bcb773-392d-43a4-bdfa-431dd06a06f4&lang=en-us
   - type: Rules
     url: rules/dell-servers-openmanage-enterprise-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-openmanage-enterprise-capabilities.yml
   - type: GitHubRepository
     url: https://github.com/dell/OpenManage-Enterprise
 - aid: dell-servers:dell-servers-alerts-api
@@ -241,8 +237,6 @@ apis:
       https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
   - type: Rules
     url: rules/dell-servers-idrac-redfish-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-idrac-redfish-capabilities.yml
   - type: Authentication
     url: >-
       https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/redfish-authentication-and-authorization?guid=guid-d572792f-afd2-499a-bf12-38a6778b9bbc&lang=en-us
@@ -255,8 +249,6 @@ apis:
       https://www.dell.com/support/manuals/en-us/dell-openmanage-enterprise/ome_p_api_guide/preface?guid=guid-82bcb773-392d-43a4-bdfa-431dd06a06f4&lang=en-us
   - type: Rules
     url: rules/dell-servers-openmanage-enterprise-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-openmanage-enterprise-capabilities.yml
   - type: GitHubRepository
     url: https://github.com/dell/OpenManage-Enterprise
 - aid: dell-servers:dell-servers-application-settings-api
@@ -275,8 +267,6 @@ apis:
       https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
   - type: Rules
     url: rules/dell-servers-idrac-redfish-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-idrac-redfish-capabilities.yml
   - type: Authentication
     url: >-
       https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/redfish-authentication-and-authorization?guid=guid-d572792f-afd2-499a-bf12-38a6778b9bbc&lang=en-us
@@ -289,8 +279,6 @@ apis:
       https://www.dell.com/support/manuals/en-us/dell-openmanage-enterprise/ome_p_api_guide/preface?guid=guid-82bcb773-392d-43a4-bdfa-431dd06a06f4&lang=en-us
   - type: Rules
     url: rules/dell-servers-openmanage-enterprise-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-openmanage-enterprise-capabilities.yml
   - type: GitHubRepository
     url: https://github.com/dell/OpenManage-Enterprise
 - aid: dell-servers:dell-servers-chassis-api
@@ -310,8 +298,6 @@ apis:
       https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
   - type: Rules
     url: rules/dell-servers-idrac-redfish-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-idrac-redfish-capabilities.yml
   - type: Authentication
     url: >-
       https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/redfish-authentication-and-authorization?guid=guid-d572792f-afd2-499a-bf12-38a6778b9bbc&lang=en-us
@@ -324,8 +310,6 @@ apis:
       https://www.dell.com/support/manuals/en-us/dell-openmanage-enterprise/ome_p_api_guide/preface?guid=guid-82bcb773-392d-43a4-bdfa-431dd06a06f4&lang=en-us
   - type: Rules
     url: rules/dell-servers-openmanage-enterprise-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-openmanage-enterprise-capabilities.yml
   - type: GitHubRepository
     url: https://github.com/dell/OpenManage-Enterprise
 - aid: dell-servers:dell-servers-configuration-api
@@ -344,8 +328,6 @@ apis:
       https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
   - type: Rules
     url: rules/dell-servers-idrac-redfish-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-idrac-redfish-capabilities.yml
   - type: Authentication
     url: >-
       https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/redfish-authentication-and-authorization?guid=guid-d572792f-afd2-499a-bf12-38a6778b9bbc&lang=en-us
@@ -358,8 +340,6 @@ apis:
       https://www.dell.com/support/manuals/en-us/dell-openmanage-enterprise/ome_p_api_guide/preface?guid=guid-82bcb773-392d-43a4-bdfa-431dd06a06f4&lang=en-us
   - type: Rules
     url: rules/dell-servers-openmanage-enterprise-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-openmanage-enterprise-capabilities.yml
   - type: GitHubRepository
     url: https://github.com/dell/OpenManage-Enterprise
 - aid: dell-servers:dell-servers-devices-api
@@ -378,8 +358,6 @@ apis:
       https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
   - type: Rules
     url: rules/dell-servers-idrac-redfish-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-idrac-redfish-capabilities.yml
   - type: Authentication
     url: >-
       https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/redfish-authentication-and-authorization?guid=guid-d572792f-afd2-499a-bf12-38a6778b9bbc&lang=en-us
@@ -392,8 +370,6 @@ apis:
       https://www.dell.com/support/manuals/en-us/dell-openmanage-enterprise/ome_p_api_guide/preface?guid=guid-82bcb773-392d-43a4-bdfa-431dd06a06f4&lang=en-us
   - type: Rules
     url: rules/dell-servers-openmanage-enterprise-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-openmanage-enterprise-capabilities.yml
   - type: GitHubRepository
     url: https://github.com/dell/OpenManage-Enterprise
 - aid: dell-servers:dell-servers-discovery-api
@@ -412,8 +388,6 @@ apis:
       https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
   - type: Rules
     url: rules/dell-servers-idrac-redfish-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-idrac-redfish-capabilities.yml
   - type: Authentication
     url: >-
       https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/redfish-authentication-and-authorization?guid=guid-d572792f-afd2-499a-bf12-38a6778b9bbc&lang=en-us
@@ -426,8 +400,6 @@ apis:
       https://www.dell.com/support/manuals/en-us/dell-openmanage-enterprise/ome_p_api_guide/preface?guid=guid-82bcb773-392d-43a4-bdfa-431dd06a06f4&lang=en-us
   - type: Rules
     url: rules/dell-servers-openmanage-enterprise-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-openmanage-enterprise-capabilities.yml
   - type: GitHubRepository
     url: https://github.com/dell/OpenManage-Enterprise
 - aid: dell-servers:dell-servers-event-service-api
@@ -446,8 +418,6 @@ apis:
       https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
   - type: Rules
     url: rules/dell-servers-idrac-redfish-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-idrac-redfish-capabilities.yml
   - type: Authentication
     url: >-
       https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/redfish-authentication-and-authorization?guid=guid-d572792f-afd2-499a-bf12-38a6778b9bbc&lang=en-us
@@ -460,8 +430,6 @@ apis:
       https://www.dell.com/support/manuals/en-us/dell-openmanage-enterprise/ome_p_api_guide/preface?guid=guid-82bcb773-392d-43a4-bdfa-431dd06a06f4&lang=en-us
   - type: Rules
     url: rules/dell-servers-openmanage-enterprise-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-openmanage-enterprise-capabilities.yml
   - type: GitHubRepository
     url: https://github.com/dell/OpenManage-Enterprise
 - aid: dell-servers:dell-servers-firmware-api
@@ -480,8 +448,6 @@ apis:
       https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
   - type: Rules
     url: rules/dell-servers-idrac-redfish-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-idrac-redfish-capabilities.yml
   - type: Authentication
     url: >-
       https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/redfish-authentication-and-authorization?guid=guid-d572792f-afd2-499a-bf12-38a6778b9bbc&lang=en-us
@@ -494,8 +460,6 @@ apis:
       https://www.dell.com/support/manuals/en-us/dell-openmanage-enterprise/ome_p_api_guide/preface?guid=guid-82bcb773-392d-43a4-bdfa-431dd06a06f4&lang=en-us
   - type: Rules
     url: rules/dell-servers-openmanage-enterprise-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-openmanage-enterprise-capabilities.yml
   - type: GitHubRepository
     url: https://github.com/dell/OpenManage-Enterprise
 - aid: dell-servers:dell-servers-groups-api
@@ -514,8 +478,6 @@ apis:
       https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
   - type: Rules
     url: rules/dell-servers-idrac-redfish-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-idrac-redfish-capabilities.yml
   - type: Authentication
     url: >-
       https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/redfish-authentication-and-authorization?guid=guid-d572792f-afd2-499a-bf12-38a6778b9bbc&lang=en-us
@@ -528,8 +490,6 @@ apis:
       https://www.dell.com/support/manuals/en-us/dell-openmanage-enterprise/ome_p_api_guide/preface?guid=guid-82bcb773-392d-43a4-bdfa-431dd06a06f4&lang=en-us
   - type: Rules
     url: rules/dell-servers-openmanage-enterprise-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-openmanage-enterprise-capabilities.yml
   - type: GitHubRepository
     url: https://github.com/dell/OpenManage-Enterprise
 - aid: dell-servers:dell-servers-jobs-api
@@ -548,8 +508,6 @@ apis:
       https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
   - type: Rules
     url: rules/dell-servers-idrac-redfish-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-idrac-redfish-capabilities.yml
   - type: Authentication
     url: >-
       https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/redfish-authentication-and-authorization?guid=guid-d572792f-afd2-499a-bf12-38a6778b9bbc&lang=en-us
@@ -562,8 +520,6 @@ apis:
       https://www.dell.com/support/manuals/en-us/dell-openmanage-enterprise/ome_p_api_guide/preface?guid=guid-82bcb773-392d-43a4-bdfa-431dd06a06f4&lang=en-us
   - type: Rules
     url: rules/dell-servers-openmanage-enterprise-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-openmanage-enterprise-capabilities.yml
   - type: GitHubRepository
     url: https://github.com/dell/OpenManage-Enterprise
 - aid: dell-servers:dell-servers-managers-api
@@ -582,8 +538,6 @@ apis:
       https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
   - type: Rules
     url: rules/dell-servers-idrac-redfish-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-idrac-redfish-capabilities.yml
   - type: Authentication
     url: >-
       https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/redfish-authentication-and-authorization?guid=guid-d572792f-afd2-499a-bf12-38a6778b9bbc&lang=en-us
@@ -596,8 +550,6 @@ apis:
       https://www.dell.com/support/manuals/en-us/dell-openmanage-enterprise/ome_p_api_guide/preface?guid=guid-82bcb773-392d-43a4-bdfa-431dd06a06f4&lang=en-us
   - type: Rules
     url: rules/dell-servers-openmanage-enterprise-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-openmanage-enterprise-capabilities.yml
   - type: GitHubRepository
     url: https://github.com/dell/OpenManage-Enterprise
 - aid: dell-servers:dell-servers-reports-api
@@ -616,8 +568,6 @@ apis:
       https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
   - type: Rules
     url: rules/dell-servers-idrac-redfish-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-idrac-redfish-capabilities.yml
   - type: Authentication
     url: >-
       https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/redfish-authentication-and-authorization?guid=guid-d572792f-afd2-499a-bf12-38a6778b9bbc&lang=en-us
@@ -630,8 +580,6 @@ apis:
       https://www.dell.com/support/manuals/en-us/dell-openmanage-enterprise/ome_p_api_guide/preface?guid=guid-82bcb773-392d-43a4-bdfa-431dd06a06f4&lang=en-us
   - type: Rules
     url: rules/dell-servers-openmanage-enterprise-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-openmanage-enterprise-capabilities.yml
   - type: GitHubRepository
     url: https://github.com/dell/OpenManage-Enterprise
 - aid: dell-servers:dell-servers-service-root-api
@@ -650,8 +598,6 @@ apis:
       https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
   - type: Rules
     url: rules/dell-servers-idrac-redfish-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-idrac-redfish-capabilities.yml
   - type: Authentication
     url: >-
       https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/redfish-authentication-and-authorization?guid=guid-d572792f-afd2-499a-bf12-38a6778b9bbc&lang=en-us
@@ -664,8 +610,6 @@ apis:
       https://www.dell.com/support/manuals/en-us/dell-openmanage-enterprise/ome_p_api_guide/preface?guid=guid-82bcb773-392d-43a4-bdfa-431dd06a06f4&lang=en-us
   - type: Rules
     url: rules/dell-servers-openmanage-enterprise-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-openmanage-enterprise-capabilities.yml
   - type: GitHubRepository
     url: https://github.com/dell/OpenManage-Enterprise
 - aid: dell-servers:dell-servers-sessions-api
@@ -684,8 +628,6 @@ apis:
       https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
   - type: Rules
     url: rules/dell-servers-idrac-redfish-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-idrac-redfish-capabilities.yml
   - type: Authentication
     url: >-
       https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/redfish-authentication-and-authorization?guid=guid-d572792f-afd2-499a-bf12-38a6778b9bbc&lang=en-us
@@ -698,8 +640,6 @@ apis:
       https://www.dell.com/support/manuals/en-us/dell-openmanage-enterprise/ome_p_api_guide/preface?guid=guid-82bcb773-392d-43a4-bdfa-431dd06a06f4&lang=en-us
   - type: Rules
     url: rules/dell-servers-openmanage-enterprise-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-openmanage-enterprise-capabilities.yml
   - type: GitHubRepository
     url: https://github.com/dell/OpenManage-Enterprise
 - aid: dell-servers:dell-servers-systems-api
@@ -719,8 +659,6 @@ apis:
       https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
   - type: Rules
     url: rules/dell-servers-idrac-redfish-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-idrac-redfish-capabilities.yml
   - type: Authentication
     url: >-
       https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/redfish-authentication-and-authorization?guid=guid-d572792f-afd2-499a-bf12-38a6778b9bbc&lang=en-us
@@ -733,8 +671,6 @@ apis:
       https://www.dell.com/support/manuals/en-us/dell-openmanage-enterprise/ome_p_api_guide/preface?guid=guid-82bcb773-392d-43a4-bdfa-431dd06a06f4&lang=en-us
   - type: Rules
     url: rules/dell-servers-openmanage-enterprise-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-openmanage-enterprise-capabilities.yml
   - type: GitHubRepository
     url: https://github.com/dell/OpenManage-Enterprise
 - aid: dell-servers:dell-servers-task-service-api
@@ -753,8 +689,6 @@ apis:
       https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
   - type: Rules
     url: rules/dell-servers-idrac-redfish-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-idrac-redfish-capabilities.yml
   - type: Authentication
     url: >-
       https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/redfish-authentication-and-authorization?guid=guid-d572792f-afd2-499a-bf12-38a6778b9bbc&lang=en-us
@@ -767,8 +701,6 @@ apis:
       https://www.dell.com/support/manuals/en-us/dell-openmanage-enterprise/ome_p_api_guide/preface?guid=guid-82bcb773-392d-43a4-bdfa-431dd06a06f4&lang=en-us
   - type: Rules
     url: rules/dell-servers-openmanage-enterprise-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-openmanage-enterprise-capabilities.yml
   - type: GitHubRepository
     url: https://github.com/dell/OpenManage-Enterprise
 - aid: dell-servers:dell-servers-telemetry-service-api
@@ -787,8 +719,6 @@ apis:
       https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
   - type: Rules
     url: rules/dell-servers-idrac-redfish-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-idrac-redfish-capabilities.yml
   - type: Authentication
     url: >-
       https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/redfish-authentication-and-authorization?guid=guid-d572792f-afd2-499a-bf12-38a6778b9bbc&lang=en-us
@@ -801,8 +731,6 @@ apis:
       https://www.dell.com/support/manuals/en-us/dell-openmanage-enterprise/ome_p_api_guide/preface?guid=guid-82bcb773-392d-43a4-bdfa-431dd06a06f4&lang=en-us
   - type: Rules
     url: rules/dell-servers-openmanage-enterprise-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-openmanage-enterprise-capabilities.yml
   - type: GitHubRepository
     url: https://github.com/dell/OpenManage-Enterprise
 - aid: dell-servers:dell-servers-update-service-api
@@ -821,8 +749,6 @@ apis:
       https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
   - type: Rules
     url: rules/dell-servers-idrac-redfish-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-idrac-redfish-capabilities.yml
   - type: Authentication
     url: >-
       https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/redfish-authentication-and-authorization?guid=guid-d572792f-afd2-499a-bf12-38a6778b9bbc&lang=en-us
@@ -835,11 +761,16 @@ apis:
       https://www.dell.com/support/manuals/en-us/dell-openmanage-enterprise/ome_p_api_guide/preface?guid=guid-82bcb773-392d-43a4-bdfa-431dd06a06f4&lang=en-us
   - type: Rules
     url: rules/dell-servers-openmanage-enterprise-rules.yml
-  - type: Capabilities
-    url: capabilities/dell-servers-openmanage-enterprise-capabilities.yml
   - type: GitHubRepository
     url: https://github.com/dell/OpenManage-Enterprise
 common:
+  - type: IssueTracker
+    url: https://github.com/dell/OpenManage-Enterprise/issues
+  - type: ContributionGuide
+    url: https://github.com/dell/OpenManage-Enterprise/blob/main/docs/CONTRIBUTING.md
+  - type: License
+    name: Apache-2.0
+    url: https://github.com/dell/OpenManage-Enterprise/blob/main/LICENSE
   - type: AgenticAccess
     url: agentic-access/dell-servers-agentic-access.yml
   - type: VulnerabilityDisclosure
