@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dell Servers Dell iDRAC Redfish REST Accounts Chassis API",
+    "version": "5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Chassis",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers List chassis resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Chassis"
+          },
+          "docs": "Retrieves the collection of chassis resources representing the physical enclosure of the server including power supplies, fans, thermal sensors, and physical component inventory."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Get a chassis resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Chassis/:ChassisId",
+            "params": [
+              {
+                "name": "ChassisId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific chassis resource with detailed information about the physical enclosure, including model, serial number, part number, asset tag, indicator LED state, and links to power and thermal resources."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Get chassis power information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Chassis/:ChassisId/Power",
+            "params": [
+              {
+                "name": "ChassisId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+              }
+            ]
+          },
+          "docs": "Retrieves power supply information, power consumption metrics, and power control settings for the specified chassis including current wattage, power capacity, and power supply redundancy status."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Get chassis thermal information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Chassis/:ChassisId/Thermal",
+            "params": [
+              {
+                "name": "ChassisId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+              }
+            ]
+          },
+          "docs": "Retrieves thermal sensor readings, fan speeds, and temperature thresholds for the specified chassis. Includes inlet and exhaust temperatures, CPU temperatures, and fan status with redundancy information."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

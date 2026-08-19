@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dell Servers Dell iDRAC Redfish REST Accounts Configuration API",
+    "version": "5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers List configuration templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/TemplateService/Templates"
+          },
+          "docs": "Retrieves the collection of server configuration templates that define desired BIOS, RAID, network, and iDRAC settings. Templates can be deployed to one or more servers for consistent configuration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

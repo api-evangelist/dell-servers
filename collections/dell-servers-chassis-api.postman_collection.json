@@ -1,0 +1,738 @@
+{
+  "item": [
+    {
+      "id": "1635e8b7-b958-464c-b80e-80462efad224",
+      "name": "Chassis",
+      "description": {
+        "content": "Physical enclosure resources including power supplies, thermal sensors, and physical component inventory",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b5f69049-7c76-4d75-bd9e-f414ac8aecc6",
+          "name": "Dell Servers List chassis resources",
+          "request": {
+            "name": "Dell Servers List chassis resources",
+            "description": {
+              "content": "Retrieves the collection of chassis resources representing the physical enclosure of the server including power supplies, fans, thermal sensors, and physical component inventory.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Chassis"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd72100e-6357-4dee-a65e-bfe1f3f58fdb",
+              "name": "Collection of chassis resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Chassis"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.id\": \"string\",\n  \"@odata.type\": \"string\",\n  \"Name\": \"string\",\n  \"Members@odata.count\": 5951,\n  \"Members\": [\n    {\n      \"@odata.id\": \"string\"\n    },\n    {\n      \"@odata.id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b7787e4-d012-499e-af79-880ecabb32f4",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Chassis"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e3c5480-7498-4e3d-9ddf-3ed607903059",
+          "name": "Dell Servers Get a chassis resource",
+          "request": {
+            "name": "Dell Servers Get a chassis resource",
+            "description": {
+              "content": "Retrieves a specific chassis resource with detailed information about the physical enclosure, including model, serial number, part number, asset tag, indicator LED state, and links to power and thermal resources.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Chassis",
+                ":ChassisId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "System.Embedded.1",
+                  "key": "ChassisId",
+                  "description": "(Required) Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                },
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "45df8c42-6c22-476b-9fc2-23058fb50674",
+              "name": "Chassis resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Chassis",
+                    ":ChassisId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "ChassisId",
+                      "description": "(Required) Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.id\": \"string\",\n  \"Id\": \"string\",\n  \"Name\": \"string\",\n  \"ChassisType\": \"StandAlone\",\n  \"Manufacturer\": \"string\",\n  \"Model\": \"string\",\n  \"SerialNumber\": \"string\",\n  \"PartNumber\": \"string\",\n  \"SKU\": \"string\",\n  \"AssetTag\": \"string\",\n  \"IndicatorLED\": \"Lit\",\n  \"Status\": {\n    \"Health\": \"Critical\",\n    \"HealthRollup\": \"Warning\",\n    \"State\": \"UnavailableOffline\"\n  },\n  \"PowerState\": \"PoweringOn\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a2bfe8a-ad0c-4a53-be12-3ca339eb8d37",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Chassis",
+                    ":ChassisId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "ChassisId",
+                      "description": "(Required) Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2f3051fb-3279-40d9-8d39-9bec0a66bca5",
+              "name": "Chassis resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Chassis",
+                    ":ChassisId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "ChassisId",
+                      "description": "(Required) Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ba4edfa-bf42-4db4-8df5-51dca371a08d",
+          "name": "Dell Servers Get chassis power information",
+          "request": {
+            "name": "Dell Servers Get chassis power information",
+            "description": {
+              "content": "Retrieves power supply information, power consumption metrics, and power control settings for the specified chassis including current wattage, power capacity, and power supply redundancy status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Chassis",
+                ":ChassisId",
+                "Power"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "System.Embedded.1",
+                  "key": "ChassisId",
+                  "description": "(Required) Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                },
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a21ec94c-6d52-4838-84b4-686bf1f2052a",
+              "name": "Chassis power resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Chassis",
+                    ":ChassisId",
+                    "Power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "ChassisId",
+                      "description": "(Required) Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.id\": \"string\",\n  \"PowerControl\": [\n    {\n      \"Name\": \"string\",\n      \"PowerConsumedWatts\": 2777.2921580781017,\n      \"PowerCapacityWatts\": 627.159086788196,\n      \"PowerMetrics\": {\n        \"IntervalInMin\": 8861,\n        \"MinConsumedWatts\": 2365.5950839258576,\n        \"MaxConsumedWatts\": 6214.295521835691,\n        \"AverageConsumedWatts\": 6633.228144493606\n      }\n    },\n    {\n      \"Name\": \"string\",\n      \"PowerConsumedWatts\": 8961.968142957048,\n      \"PowerCapacityWatts\": 5660.3944438815315,\n      \"PowerMetrics\": {\n        \"IntervalInMin\": 6960,\n        \"MinConsumedWatts\": 2039.612288212247,\n        \"MaxConsumedWatts\": 1689.806189429316,\n        \"AverageConsumedWatts\": 8798.180478015927\n      }\n    }\n  ],\n  \"PowerSupplies\": [\n    {\n      \"Name\": \"string\",\n      \"PowerCapacityWatts\": 2130.7383642842647,\n      \"LineInputVoltage\": 9958.87409336281,\n      \"Model\": \"string\",\n      \"SerialNumber\": \"string\",\n      \"Status\": {\n        \"Health\": \"Warning\",\n        \"HealthRollup\": \"Warning\",\n        \"State\": \"Deferring\"\n      }\n    },\n    {\n      \"Name\": \"string\",\n      \"PowerCapacityWatts\": 5814.438030670117,\n      \"LineInputVoltage\": 7403.497168102239,\n      \"Model\": \"string\",\n      \"SerialNumber\": \"string\",\n      \"Status\": {\n        \"Health\": \"Critical\",\n        \"HealthRollup\": \"Warning\",\n        \"State\": \"Deferring\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4351819c-e228-4c41-8193-9059f96ccb96",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Chassis",
+                    ":ChassisId",
+                    "Power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "ChassisId",
+                      "description": "(Required) Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6eabfe06-4853-4630-a8c9-08debb111ee8",
+          "name": "Dell Servers Get chassis thermal information",
+          "request": {
+            "name": "Dell Servers Get chassis thermal information",
+            "description": {
+              "content": "Retrieves thermal sensor readings, fan speeds, and temperature thresholds for the specified chassis. Includes inlet and exhaust temperatures, CPU temperatures, and fan status with redundancy information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Chassis",
+                ":ChassisId",
+                "Thermal"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "System.Embedded.1",
+                  "key": "ChassisId",
+                  "description": "(Required) Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                },
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "22fcf27e-4e63-47fa-9556-f0b3f09a92d4",
+              "name": "Chassis thermal resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Chassis",
+                    ":ChassisId",
+                    "Thermal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "ChassisId",
+                      "description": "(Required) Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.id\": \"string\",\n  \"Temperatures\": [\n    {\n      \"Name\": \"string\",\n      \"ReadingCelsius\": 307.93373076828055,\n      \"UpperThresholdCritical\": 511.8105509388693,\n      \"UpperThresholdFatal\": 8216.938663250508,\n      \"LowerThresholdCritical\": 9198.541605356479,\n      \"Status\": {\n        \"Health\": \"Critical\",\n        \"HealthRollup\": \"Warning\",\n        \"State\": \"Quiesced\"\n      }\n    },\n    {\n      \"Name\": \"string\",\n      \"ReadingCelsius\": 4978.1721060700565,\n      \"UpperThresholdCritical\": 6521.45500602347,\n      \"UpperThresholdFatal\": 7009.69225974917,\n      \"LowerThresholdCritical\": 9214.8749974705,\n      \"Status\": {\n        \"Health\": \"Critical\",\n        \"HealthRollup\": \"Warning\",\n        \"State\": \"UnavailableOffline\"\n      }\n    }\n  ],\n  \"Fans\": [\n    {\n      \"Name\": \"string\",\n      \"Reading\": 1694,\n      \"ReadingUnits\": \"RPM\",\n      \"Status\": {\n        \"Health\": \"OK\",\n        \"HealthRollup\": \"Critical\",\n        \"State\": \"StandbySpare\"\n      }\n    },\n    {\n      \"Name\": \"string\",\n      \"Reading\": 1187,\n      \"ReadingUnits\": \"Percent\",\n      \"Status\": {\n        \"Health\": \"Critical\",\n        \"HealthRollup\": \"Critical\",\n        \"State\": \"Disabled\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2aee0fac-d632-477f-8cbb-7e089262a400",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Chassis",
+                    ":ChassisId",
+                    "Thermal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "System.Embedded.1",
+                      "key": "ChassisId",
+                      "description": "(Required) Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers"
+                    },
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "IP address or hostname of the iDRAC interface",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "192.168.1.100",
+      "key": "idrac-ip"
+    },
+    {
+      "type": "string",
+      "value": "https://{{idrac-ip}}/redfish/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c1995c4d-4e71-40d4-babf-94b3a10f3011",
+    "name": "Dell Servers Dell iDRAC Redfish REST Accounts Chassis API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Integrated Dell Remote Access Controller (iDRAC) RESTful API built upon the DMTF Redfish standard for out-of-band server lifecycle management of Dell PowerEdge servers. Provides programmatic access to server inventory, health monitoring, configuration, firmware updates, power control, virtual media, and BIOS management through a standards-based REST interface.\n\nContact Support:\n Name: Dell Technologies Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dell Servers Dell iDRAC Redfish REST Accounts Telemetry Service API",
+    "version": "5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Telemetry Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers Get telemetry service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/TelemetryService"
+          },
+          "docs": "Retrieves the telemetry service resource which provides access to metric definitions and metric report definitions for server telemetry data including power, thermal, CPU, memory, and NIC statistics."
+        },
+        {
+          "info": {
+            "name": "Dell Servers List metric reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/TelemetryService/MetricReports"
+          },
+          "docs": "Retrieves the collection of metric reports available from the telemetry service. Each report contains a set of related metrics that can be streamed via SSE or polled directly."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

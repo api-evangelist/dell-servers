@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dell Servers Dell iDRAC Redfish REST Accounts Devices API",
+    "version": "5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers List managed devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/DeviceService/Devices",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of devices to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of devices to skip for pagination"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression to narrow results. Common filters include Type eq 1000 for servers, Type eq 2000 for chassis."
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Property name to sort results by"
+              }
+            ]
+          },
+          "docs": "Retrieves the collection of devices managed by OpenManage Enterprise including servers, chassis, storage, and network devices. Supports OData query parameters for filtering, sorting, and pagination."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Get a managed device",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/DeviceService/Devices(:DeviceId)",
+            "params": [
+              {
+                "name": "DeviceId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for a managed device"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a specific managed device including hardware inventory, connection status, health, firmware versions, and assigned groups."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Get device inventory details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/DeviceService/Devices(:DeviceId)/InventoryDetails",
+            "params": [
+              {
+                "name": "DeviceId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for a managed device"
+              }
+            ]
+          },
+          "docs": "Retrieves the detailed hardware inventory for a specific device including processor, memory, storage, network adapter, firmware, and software inventory components."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

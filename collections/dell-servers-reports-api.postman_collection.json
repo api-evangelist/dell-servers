@@ -1,0 +1,195 @@
+{
+  "item": [
+    {
+      "id": "d6322b54-3242-43f7-977b-31d48ac44320",
+      "name": "Reports",
+      "description": {
+        "content": "Report definitions and execution",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cfe105db-5429-4f7a-b6b7-d0052201f63c",
+          "name": "Dell Servers List report definitions",
+          "request": {
+            "name": "Dell Servers List report definitions",
+            "description": {
+              "content": "Retrieves the collection of report definitions available in OpenManage Enterprise. Report definitions specify the query criteria, columns, and filters for generating reports on managed devices.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ReportService",
+                "ReportDefs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bafb1302-2e9b-4cc3-806b-ebc09a354674",
+              "name": "Collection of report definitions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ReportService",
+                    "ReportDefs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"Id\": 3835,\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"ColumnNames\": [\n        \"string\",\n        \"string\"\n      ],\n      \"FilterGroupId\": 4902\n    },\n    {\n      \"Id\": 9730,\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"ColumnNames\": [\n        \"string\",\n        \"string\"\n      ],\n      \"FilterGroupId\": 5190\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f10fa964-c66a-40a1-bc20-a66e2f99bbb4",
+              "name": "Unauthorized - invalid or expired session token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ReportService",
+                    "ReportDefs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "IP address or hostname of the iDRAC interface",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "192.168.1.100",
+      "key": "idrac-ip"
+    },
+    {
+      "type": "string",
+      "value": "https://{{idrac-ip}}/redfish/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "549832dd-f6bd-4cac-87c4-beb14daf628f",
+    "name": "Dell Servers Dell iDRAC Redfish REST Accounts Reports API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Integrated Dell Remote Access Controller (iDRAC) RESTful API built upon the DMTF Redfish standard for out-of-band server lifecycle management of Dell PowerEdge servers. Provides programmatic access to server inventory, health monitoring, configuration, firmware updates, power control, virtual media, and BIOS management through a standards-based REST interface.\n\nContact Support:\n Name: Dell Technologies Support",
+      "type": "text/plain"
+    }
+  }
+}

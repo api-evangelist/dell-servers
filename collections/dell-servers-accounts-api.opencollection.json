@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dell Servers Dell iDRAC Redfish REST Accounts API",
+    "version": "5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers Get account service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/AccountService"
+          },
+          "docs": "Retrieves the account service resource which provides the configuration for user account management including password policies, lockout settings, and links to the accounts collection."
+        },
+        {
+          "info": {
+            "name": "Dell Servers List user accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/AccountService/Accounts"
+          },
+          "docs": "Retrieves the collection of user accounts configured on the iDRAC including local users with their roles and privileges."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

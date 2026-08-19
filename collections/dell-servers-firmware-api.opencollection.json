@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dell Servers Dell iDRAC Redfish REST Accounts Firmware API",
+    "version": "5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Firmware",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers List firmware catalogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/UpdateService/Catalogs"
+          },
+          "docs": "Retrieves the collection of firmware catalogs registered in OpenManage Enterprise. Catalogs contain firmware packages from Dell support sites or custom repositories used for compliance checking and updates."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Get firmware compliance baselines",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{idrac-ip}/redfish/v1/UpdateService/Actions/UpdateService.GetBaselines"
+          },
+          "docs": "Retrieves firmware compliance baselines that define the expected firmware versions for devices. Baselines are used to check device compliance and identify devices needing firmware updates."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,553 @@
+{
+  "item": [
+    {
+      "id": "2baa9a24-3d0b-4c68-8730-e11110c9d009",
+      "name": "Discovery",
+      "description": {
+        "content": "Network discovery configuration and job management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e15d1ddc-56e0-4d59-af25-1faad22d7660",
+          "name": "Dell Servers List discovery configurations",
+          "request": {
+            "name": "Dell Servers List discovery configurations",
+            "description": {
+              "content": "Retrieves the collection of discovery configuration groups that define target ranges, protocols, and credentials used for device discovery.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "DiscoveryConfigService",
+                "DiscoveryConfigGroups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "151134e0-4b6f-4c94-8fe0-14a7995b8c64",
+              "name": "Collection of discovery configurations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DiscoveryConfigService",
+                    "DiscoveryConfigGroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"DiscoveryConfigGroupId\": 5514,\n      \"DiscoveryConfigGroupName\": \"string\",\n      \"DiscoveryConfigModels\": [\n        {\n          \"DiscoveryConfigTargets\": [\n            {\n              \"NetworkAddressDetail\": \"string\"\n            },\n            {\n              \"NetworkAddressDetail\": \"string\"\n            }\n          ],\n          \"ConnectionProfileId\": 4049,\n          \"DeviceType\": [\n            8285,\n            9650\n          ]\n        },\n        {\n          \"DiscoveryConfigTargets\": [\n            {\n              \"NetworkAddressDetail\": \"string\"\n            },\n            {\n              \"NetworkAddressDetail\": \"string\"\n            }\n          ],\n          \"ConnectionProfileId\": 7398,\n          \"DeviceType\": [\n            2289,\n            6565\n          ]\n        }\n      ],\n      \"Schedule\": {\n        \"RunNow\": true,\n        \"Cron\": \"string\"\n      }\n    },\n    {\n      \"DiscoveryConfigGroupId\": 7868,\n      \"DiscoveryConfigGroupName\": \"string\",\n      \"DiscoveryConfigModels\": [\n        {\n          \"DiscoveryConfigTargets\": [\n            {\n              \"NetworkAddressDetail\": \"string\"\n            },\n            {\n              \"NetworkAddressDetail\": \"string\"\n            }\n          ],\n          \"ConnectionProfileId\": 3241,\n          \"DeviceType\": [\n            7314,\n            378\n          ]\n        },\n        {\n          \"DiscoveryConfigTargets\": [\n            {\n              \"NetworkAddressDetail\": \"string\"\n            },\n            {\n              \"NetworkAddressDetail\": \"string\"\n            }\n          ],\n          \"ConnectionProfileId\": 716,\n          \"DeviceType\": [\n            8866,\n            2564\n          ]\n        }\n      ],\n      \"Schedule\": {\n        \"RunNow\": false,\n        \"Cron\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb37a9f4-df2a-474c-837d-c2b944d73c9c",
+              "name": "Unauthorized - invalid or expired session token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DiscoveryConfigService",
+                    "DiscoveryConfigGroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "820fd1a4-75f9-4959-82fa-bc8a077cf595",
+          "name": "Dell Servers Create a discovery configuration",
+          "request": {
+            "name": "Dell Servers Create a discovery configuration",
+            "description": {
+              "content": "Creates a new discovery configuration group that defines network ranges, protocols, and credentials for discovering devices. When executed, the discovery job scans the specified ranges and adds discovered devices to the managed inventory.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "DiscoveryConfigService",
+                "DiscoveryConfigGroups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"DiscoveryConfigGroupId\": \"<integer>\",\n  \"DiscoveryConfigGroupName\": \"<string>\",\n  \"DiscoveryConfigModels\": [\n    {\n      \"DiscoveryConfigTargets\": [\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        },\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        }\n      ],\n      \"ConnectionProfileId\": \"<integer>\",\n      \"DeviceType\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    },\n    {\n      \"DiscoveryConfigTargets\": [\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        },\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        }\n      ],\n      \"ConnectionProfileId\": \"<integer>\",\n      \"DeviceType\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    }\n  ],\n  \"Schedule\": {\n    \"RunNow\": \"<boolean>\",\n    \"Cron\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f958c5f3-9800-4873-8226-f5be20f9db03",
+              "name": "Discovery configuration created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DiscoveryConfigService",
+                    "DiscoveryConfigGroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DiscoveryConfigGroupId\": \"<integer>\",\n  \"DiscoveryConfigGroupName\": \"<string>\",\n  \"DiscoveryConfigModels\": [\n    {\n      \"DiscoveryConfigTargets\": [\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        },\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        }\n      ],\n      \"ConnectionProfileId\": \"<integer>\",\n      \"DeviceType\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    },\n    {\n      \"DiscoveryConfigTargets\": [\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        },\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        }\n      ],\n      \"ConnectionProfileId\": \"<integer>\",\n      \"DeviceType\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    }\n  ],\n  \"Schedule\": {\n    \"RunNow\": \"<boolean>\",\n    \"Cron\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ae01d10f-8e01-4eba-a997-b6dc25b54af6",
+              "name": "Invalid discovery configuration parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DiscoveryConfigService",
+                    "DiscoveryConfigGroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DiscoveryConfigGroupId\": \"<integer>\",\n  \"DiscoveryConfigGroupName\": \"<string>\",\n  \"DiscoveryConfigModels\": [\n    {\n      \"DiscoveryConfigTargets\": [\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        },\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        }\n      ],\n      \"ConnectionProfileId\": \"<integer>\",\n      \"DeviceType\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    },\n    {\n      \"DiscoveryConfigTargets\": [\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        },\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        }\n      ],\n      \"ConnectionProfileId\": \"<integer>\",\n      \"DeviceType\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    }\n  ],\n  \"Schedule\": {\n    \"RunNow\": \"<boolean>\",\n    \"Cron\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "24786c35-f920-4ac0-92cc-92487aecad8f",
+              "name": "Unauthorized - invalid or expired session token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DiscoveryConfigService",
+                    "DiscoveryConfigGroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DiscoveryConfigGroupId\": \"<integer>\",\n  \"DiscoveryConfigGroupName\": \"<string>\",\n  \"DiscoveryConfigModels\": [\n    {\n      \"DiscoveryConfigTargets\": [\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        },\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        }\n      ],\n      \"ConnectionProfileId\": \"<integer>\",\n      \"DeviceType\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    },\n    {\n      \"DiscoveryConfigTargets\": [\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        },\n        {\n          \"NetworkAddressDetail\": \"<string>\"\n        }\n      ],\n      \"ConnectionProfileId\": \"<integer>\",\n      \"DeviceType\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    }\n  ],\n  \"Schedule\": {\n    \"RunNow\": \"<boolean>\",\n    \"Cron\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07a722e9-0306-4d59-b743-bd55a7cfe5ca",
+          "name": "Dell Servers List discovery jobs",
+          "request": {
+            "name": "Dell Servers List discovery jobs",
+            "description": {
+              "content": "Retrieves the collection of discovery job instances showing status, progress, and results for discovery operations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "DiscoveryConfigService",
+                "Jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "831f0d9a-6dff-4f49-86d6-d475e4a4be25",
+              "name": "Collection of discovery jobs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DiscoveryConfigService",
+                    "Jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"Id\": 9050,\n      \"JobName\": \"string\",\n      \"JobDescription\": \"string\",\n      \"JobType\": {\n        \"Id\": 1558,\n        \"Name\": \"string\"\n      },\n      \"LastRunStatus\": {\n        \"Id\": 4459,\n        \"Name\": \"string\"\n      },\n      \"JobStatus\": {\n        \"Id\": 9620,\n        \"Name\": \"string\"\n      },\n      \"PercentComplete\": 83,\n      \"StartTime\": \"2023-06-23T13:33:57.590Z\",\n      \"EndTime\": \"1949-02-11T20:02:25.914Z\"\n    },\n    {\n      \"Id\": 667,\n      \"JobName\": \"string\",\n      \"JobDescription\": \"string\",\n      \"JobType\": {\n        \"Id\": 5143,\n        \"Name\": \"string\"\n      },\n      \"LastRunStatus\": {\n        \"Id\": 8193,\n        \"Name\": \"string\"\n      },\n      \"JobStatus\": {\n        \"Id\": 5576,\n        \"Name\": \"string\"\n      },\n      \"PercentComplete\": 64,\n      \"StartTime\": \"1990-07-10T14:51:44.191Z\",\n      \"EndTime\": \"1989-10-15T13:10:09.665Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65f168ee-5d18-441c-b2b7-d1a7571ee9c5",
+              "name": "Unauthorized - invalid or expired session token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DiscoveryConfigService",
+                    "Jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "IP address or hostname of the iDRAC interface",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "192.168.1.100",
+      "key": "idrac-ip"
+    },
+    {
+      "type": "string",
+      "value": "https://{{idrac-ip}}/redfish/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "db69a2e3-95d5-4c46-be11-62a0c6714130",
+    "name": "Dell Servers Dell iDRAC Redfish REST Accounts Discovery API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Integrated Dell Remote Access Controller (iDRAC) RESTful API built upon the DMTF Redfish standard for out-of-band server lifecycle management of Dell PowerEdge servers. Provides programmatic access to server inventory, health monitoring, configuration, firmware updates, power control, virtual media, and BIOS management through a standards-based REST interface.\n\nContact Support:\n Name: Dell Technologies Support",
+      "type": "text/plain"
+    }
+  }
+}

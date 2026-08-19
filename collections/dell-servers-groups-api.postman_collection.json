@@ -1,0 +1,414 @@
+{
+  "item": [
+    {
+      "id": "7ef5aa08-b0e2-4fdb-8664-347755210695",
+      "name": "Groups",
+      "description": {
+        "content": "Device group management for organizing servers and infrastructure",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3d99e97e-1ccf-49b3-a3ee-1653c2698b93",
+          "name": "Dell Servers List device groups",
+          "request": {
+            "name": "Dell Servers List device groups",
+            "description": {
+              "content": "Retrieves the collection of device groups configured in OpenManage Enterprise, including built-in system groups and user-created custom groups. Groups are used to organize devices for monitoring, reporting, and applying policies.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "GroupService",
+                "Groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression to narrow results"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f8981ce6-c505-4693-9cc8-58a3ffadfccd",
+              "name": "Collection of device groups",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GroupService",
+                    "Groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.count\": 2667,\n  \"value\": [\n    {\n      \"Id\": 4586,\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"MembershipTypeId\": 1870,\n      \"ParentId\": 4929,\n      \"CreatedBy\": \"string\",\n      \"CreationTime\": \"2009-01-22T02:41:05.571Z\",\n      \"DefinitionId\": 1789,\n      \"Visible\": true\n    },\n    {\n      \"Id\": 2879,\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"MembershipTypeId\": 4172,\n      \"ParentId\": 1736,\n      \"CreatedBy\": \"string\",\n      \"CreationTime\": \"1966-08-29T19:40:35.000Z\",\n      \"DefinitionId\": 147,\n      \"Visible\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef923151-e002-467e-a061-a0dda5103c45",
+              "name": "Unauthorized - invalid or expired session token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GroupService",
+                    "Groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cea16aae-df1a-453b-8c46-55c19ec559c9",
+          "name": "Dell Servers List devices in a group",
+          "request": {
+            "name": "Dell Servers List devices in a group",
+            "description": {
+              "content": "Retrieves the collection of devices that are members of the specified group. Supports OData query parameters for filtering and pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "GroupService",
+                "Groups({{GroupId}})",
+                "Devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7ed2b73c-e237-46ab-b15b-17688b8557d7",
+              "name": "Collection of devices in the group",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GroupService",
+                    "Groups({{GroupId}})",
+                    "Devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.count\": 2095,\n  \"value\": [\n    {\n      \"Id\": 9604,\n      \"Type\": 9992,\n      \"Identifier\": \"string\",\n      \"DeviceServiceTag\": \"string\",\n      \"ChassisServiceTag\": \"string\",\n      \"Model\": \"string\",\n      \"DeviceName\": \"string\",\n      \"IpAddress\": \"string\",\n      \"ManagedState\": 3330,\n      \"Status\": 3166,\n      \"ConnectionState\": false,\n      \"PowerState\": 5175,\n      \"FirmwareVersion\": \"string\",\n      \"LastInventoryTime\": \"1953-10-21T01:20:43.100Z\",\n      \"LastStatusTime\": \"1995-01-05T23:08:00.921Z\"\n    },\n    {\n      \"Id\": 7637,\n      \"Type\": 4746,\n      \"Identifier\": \"string\",\n      \"DeviceServiceTag\": \"string\",\n      \"ChassisServiceTag\": \"string\",\n      \"Model\": \"string\",\n      \"DeviceName\": \"string\",\n      \"IpAddress\": \"string\",\n      \"ManagedState\": 2767,\n      \"Status\": 4791,\n      \"ConnectionState\": true,\n      \"PowerState\": 1597,\n      \"FirmwareVersion\": \"string\",\n      \"LastInventoryTime\": \"1949-08-31T11:53:15.598Z\",\n      \"LastStatusTime\": \"1969-02-21T01:18:39.407Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d961811a-1d3b-4737-a348-746f6a19cc1f",
+              "name": "Unauthorized - invalid or expired session token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GroupService",
+                    "Groups({{GroupId}})",
+                    "Devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "72b247b8-fc95-4fc7-88de-5f82fbad8755",
+              "name": "Group not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GroupService",
+                    "Groups({{GroupId}})",
+                    "Devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "IP address or hostname of the iDRAC interface",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "192.168.1.100",
+      "key": "idrac-ip"
+    },
+    {
+      "type": "string",
+      "value": "https://{{idrac-ip}}/redfish/v1",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Unique identifier for a device group",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<integer>",
+      "key": "GroupId"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "68ee057b-f5b8-4218-aafe-f329f7b79650",
+    "name": "Dell Servers Dell iDRAC Redfish REST Accounts Groups API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Integrated Dell Remote Access Controller (iDRAC) RESTful API built upon the DMTF Redfish standard for out-of-band server lifecycle management of Dell PowerEdge servers. Provides programmatic access to server inventory, health monitoring, configuration, firmware updates, power control, virtual media, and BIOS management through a standards-based REST interface.\n\nContact Support:\n Name: Dell Technologies Support",
+      "type": "text/plain"
+    }
+  }
+}

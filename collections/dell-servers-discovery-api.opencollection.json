@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dell Servers Dell iDRAC Redfish REST Accounts Discovery API",
+    "version": "5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Discovery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers List discovery configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/DiscoveryConfigService/DiscoveryConfigGroups"
+          },
+          "docs": "Retrieves the collection of discovery configuration groups that define target ranges, protocols, and credentials used for device discovery."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Create a discovery configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{idrac-ip}/redfish/v1/DiscoveryConfigService/DiscoveryConfigGroups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new discovery configuration group that defines network ranges, protocols, and credentials for discovering devices. When executed, the discovery job scans the specified ranges and adds discovered devices to the managed inventory."
+        },
+        {
+          "info": {
+            "name": "Dell Servers List discovery jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/DiscoveryConfigService/Jobs"
+          },
+          "docs": "Retrieves the collection of discovery job instances showing status, progress, and results for discovery operations."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

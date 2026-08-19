@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dell Servers Dell iDRAC Redfish REST Accounts Sessions API",
+    "version": "5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers List active sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/SessionService/Sessions"
+          },
+          "docs": "Retrieves the collection of active sessions on the iDRAC including web UI sessions, Redfish API sessions, and SSH sessions."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Create a new session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{idrac-ip}/redfish/v1/SessionService/Sessions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Redfish session by authenticating with username and password. Returns a session token in the X-Auth-Token response header that can be used for subsequent requests instead of basic authentication."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

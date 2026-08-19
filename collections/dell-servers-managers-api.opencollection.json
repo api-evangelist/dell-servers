@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dell Servers Dell iDRAC Redfish REST Accounts Managers API",
+    "version": "5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Managers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers List manager resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Managers"
+          },
+          "docs": "Retrieves the collection of manager resources representing the iDRAC management controller including its firmware version, network configuration, and available management services."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Get a manager resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Managers/:ManagerId",
+            "params": [
+              {
+                "name": "ManagerId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the manager resource, typically iDRAC.Embedded.1 for Dell PowerEdge servers"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific manager resource representing the iDRAC controller with its firmware version, model, network interfaces, virtual media capabilities, and links to log services."
+        },
+        {
+          "info": {
+            "name": "Dell Servers List log services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Managers/:ManagerId/LogServices",
+            "params": [
+              {
+                "name": "ManagerId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the manager resource, typically iDRAC.Embedded.1 for Dell PowerEdge servers"
+              }
+            ]
+          },
+          "docs": "Retrieves the collection of log services available on the iDRAC manager including the Lifecycle Controller log and the System Event Log (SEL)."
+        },
+        {
+          "info": {
+            "name": "Dell Servers List virtual media devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Managers/:ManagerId/VirtualMedia",
+            "params": [
+              {
+                "name": "ManagerId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the manager resource, typically iDRAC.Embedded.1 for Dell PowerEdge servers"
+              }
+            ]
+          },
+          "docs": "Retrieves the collection of virtual media devices that can be used to mount remote ISO images or floppy images for operating system deployment and server configuration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

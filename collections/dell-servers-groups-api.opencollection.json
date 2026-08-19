@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dell Servers Dell iDRAC Redfish REST Accounts Groups API",
+    "version": "5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers List device groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/GroupService/Groups",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression to narrow results"
+              }
+            ]
+          },
+          "docs": "Retrieves the collection of device groups configured in OpenManage Enterprise, including built-in system groups and user-created custom groups. Groups are used to organize devices for monitoring, reporting, and applying policies."
+        },
+        {
+          "info": {
+            "name": "Dell Servers List devices in a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/GroupService/Groups(:GroupId)/Devices",
+            "params": [
+              {
+                "name": "GroupId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for a device group"
+              }
+            ]
+          },
+          "docs": "Retrieves the collection of devices that are members of the specified group. Supports OData query parameters for filtering and pagination."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

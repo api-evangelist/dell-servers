@@ -1,0 +1,644 @@
+{
+  "item": [
+    {
+      "id": "d84f8c80-9c18-439d-ac84-f42aec33291f",
+      "name": "Devices",
+      "description": {
+        "content": "Device inventory, status, and hardware details for managed servers",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "283baa6f-6f44-4dc8-865c-3cdf27acf90f",
+          "name": "Dell Servers List managed devices",
+          "request": {
+            "name": "Dell Servers List managed devices",
+            "description": {
+              "content": "Retrieves the collection of devices managed by OpenManage Enterprise including servers, chassis, storage, and network devices. Supports OData query parameters for filtering, sorting, and pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "DeviceService",
+                "Devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "25",
+                  "description": "Maximum number of devices to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "0",
+                  "description": "Number of devices to skip for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression to narrow results. Common filters include Type eq 1000 for servers, Type eq 2000 for chassis."
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property name to sort results by"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "06955e99-8e5e-4901-8fe1-80ea8845cf47",
+              "name": "Collection of managed devices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeviceService",
+                    "Devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "25"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.count\": 3508,\n  \"value\": [\n    {\n      \"Id\": 5694,\n      \"Type\": 6113,\n      \"Identifier\": \"string\",\n      \"DeviceServiceTag\": \"string\",\n      \"ChassisServiceTag\": \"string\",\n      \"Model\": \"string\",\n      \"DeviceName\": \"string\",\n      \"IpAddress\": \"string\",\n      \"ManagedState\": 2204,\n      \"Status\": 8947,\n      \"ConnectionState\": false,\n      \"PowerState\": 7213,\n      \"FirmwareVersion\": \"string\",\n      \"LastInventoryTime\": \"2016-04-27T01:51:46.135Z\",\n      \"LastStatusTime\": \"1971-08-25T02:11:24.746Z\"\n    },\n    {\n      \"Id\": 5170,\n      \"Type\": 3224,\n      \"Identifier\": \"string\",\n      \"DeviceServiceTag\": \"string\",\n      \"ChassisServiceTag\": \"string\",\n      \"Model\": \"string\",\n      \"DeviceName\": \"string\",\n      \"IpAddress\": \"string\",\n      \"ManagedState\": 1124,\n      \"Status\": 1548,\n      \"ConnectionState\": false,\n      \"PowerState\": 8381,\n      \"FirmwareVersion\": \"string\",\n      \"LastInventoryTime\": \"2009-02-05T11:00:08.734Z\",\n      \"LastStatusTime\": \"1954-12-07T14:24:25.797Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0065bf7e-6101-4e84-a293-2929e58f0b10",
+              "name": "Unauthorized - invalid or expired session token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeviceService",
+                    "Devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "25"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "717e0a61-b390-4ae0-aa6b-e881c7b788a9",
+          "name": "Dell Servers Get a managed device",
+          "request": {
+            "name": "Dell Servers Get a managed device",
+            "description": {
+              "content": "Retrieves detailed information about a specific managed device including hardware inventory, connection status, health, firmware versions, and assigned groups.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "DeviceService",
+                "Devices({{DeviceId}})"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "37156e7a-7e1c-4e4d-9cec-f1b88b46e1c5",
+              "name": "Device details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeviceService",
+                    "Devices({{DeviceId}})"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": 2874,\n  \"Type\": 2204,\n  \"Identifier\": \"string\",\n  \"DeviceServiceTag\": \"string\",\n  \"ChassisServiceTag\": \"string\",\n  \"Model\": \"string\",\n  \"DeviceName\": \"string\",\n  \"IpAddress\": \"string\",\n  \"ManagedState\": 4533,\n  \"Status\": 6337,\n  \"ConnectionState\": true,\n  \"PowerState\": 3697,\n  \"FirmwareVersion\": \"string\",\n  \"LastInventoryTime\": \"2010-07-24T05:29:47.324Z\",\n  \"LastStatusTime\": \"1972-10-30T15:42:16.653Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a2d135c0-f16f-44ad-80e7-4560bd4361d2",
+              "name": "Unauthorized - invalid or expired session token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeviceService",
+                    "Devices({{DeviceId}})"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3b58f594-5f9b-4302-b3de-816cc6929b9e",
+              "name": "Device not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeviceService",
+                    "Devices({{DeviceId}})"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c3a72353-9875-4714-bc95-611f424d2881",
+          "name": "Dell Servers Get device inventory details",
+          "request": {
+            "name": "Dell Servers Get device inventory details",
+            "description": {
+              "content": "Retrieves the detailed hardware inventory for a specific device including processor, memory, storage, network adapter, firmware, and software inventory components.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "DeviceService",
+                "Devices({{DeviceId}})",
+                "InventoryDetails"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "34620eb6-c24c-4526-b0df-946a335fb791",
+              "name": "Device inventory details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeviceService",
+                    "Devices({{DeviceId}})",
+                    "InventoryDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"InventoryType\": \"string\",\n      \"InventoryInfo\": [\n        {\n          \"key_0\": \"string\"\n        },\n        {\n          \"key_0\": false,\n          \"key_1\": 5918\n        }\n      ]\n    },\n    {\n      \"InventoryType\": \"string\",\n      \"InventoryInfo\": [\n        {\n          \"key_0\": \"string\",\n          \"key_1\": 802,\n          \"key_2\": false\n        },\n        {\n          \"key_0\": 9033.727131443498,\n          \"key_1\": 7416\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "723ebb29-9f2a-48b3-9f11-f5815388b902",
+              "name": "Unauthorized - invalid or expired session token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeviceService",
+                    "Devices({{DeviceId}})",
+                    "InventoryDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "da821c42-0783-45fc-bc85-5551cb5408a2",
+              "name": "Device not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeviceService",
+                    "Devices({{DeviceId}})",
+                    "InventoryDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "IP address or hostname of the iDRAC interface",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "192.168.1.100",
+      "key": "idrac-ip"
+    },
+    {
+      "type": "string",
+      "value": "https://{{idrac-ip}}/redfish/v1",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Unique identifier for a managed device",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<integer>",
+      "key": "DeviceId"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "40355c5d-389e-4df6-aac6-4d17ba2e0288",
+    "name": "Dell Servers Dell iDRAC Redfish REST Accounts Devices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Integrated Dell Remote Access Controller (iDRAC) RESTful API built upon the DMTF Redfish standard for out-of-band server lifecycle management of Dell PowerEdge servers. Provides programmatic access to server inventory, health monitoring, configuration, firmware updates, power control, virtual media, and BIOS management through a standards-based REST interface.\n\nContact Support:\n Name: Dell Technologies Support",
+      "type": "text/plain"
+    }
+  }
+}

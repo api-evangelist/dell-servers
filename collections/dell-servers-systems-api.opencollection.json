@@ -1,0 +1,158 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dell Servers Dell iDRAC Redfish REST Accounts Systems API",
+    "version": "5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Systems",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers List computer systems",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Systems"
+          },
+          "docs": "Retrieves the collection of computer system resources managed by this iDRAC instance. Each system resource represents a Dell PowerEdge server with its hardware inventory, health status, and configuration."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Get a computer system",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Systems/:SystemId",
+            "params": [
+              {
+                "name": "SystemId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific computer system resource including detailed hardware inventory, health status, power state, boot configuration, processor and memory summary, and links to subordinate resources like storage, network interfaces, and BIOS settings."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Reset a computer system",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{idrac-ip}/redfish/v1/Systems/:SystemId/Actions/ComputerSystem.Reset",
+            "params": [
+              {
+                "name": "SystemId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Performs a power action on the computer system such as power on, power off, graceful shutdown, force restart, or power cycle. The available reset types depend on the current power state of the system."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Get BIOS attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Systems/:SystemId/Bios",
+            "params": [
+              {
+                "name": "SystemId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+              }
+            ]
+          },
+          "docs": "Retrieves the current BIOS attribute values for the specified computer system. BIOS attributes control hardware-level settings including boot order, processor configuration, memory settings, and security features."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Update pending BIOS attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{idrac-ip}/redfish/v1/Systems/:SystemId/Bios/Settings",
+            "params": [
+              {
+                "name": "SystemId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets pending BIOS attribute values that will be applied on the next system reboot. Only attributes that differ from current values need to be specified. Changes require a system reboot to take effect."
+        },
+        {
+          "info": {
+            "name": "Dell Servers List storage controllers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Systems/:SystemId/Storage",
+            "params": [
+              {
+                "name": "SystemId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+              }
+            ]
+          },
+          "docs": "Retrieves the collection of storage controller resources for the specified system, including RAID controllers, BOSS controllers, and direct-attached storage interfaces."
+        },
+        {
+          "info": {
+            "name": "Dell Servers List Ethernet interfaces",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/Systems/:SystemId/EthernetInterfaces",
+            "params": [
+              {
+                "name": "SystemId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers"
+              }
+            ]
+          },
+          "docs": "Retrieves the collection of Ethernet interface resources for the specified system, including network adapters, their MAC addresses, link status, and IP configuration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dell Servers Dell iDRAC Redfish REST Accounts Event Service API",
+    "version": "5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Event Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers Get event service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/EventService"
+          },
+          "docs": "Retrieves the event service resource which provides configuration for event subscriptions and server-sent events. The event service enables clients to subscribe to alerts and lifecycle events from the iDRAC."
+        },
+        {
+          "info": {
+            "name": "Dell Servers List event subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/EventService/Subscriptions"
+          },
+          "docs": "Retrieves the collection of event subscriptions configured on the iDRAC. Each subscription defines a destination URL and event types to which the client has subscribed for receiving push notifications."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Create an event subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{idrac-ip}/redfish/v1/EventService/Subscriptions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new event subscription that configures the iDRAC to push event notifications to a specified destination URL when events matching the subscription criteria occur. iDRAC supports up to eight concurrent subscriptions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

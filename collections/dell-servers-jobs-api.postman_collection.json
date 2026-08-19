@@ -1,0 +1,627 @@
+{
+  "item": [
+    {
+      "id": "c9710017-de49-4ed6-9b35-30d663467827",
+      "name": "Jobs",
+      "description": {
+        "content": "Job creation, scheduling, and status tracking",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7438d7eb-1edf-480b-a8ff-d9a104f665a8",
+          "name": "Dell Servers List jobs",
+          "request": {
+            "name": "Dell Servers List jobs",
+            "description": {
+              "content": "Retrieves the collection of jobs in OpenManage Enterprise including discovery, firmware update, configuration, and report jobs. Supports OData filtering by job type and status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "JobService",
+                "Jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression for job criteria"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ddbddb80-d0ca-4e80-98ba-5833b3e90ff7",
+              "name": "Collection of jobs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "JobService",
+                    "Jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.count\": 3267,\n  \"value\": [\n    {\n      \"Id\": 7272,\n      \"JobName\": \"string\",\n      \"JobDescription\": \"string\",\n      \"JobType\": {\n        \"Id\": 636,\n        \"Name\": \"string\"\n      },\n      \"LastRunStatus\": {\n        \"Id\": 6826,\n        \"Name\": \"string\"\n      },\n      \"JobStatus\": {\n        \"Id\": 3410,\n        \"Name\": \"string\"\n      },\n      \"PercentComplete\": 20,\n      \"StartTime\": \"1948-05-17T22:24:36.870Z\",\n      \"EndTime\": \"1985-11-12T20:04:19.317Z\"\n    },\n    {\n      \"Id\": 8328,\n      \"JobName\": \"string\",\n      \"JobDescription\": \"string\",\n      \"JobType\": {\n        \"Id\": 5044,\n        \"Name\": \"string\"\n      },\n      \"LastRunStatus\": {\n        \"Id\": 2921,\n        \"Name\": \"string\"\n      },\n      \"JobStatus\": {\n        \"Id\": 6227,\n        \"Name\": \"string\"\n      },\n      \"PercentComplete\": 16,\n      \"StartTime\": \"1986-03-03T19:56:54.022Z\",\n      \"EndTime\": \"2007-02-10T20:47:43.081Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "201ed657-33ef-4aaa-b125-9452167b03df",
+              "name": "Unauthorized - invalid or expired session token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "JobService",
+                    "Jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ee4b779-fd09-42ab-aba5-6f6f83a52d3f",
+          "name": "Dell Servers Create a job",
+          "request": {
+            "name": "Dell Servers Create a job",
+            "description": {
+              "content": "Creates a new job for executing operations such as firmware updates, configuration deployment, or inventory refresh on targeted devices.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "JobService",
+                "Jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"JobName\": \"<string>\",\n  \"JobDescription\": \"<string>\",\n  \"Targets\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Data\": \"<string>\",\n      \"TargetType\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      }\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Data\": \"<string>\",\n      \"TargetType\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      }\n    }\n  ],\n  \"Schedule\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "be6c1a2a-a10e-474e-acf6-d7afd180ae3a",
+              "name": "Job created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "JobService",
+                    "Jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"JobName\": \"<string>\",\n  \"JobDescription\": \"<string>\",\n  \"Targets\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Data\": \"<string>\",\n      \"TargetType\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      }\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Data\": \"<string>\",\n      \"TargetType\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      }\n    }\n  ],\n  \"Schedule\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4cbb8132-7a81-41d4-a93f-ff69f065b6b7",
+              "name": "Invalid job parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "JobService",
+                    "Jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"JobName\": \"<string>\",\n  \"JobDescription\": \"<string>\",\n  \"Targets\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Data\": \"<string>\",\n      \"TargetType\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      }\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Data\": \"<string>\",\n      \"TargetType\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      }\n    }\n  ],\n  \"Schedule\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "db21f704-18a2-44fc-9a1f-42b9f220d7c6",
+              "name": "Unauthorized - invalid or expired session token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "JobService",
+                    "Jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"JobName\": \"<string>\",\n  \"JobDescription\": \"<string>\",\n  \"Targets\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Data\": \"<string>\",\n      \"TargetType\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      }\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Data\": \"<string>\",\n      \"TargetType\": {\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      }\n    }\n  ],\n  \"Schedule\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b19a147-5541-4313-ad34-9dfb229f5a87",
+          "name": "Dell Servers Get a job",
+          "request": {
+            "name": "Dell Servers Get a job",
+            "description": {
+              "content": "Retrieves the status and details of a specific job including progress percentage, execution history, and any error messages.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "JobService",
+                "Jobs({{JobId}})"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c8506b23-7b2b-4e7f-aa6c-dae476351f37",
+              "name": "Job details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "JobService",
+                    "Jobs({{JobId}})"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": 5340,\n  \"JobName\": \"string\",\n  \"JobDescription\": \"string\",\n  \"JobType\": {\n    \"Id\": 128,\n    \"Name\": \"string\"\n  },\n  \"LastRunStatus\": {\n    \"Id\": 2638,\n    \"Name\": \"string\"\n  },\n  \"JobStatus\": {\n    \"Id\": 2606,\n    \"Name\": \"string\"\n  },\n  \"PercentComplete\": 45,\n  \"StartTime\": \"2025-06-06T08:44:56.453Z\",\n  \"EndTime\": \"1972-02-21T07:45:19.629Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae7e235e-e9bd-457c-a008-13b5dffbb7ef",
+              "name": "Unauthorized - invalid or expired session token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "JobService",
+                    "Jobs({{JobId}})"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ba697837-319b-4620-84a8-2d137879584c",
+              "name": "Job not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "JobService",
+                    "Jobs({{JobId}})"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "IP address or hostname of the iDRAC interface",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "192.168.1.100",
+      "key": "idrac-ip"
+    },
+    {
+      "type": "string",
+      "value": "https://{{idrac-ip}}/redfish/v1",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Unique identifier for a job",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<integer>",
+      "key": "JobId"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5d374f15-532d-497d-8393-af309abf73cb",
+    "name": "Dell Servers Dell iDRAC Redfish REST Accounts Jobs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Integrated Dell Remote Access Controller (iDRAC) RESTful API built upon the DMTF Redfish standard for out-of-band server lifecycle management of Dell PowerEdge servers. Provides programmatic access to server inventory, health monitoring, configuration, firmware updates, power control, virtual media, and BIOS management through a standards-based REST interface.\n\nContact Support:\n Name: Dell Technologies Support",
+      "type": "text/plain"
+    }
+  }
+}

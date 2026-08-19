@@ -1,0 +1,339 @@
+{
+  "item": [
+    {
+      "id": "e6ddb821-bc6e-4a5a-9dfb-12eebfa3aff5",
+      "name": "Firmware",
+      "description": {
+        "content": "Firmware catalog management, compliance, and update operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2e3579fc-ea15-4774-8702-355c462237b3",
+          "name": "Dell Servers List firmware catalogs",
+          "request": {
+            "name": "Dell Servers List firmware catalogs",
+            "description": {
+              "content": "Retrieves the collection of firmware catalogs registered in OpenManage Enterprise. Catalogs contain firmware packages from Dell support sites or custom repositories used for compliance checking and updates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "UpdateService",
+                "Catalogs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8f8a82c3-e950-4efe-8edf-b6bd703cad6d",
+              "name": "Collection of firmware catalogs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "UpdateService",
+                    "Catalogs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"Id\": 361,\n      \"Filename\": \"string\",\n      \"SourcePath\": \"string\",\n      \"Repository\": {\n        \"Name\": \"string\",\n        \"RepositoryType\": \"string\"\n      },\n      \"Status\": \"string\",\n      \"TaskId\": 9197\n    },\n    {\n      \"Id\": 715,\n      \"Filename\": \"string\",\n      \"SourcePath\": \"string\",\n      \"Repository\": {\n        \"Name\": \"string\",\n        \"RepositoryType\": \"string\"\n      },\n      \"Status\": \"string\",\n      \"TaskId\": 7510\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb8840e6-4f32-4068-9dbf-2e3c3b464378",
+              "name": "Unauthorized - invalid or expired session token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "UpdateService",
+                    "Catalogs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d287d0e6-0647-4deb-8e9a-99e2e62debc8",
+          "name": "Dell Servers Get firmware compliance baselines",
+          "request": {
+            "name": "Dell Servers Get firmware compliance baselines",
+            "description": {
+              "content": "Retrieves firmware compliance baselines that define the expected firmware versions for devices. Baselines are used to check device compliance and identify devices needing firmware updates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "UpdateService",
+                "Actions",
+                "UpdateService.GetBaselines"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "IP address or hostname of the iDRAC interface",
+                  "type": "any",
+                  "value": "{{idrac-ip}}",
+                  "key": "idrac-ip"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "18538381-f494-486b-8a2c-e1427d7218c7",
+              "name": "Firmware compliance baselines",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "UpdateService",
+                    "Actions",
+                    "UpdateService.GetBaselines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"Id\": 5811,\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"CatalogId\": 8308,\n      \"ComplianceSummary\": {\n        \"ComplianceStatus\": \"string\",\n        \"NumberOfCritical\": 4158,\n        \"NumberOfWarning\": 5120,\n        \"NumberOfNormal\": 5345\n      }\n    },\n    {\n      \"Id\": 5518,\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"CatalogId\": 9109,\n      \"ComplianceSummary\": {\n        \"ComplianceStatus\": \"string\",\n        \"NumberOfCritical\": 5468,\n        \"NumberOfWarning\": 4761,\n        \"NumberOfNormal\": 3763\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66e6fb26-ace6-42a0-9709-6f3200a9bb9c",
+              "name": "Unauthorized - invalid or expired session token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "UpdateService",
+                    "Actions",
+                    "UpdateService.GetBaselines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "IP address or hostname of the iDRAC interface",
+                      "type": "any",
+                      "value": "{{idrac-ip}}",
+                      "key": "idrac-ip"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "IP address or hostname of the iDRAC interface",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "192.168.1.100",
+      "key": "idrac-ip"
+    },
+    {
+      "type": "string",
+      "value": "https://{{idrac-ip}}/redfish/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "55a87fc4-a827-452f-8b13-4f12f2f254b2",
+    "name": "Dell Servers Dell iDRAC Redfish REST Accounts Firmware API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Integrated Dell Remote Access Controller (iDRAC) RESTful API built upon the DMTF Redfish standard for out-of-band server lifecycle management of Dell PowerEdge servers. Provides programmatic access to server inventory, health monitoring, configuration, firmware updates, power control, virtual media, and BIOS management through a standards-based REST interface.\n\nContact Support:\n Name: Dell Technologies Support",
+      "type": "text/plain"
+    }
+  }
+}

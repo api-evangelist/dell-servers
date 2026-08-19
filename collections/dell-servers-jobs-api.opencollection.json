@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dell Servers Dell iDRAC Redfish REST Accounts Jobs API",
+    "version": "5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Dell Servers List jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/JobService/Jobs",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression for job criteria"
+              }
+            ]
+          },
+          "docs": "Retrieves the collection of jobs in OpenManage Enterprise including discovery, firmware update, configuration, and report jobs. Supports OData filtering by job type and status."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Create a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{idrac-ip}/redfish/v1/JobService/Jobs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new job for executing operations such as firmware updates, configuration deployment, or inventory refresh on targeted devices."
+        },
+        {
+          "info": {
+            "name": "Dell Servers Get a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{idrac-ip}/redfish/v1/JobService/Jobs(:JobId)",
+            "params": [
+              {
+                "name": "JobId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for a job"
+              }
+            ]
+          },
+          "docs": "Retrieves the status and details of a specific job including progress percentage, execution history, and any error messages."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
