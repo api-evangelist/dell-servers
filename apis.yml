@@ -64,6 +64,11 @@ apis:
   baseURL: https://{ome-server}/api
   humanURL: https://developer.dell.com/apis/5708/versions/3.0/docs/0.1%20Introduction-to-PMP-API.md
   tags:
+  - Data-Center
+  - Energy Efficiency
+  - Power Management
+  - Thermal Monitoring
+  tags_raw:
   - Data Center
   - Energy Efficiency
   - Power Management
@@ -198,6 +203,8 @@ apis:
     https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
   baseURL: https://{idrac-ip}/redfish/v1
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -409,6 +416,8 @@ apis:
     https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
   baseURL: https://{idrac-ip}/redfish/v1
   tags:
+  - EventService
+  tags_raw:
   - Event Service
   properties:
   - type: OpenAPI
@@ -469,6 +478,8 @@ apis:
     https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
   baseURL: https://{idrac-ip}/redfish/v1
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
@@ -499,6 +510,8 @@ apis:
     https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
   baseURL: https://{idrac-ip}/redfish/v1
   tags:
+  - Job
+  tags_raw:
   - Jobs
   properties:
   - type: OpenAPI
