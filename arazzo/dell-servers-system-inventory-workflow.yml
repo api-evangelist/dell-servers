@@ -13,8 +13,8 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: idracRedfish
-  url: ../openapi/dell-servers-idrac-redfish-openapi.yml
+- name: systemsApi
+  url: ../openapi/dell-servers-systems-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: system-inventory

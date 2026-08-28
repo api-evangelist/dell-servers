@@ -16,8 +16,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: idracRedfish
-  url: ../openapi/dell-servers-idrac-redfish-openapi.yml
+- name: taskServiceApi
+  url: ../openapi/dell-servers-task-service-api-openapi.yml
+  type: openapi
+- name: updateServiceApi
+  url: ../openapi/dell-servers-update-service-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: firmware-inventory-tasks

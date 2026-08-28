@@ -14,8 +14,11 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: openManageEnterprise
-  url: ../openapi/dell-servers-openmanage-enterprise-openapi.yml
+- name: devicesApi
+  url: ../openapi/dell-servers-devices-api-openapi.yml
+  type: openapi
+- name: discoveryApi
+  url: ../openapi/dell-servers-discovery-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: ome-discovery

@@ -13,8 +13,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: idracRedfish
-  url: ../openapi/dell-servers-idrac-redfish-openapi.yml
+- name: eventServiceApi
+  url: ../openapi/dell-servers-event-service-api-openapi.yml
+  type: openapi
+- name: telemetryServiceApi
+  url: ../openapi/dell-servers-telemetry-service-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: telemetry-subscription

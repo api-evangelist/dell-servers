@@ -13,8 +13,8 @@ info:
     the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: idracRedfish
-  url: ../openapi/dell-servers-idrac-redfish-openapi.yml
+- name: managersApi
+  url: ../openapi/dell-servers-managers-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: manager-overview

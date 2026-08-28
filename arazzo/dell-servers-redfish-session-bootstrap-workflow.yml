@@ -14,8 +14,11 @@ info:
     the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: idracRedfish
-  url: ../openapi/dell-servers-idrac-redfish-openapi.yml
+- name: serviceRootApi
+  url: ../openapi/dell-servers-service-root-api-openapi.yml
+  type: openapi
+- name: systemsApi
+  url: ../openapi/dell-servers-systems-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: redfish-session-bootstrap

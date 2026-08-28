@@ -15,8 +15,11 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: openManageEnterprise
-  url: ../openapi/dell-servers-openmanage-enterprise-openapi.yml
+- name: firmwareApi
+  url: ../openapi/dell-servers-firmware-api-openapi.yml
+  type: openapi
+- name: jobsApi
+  url: ../openapi/dell-servers-jobs-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: ome-firmware-update-job
