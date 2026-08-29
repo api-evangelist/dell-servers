@@ -16,6 +16,9 @@ sourceDescriptions:
 - name: devicesApi
   url: ../openapi/dell-servers-devices-api-openapi.yml
   type: openapi
+- name: sessionsApi
+  url: ../openapi/dell-servers-sessions-api-openapi.yml
+  type: openapi
 workflows:
 - workflowId: ome-session-list-devices
   summary: Create an OME session, list server devices, then read one device.
@@ -44,7 +47,7 @@ workflows:
     description: >-
       Authenticate to the OME console and capture the X-Auth-Token returned for
       subsequent requests.
-    operationPath: '{$sourceDescriptions.openManageEnterprise.url}#/paths/~1SessionService~1Sessions/post'
+    operationPath: '{$sourceDescriptions.sessionsApi.url}#/paths/~1SessionService~1Sessions/post'
     requestBody:
       contentType: application/json
       payload:

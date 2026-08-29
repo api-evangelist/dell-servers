@@ -17,6 +17,9 @@ sourceDescriptions:
 - name: serviceRootApi
   url: ../openapi/dell-servers-service-root-api-openapi.yml
   type: openapi
+- name: sessionsApi
+  url: ../openapi/dell-servers-sessions-api-openapi.yml
+  type: openapi
 - name: systemsApi
   url: ../openapi/dell-servers-systems-api-openapi.yml
   type: openapi
@@ -50,7 +53,7 @@ workflows:
     description: >-
       Create a Redfish session with credentials and capture the X-Auth-Token
       returned for use on subsequent requests.
-    operationPath: '{$sourceDescriptions.idracRedfish.url}#/paths/~1SessionService~1Sessions/post'
+    operationPath: '{$sourceDescriptions.sessionsApi.url}#/paths/~1SessionService~1Sessions/post'
     requestBody:
       contentType: application/json
       payload:
