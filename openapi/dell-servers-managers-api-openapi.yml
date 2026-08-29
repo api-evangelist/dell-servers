@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Dell Servers Dell iDRAC Redfish REST Accounts Managers API
+  title: Dell Servers Dell iDRAC Redfish REST Managers API
   description: Integrated Dell Remote Access Controller (iDRAC) RESTful API built upon the DMTF Redfish standard for out-of-band server lifecycle management of Dell PowerEdge servers. Provides programmatic access to server inventory, health monitoring, configuration, firmware updates, power control, virtual media, and BIOS management through a standards-based REST interface.
   version: '5.0'
   contact:
@@ -93,6 +93,15 @@ paths:
         '401':
           description: Unauthorized - invalid or missing credentials
 components:
+  parameters:
+    ManagerId:
+      name: ManagerId
+      in: path
+      required: true
+      description: Identifier for the manager resource, typically iDRAC.Embedded.1 for Dell PowerEdge servers
+      schema:
+        type: string
+        default: iDRAC.Embedded.1
   schemas:
     Manager:
       type: object
@@ -144,13 +153,6 @@ components:
           description: Array of resource links
           items:
             $ref: '#/components/schemas/ResourceLink'
-    ResourceLink:
-      type: object
-      description: Link to a Redfish resource
-      properties:
-        '@odata.id':
-          type: string
-          description: OData resource URI
     Status:
       type: object
       description: Redfish status object indicating resource health
@@ -184,15 +186,13 @@ components:
           - Deferring
           - Quiesced
           - Updating
-  parameters:
-    ManagerId:
-      name: ManagerId
-      in: path
-      required: true
-      description: Identifier for the manager resource, typically iDRAC.Embedded.1 for Dell PowerEdge servers
-      schema:
-        type: string
-        default: iDRAC.Embedded.1
+    ResourceLink:
+      type: object
+      description: Link to a Redfish resource
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource URI
   securitySchemes:
     basicAuth:
       type: http

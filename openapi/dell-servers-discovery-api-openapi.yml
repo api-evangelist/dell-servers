@@ -1,21 +1,21 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Dell Servers Dell iDRAC Redfish REST Accounts Discovery API
-  description: Integrated Dell Remote Access Controller (iDRAC) RESTful API built upon the DMTF Redfish standard for out-of-band server lifecycle management of Dell PowerEdge servers. Provides programmatic access to server inventory, health monitoring, configuration, firmware updates, power control, virtual media, and BIOS management through a standards-based REST interface.
-  version: '5.0'
+  title: Dell Servers Dell OpenManage Enterprise Discovery API
+  description: RESTful API for centralized management of Dell EMC servers, chassis, and storage through the OpenManage Enterprise console. Provides discovery, inventory, monitoring, alerting, firmware updates, configuration compliance, and lifecycle management of Dell PowerEdge infrastructure at scale. The API delivers JSON responses over HTTPS and follows OData v4 conventions.
+  version: '4.0'
   contact:
     name: Dell Technologies Support
     url: https://www.dell.com/support
   termsOfService: https://i.dell.com/sites/csdocuments/Legal_Docs/en/us/api-terms-of-use_en.pdf
 servers:
-- url: https://{idrac-ip}/redfish/v1
-  description: iDRAC Redfish Service Root
+- url: https://{ome-server}/api
+  description: OpenManage Enterprise API Server
   variables:
-    idrac-ip:
-      description: IP address or hostname of the iDRAC interface
-      default: 192.168.1.100
+    ome-server:
+      description: Hostname or IP address of the OpenManage Enterprise appliance
+      default: ome-server.example.com
 security:
-- basicAuth: []
+- sessionAuth: []
 tags:
 - name: Discovery
   description: Network discovery configuration and job management
@@ -183,15 +183,11 @@ components:
           format: date-time
           description: Job completion timestamp
   securitySchemes:
-    basicAuth:
-      type: http
-      scheme: basic
-      description: HTTP Basic Authentication using iDRAC username and password credentials. All API requests require authentication except for the Redfish service root at /redfish/v1.
     sessionAuth:
       type: apiKey
       in: header
       name: X-Auth-Token
-      description: Session-based authentication using a token obtained from the Sessions resource POST operation. The token is passed in the X-Auth-Token header.
+      description: Session token obtained from the POST /SessionService/Sessions endpoint. Must be included in the X-Auth-Token header of all authenticated requests.
 externalDocs:
-  description: iDRAC Redfish API Documentation
-  url: https://developer.dell.com/apis/2978/versions/5.xx/docs/1.0Intro.md
+  description: OpenManage Enterprise RESTful API Guide
+  url: https://www.dell.com/support/manuals/en-us/dell-openmanage-enterprise/ome_p_api_guide/overview?guid=guid-fc1c0585-795c-41fe-9957-977678be554f&lang=en-us

@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Dell Servers Dell iDRAC Redfish REST Accounts Service Root API
+  title: Dell Servers Dell iDRAC Redfish REST Service Root API
   description: Integrated Dell Remote Access Controller (iDRAC) RESTful API built upon the DMTF Redfish standard for out-of-band server lifecycle management of Dell PowerEdge servers. Provides programmatic access to server inventory, health monitoring, configuration, firmware updates, power control, virtual media, and BIOS management through a standards-based REST interface.
   version: '5.0'
   contact:
@@ -38,6 +38,13 @@ paths:
           description: Unauthorized - invalid or missing credentials
 components:
   schemas:
+    ResourceLink:
+      type: object
+      description: Link to a Redfish resource
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource URI
     ServiceRoot:
       type: object
       description: Redfish service root resource providing links to top-level collections
@@ -75,13 +82,6 @@ components:
           $ref: '#/components/schemas/ResourceLink'
         TelemetryService:
           $ref: '#/components/schemas/ResourceLink'
-    ResourceLink:
-      type: object
-      description: Link to a Redfish resource
-      properties:
-        '@odata.id':
-          type: string
-          description: OData resource URI
   securitySchemes:
     basicAuth:
       type: http
