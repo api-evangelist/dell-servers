@@ -791,6 +791,9 @@ apis:
   - type: GitHubRepository
     url: https://github.com/dell/OpenManage-Enterprise
 common:
+  - type: CapabilityMap
+    url: capabilities/dell-servers-capability-edges.yml
+    name: Dell Servers Business Capability Map
   - type: IssueTracker
     url: https://github.com/dell/OpenManage-Enterprise/issues
   - type: ContributionGuide

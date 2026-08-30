@@ -1,0 +1,86 @@
+slug: dell-servers
+provider: Dell Servers
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Electrical Components & Equipment
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 7
+edges:
+- tag: Systems
+  spec_file: dell-servers-systems-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.82
+  evidence: '"List computer systems", "Reset a computer system", "Update pending BIOS attributes", "List
+    storage controllers"'
+  reason: The surface inventories and configures physical server compute, BIOS, storage controllers and
+    NICs — squarely compute/storage/network infrastructure management within IT.
+- tag: Chassis
+  spec_file: dell-servers-chassis-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: GET /Chassis/{ChassisId}/Power getChassisPower; GET /Chassis/{ChassisId}/Thermal getChassisThermal
+  reason: Exposes physical server chassis resources with power and thermal state via Redfish — inventory
+    and health of compute hardware, i.e. IT infrastructure management.
+- tag: Devices
+  spec_file: dell-servers-devices-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: GET /DeviceService/Devices({DeviceId})/InventoryDetails getDeviceInventory 'Dell Servers Get
+    device inventory details'
+  reason: Managed device register and hardware inventory for servers, chassis and storage — compute/storage
+    infrastructure management, not connected-product device identity for a manufacturer's own shipped
+    goods.
+- tag: Alerts
+  spec_file: dell-servers-alerts-api-openapi.yml
+  capability_id: BC-600.40
+  capability_id_l1: BC-600
+  capability_name: IT Operations Management
+  confidence: 0.75
+  evidence: GET /AlertService/Alerts listAlerts 'Dell Servers List alerts'; console 'Provides discovery,
+    inventory, monitoring, alerting'
+  reason: Alerts here are infrastructure monitoring alerts from the OpenManage Enterprise console over
+    servers/chassis/storage — IT operations monitoring, not any financial-crime or business alerting.
+- tag: Managers
+  spec_file: dell-servers-managers-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.72
+  evidence: '"Get a manager resource", "List virtual media devices" — iDRAC "out-of-band server lifecycle
+    management of Dell PowerEdge servers"'
+  reason: Operations expose the baseboard management controller (iDRAC) resources, log services and virtual
+    media of physical servers — this is compute infrastructure management for the operator's IT estate,
+    not a product-engineering or industry-specific capability.
+- tag: Discovery
+  spec_file: dell-servers-discovery-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: POST /DiscoveryConfigService/DiscoveryConfigGroups createDiscoveryConfig 'Dell Servers Create
+    a discovery configuration'
+  reason: Configures automated discovery of infrastructure devices into the management console — estate
+    discovery/inventory of IT infrastructure.
+- tag: Firmware
+  spec_file: dell-servers-firmware-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: GET /UpdateService/Catalogs listFirmwareCatalogs; POST /UpdateService/Actions/UpdateService.GetBaselines
+    'Get firmware compliance baselines'
+  reason: Firmware catalogues and compliance baselines for the installed server fleet — keeping IT infrastructure
+    at supported levels. Not product firmware build/release engineering by a manufacturer.
