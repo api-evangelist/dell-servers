@@ -430,7 +430,7 @@ apis:
     https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller
   baseURL: https://{idrac-ip}/redfish/v1
   tags:
-  - Event Service
+  - EventService
   tags_raw:
   - Event Service
   properties:
