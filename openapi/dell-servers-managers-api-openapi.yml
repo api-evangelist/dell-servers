@@ -93,66 +93,7 @@ paths:
         '401':
           description: Unauthorized - invalid or missing credentials
 components:
-  parameters:
-    ManagerId:
-      name: ManagerId
-      in: path
-      required: true
-      description: Identifier for the manager resource, typically iDRAC.Embedded.1 for Dell PowerEdge servers
-      schema:
-        type: string
-        default: iDRAC.Embedded.1
   schemas:
-    Manager:
-      type: object
-      description: Manager resource representing the iDRAC management controller
-      properties:
-        '@odata.id':
-          type: string
-          description: OData resource identifier
-        Id:
-          type: string
-          description: Manager resource identifier
-        Name:
-          type: string
-          description: Manager name
-        ManagerType:
-          type: string
-          description: Type of management controller
-          enum:
-          - ManagementController
-          - EnclosureManager
-          - BMC
-          - RackManager
-        FirmwareVersion:
-          type: string
-          description: iDRAC firmware version
-        Model:
-          type: string
-          description: iDRAC model designation
-        Status:
-          $ref: '#/components/schemas/Status'
-    ResourceCollection:
-      type: object
-      description: Redfish resource collection
-      properties:
-        '@odata.id':
-          type: string
-          description: OData resource identifier
-        '@odata.type':
-          type: string
-          description: OData resource type
-        Name:
-          type: string
-          description: Collection name
-        Members@odata.count:
-          type: integer
-          description: Number of members in the collection
-        Members:
-          type: array
-          description: Array of resource links
-          items:
-            $ref: '#/components/schemas/ResourceLink'
     Status:
       type: object
       description: Redfish status object indicating resource health
@@ -186,6 +127,35 @@ components:
           - Deferring
           - Quiesced
           - Updating
+    Manager:
+      type: object
+      description: Manager resource representing the iDRAC management controller
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource identifier
+        Id:
+          type: string
+          description: Manager resource identifier
+        Name:
+          type: string
+          description: Manager name
+        ManagerType:
+          type: string
+          description: Type of management controller
+          enum:
+          - ManagementController
+          - EnclosureManager
+          - BMC
+          - RackManager
+        FirmwareVersion:
+          type: string
+          description: iDRAC firmware version
+        Model:
+          type: string
+          description: iDRAC model designation
+        Status:
+          $ref: '#/components/schemas/Status'
     ResourceLink:
       type: object
       description: Link to a Redfish resource
@@ -193,6 +163,36 @@ components:
         '@odata.id':
           type: string
           description: OData resource URI
+    ResourceCollection:
+      type: object
+      description: Redfish resource collection
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource identifier
+        '@odata.type':
+          type: string
+          description: OData resource type
+        Name:
+          type: string
+          description: Collection name
+        Members@odata.count:
+          type: integer
+          description: Number of members in the collection
+        Members:
+          type: array
+          description: Array of resource links
+          items:
+            $ref: '#/components/schemas/ResourceLink'
+  parameters:
+    ManagerId:
+      name: ManagerId
+      in: path
+      required: true
+      description: Identifier for the manager resource, typically iDRAC.Embedded.1 for Dell PowerEdge servers
+      schema:
+        type: string
+        default: iDRAC.Embedded.1
   securitySchemes:
     basicAuth:
       type: http

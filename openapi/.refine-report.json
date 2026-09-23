@@ -32,7 +32,8 @@
     "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "dell-servers-idrac-redfish-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "dell-servers-openmanage-enterprise-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "tag 'Sessions' spans 2 source specs (dell-servers-idrac-redfish-openapi.yml, dell-servers-openmanage-enterprise-openapi.yml): per-path servers applied"
+    "tag 'Sessions' spans 2 source specs (dell-servers-idrac-redfish-openapi.yml, dell-servers-openmanage-enterprise-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "dell-servers-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Dell Servers Dell OpenManage Enterprise Application Settings API
+  title: Dell Servers Dell OpenManage Enterprise Application…
   description: RESTful API for centralized management of Dell EMC servers, chassis, and storage through the OpenManage Enterprise console. Provides discovery, inventory, monitoring, alerting, firmware updates, configuration compliance, and lifecycle management of Dell PowerEdge infrastructure at scale. The API delivers JSON responses over HTTPS and follows OData v4 conventions.
   version: '4.0'
   contact:

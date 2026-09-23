@@ -81,27 +81,6 @@ components:
         '@odata.id':
           type: string
           description: OData resource URI
-    ResourceCollection:
-      type: object
-      description: Redfish resource collection
-      properties:
-        '@odata.id':
-          type: string
-          description: OData resource identifier
-        '@odata.type':
-          type: string
-          description: OData resource type
-        Name:
-          type: string
-          description: Collection name
-        Members@odata.count:
-          type: integer
-          description: Number of members in the collection
-        Members:
-          type: array
-          description: Array of resource links
-          items:
-            $ref: '#/components/schemas/ResourceLink'
     EventSubscription:
       type: object
       description: Event subscription request for push notifications
@@ -134,6 +113,27 @@ components:
         Context:
           type: string
           description: Client-supplied context string returned with events
+    ResourceCollection:
+      type: object
+      description: Redfish resource collection
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource identifier
+        '@odata.type':
+          type: string
+          description: OData resource type
+        Name:
+          type: string
+          description: Collection name
+        Members@odata.count:
+          type: integer
+          description: Number of members in the collection
+        Members:
+          type: array
+          description: Array of resource links
+          items:
+            $ref: '#/components/schemas/ResourceLink'
   securitySchemes:
     basicAuth:
       type: http
