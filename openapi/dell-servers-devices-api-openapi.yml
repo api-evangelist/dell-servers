@@ -114,19 +114,6 @@ paths:
           description: Device not found
 components:
   schemas:
-    InventoryDetail:
-      type: object
-      description: Hardware inventory component details
-      properties:
-        InventoryType:
-          type: string
-          description: Type of inventory component such as cpuInformation, memoryInformation, storageInformation, nicInformation, or firmwareInformation
-        InventoryInfo:
-          type: array
-          description: Array of inventory items for this component type
-          items:
-            type: object
-            additionalProperties: true
     Device:
       type: object
       description: A managed device in OpenManage Enterprise
@@ -178,6 +165,19 @@ components:
           type: string
           format: date-time
           description: Timestamp of the last status check
+    InventoryDetail:
+      type: object
+      description: Hardware inventory component details
+      properties:
+        InventoryType:
+          type: string
+          description: Type of inventory component such as cpuInformation, memoryInformation, storageInformation, nicInformation, or firmwareInformation
+        InventoryInfo:
+          type: array
+          description: Array of inventory items for this component type
+          items:
+            type: object
+            additionalProperties: true
   parameters:
     DeviceId:
       name: DeviceId

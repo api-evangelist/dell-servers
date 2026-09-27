@@ -164,6 +164,15 @@ paths:
         '401':
           description: Unauthorized - invalid or missing credentials
 components:
+  parameters:
+    SystemId:
+      name: SystemId
+      in: path
+      required: true
+      description: Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers
+      schema:
+        type: string
+        default: System.Embedded.1
   schemas:
     ComputerSystem:
       type: object
@@ -272,6 +281,13 @@ components:
               enum:
               - Legacy
               - UEFI
+    ResourceLink:
+      type: object
+      description: Link to a Redfish resource
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource URI
     Status:
       type: object
       description: Redfish status object indicating resource health
@@ -305,51 +321,6 @@ components:
           - Deferring
           - Quiesced
           - Updating
-    ComputerSystemCollection:
-      type: object
-      description: Collection of computer system resources
-      properties:
-        '@odata.id':
-          type: string
-          description: OData resource identifier
-        '@odata.type':
-          type: string
-          description: OData resource type
-        Name:
-          type: string
-          description: Collection name
-        Members@odata.count:
-          type: integer
-          description: Number of systems in the collection
-        Members:
-          type: array
-          description: Array of computer system resource links
-          items:
-            $ref: '#/components/schemas/ResourceLink'
-    Bios:
-      type: object
-      description: BIOS configuration attributes for a computer system
-      properties:
-        '@odata.id':
-          type: string
-          description: OData resource identifier
-        Id:
-          type: string
-          description: BIOS resource identifier
-        AttributeRegistry:
-          type: string
-          description: Name of the BIOS attribute registry
-        Attributes:
-          type: object
-          description: Current BIOS attribute values as name-value pairs. Attributes vary by server model and BIOS version.
-          additionalProperties: true
-    ResourceLink:
-      type: object
-      description: Link to a Redfish resource
-      properties:
-        '@odata.id':
-          type: string
-          description: OData resource URI
     ResourceCollection:
       type: object
       description: Redfish resource collection
@@ -371,6 +342,23 @@ components:
           description: Array of resource links
           items:
             $ref: '#/components/schemas/ResourceLink'
+    Bios:
+      type: object
+      description: BIOS configuration attributes for a computer system
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource identifier
+        Id:
+          type: string
+          description: BIOS resource identifier
+        AttributeRegistry:
+          type: string
+          description: Name of the BIOS attribute registry
+        Attributes:
+          type: object
+          description: Current BIOS attribute values as name-value pairs. Attributes vary by server model and BIOS version.
+          additionalProperties: true
     ResetAction:
       type: object
       description: Reset action request body for power control operations
@@ -390,15 +378,27 @@ components:
           - ForceOn
           - PushPowerButton
           - PowerCycle
-  parameters:
-    SystemId:
-      name: SystemId
-      in: path
-      required: true
-      description: Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers
-      schema:
-        type: string
-        default: System.Embedded.1
+    ComputerSystemCollection:
+      type: object
+      description: Collection of computer system resources
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource identifier
+        '@odata.type':
+          type: string
+          description: OData resource type
+        Name:
+          type: string
+          description: Collection name
+        Members@odata.count:
+          type: integer
+          description: Number of systems in the collection
+        Members:
+          type: array
+          description: Array of computer system resource links
+          items:
+            $ref: '#/components/schemas/ResourceLink'
   securitySchemes:
     basicAuth:
       type: http

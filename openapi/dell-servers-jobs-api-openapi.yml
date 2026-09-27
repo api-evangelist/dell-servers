@@ -90,6 +90,14 @@ paths:
         '404':
           description: Job not found
 components:
+  parameters:
+    JobId:
+      name: JobId
+      in: path
+      required: true
+      description: Unique identifier for a job
+      schema:
+        type: integer
   schemas:
     JobRequest:
       type: object
@@ -185,14 +193,6 @@ components:
           type: string
           format: date-time
           description: Job completion timestamp
-  parameters:
-    JobId:
-      name: JobId
-      in: path
-      required: true
-      description: Unique identifier for a job
-      schema:
-        type: integer
   securitySchemes:
     sessionAuth:
       type: apiKey

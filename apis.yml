@@ -79,7 +79,7 @@ apis:
   baseURL: https://{ome-server}/api
   humanURL: https://developer.dell.com/apis/5708/versions/3.0/docs/0.1%20Introduction-to-PMP-API.md
   tags:
-  - Data-Center
+  - Data Center
   - Energy Efficiency
   - Power Management
   - Thermal Monitoring
@@ -88,6 +88,7 @@ apis:
   - Energy Efficiency
   - Power Management
   - Thermal Monitoring
+  - Data-Center
   properties:
   - type: Documentation
     url: >-

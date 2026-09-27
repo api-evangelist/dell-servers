@@ -94,39 +94,6 @@ paths:
           description: Unauthorized - invalid or missing credentials
 components:
   schemas:
-    Status:
-      type: object
-      description: Redfish status object indicating resource health
-      properties:
-        Health:
-          type: string
-          description: Overall health state
-          enum:
-          - OK
-          - Warning
-          - Critical
-        HealthRollup:
-          type: string
-          description: Rolled-up health state from subordinate resources
-          enum:
-          - OK
-          - Warning
-          - Critical
-        State:
-          type: string
-          description: Operational state
-          enum:
-          - Enabled
-          - Disabled
-          - StandbyOffline
-          - StandbySpare
-          - InTest
-          - Starting
-          - Absent
-          - UnavailableOffline
-          - Deferring
-          - Quiesced
-          - Updating
     Manager:
       type: object
       description: Manager resource representing the iDRAC management controller
@@ -163,6 +130,39 @@ components:
         '@odata.id':
           type: string
           description: OData resource URI
+    Status:
+      type: object
+      description: Redfish status object indicating resource health
+      properties:
+        Health:
+          type: string
+          description: Overall health state
+          enum:
+          - OK
+          - Warning
+          - Critical
+        HealthRollup:
+          type: string
+          description: Rolled-up health state from subordinate resources
+          enum:
+          - OK
+          - Warning
+          - Critical
+        State:
+          type: string
+          description: Operational state
+          enum:
+          - Enabled
+          - Disabled
+          - StandbyOffline
+          - StandbySpare
+          - InTest
+          - Starting
+          - Absent
+          - UnavailableOffline
+          - Deferring
+          - Quiesced
+          - Updating
     ResourceCollection:
       type: object
       description: Redfish resource collection
