@@ -64,6 +64,35 @@ paths:
           description: Unauthorized - invalid or expired session token
 components:
   schemas:
+    FirmwareCatalog:
+      type: object
+      description: A firmware catalog for compliance and updates
+      properties:
+        Id:
+          type: integer
+          description: Unique catalog identifier
+        Filename:
+          type: string
+          description: Catalog filename
+        SourcePath:
+          type: string
+          description: Source location of the catalog
+        Repository:
+          type: object
+          description: Repository details
+          properties:
+            Name:
+              type: string
+              description: Repository name
+            RepositoryType:
+              type: string
+              description: Repository type
+        Status:
+          type: string
+          description: Catalog status
+        TaskId:
+          type: integer
+          description: Associated task identifier
     FirmwareBaseline:
       type: object
       description: A firmware compliance baseline
@@ -96,35 +125,6 @@ components:
             NumberOfNormal:
               type: integer
               description: Number of compliant components
-    FirmwareCatalog:
-      type: object
-      description: A firmware catalog for compliance and updates
-      properties:
-        Id:
-          type: integer
-          description: Unique catalog identifier
-        Filename:
-          type: string
-          description: Catalog filename
-        SourcePath:
-          type: string
-          description: Source location of the catalog
-        Repository:
-          type: object
-          description: Repository details
-          properties:
-            Name:
-              type: string
-              description: Repository name
-            RepositoryType:
-              type: string
-              description: Repository type
-        Status:
-          type: string
-          description: Catalog status
-        TaskId:
-          type: integer
-          description: Associated task identifier
   securitySchemes:
     sessionAuth:
       type: apiKey

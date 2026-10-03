@@ -164,15 +164,6 @@ paths:
         '401':
           description: Unauthorized - invalid or missing credentials
 components:
-  parameters:
-    SystemId:
-      name: SystemId
-      in: path
-      required: true
-      description: Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers
-      schema:
-        type: string
-        default: System.Embedded.1
   schemas:
     ComputerSystem:
       type: object
@@ -281,6 +272,48 @@ components:
               enum:
               - Legacy
               - UEFI
+    ResourceCollection:
+      type: object
+      description: Redfish resource collection
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource identifier
+        '@odata.type':
+          type: string
+          description: OData resource type
+        Name:
+          type: string
+          description: Collection name
+        Members@odata.count:
+          type: integer
+          description: Number of members in the collection
+        Members:
+          type: array
+          description: Array of resource links
+          items:
+            $ref: '#/components/schemas/ResourceLink'
+    ComputerSystemCollection:
+      type: object
+      description: Collection of computer system resources
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource identifier
+        '@odata.type':
+          type: string
+          description: OData resource type
+        Name:
+          type: string
+          description: Collection name
+        Members@odata.count:
+          type: integer
+          description: Number of systems in the collection
+        Members:
+          type: array
+          description: Array of computer system resource links
+          items:
+            $ref: '#/components/schemas/ResourceLink'
     ResourceLink:
       type: object
       description: Link to a Redfish resource
@@ -321,27 +354,6 @@ components:
           - Deferring
           - Quiesced
           - Updating
-    ResourceCollection:
-      type: object
-      description: Redfish resource collection
-      properties:
-        '@odata.id':
-          type: string
-          description: OData resource identifier
-        '@odata.type':
-          type: string
-          description: OData resource type
-        Name:
-          type: string
-          description: Collection name
-        Members@odata.count:
-          type: integer
-          description: Number of members in the collection
-        Members:
-          type: array
-          description: Array of resource links
-          items:
-            $ref: '#/components/schemas/ResourceLink'
     Bios:
       type: object
       description: BIOS configuration attributes for a computer system
@@ -378,27 +390,15 @@ components:
           - ForceOn
           - PushPowerButton
           - PowerCycle
-    ComputerSystemCollection:
-      type: object
-      description: Collection of computer system resources
-      properties:
-        '@odata.id':
-          type: string
-          description: OData resource identifier
-        '@odata.type':
-          type: string
-          description: OData resource type
-        Name:
-          type: string
-          description: Collection name
-        Members@odata.count:
-          type: integer
-          description: Number of systems in the collection
-        Members:
-          type: array
-          description: Array of computer system resource links
-          items:
-            $ref: '#/components/schemas/ResourceLink'
+  parameters:
+    SystemId:
+      name: SystemId
+      in: path
+      required: true
+      description: Identifier for the computer system resource, typically System.Embedded.1 for Dell PowerEdge servers
+      schema:
+        type: string
+        default: System.Embedded.1
   securitySchemes:
     basicAuth:
       type: http

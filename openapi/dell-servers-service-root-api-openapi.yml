@@ -38,13 +38,6 @@ paths:
           description: Unauthorized - invalid or missing credentials
 components:
   schemas:
-    ResourceLink:
-      type: object
-      description: Link to a Redfish resource
-      properties:
-        '@odata.id':
-          type: string
-          description: OData resource URI
     ServiceRoot:
       type: object
       description: Redfish service root resource providing links to top-level collections
@@ -82,6 +75,13 @@ components:
           $ref: '#/components/schemas/ResourceLink'
         TelemetryService:
           $ref: '#/components/schemas/ResourceLink'
+    ResourceLink:
+      type: object
+      description: Link to a Redfish resource
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource URI
   securitySchemes:
     basicAuth:
       type: http

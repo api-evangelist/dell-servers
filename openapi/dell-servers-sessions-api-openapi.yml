@@ -89,13 +89,6 @@ paths:
           default: 192.168.1.100
 components:
   schemas:
-    ResourceLink:
-      type: object
-      description: Link to a Redfish resource
-      properties:
-        '@odata.id':
-          type: string
-          description: OData resource URI
     ResourceCollection:
       type: object
       description: Redfish resource collection
@@ -117,6 +110,13 @@ components:
           description: Array of resource links
           items:
             $ref: '#/components/schemas/ResourceLink'
+    ResourceLink:
+      type: object
+      description: Link to a Redfish resource
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource URI
   securitySchemes:
     basicAuth:
       type: http
