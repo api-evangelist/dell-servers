@@ -93,15 +93,6 @@ paths:
         '401':
           description: Unauthorized - invalid or missing credentials
 components:
-  parameters:
-    ChassisId:
-      name: ChassisId
-      in: path
-      required: true
-      description: Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers
-      schema:
-        type: string
-        default: System.Embedded.1
   schemas:
     Power:
       type: object
@@ -235,46 +226,6 @@ components:
           description: Array of resource links
           items:
             $ref: '#/components/schemas/ResourceLink'
-    ResourceLink:
-      type: object
-      description: Link to a Redfish resource
-      properties:
-        '@odata.id':
-          type: string
-          description: OData resource URI
-    Status:
-      type: object
-      description: Redfish status object indicating resource health
-      properties:
-        Health:
-          type: string
-          description: Overall health state
-          enum:
-          - OK
-          - Warning
-          - Critical
-        HealthRollup:
-          type: string
-          description: Rolled-up health state from subordinate resources
-          enum:
-          - OK
-          - Warning
-          - Critical
-        State:
-          type: string
-          description: Operational state
-          enum:
-          - Enabled
-          - Disabled
-          - StandbyOffline
-          - StandbySpare
-          - InTest
-          - Starting
-          - Absent
-          - UnavailableOffline
-          - Deferring
-          - Quiesced
-          - Updating
     Chassis:
       type: object
       description: Chassis resource representing the physical enclosure of a Dell PowerEdge server including power, thermal, and physical component information
@@ -338,6 +289,55 @@ components:
           - 'Off'
           - PoweringOn
           - PoweringOff
+    ResourceLink:
+      type: object
+      description: Link to a Redfish resource
+      properties:
+        '@odata.id':
+          type: string
+          description: OData resource URI
+    Status:
+      type: object
+      description: Redfish status object indicating resource health
+      properties:
+        Health:
+          type: string
+          description: Overall health state
+          enum:
+          - OK
+          - Warning
+          - Critical
+        HealthRollup:
+          type: string
+          description: Rolled-up health state from subordinate resources
+          enum:
+          - OK
+          - Warning
+          - Critical
+        State:
+          type: string
+          description: Operational state
+          enum:
+          - Enabled
+          - Disabled
+          - StandbyOffline
+          - StandbySpare
+          - InTest
+          - Starting
+          - Absent
+          - UnavailableOffline
+          - Deferring
+          - Quiesced
+          - Updating
+  parameters:
+    ChassisId:
+      name: ChassisId
+      in: path
+      required: true
+      description: Identifier for the chassis resource, typically System.Embedded.1 for Dell PowerEdge servers
+      schema:
+        type: string
+        default: System.Embedded.1
   securitySchemes:
     basicAuth:
       type: http

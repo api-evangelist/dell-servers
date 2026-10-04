@@ -79,6 +79,14 @@ paths:
         '404':
           description: Group not found
 components:
+  parameters:
+    GroupId:
+      name: GroupId
+      in: path
+      required: true
+      description: Unique identifier for a device group
+      schema:
+        type: integer
   schemas:
     Group:
       type: object
@@ -163,14 +171,6 @@ components:
           type: string
           format: date-time
           description: Timestamp of the last status check
-  parameters:
-    GroupId:
-      name: GroupId
-      in: path
-      required: true
-      description: Unique identifier for a device group
-      schema:
-        type: integer
   securitySchemes:
     sessionAuth:
       type: apiKey

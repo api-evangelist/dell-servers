@@ -91,44 +91,6 @@ paths:
           description: Job not found
 components:
   schemas:
-    JobRequest:
-      type: object
-      description: Request body for creating a new job
-      required:
-      - JobName
-      - JobDescription
-      - Targets
-      properties:
-        JobName:
-          type: string
-          description: Name for the new job
-        JobDescription:
-          type: string
-          description: Description of the job
-        Schedule:
-          type: string
-          description: Cron expression for scheduling or RunNow
-        Targets:
-          type: array
-          description: Target devices or groups for the job
-          items:
-            type: object
-            properties:
-              Id:
-                type: integer
-                description: Target device or group identifier
-              Data:
-                type: string
-                description: Additional target data
-              TargetType:
-                type: object
-                properties:
-                  Id:
-                    type: integer
-                    description: Target type identifier
-                  Name:
-                    type: string
-                    description: Target type name
     Job:
       type: object
       description: An asynchronous job in OpenManage Enterprise
@@ -185,6 +147,44 @@ components:
           type: string
           format: date-time
           description: Job completion timestamp
+    JobRequest:
+      type: object
+      description: Request body for creating a new job
+      required:
+      - JobName
+      - JobDescription
+      - Targets
+      properties:
+        JobName:
+          type: string
+          description: Name for the new job
+        JobDescription:
+          type: string
+          description: Description of the job
+        Schedule:
+          type: string
+          description: Cron expression for scheduling or RunNow
+        Targets:
+          type: array
+          description: Target devices or groups for the job
+          items:
+            type: object
+            properties:
+              Id:
+                type: integer
+                description: Target device or group identifier
+              Data:
+                type: string
+                description: Additional target data
+              TargetType:
+                type: object
+                properties:
+                  Id:
+                    type: integer
+                    description: Target type identifier
+                  Name:
+                    type: string
+                    description: Target type name
   parameters:
     JobId:
       name: JobId
