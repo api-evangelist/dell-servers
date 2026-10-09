@@ -1,20 +1,357 @@
-generated: '2026-07-15'
+generated: '2026-09-23'
 method: generated
-source: openapi/dell-servers-idrac-redfish-openapi.yml, openapi/dell-servers-openmanage-enterprise-openapi.yml
+source: openapi/dell-servers-accounts-api-openapi.yml, openapi/dell-servers-alerts-api-openapi.yml,
+  openapi/dell-servers-application-settings-api-openapi.yml, openapi/dell-servers-chassis-api-openapi.yml,
+  openapi/dell-servers-configuration-api-openapi.yml, openapi/dell-servers-devices-api-openapi.yml,
+  openapi/dell-servers-discovery-api-openapi.yml, openapi/dell-servers-event-service-api-openapi.yml,
+  openapi/dell-servers-firmware-api-openapi.yml, openapi/dell-servers-groups-api-openapi.yml,
+  openapi/dell-servers-jobs-api-openapi.yml, openapi/dell-servers-managers-api-openapi.yml,
+  openapi/dell-servers-reports-api-openapi.yml, openapi/dell-servers-service-root-api-openapi.yml,
+  openapi/dell-servers-sessions-api-openapi.yml, openapi/dell-servers-systems-api-openapi.yml,
+  openapi/dell-servers-task-service-api-openapi.yml, openapi/dell-servers-telemetry-service-api-openapi.yml,
+  openapi/dell-servers-update-service-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
-  operations: 47
+  operations: 46
   by_action_class:
-    connected: 39
-    acting: 8
+    connected: 40
+    acting: 6
   by_consequence:
-    read: 39
+    read: 40
+    write: 5
     safety-critical: 1
-    write: 7
   human_in_the_loop_required: 1
 operations:
+- path: /AccountService
+  method: get
+  operationId: getAccountService
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /AccountService/Accounts
+  method: get
+  operationId: listAccounts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /AlertService/Alerts
+  method: get
+  operationId: listAlerts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /AlertService/Alerts({AlertId})
+  method: get
+  operationId: getAlert
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ApplicationService/Network
+  method: get
+  operationId: getNetworkConfiguration
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Chassis
+  method: get
+  operationId: listChassis
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Chassis/{ChassisId}
+  method: get
+  operationId: getChassis
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Chassis/{ChassisId}/Power
+  method: get
+  operationId: getChassisPower
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Chassis/{ChassisId}/Thermal
+  method: get
+  operationId: getChassisThermal
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /TemplateService/Templates
+  method: get
+  operationId: listConfigurationTemplates
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /DeviceService/Devices
+  method: get
+  operationId: listDevices
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /DeviceService/Devices({DeviceId})
+  method: get
+  operationId: getDevice
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /DeviceService/Devices({DeviceId})/InventoryDetails
+  method: get
+  operationId: getDeviceInventory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /DiscoveryConfigService/DiscoveryConfigGroups
+  method: get
+  operationId: listDiscoveryConfigs
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /DiscoveryConfigService/DiscoveryConfigGroups
+  method: post
+  operationId: createDiscoveryConfig
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /DiscoveryConfigService/Jobs
+  method: get
+  operationId: listDiscoveryJobs
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /EventService
+  method: get
+  operationId: getEventService
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /EventService/Subscriptions
+  method: get
+  operationId: listEventSubscriptions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /EventService/Subscriptions
+  method: post
+  operationId: createEventSubscription
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /UpdateService/Catalogs
+  method: get
+  operationId: listFirmwareCatalogs
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /UpdateService/Actions/UpdateService.GetBaselines
+  method: post
+  operationId: getFirmwareBaselines
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /GroupService/Groups
+  method: get
+  operationId: listGroups
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /GroupService/Groups({GroupId})/Devices
+  method: get
+  operationId: listGroupDevices
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /JobService/Jobs
+  method: get
+  operationId: listJobs
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /JobService/Jobs
+  method: post
+  operationId: createJob
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /JobService/Jobs({JobId})
+  method: get
+  operationId: getJob
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Managers
+  method: get
+  operationId: listManagers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Managers/{ManagerId}
+  method: get
+  operationId: getManager
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Managers/{ManagerId}/LogServices
+  method: get
+  operationId: listLogServices
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Managers/{ManagerId}/VirtualMedia
+  method: get
+  operationId: listVirtualMedia
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ReportService/ReportDefs
+  method: get
+  operationId: listReportDefinitions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /
   method: get
   operationId: getServiceRoot
@@ -25,6 +362,32 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /SessionService/Sessions
+  method: get
+  operationId: listSessions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /SessionService/Sessions
+  method: post
+  operationId: createSession
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /Systems
   method: get
   operationId: listSystems
@@ -107,152 +470,6 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /Chassis
-  method: get
-  operationId: listChassis
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /Chassis/{ChassisId}
-  method: get
-  operationId: getChassis
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /Chassis/{ChassisId}/Power
-  method: get
-  operationId: getChassisPower
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /Chassis/{ChassisId}/Thermal
-  method: get
-  operationId: getChassisThermal
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /Managers
-  method: get
-  operationId: listManagers
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /Managers/{ManagerId}
-  method: get
-  operationId: getManager
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /Managers/{ManagerId}/LogServices
-  method: get
-  operationId: listLogServices
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /Managers/{ManagerId}/VirtualMedia
-  method: get
-  operationId: listVirtualMedia
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /AccountService
-  method: get
-  operationId: getAccountService
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /AccountService/Accounts
-  method: get
-  operationId: listAccounts
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /SessionService/Sessions
-  method: get
-  operationId: listSessions
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /SessionService/Sessions
-  method: post
-  operationId: createSession
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /UpdateService
-  method: get
-  operationId: getUpdateService
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /UpdateService/FirmwareInventory
-  method: get
-  operationId: listFirmwareInventory
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
 - path: /TaskService/Tasks
   method: get
   operationId: listTasks
@@ -263,42 +480,6 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /EventService
-  method: get
-  operationId: getEventService
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /EventService/Subscriptions
-  method: get
-  operationId: listEventSubscriptions
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /EventService/Subscriptions
-  method: post
-  operationId: createEventSubscription
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /TelemetryService
   method: get
   operationId: getTelemetryService
@@ -319,25 +500,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /SessionService/Sessions
-  method: post
-  operationId: createSession
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /DeviceService/Devices
+- path: /UpdateService
   method: get
-  operationId: listDevices
+  operationId: getUpdateService
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -345,187 +510,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /DeviceService/Devices({DeviceId})
+- path: /UpdateService/FirmwareInventory
   method: get
-  operationId: getDevice
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /DeviceService/Devices({DeviceId})/InventoryDetails
-  method: get
-  operationId: getDeviceInventory
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /GroupService/Groups
-  method: get
-  operationId: listGroups
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /GroupService/Groups({GroupId})/Devices
-  method: get
-  operationId: listGroupDevices
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /DiscoveryConfigService/DiscoveryConfigGroups
-  method: get
-  operationId: listDiscoveryConfigs
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /DiscoveryConfigService/DiscoveryConfigGroups
-  method: post
-  operationId: createDiscoveryConfig
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /DiscoveryConfigService/Jobs
-  method: get
-  operationId: listDiscoveryJobs
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /AlertService/Alerts
-  method: get
-  operationId: listAlerts
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /AlertService/Alerts({AlertId})
-  method: get
-  operationId: getAlert
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /JobService/Jobs
-  method: get
-  operationId: listJobs
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /JobService/Jobs
-  method: post
-  operationId: createJob
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /JobService/Jobs({JobId})
-  method: get
-  operationId: getJob
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /UpdateService/Catalogs
-  method: get
-  operationId: listFirmwareCatalogs
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /UpdateService/Actions/UpdateService.GetBaselines
-  method: post
-  operationId: getFirmwareBaselines
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /TemplateService/Templates
-  method: get
-  operationId: listConfigurationTemplates
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /ReportService/ReportDefs
-  method: get
-  operationId: listReportDefinitions
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /ApplicationService/Network
-  method: get
-  operationId: getNetworkConfiguration
+  operationId: listFirmwareInventory
   x-agentic-access:
     action-class: connected
     consequence: read
