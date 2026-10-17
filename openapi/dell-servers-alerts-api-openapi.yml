@@ -88,14 +88,6 @@ paths:
         '404':
           description: Alert not found
 components:
-  parameters:
-    AlertId:
-      name: AlertId
-      in: path
-      required: true
-      description: Unique identifier for an alert
-      schema:
-        type: integer
   schemas:
     Alert:
       type: object
@@ -135,6 +127,14 @@ components:
         RecommendedAction:
           type: string
           description: Recommended action to resolve the alert
+  parameters:
+    AlertId:
+      name: AlertId
+      in: path
+      required: true
+      description: Unique identifier for an alert
+      schema:
+        type: integer
   securitySchemes:
     sessionAuth:
       type: apiKey
