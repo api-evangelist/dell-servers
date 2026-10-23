@@ -5,7 +5,7 @@
       "source": "https://www.dell.com/en-us/blog/",
       "feed_url": "https://www.dell.com/en-us/blog/feed/",
       "title": "",
-      "saved": 11,
+      "saved": 0,
       "method": "discovered"
     },
     {
@@ -20,7 +20,7 @@
       "error": "HTTPError"
     }
   ],
-  "fetched": "2026-10-10T13:15:00Z",
-  "post_count": 11,
+  "fetched": "2026-10-17T14:53:57Z",
+  "post_count": 23,
   "agent_pulled": "2026-07-04"
 }
