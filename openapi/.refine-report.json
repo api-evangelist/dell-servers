@@ -2,6 +2,7 @@
   "provider": "dell-servers",
   "sources": [
     "_original/dell-servers-idrac-redfish-openapi.yml",
+    "_original/dell-servers-openapi.json",
     "_original/dell-servers-openmanage-enterprise-openapi.yml"
   ],
   "outputs": [
@@ -15,6 +16,12 @@
     "dell-servers-task-service-api-openapi.yml",
     "dell-servers-telemetry-service-api-openapi.yml",
     "dell-servers-update-service-api-openapi.yml",
+    "dell-servers-content-security-controller-api-openapi.yml",
+    "dell-servers-controller-api-openapi.yml",
+    "dell-servers-health-controller-api-openapi.yml",
+    "dell-servers-load-balancer-controller-api-openapi.yml",
+    "dell-servers-management-gateway-controller-api-openapi.yml",
+    "dell-servers-refresh-controller-api-openapi.yml",
     "dell-servers-alerts-api-openapi.yml",
     "dell-servers-application-settings-api-openapi.yml",
     "dell-servers-configuration-api-openapi.yml",
@@ -29,11 +36,18 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "dell-servers-idrac-redfish-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "dell-servers-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0; renamed 1 component key(s) illegal in 3.x (e.g. bearer token)",
+    "dell-servers-openapi.json: declared missing tag: content-security-controller",
+    "dell-servers-openapi.json: declared missing tag: controller",
+    "dell-servers-openapi.json: declared missing tag: health-controller",
+    "dell-servers-openapi.json: declared missing tag: load-balancer-controller",
+    "dell-servers-openapi.json: declared missing tag: management-gateway-controller",
+    "dell-servers-openapi.json: declared missing tag: refresh-controller",
     "dell-servers-openmanage-enterprise-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "tag 'Sessions' spans 2 source specs (dell-servers-idrac-redfish-openapi.yml, dell-servers-openmanage-enterprise-openapi.yml): per-path servers applied",
-    "apis.yml register: already-registered"
+    "apis.yml register: written (+6 apis, 33 total)"
   ],
   "skipped": [
     "dell-servers-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
