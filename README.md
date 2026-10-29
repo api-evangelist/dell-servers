@@ -1,4 +1,4 @@
-# Dell Servers (dell-servers)
+# Dell Servers
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,279 +66,245 @@
 
 APIs for managing and monitoring Dell PowerEdge servers and infrastructure, including the iDRAC Redfish out-of-band management interface, OpenManage Enterprise centralized console and its modular, power, support, and VMware integrations, telemetry streaming, the Lifecycle Controller, RACADM, and the legacy WSMan interface.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/dell-servers/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/dell-servers/refs/heads/main/apis.yml)
+**Areas:** Hardware · Infrastructure · Management · Monitoring · Servers
+
+## Dell Servers on APIs.io
+
+Everything profiled for Dell Servers is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/dell-servers/](https://apis.io/providers/dell-servers/)** — or go straight to one of the APIs or properties below.
+
+### APIs (27)
+
+- [Dell OpenManage Enterprise Modular API](https://apis.io/apis/dell-servers/dell-servers-openmanage-enterprise-modular/) — RESTful API for managing Dell PowerEdge MX7000 modular chassis and its components including compute sleds, network devices, IOMs, and storage. OME-Modular…
+- [Dell OpenManage Enterprise Power Manager API](https://apis.io/apis/dell-servers/dell-servers-openmanage-enterprise-power-manager/) — RESTful API for monitoring and managing power consumption, thermal conditions, and energy costs across Dell PowerEdge server infrastructure. Power Manager…
+- [Dell OpenManage Enterprise SupportAssist API](https://apis.io/apis/dell-servers/dell-servers-openmanage-enterprise-supportassist/) — RESTful API for the OpenManage Enterprise SupportAssist plug-in that enables proactive and predictive monitoring of Dell PowerEdge servers. SupportAssist…
+- [Dell OpenManage Integration for VMware vCenter API](https://apis.io/apis/dell-servers/dell-servers-openmanage-integration-vmware-vcenter/) — RESTful API for the OpenManage Integration for VMware vCenter (OMIVV), enabling automation of Dell PowerEdge server management within VMware environments.…
+- [Dell iDRAC Telemetry Streaming API](https://apis.io/apis/dell-servers/dell-servers-idrac-telemetry-streaming/) — Server-Sent Events (SSE) streaming API for real-time telemetry data from Dell PowerEdge servers via iDRAC. Provides continuous metric reports including…
+- [Dell Lifecycle Controller Remote Services API](https://apis.io/apis/dell-servers/dell-servers-lifecycle-controller-remote-services/) — Standards-based interface for remote deployment, configuration, and updates of Dell PowerEdge servers. Lifecycle Controller Remote Services supports WSMAN…
+- [Dell RACADM CLI](https://apis.io/apis/dell-servers/dell-servers-racadm/) — Command-line interface for Dell Remote Access Controller Administration. RACADM provides local and remote command-line access to iDRAC for scripting and…
+- [Dell WSMan API](https://apis.io/apis/dell-servers/dell-servers-wsman/) — Web Services Management API for Dell server hardware management. WSMan provides a SOAP-based interface for managing server configuration, BIOS, RAID, NIC,…
+- [Dell Servers Accounts API](https://apis.io/apis/dell-servers/dell-servers-accounts-api/) — User account management and role-based access control
+- [Dell Servers Alerts API](https://apis.io/apis/dell-servers/dell-servers-alerts-api/) — Alert monitoring, acknowledgment, and management
+- [Dell Servers Application Settings API](https://apis.io/apis/dell-servers/dell-servers-application-settings-api/) — Console configuration including network, time, and proxy settings
+- [Dell Servers Chassis API](https://apis.io/apis/dell-servers/dell-servers-chassis-api/) — Physical enclosure resources including power supplies, thermal sensors, and physical component inventory
+- [Dell Servers Configuration API](https://apis.io/apis/dell-servers/dell-servers-configuration-api/) — Server configuration templates and compliance baselines
+- [Dell Servers Devices API](https://apis.io/apis/dell-servers/dell-servers-devices-api/) — Device inventory, status, and hardware details for managed servers
+- [Dell Servers Discovery API](https://apis.io/apis/dell-servers/dell-servers-discovery-api/) — Network discovery configuration and job management
+- [Dell Servers Event Service API](https://apis.io/apis/dell-servers/dell-servers-event-service-api/) — Event subscriptions and server-sent events configuration
+- [Dell Servers Firmware API](https://apis.io/apis/dell-servers/dell-servers-firmware-api/) — Firmware catalog management, compliance, and update operations
+- [Dell Servers Groups API](https://apis.io/apis/dell-servers/dell-servers-groups-api/) — Device group management for organizing servers and infrastructure
+- [Dell Servers Jobs API](https://apis.io/apis/dell-servers/dell-servers-jobs-api/) — Job creation, scheduling, and status tracking
+- [Dell Servers Managers API](https://apis.io/apis/dell-servers/dell-servers-managers-api/) — Management controller resources for iDRAC configuration, networking, and remote services
+- [Dell Servers Reports API](https://apis.io/apis/dell-servers/dell-servers-reports-api/) — Report definitions and execution
+- [Dell Servers Service Root API](https://apis.io/apis/dell-servers/dell-servers-service-root-api/) — Redfish service root and metadata
+- [Dell Servers Sessions API](https://apis.io/apis/dell-servers/dell-servers-sessions-api/) — Authentication session creation and management
+- [Dell Servers Systems API](https://apis.io/apis/dell-servers/dell-servers-systems-api/) — Computer system resources including hardware inventory, health status, power state, and BIOS configuration
+- [Dell Servers Task Service API](https://apis.io/apis/dell-servers/dell-servers-task-service-api/) — Asynchronous task tracking and lifecycle job management
+- [Dell Servers Telemetry Service API](https://apis.io/apis/dell-servers/dell-servers-telemetry-service-api/) — Telemetry metric definitions and metric report management
+- [Dell Servers Update Service API](https://apis.io/apis/dell-servers/dell-servers-update-service-api/) — Firmware update operations and firmware inventory
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Arazzo workflows (16)
+
+Multi-step workflows that chain operations into a business task.
+
+- [Dell Servers Chassis Health Report](https://apis.io/arazzos/dell-servers/dell-servers-chassis-health-report-workflow/)
+- [Dell Servers Firmware Inventory and Task Audit](https://apis.io/arazzos/dell-servers/dell-servers-firmware-inventory-tasks-workflow/)
+- [Dell Servers iDRAC Manager Overview](https://apis.io/arazzos/dell-servers/dell-servers-manager-overview-workflow/)
+- [Dell Servers OpenManage Alert Triage](https://apis.io/arazzos/dell-servers/dell-servers-ome-alert-triage-workflow/)
+- [Dell Servers OpenManage Device Inventory Deep Dive](https://apis.io/arazzos/dell-servers/dell-servers-ome-device-inventory-workflow/)
+- [Dell Servers OpenManage Device Discovery](https://apis.io/arazzos/dell-servers/dell-servers-ome-discovery-workflow/)
+- [Dell Servers OpenManage Firmware Compliance Check](https://apis.io/arazzos/dell-servers/dell-servers-ome-firmware-compliance-workflow/)
+- [Dell Servers OpenManage Firmware Update Job](https://apis.io/arazzos/dell-servers/dell-servers-ome-firmware-update-job-workflow/)
+- [Dell Servers OpenManage Group Device Expansion](https://apis.io/arazzos/dell-servers/dell-servers-ome-group-devices-workflow/)
+- [Dell Servers OpenManage Session and Device Listing](https://apis.io/arazzos/dell-servers/dell-servers-ome-session-list-devices-workflow/)
+- [Dell Servers OpenManage Template Deployment Job](https://apis.io/arazzos/dell-servers/dell-servers-ome-template-deploy-job-workflow/)
+- [Dell Servers Power Action with State Polling](https://apis.io/arazzos/dell-servers/dell-servers-power-action-poll-workflow/)
+- [Dell Servers Redfish Session Bootstrap](https://apis.io/arazzos/dell-servers/dell-servers-redfish-session-bootstrap-workflow/)
+- [Dell Servers Set Boot Device and Reset](https://apis.io/arazzos/dell-servers/dell-servers-set-boot-and-reset-workflow/)
+- [Dell Servers System Hardware Inventory](https://apis.io/arazzos/dell-servers/dell-servers-system-inventory-workflow/)
+- [Dell Servers Telemetry Subscription Setup](https://apis.io/arazzos/dell-servers/dell-servers-telemetry-subscription-workflow/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Dell Servers Agentic Access](https://apis.io/agentic-access/dell-servers/dell-servers-agentic-access/)
+
+#### JSON Schema (24)
+
+The data models the API reads and writes.
+
+- [Alert](https://apis.io/schemas/dell-servers/dell-servers-alert/)
+- [Bios](https://apis.io/schemas/dell-servers/dell-servers-bios/)
+- [Chassis](https://apis.io/schemas/dell-servers/dell-servers-chassis/)
+- [ComputerSystem](https://apis.io/schemas/dell-servers/dell-servers-computersystem/)
+- [ComputerSystemCollection](https://apis.io/schemas/dell-servers/dell-servers-computersystemcollection/)
+- [ConfigTemplate](https://apis.io/schemas/dell-servers/dell-servers-configtemplate/)
+- [Device](https://apis.io/schemas/dell-servers/dell-servers-device/)
+- [DiscoveryConfigGroup](https://apis.io/schemas/dell-servers/dell-servers-discoveryconfiggroup/)
+- [EventSubscription](https://apis.io/schemas/dell-servers/dell-servers-eventsubscription/)
+- [FirmwareBaseline](https://apis.io/schemas/dell-servers/dell-servers-firmwarebaseline/)
+- [FirmwareCatalog](https://apis.io/schemas/dell-servers/dell-servers-firmwarecatalog/)
+- [Group](https://apis.io/schemas/dell-servers/dell-servers-group/)
+- [InventoryDetail](https://apis.io/schemas/dell-servers/dell-servers-inventorydetail/)
+- [Job](https://apis.io/schemas/dell-servers/dell-servers-job/)
+- [JobRequest](https://apis.io/schemas/dell-servers/dell-servers-jobrequest/)
+- [Manager](https://apis.io/schemas/dell-servers/dell-servers-manager/)
+- [Power](https://apis.io/schemas/dell-servers/dell-servers-power/)
+- [ReportDefinition](https://apis.io/schemas/dell-servers/dell-servers-reportdefinition/)
+- [ResetAction](https://apis.io/schemas/dell-servers/dell-servers-resetaction/)
+- [ResourceCollection](https://apis.io/schemas/dell-servers/dell-servers-resourcecollection/)
+- [ResourceLink](https://apis.io/schemas/dell-servers/dell-servers-resourcelink/)
+- [ServiceRoot](https://apis.io/schemas/dell-servers/dell-servers-serviceroot/)
+- [Status](https://apis.io/schemas/dell-servers/dell-servers-status/)
+- [Thermal](https://apis.io/schemas/dell-servers/dell-servers-thermal/)
 
-## Scope
+#### JSON Structure (1)
 
-- **Type:** Index
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Data models expressed in JSON Structure.
 
-## Tags
+- [Dell Servers Structure](https://apis.io/json-structure/dell-servers/dell-servers-structure/)
 
-- Hardware
-- Infrastructure
-- Management
-- Monitoring
-- Servers
+#### JSON-LD (1)
 
-## Timestamps
+Linked-data contexts for the provider's vocabulary.
 
-- **Created:** 2024-01-01
-- **Modified:** 2026-05-19
+- [Dell Servers Context](https://apis.io/jsonld/dell-servers/dell-servers-context/)
 
-## APIs
+#### Vocabulary (1)
 
-### Dell iDRAC Redfish REST API
+The provider's domain terms, defined.
 
-Integrated Dell Remote Access Controller REST API for server management, monitoring, and configuration. The iDRAC RESTful API builds upon the DMTF Redfish standard to provide a comprehensive interface for out-of-band server lifecycle management of Dell PowerEdge servers, including inventory, health monitoring, power control, BIOS configuration, virtual media, firmware updates, event subscriptions, and telemetry.
+- [Dell Servers Vocabulary](https://apis.io/vocabularies/dell-servers/dell-servers-vocabulary/)
 
-- **Human URL:** [https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller](https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller)
-- **Base URL:** `https://{idrac-ip}/redfish/v1`
+#### Collections (23)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- BMC
-- Hardware Monitoring
-- Redfish
-- Server Management
+- [Dell Servers Dell iDRAC Redfish REST Accounts API](https://apis.io/collections/dell-servers/open-dell-servers-accounts-api/)
+- [Dell Servers Dell iDRAC Redfish REST Accounts Alerts API](https://apis.io/collections/dell-servers/open-dell-servers-alerts-api/)
+- [Dell Servers Dell iDRAC Redfish REST Accounts Application Settings API](https://apis.io/collections/dell-servers/open-dell-servers-application-settings-api/)
+- [Dell Servers Dell iDRAC Redfish REST Accounts Chassis API](https://apis.io/collections/dell-servers/open-dell-servers-chassis-api/)
+- [Dell Servers Dell iDRAC Redfish REST Accounts Configuration API](https://apis.io/collections/dell-servers/open-dell-servers-configuration-api/)
+- [Dell Servers Dell iDRAC Redfish REST Accounts Devices API](https://apis.io/collections/dell-servers/open-dell-servers-devices-api/)
+- [Dell Servers Dell iDRAC Redfish REST Accounts Discovery API](https://apis.io/collections/dell-servers/open-dell-servers-discovery-api/)
+- [Dell Servers Dell iDRAC Redfish REST Accounts Event Service API](https://apis.io/collections/dell-servers/open-dell-servers-event-service-api/)
+- [Dell Servers Dell iDRAC Redfish REST Accounts Firmware API](https://apis.io/collections/dell-servers/open-dell-servers-firmware-api/)
+- [Dell Servers Dell iDRAC Redfish REST Accounts Groups API](https://apis.io/collections/dell-servers/open-dell-servers-groups-api/)
+- [Dell Servers Dell iDRAC Redfish REST API](https://apis.io/collections/dell-servers/open-dell-servers-idrac-redfish/)
+- [Dell Servers Dell iDRAC Redfish REST Accounts Jobs API](https://apis.io/collections/dell-servers/open-dell-servers-jobs-api/)
+- [Dell Servers Dell iDRAC Redfish REST Accounts Managers API](https://apis.io/collections/dell-servers/open-dell-servers-managers-api/)
+- [Dell Servers Dell OpenManage Enterprise API](https://apis.io/collections/dell-servers/open-dell-servers-openmanage-enterprise/)
+- [Dell Servers Dell iDRAC Redfish REST Accounts Reports API](https://apis.io/collections/dell-servers/open-dell-servers-reports-api/)
+- [Dell Servers Dell iDRAC Redfish REST Accounts Service Root API](https://apis.io/collections/dell-servers/open-dell-servers-service-root-api/)
+- [Dell Servers Dell iDRAC Redfish REST Accounts Sessions API](https://apis.io/collections/dell-servers/open-dell-servers-sessions-api/)
+- [Dell Servers Dell iDRAC Redfish REST Accounts Systems API](https://apis.io/collections/dell-servers/open-dell-servers-systems-api/)
+- [Dell Servers Dell iDRAC Redfish REST Accounts Task Service API](https://apis.io/collections/dell-servers/open-dell-servers-task-service-api/)
+- [Dell Servers Dell iDRAC Redfish REST Accounts Telemetry Service API](https://apis.io/collections/dell-servers/open-dell-servers-telemetry-service-api/)
+- [Dell Servers Dell iDRAC Redfish REST Accounts Update Service API](https://apis.io/collections/dell-servers/open-dell-servers-update-service-api/)
+- [Dell Servers Dell iDRAC Redfish REST API](https://apis.io/collections/dell-servers/postman-dell-servers-idrac-redfish/)
+- [Dell Servers Dell OpenManage Enterprise API](https://apis.io/collections/dell-servers/postman-dell-servers-openmanage-enterprise/)
 
-#### Properties
+#### Governance rules (3)
 
-- [Documentation](https://www.dell.com/support/kbdoc/en-us/000178045/redfish-api-with-dell-integrated-remote-access-controller)
-- [OpenAPI](openapi/dell-servers-idrac-redfish-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/dell-servers-idrac-redfish.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/dell-servers-idrac-redfish.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Rules](rules/dell-servers-idrac-redfish-rules.yml)
-- [Capabilities](capabilities/dell-servers-idrac-redfish-capabilities.yml)
-- [Authentication](https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/redfish-authentication-and-authorization?guid=guid-d572792f-afd2-499a-bf12-38a6778b9bbc&lang=en-us)
-- [Getting Started](https://developer.dell.com/apis/2978/versions/5.xx/docs/1.0Intro.md)
-- [GitHub Repository](https://github.com/dell/iDRAC-Redfish-Scripting)
+Spectral rulesets for the provider's contracts.
 
-### Dell OpenManage Enterprise API
+- [Dell Servers — idrac redfish rules](https://apis.io/rules/dell-servers/dell-servers-idrac-redfish-rules/)
+- [Dell Servers — jsonschema rules](https://apis.io/rules/dell-servers/dell-servers-jsonschema-spectral-rules/)
+- [Dell Servers — openmanage enterprise rules](https://apis.io/rules/dell-servers/dell-servers-openmanage-enterprise-rules/)
 
-REST API for centralized management of Dell EMC servers, chassis, and storage. OpenManage Enterprise provides a comprehensive console for discovery, inventory, monitoring, alerting, jobs, configuration templates, firmware compliance baselines, and reporting across Dell PowerEdge infrastructure at scale.
+#### Security (3)
 
-- **Human URL:** [https://www.dell.com/support/kbdoc/en-us/000175879/support-for-openmanage-enterprise](https://www.dell.com/support/kbdoc/en-us/000175879/support-for-openmanage-enterprise)
-- **Base URL:** `https://{ome-server}/api`
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Tags
+- [Dell Servers Authentication](https://apis.io/security/dell-servers/dell-servers-authentication/)
+- [Dell Servers Domain Security](https://apis.io/security/dell-servers/dell-servers-domain-security/)
+- [Dell Servers Vulnerability Disclosure](https://apis.io/security/dell-servers/dell-servers-vulnerability-disclosure/)
 
-- Automation
-- Enterprise Management
-- Monitoring
-- Orchestration
+#### Plans and pricing (1)
 
-#### Properties
+Published plans, tiers and prices.
 
-- [Documentation](https://www.dell.com/support/manuals/en-us/dell-openmanage-enterprise/ome_p_api_guide/preface?guid=guid-82bcb773-392d-43a4-bdfa-431dd06a06f4&lang=en-us)
-- [OpenAPI](openapi/dell-servers-openmanage-enterprise-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/dell-servers-openmanage-enterprise.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/dell-servers-openmanage-enterprise.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Rules](rules/dell-servers-openmanage-enterprise-rules.yml)
-- [Capabilities](capabilities/dell-servers-openmanage-enterprise-capabilities.yml)
-- [GitHub Repository](https://github.com/dell/OpenManage-Enterprise)
+- [Dell Servers Plans Pricing](https://apis.io/plans/dell-servers/dell-servers-plans-pricing/)
 
-### Dell OpenManage Enterprise Modular API
+#### Rate limits (1)
 
-RESTful API for managing Dell PowerEdge MX7000 modular chassis and its components including compute sleds, network devices, IOMs, and storage. OME-Modular shares a common codebase with OpenManage Enterprise and supports multi-chassis management with up to 20 chassis per group.
+Published request limits.
 
-- **Human URL:** [https://www.dell.com/support/manuals/en-us/openmanage-enterprise-modular/omem_2.00.00_api/openmanage-enterprise-modular-edition?guid=guid-fe459ff7-030b-4375-a6d5-9f0ab2278946&lang=en-us](https://www.dell.com/support/manuals/en-us/openmanage-enterprise-modular/omem_2.00.00_api/openmanage-enterprise-modular-edition?guid=guid-fe459ff7-030b-4375-a6d5-9f0ab2278946&lang=en-us)
-- **Base URL:** `https://{omem-server}/api`
+- [Dell Servers Rate Limits](https://apis.io/rate-limits/dell-servers/dell-servers-rate-limits/)
 
-#### Tags
+#### FinOps (1)
 
-- Chassis Management
-- Modular Infrastructure
-- Multi-Chassis
-- PowerEdge MX
+What the API costs to run, by operation.
 
-#### Properties
+- [Dell Servers Finops](https://apis.io/finops/dell-servers/dell-servers-finops/)
 
-- [Documentation](https://www.dell.com/support/manuals/en-us/openmanage-enterprise-modular/omem_2.00.00_api/openmanage-enterprise-modular-edition?guid=guid-fe459ff7-030b-4375-a6d5-9f0ab2278946&lang=en-us)
-- [GitHub Repository](https://github.com/dell/OpenManage-Enterprise)
-- [Postman Collection](collections/dell-servers-idrac-redfish.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/dell-servers-idrac-redfish.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/dell-servers-openmanage-enterprise.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/dell-servers-openmanage-enterprise.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+## Where to find this API
 
-### Dell OpenManage Enterprise Power Manager API
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-RESTful API for monitoring and managing power consumption, thermal conditions, and energy costs across Dell PowerEdge server infrastructure. Power Manager is a plug-in to the OpenManage Enterprise console that provides power policies, capping, and reporting capabilities.
-
-- **Human URL:** [https://developer.dell.com/apis/5708/versions/3.0/docs/0.1%20Introduction-to-PMP-API.md](https://developer.dell.com/apis/5708/versions/3.0/docs/0.1%20Introduction-to-PMP-API.md)
-- **Base URL:** `https://{ome-server}/api`
-
-#### Tags
-
-- Data Center
-- Energy Efficiency
-- Power Management
-- Thermal Monitoring
-
-#### Properties
-
-- [Documentation](https://www.dell.com/support/manuals/en-us/openmanage-enterprise-power-manager/pmp_3.1_apiguide/about-this-document)
-- [Postman Collection](collections/dell-servers-idrac-redfish.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/dell-servers-idrac-redfish.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/dell-servers-openmanage-enterprise.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/dell-servers-openmanage-enterprise.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Dell OpenManage Enterprise SupportAssist API
-
-RESTful API for the OpenManage Enterprise SupportAssist plug-in that enables proactive and predictive monitoring of Dell PowerEdge servers. SupportAssist automates support case creation and parts dispatch for servers with ProSupport and ProSupport Plus entitlements.
-
-- **Human URL:** [https://developer.dell.com/apis/2848/versions/1.2](https://developer.dell.com/apis/2848/versions/1.2)
-- **Base URL:** `https://{ome-server}/api`
-
-#### Tags
-
-- Alerting
-- Predictive Analytics
-- Proactive Monitoring
-- Support
-
-#### Properties
-
-- [Documentation](https://developer.dell.com/apis/2848/versions/1.2)
-- [Postman Collection](collections/dell-servers-idrac-redfish.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/dell-servers-idrac-redfish.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/dell-servers-openmanage-enterprise.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/dell-servers-openmanage-enterprise.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Dell OpenManage Integration for VMware vCenter API
-
-RESTful API for the OpenManage Integration for VMware vCenter (OMIVV), enabling automation of Dell PowerEdge server management within VMware environments. The API is compliant with OpenAPI Specification 3.0.0 and supports firmware updates, inventory, and monitoring tasks.
-
-- **Human URL:** [https://www.dell.com/support/manuals/en-us/openmanage-integration-vmware-vcenter/omivv_5.4_api/overview](https://www.dell.com/support/manuals/en-us/openmanage-integration-vmware-vcenter/omivv_5.4_api/overview)
-- **Base URL:** `https://{omivv-server}/api`
-
-#### Tags
-
-- Server Management
-- vCenter Integration
-- Virtualization
-- VMware
-
-#### Properties
-
-- [Documentation](https://www.dell.com/support/manuals/en-us/openmanage-integration-vmware-vcenter/omivv_5.4_api/overview)
-- [GitHub Repository](https://github.com/dell/omivv)
-- [Postman Collection](collections/dell-servers-idrac-redfish.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/dell-servers-idrac-redfish.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/dell-servers-openmanage-enterprise.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/dell-servers-openmanage-enterprise.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Dell iDRAC Telemetry Streaming API
-
-Server-Sent Events (SSE) streaming API for real-time telemetry data from Dell PowerEdge servers via iDRAC. Provides continuous metric reports including power statistics, CPU and memory metrics, thermal sensor data, NIC statistics, and PSU metrics using the Redfish TelemetryService.
-
-- **Human URL:** [https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/server-sent-events?guid=guid-fc87fd01-2cff-4ae0-9714-1bd712bb5ce3&lang=en-us](https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/server-sent-events?guid=guid-fc87fd01-2cff-4ae0-9714-1bd712bb5ce3&lang=en-us)
-- **Base URL:** `https://{idrac-ip}/redfish/v1/SSE`
-
-#### Tags
-
-- Monitoring
-- Server-Sent Events
-- Streaming
-- Telemetry
-
-#### Properties
-
-- [Documentation](https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v4.x-series/idrac9_4.00.00.00_redfishapiguide_pub/server-sent-events?guid=guid-fc87fd01-2cff-4ae0-9714-1bd712bb5ce3&lang=en-us)
-- [GitHub Repository](https://github.com/dell/iDRAC-Telemetry-Reference-Tools)
-- [Postman Collection](collections/dell-servers-idrac-redfish.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/dell-servers-idrac-redfish.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/dell-servers-openmanage-enterprise.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/dell-servers-openmanage-enterprise.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Dell Lifecycle Controller Remote Services API
-
-Standards-based interface for remote deployment, configuration, and updates of Dell PowerEdge servers. Lifecycle Controller Remote Services supports WSMAN and Redfish management interfaces for bare-metal provisioning and one-to-many operating system deployments.
-
-- **Human URL:** [https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v3.4-series/idrac_3.40.40.40_lc_re_qsg/about-lifecycle-controller-api?guid=guid-f7bcc1d3-46c1-4ec3-9a45-0f33d734585c&lang=en-us](https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v3.4-series/idrac_3.40.40.40_lc_re_qsg/about-lifecycle-controller-api?guid=guid-f7bcc1d3-46c1-4ec3-9a45-0f33d734585c&lang=en-us)
-- **Base URL:** `https://{idrac-ip}/wsman`
-
-#### Tags
-
-- Deployment
-- Lifecycle Management
-- Provisioning
-- Remote Services
-
-#### Properties
-
-- [Documentation](https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v3.4-series/idrac_3.40.40.40_lc_re_qsg/about-lifecycle-controller-api?guid=guid-f7bcc1d3-46c1-4ec3-9a45-0f33d734585c&lang=en-us)
-- [Postman Collection](collections/dell-servers-idrac-redfish.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/dell-servers-idrac-redfish.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/dell-servers-openmanage-enterprise.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/dell-servers-openmanage-enterprise.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Dell RACADM CLI
-
-Command-line interface for Dell Remote Access Controller Administration. RACADM provides local and remote command-line access to iDRAC for scripting and automating server configuration, monitoring, and management tasks.
-
-- **Human URL:** [https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v3.x-series/idrac9_racadm_pub/](https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v3.x-series/idrac9_racadm_pub/)
-
-#### Tags
-
-- Automation
-- CLI
-- Remote Management
-- Scripting
-
-#### Properties
-
-- [Documentation](https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v3.x-series/idrac9_racadm_pub/)
-- [Postman Collection](collections/dell-servers-idrac-redfish.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/dell-servers-idrac-redfish.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/dell-servers-openmanage-enterprise.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/dell-servers-openmanage-enterprise.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Dell WSMan API
-
-Web Services Management API for Dell server hardware management. WSMan provides a SOAP-based interface for managing server configuration, BIOS, RAID, NIC, and HBA settings on Dell PowerEdge servers through iDRAC.
-
-- **Human URL:** [https://www.dell.com/support/kbdoc/en-us/000178046/how-to-use-the-wsman-interface-on-idrac](https://www.dell.com/support/kbdoc/en-us/000178046/how-to-use-the-wsman-interface-on-idrac)
-- **Base URL:** `https://{idrac-ip}/wsman`
-
-#### Tags
-
-- Hardware Management
-- Legacy
-- Web Services
-- WSMan
-
-#### Properties
-
-- [Documentation](https://www.dell.com/support/kbdoc/en-us/000178046/how-to-use-the-wsman-interface-on-idrac)
-- [Profile  Catalog](https://downloads.dell.com/solutions/dell-management-solution-resources/)
-- [GitHub Repository](https://github.com/dell/DellPEWSMANTools)
-- [Postman Collection](collections/dell-servers-idrac-redfish.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/dell-servers-idrac-redfish.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/dell-servers-openmanage-enterprise.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/dell-servers-openmanage-enterprise.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Arazzo Workflows](arazzo/) — [Arazzo Specification](https://spec.openapis.org/arazzo/latest.html)
-- [Portal](https://developer.dell.com/)
-- [Getting Started](https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v6.x-series/smog_26.0/idrac-restful-apis-redfish-standards-based?guid=guid-476c6603-818e-4e2e-82f0-699bde0c3a3c&lang=en-us)
-- [Documentation](https://www.dell.com/support/product-details/en-us/product/dell-openmanage-enterprise/resources/manuals)
-- [Support](https://www.dell.com/support)
-- [Community](https://www.dell.com/community/)
-- [Blog](https://www.dell.com/community/en/topics/developer-blogs)
-- [Terms of Service](https://i.dell.com/sites/csdocuments/Legal_Docs/en/us/api-terms-of-use_en.pdf)
-- [Privacy Policy](https://www.dell.com/en-us/lp/legal/policies-privacy)
 - [Website](https://www.dell.com/en-us/lp/dt/open-manage)
-- [Git Hub](https://github.com/dell)
-- [S D Ks](https://developer.dell.com/apis/)
-- [Sign Up](https://developer.dell.com/)
-- [Login](https://developer.dell.com/)
-- [JSON-LD](json-ld/dell-servers-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Vocabulary](vocabulary/dell-servers-vocabulary.yml)
+- [Documentation](https://www.dell.com/support/product-details/en-us/product/dell-openmanage-enterprise/resources/manuals)
+- [Getting started](https://www.dell.com/support/manuals/en-us/idrac9-lifecycle-controller-v6.x-series/smog_26.0/idrac-restful-apis-redfish-standards-based?guid=guid-476c6603-818e-4e2e-82f0-699bde0c3a3c&lang=en-us)
+- [Support](https://www.dell.com/support)
+- [Blog](https://www.dell.com/en-us/blog/)
+- [Terms of service](https://i.dell.com/sites/csdocuments/Legal_Docs/en/us/api-terms-of-use_en.pdf)
+- [Privacy policy](https://www.dell.com/en-us/lp/legal/policies-privacy)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 42.9** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 58.8 |
+| Contract governance | 27.3 |
+| Operational transparency | 23.7 |
+| Developer ergonomics | 53.6 |
+| Access clarity | 31.6 |
+
+**Agent readiness 19.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 26.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/dell-servers/](https://apis.io/providers/dell-servers/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Dell Servers: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/dell-servers/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
